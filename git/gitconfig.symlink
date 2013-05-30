@@ -1,0 +1,43 @@
+[user]
+	name = Ben Cochez
+	email = ben@cochez.info
+[core]
+	excludesfile = /Users/benc/.gitignore_global
+[difftool "beyond_compare"]
+	cmd = bcompare '/Applications/Beyond Compare.app' \"$LOCAL\" \"$REMOTE\"
+[merge]
+  keepBackup = false
+	tool = beyond_compare
+[mergetool "beyond_compare"]
+  cmd = bcompare \
+    "$LOCAL" \
+    "$REMOTE" \
+    "$BASE" \
+    "$MERGED"
+  keepBackup = false
+  trustExitCode = false
+[alias]
+	sourcetree = !open -a SourceTree .
+[color]
+	ui = true
+[github]
+	user = benc
+[difftool "sourcetree"]
+	cmd = bcompare $LOCAL $REMOTE
+	path =
+[mergetool "sourcetree"]
+	cmd = bcompare $LOCAL $REMOTE $BASE $MERGED
+	trustExitCode = true
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = beyond_compare
+[difftool]
+	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+[mergetool]
+	prompt = false
+	keepBackup = true
+[help]
+	autocorrect = 1

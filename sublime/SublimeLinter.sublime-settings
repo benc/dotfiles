@@ -1,0 +1,7 @@
+{
+  "sublimelinter_executable_map": {
+    "ruby": "/Users/benc/.rbenv/shims/ruby"
+  },
+  "sublimelinter_gutter_marks": true,
+  "sublimelinter_mark_style": "fill"
+}

@@ -1,0 +1,28 @@
+# SublimeText project files
+*.sublime-workspace
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Ignore tags created by etags and ctags
+TAGS
+!TAGS/
+tags
+!tags/
+
+Guardfile
+.ruby-version
+
+rebel.xml

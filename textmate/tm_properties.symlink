@@ -1,0 +1,54 @@
+TM_GIT = "/usr/local/bin/git"
+TM_HG = "/usr/local/bin/hg"
+TM_RUBY = "/Users/benc/.rbenv/shims/ruby"
+TM_FULLNAME = "Ben Cochez"
+
+fontName = "Source Code Pro"
+fontSize = 12
+# theme = "Spacedust"
+# theme = 8B0B8F2E-F88F-400D-8C45-7C362A0AB977
+# theme = "Tubster"
+# theme = 6859ADD2-5700-4A41-8B30-CE7A9BAC83D7
+theme = DE477E5B-BD4D-46B0-BF80-2EA32A2814D5
+encoding = UTF-8
+tabSize = 2
+softTabs = true
+wrapColumn = 80
+showWrapColumn = true
+
+excludeFiles   = "*.{so,pyc,o,scssc}"
+excludeDirectories = "build,dist,tmp,log,gems,vendor"
+
+# Extra files to include
+myExtraIncludes = ".tm_properties,.htaccess,.gitignore,.rvmrc"
+fileBrowserGlob  = "{*,$myExtraIncludes}"
+include = "{$include,$myExtraIncludes}"
+
+# Hide log, vendor and tmp directories from search popups.
+myExtraExcludes = "log,vendor,tmp,gems"
+excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}"
+excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}"
+
+[ text ]
+showInvisibles = true
+spellChecking = true
+tabSize = 4
+
+[ source ]
+softTabs = true
+tabSize = 2
+
+[ source.python ]
+softTabs = true
+tabSize = 4
+
+[ "{README,INSTALL,LICENSE,TODO,CHANGELOG}" ]
+fileType = "text.plain"
+
+[ attr.file.unknown-type ]
+fileType = "text.plain"
+
+[ .git/COMMIT_EDITMSG ]
+softWrap = true
+spellChecking = true
+spellingLanguage = 'en'

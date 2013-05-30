@@ -1,0 +1,3 @@
+[
+  { "keys": ["super+alt+l"], "command": "beautify_ruby" }
+]
