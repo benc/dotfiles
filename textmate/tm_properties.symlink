@@ -29,6 +29,9 @@ myExtraExcludes = "log,vendor,tmp,gems"
 excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}"
 excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}"
 
+# Follow symlinks
+followSymbolicLinks = true
+
 [ text ]
 showInvisibles = true
 spellChecking = true
