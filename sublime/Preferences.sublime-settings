@@ -6,7 +6,8 @@
 	"font_size": 12,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
+		"2pdf"
 	],
 	"rulers":
 	[
