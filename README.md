@@ -1,4 +1,4 @@
-# Dot Files
+# Dotfiles
 
 See [http://dotfiles.github.io/]()
 
