@@ -43,7 +43,7 @@ zstyle ':prezto:load' pmodule \
   'node' \
   'python' \
   'rails' \
-  'ssh-agent' \
+  'ssh' \
   'syntax-highlighting' \
   'history' \
   'history-substring-search' \
