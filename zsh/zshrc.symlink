@@ -1,10 +1,3 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -16,26 +9,16 @@ export ZSH=$HOME/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Development/AWV/
 
-# source every .zsh file in this rep
-for config_file ($ZSH/**/*.zsh) source $config_file
-
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
-
 # load coreutils
-PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+# PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
-export CLICOLOR=1
-export TERM=xterm-256color
-eval `dircolors  ~/.dir_colors`
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-
-export LS_OPTIONS='--color'
-alias ls='ls $LS_OPTIONS'
+# export CLICOLOR=1
+# export TERM=xterm-256color
+# eval `dircolors  ~/.dir_colors`
+# #zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# 
+# export LS_OPTIONS='--color'
+# alias ls='ls $LS_OPTIONS'
 
 # use brew
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
@@ -55,9 +38,6 @@ export PATH=~/.dotfiles/bin:$PATH
 # add local scripts
 export PATH=~/Development/Scripts/Ruby/Belfius:~/Development/Scripts/Ruby/Utilities:$PATH
 
-# load my own theme
-fpath=(~/.dotfiles/zsh/prompts $fpath)
-
 # java shizzle
 export JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8"
 export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=192m"
@@ -67,6 +47,3 @@ export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=192m"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-# export RUBYOPT=-rbumbler/go
-

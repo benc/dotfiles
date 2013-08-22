@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='subl'
-export VISUAL='vim'
+export EDITOR='mate'
+export VISUAL='mate'
 export PAGER='less'
 
 #
