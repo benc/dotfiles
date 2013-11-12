@@ -38,10 +38,13 @@ export PATH=~/Development/Scripts/Ruby/Belfius:~/Development/Scripts/Ruby/Utilit
 # java shizzle
 export JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8"
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=192m"
+export MAVEN_OPTS="$MAVEN_OPTS -Xmx1024m -XX:MaxPermSize=192m"
 # Could this conflict with a torquebox installation?
 # export JBOSS_HOME=/usr/local/opt/jboss-as/libexec
 # export PATH="$PATH:${JBOSS_HOME}/bin"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# SlimerJS
+export SLIMERJSLAUNCHER=/Applications/Firefox.app/Contents/MacOS/firefox
