@@ -47,4 +47,4 @@ export MAVEN_OPTS="$MAVEN_OPTS -Xmx1024m -XX:MaxPermSize=192m"
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # SlimerJS
-export SLIMERJSLAUNCHER=/Applications/Firefox.app/Contents/MacOS/firefox
+export SLIMERJSLAUNCHER=/Users/benc/Applications/Firefox24.app/Contents/MacOS/firefox
