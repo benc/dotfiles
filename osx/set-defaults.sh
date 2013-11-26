@@ -91,6 +91,12 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
+# Disable smart quotes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+# Disable smart dashes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
@@ -275,6 +281,9 @@ defaults write com.apple.dock mouse-over-hilte-stack -bool true
 # Set the icon size of Dock items to 48 pixels
 defaults write com.apple.dock tilesize -int 48
 
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
 # Enable spring loading for all Dock items
 defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 
@@ -376,31 +385,6 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-# Enable the WebKit Developer Tools in the Mac App Store
-defaults write com.apple.appstore WebKitDeveloperExtras -bool true
-
-# Use regular webkit inspector (atm only in Webkit Nightly builds)
-defaults write com.apple.Safari UseWebKitWebInspector -bool true
-
-###############################################################################
-# iTunes (pre-iTunes 11 only)                                                 #
-###############################################################################
-
-# Disable the iTunes store link arrows
-defaults write com.apple.iTunes show-store-link-arrows -bool false
-
-# Disable the Genius sidebar in iTunes
-defaults write com.apple.iTunes disableGeniusSidebar -bool true
-
-# Disable radio stations in iTunes
-defaults write com.apple.iTunes disableRadio -bool true
-
-# Make ⌘ + F focus the search input in iTunes
-# To use these commands in another language, browse iTunes’s package contents,
-# open `Contents/Resources/your-language.lproj/Localizable.strings`, and look
-# for `kHiddenMenuItemTargetSearch`.
-defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
 
 ###############################################################################
 # Mail                                                                        #
