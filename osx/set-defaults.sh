@@ -505,6 +505,15 @@ defaults write com.twitter.twitter-mac ShowFullNames -bool true
 defaults write com.twitter.twitter-mac HideInBackground -bool true
 
 ###############################################################################
+# Captive Portals (like TELENETHOTSPOT)                                       #
+###############################################################################
+
+# Disable OSX captive portal popup
+# NOTE: to nuke the entire site from orbit, use
+# sudo rm -f /System/Library/CoreServices/Captive\ Network\ Assistant.app
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -boolean false
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
