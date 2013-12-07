@@ -12,7 +12,7 @@ I have:
 
 Install:
 
-    git clone git@github.com:benc/dotfiles.git ~/.dotfiles
+    git clone https://github.com/benc/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
     rake
 
