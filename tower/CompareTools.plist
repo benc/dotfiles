@@ -2,19 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-  <dict>
-    <key>ApplicationIdentifier</key>
-    <string>com.scootersoftware.BeyondCompare</string>
-    <key>ApplicationName</key>
-    <string>Beyond Compare</string>
-    <key>DisplayName</key>
-    <string>Beyond Compare</string>
-    <key>LaunchScript</key>
-    <string>beyond_compare.sh</string>
-    <key>Identifier</key>
-    <string>beyond_compare</string>
-    <key>SupportsMergeTool</key>
-    <true/>
-  </dict>
+	<dict>
+		<key>ApplicationIdentifier</key>
+		<string>com.ScooterSoftware.BeyondCompare</string>
+		<key>ApplicationName</key>
+		<string>BeyondCompare</string>
+		<key>DisplayName</key>
+		<string>Beyond Compare</string>
+		<key>LaunchScript</key>
+		<string>beyondcompare.sh</string>
+		<key>Identifier</key>
+		<string>BeyondCompare</string>
+		<key>SupportsMergeTool</key>
+		<true/>
+	</dict>
 </array>
 </plist>
