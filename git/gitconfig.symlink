@@ -3,19 +3,9 @@
 	email = ben@cochez.info
 [core]
 	excludesfile = /Users/benc/.gitignore_global
-[difftool "beyond_compare"]
-	cmd = bcompare '/Applications/Beyond Compare.app' \"$LOCAL\" \"$REMOTE\"
 [merge]
   keepBackup = false
-	tool = beyond_compare
-[mergetool "beyond_compare"]
-  cmd = bcompare \
-    "$LOCAL" \
-    "$REMOTE" \
-    "$BASE" \
-    "$MERGED"
-  keepBackup = false
-  trustExitCode = false
+	tool = sourcetree
 [alias]
 	sourcetree = !open -a SourceTree .
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -24,15 +14,15 @@
 [github]
 	user = benc
 [difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path = 
+	cmd = /usr/local/bin/bcomp $LOCAL $REMOTE
+	path =
 [mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	cmd = /usr/local/bin/bcomp $LOCAL $REMOTE $BASE $MERGED
 	trustExitCode = true
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [diff]
-	tool = beyond_compare
+	tool = sourcetree
 [difftool]
 	prompt = false
 [mergetool "Kaleidoscope"]
