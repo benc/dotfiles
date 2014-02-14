@@ -13,7 +13,7 @@ theme = DE477E5B-BD4D-46B0-BF80-2EA32A2814D5
 encoding = UTF-8
 tabSize = 2
 softTabs = true
-wrapColumn = 80
+wrapColumn = 160
 showWrapColumn = true
 
 excludeFiles   = "*.{so,pyc,o,scssc}"
