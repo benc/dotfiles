@@ -43,6 +43,9 @@ export MAVEN_OPTS="$MAVEN_OPTS -Xmx1024m -XX:MaxPermSize=192m"
 # export JBOSS_HOME=/usr/local/opt/jboss-as/libexec
 # export PATH="$PATH:${JBOSS_HOME}/bin"
 
+# local hosts file
+# export HOSTALIASES="~/.hosts"
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
