@@ -328,6 +328,9 @@ ln -s /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app /Appli
 # Add a spacer to the right side of the Dock (where the Trash is)
 #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
+# Pin Dock to the bottom
+defaults write com.apple.dock pinning -string end
+
 # Hot corners
 # Possible values:
 #  0: no-op
