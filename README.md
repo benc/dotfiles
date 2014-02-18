@@ -16,3 +16,7 @@ Install:
     cd ~/.dotfiles
     rake
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/benc/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
