@@ -6,6 +6,6 @@
 #
 
 # Source profile.d.
-profile.d/*.zsh; do
+for zsh_source in $HOME/.profile.d/*.zsh; do
   source $zsh_source
 done

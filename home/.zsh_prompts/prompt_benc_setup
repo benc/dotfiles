@@ -1,0 +1,5 @@
+if  [[ -n "$SSH_CONNECTION" ]]; then 
+    prompt_adam1_setup "$@"
+else
+    prompt_sorin_setup "$@"
+fi
