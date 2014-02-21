@@ -20,7 +20,7 @@ excludeFiles   = "*.{so,pyc,o,scssc}"
 excludeDirectories = "build,dist,tmp,log,gems,vendor"
 
 # Extra files to include
-myExtraIncludes = ".tm_properties,.htaccess,.gitignore,.rvmrc"
+myExtraIncludes = ".tm_properties,.htaccess,.gitignore,.ruby-version,.simplecov"
 fileBrowserGlob  = "{*,$myExtraIncludes}"
 include = "{$include,$myExtraIncludes}"
 

@@ -3,9 +3,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/.dotfiles
-
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Development/AWV
 

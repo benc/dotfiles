@@ -12,10 +12,8 @@ I have:
 
 Install:
 
-    git clone https://github.com/benc/dotfiles.git ~/.dotfiles
-    cd ~/.dotfiles
-    rake
-
+    gem install homesick
+    homesick clone benc/dotfiles
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/benc/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
