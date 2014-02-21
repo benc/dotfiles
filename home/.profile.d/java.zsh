@@ -1,6 +1,5 @@
-######################
-# GENERIC JAVA STUFF #
-######################
+# Generic java stuff
+# ==================
 
 export JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8"
 if [[ "$OSTYPE" == darwin* ]]; then
@@ -13,15 +12,19 @@ fi
 # export JBOSS_HOME=/usr/local/opt/jboss-as/libexec
 # export PATH="$PATH:${JBOSS_HOME}/bin"
 
-#########
-# MAVEN #
-#########
+# Maven
+# =====
+#
+# NOTE: on OSX, install GNU sed: 
+#
+#   brew install gnu-sed --default-names
+#
 # Generic options
-# ===============
+# ---------------
 export MAVEN_OPTS="$MAVEN_OPTS -Xmx1024m -XX:MaxPermSize=192m"
 
-# Colored output
-# ==============
+# Custom settings & colored output
+# --------------------------------
 #
 # based on https://gist.github.com/1027800
 export BOLD=`tput bold`
@@ -48,15 +51,15 @@ export RESET_FORMATTING=`tput sgr0`
 mvn-custom()
 {
   (
-  # Filter mvn output using sed. Before filtering set the locale to C, so invalid characters won't break some sed implementations
+  # Select settings file.
   if [[ -e '.settings.xml' ]]; then
     SETTINGS=".settings.xml"
   else
     SETTINGS="$HOME/.m2/settings.xml"
   fi
     
-  unset LANG
-  LC_CTYPE=C mvn --settings $SETTINGS $@ | sed -e "s/\(\[INFO\]\)\(.*\)/${TEXT_BLUE}${BOLD}\1${RESET_FORMATTING}\2/g" \
+  # Filter mvn output using sed.
+  mvn --settings $SETTINGS $@ | sed -e "s/\(\[INFO\]\)\(.*\)/${TEXT_BLUE}${BOLD}\1${RESET_FORMATTING}\2/g" \
                -e "s/\(\[INFO\]\ BUILD SUCCESSFUL\)/${BOLD}${TEXT_GREEN}\1${RESET_FORMATTING}/g" \
                -e "s/\(\[WARNING\]\)\(.*\)/${BOLD}${TEXT_YELLOW}\1${RESET_FORMATTING}\2/g" \
                -e "s/\(\[ERROR\]\)\(.*\)/${BOLD}${TEXT_RED}\1${RESET_FORMATTING}\2/g" \
