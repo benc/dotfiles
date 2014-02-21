@@ -1,3 +1,6 @@
 .DS_Store
 
 /maven/settings-security.xml
+/home/.m2/settings-security.xml
+
+settings-*.xml
