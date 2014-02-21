@@ -1,3 +1,16 @@
+export JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8"
+if [[ "$OSTYPE" == darwin* ]]; then
+  export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+else
+  # export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+fi
+
+export MAVEN_OPTS="$MAVEN_OPTS -Xmx1024m -XX:MaxPermSize=192m"
+
+# Could this conflict with a torquebox installation?
+# export JBOSS_HOME=/usr/local/opt/jboss-as/libexec
+# export PATH="$PATH:${JBOSS_HOME}/bin"
+
 mvn-color()
 {
   local BOLD=`tput bold`

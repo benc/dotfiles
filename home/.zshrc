@@ -6,45 +6,5 @@ fi
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Development/AWV
 
-# load coreutils
-# PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-
-# export CLICOLOR=1
-# export TERM=xterm-256color
-# eval `dircolors  ~/.dir_colors`
-# #zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-#
-# export LS_OPTIONS='--color'
-# alias ls='ls $LS_OPTIONS'
-
-# use brew
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-
-# use brew node
-export PATH=/usr/local/share/npm/bin:$PATH
-
-# use mactex
-export PATH=/usr/texbin:$PATH
-
-# add dotfiles scripts
-export PATH=~/.dotfiles/bin:$PATH
-
-# add local scripts
-export PATH=~/Development/Scripts/Ruby/Belfius:~/Development/Scripts/Ruby/Utilities:$PATH
-
-# java shizzle
-export JAVA_OPTS="-Djava.awt.headless=true -Dfile.encoding=UTF-8"
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-export MAVEN_OPTS="$MAVEN_OPTS -Xmx1024m -XX:MaxPermSize=192m"
-# Could this conflict with a torquebox installation?
-# export JBOSS_HOME=/usr/local/opt/jboss-as/libexec
-# export PATH="$PATH:${JBOSS_HOME}/bin"
-
 # local hosts file
 # export HOSTALIASES="~/.hosts"
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# SlimerJS
-export SLIMERJSLAUNCHER=/Users/benc/Applications/Firefox24.app/Contents/MacOS/firefox
