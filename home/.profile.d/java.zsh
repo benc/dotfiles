@@ -16,6 +16,8 @@ fi
 #########
 # MAVEN #
 #########
+# Generic options
+# ===============
 export MAVEN_OPTS="$MAVEN_OPTS -Xmx1024m -XX:MaxPermSize=192m"
 
 # Colored output
