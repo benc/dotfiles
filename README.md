@@ -12,9 +12,11 @@ I have:
 
 Install:
 
-    gem install homesick
-    homesick clone benc/dotfiles
-
+    git clone https://github.com/benc/dotfiles.git ~/.dotfiles
+    brew tap thoughtbot/formulae
+    brew install rcm
+    rcup rcrc && rcup
+    
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/benc/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
