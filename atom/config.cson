@@ -11,7 +11,7 @@
 'core':
   'themes': [
     'atom-dark-ui'
-    'atom-dark-syntax'
+    'monokai'
   ]
   'ignoredNames': [
     '.git'
