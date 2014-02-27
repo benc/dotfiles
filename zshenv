@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='mate'
-export VISUAL='mate'
+export EDITOR='atom'
+export VISUAL='atom'
 export PAGER='less'
 
 #
@@ -97,4 +97,3 @@ if [[ -d "$TMPDIR" ]]; then
     mkdir -p "$TMPPREFIX"
   fi
 fi
-

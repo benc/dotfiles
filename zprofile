@@ -18,8 +18,8 @@ fi
 # Editors
 #
 if [[ "$OSTYPE" == darwin* ]]; then
-  export EDITOR='mate'
-  export VISUAL='mate'
+  export EDITOR='atom'
+  export VISUAL='atom'
 else
   export EDITOR='vim'
   export VISUAL='rmate'
