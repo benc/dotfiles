@@ -8,6 +8,7 @@
   'userId': '0a1f5b2c6cf0a03b5fc64fdef35fb1c8cdc73671'
 'editor':
   'fontSize': 12
+  'fontFamily': 'Source Code Pro for Powerline'
 'core':
   'themes': [
     'atom-dark-ui'
