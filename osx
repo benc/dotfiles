@@ -172,6 +172,9 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Enable HiDPI display modes (requires restart)
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
+# Disable sleep action on 10.9 when pressing the power buttom
+sudo defaults write com.apple.loginwindow PowerButtonSleepsSystem -bool no
+
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
