@@ -511,6 +511,14 @@ defaults write com.twitter.twitter-mac ShowFullNames -bool true
 defaults write com.twitter.twitter-mac HideInBackground -bool true
 
 ###############################################################################
+# Audio                                                                       #
+###############################################################################
+
+# Increase iTunes buffer size
+defaults write com.apple.iTunes stream-buffer-size 512000
+defaults write com.apple.iTunes file-buffer-size 512000
+
+###############################################################################
 # Captive Portals (like TELENETHOTSPOT)                                       #
 ###############################################################################
 
