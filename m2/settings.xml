@@ -1,21 +1,8 @@
 <?xml version="1.0"?>
+<!--
 <settings>
     <proxies>
-        <!-- proxy
-         | Specification for one proxy, to be used in connecting to the network.
-         |-->
-        <!--
-        <proxy>
-          <id>optional</id>
-          <active>true</active>
-          <protocol>http</protocol>
-          <username></username>
-          <password></password>
-          <host></host>
-          <port>8080</port>
-          <nonProxyHosts>local.net,some.host.com</nonProxyHosts>
-        </proxy>
-        -->
+       
     </proxies>
     <servers>
         <server>
@@ -199,3 +186,4 @@
         <activeProfile>sonar</activeProfile>
     </activeProfiles>
 </settings>
+-->
