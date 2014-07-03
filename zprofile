@@ -18,11 +18,11 @@ fi
 # Editors
 #
 if [[ "$OSTYPE" == darwin* ]]; then
-  export EDITOR='atom'
-  export VISUAL='atom'
+  export EDITOR='bbedit'
+  export VISUAL='bbedit'
 else
   export EDITOR='vim'
-  export VISUAL='rmate'
+  export VISUAL='red' # https://github.com/adamjarret/red.sh
 fi
 export PAGER='less'
 
