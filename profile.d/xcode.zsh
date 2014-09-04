@@ -1,1 +1,0 @@
-alias swift="/Applications/Xcode6-Beta4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift"
