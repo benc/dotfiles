@@ -1,4 +1,4 @@
-Pry.editor = 'atom'
+Pry.editor = 'subl'
 
 # == PLUGINS ===
 # awesome_print gem: great syntax colorized printing
