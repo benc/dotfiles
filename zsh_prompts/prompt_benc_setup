@@ -1,5 +1,0 @@
-if  [[ -n "$SSH_CONNECTION" ]]; then 
-    prompt_bart_setup "$@"
-else
-    prompt_sorin_setup "$@"
-fi
