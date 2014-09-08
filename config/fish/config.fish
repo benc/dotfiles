@@ -13,6 +13,8 @@ set fish_plugins brew bundler rails rbenv sublime node
 
 . $fish_path/oh-my-fish.fish
 
+source_script $HOME/.nvm/nvm.sh
+
 # There's a whale, there's a whale
 # There's a whale fish he cried
 # And the whale was in full view
