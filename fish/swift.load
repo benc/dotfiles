@@ -1,3 +1,3 @@
 function swift
-	command /Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift
+	command xcrun swift -v -sdk (xcrun --show-sdk-path --sdk iphonesimulator)
 end
