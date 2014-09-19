@@ -7,7 +7,7 @@
 #
 # Generic options
 # ---------------
-set -x MAVEN_OPTS "-Xmx512m -XX:MaxPermSize=128m"
+set -x MAVEN_OPTS "-Xmx512m"
 
 # Custom settings & colored output
 # --------------------------------

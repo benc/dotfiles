@@ -6,7 +6,7 @@ switch (uname)
     case Linux
     	echo Hi, Tux! No JAVA_HOME set for you, you should set me in java.fish
     case Darwin
-    	set -x JAVA_HOME (/usr/libexec/java_home -v 1.7)
+    	set -x JAVA_HOME (/usr/libexec/java_home -v 1.8)
     case '*'
         echo Hi, stranger! No JAVA_HOME set for you, you should set me in java.fish
 end
