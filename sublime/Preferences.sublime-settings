@@ -1,0 +1,13 @@
+{
+	"aprosopo_dark_dirty_red": true,
+	"aprosopo_dark_green": true,
+	"color_scheme": "Packages/User/Tubsted (SL).tmTheme",
+	"font_face": "Consolas",
+	"font_size": 13,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"save_on_focus_lost": true,
+	"theme": "Aprosopo Dark@st3.sublime-theme"
+}

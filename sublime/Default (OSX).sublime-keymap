@@ -1,0 +1,3 @@
+[
+	{ "keys": ["cmd+alt+f"], "command": "code_formatter" }
+]
