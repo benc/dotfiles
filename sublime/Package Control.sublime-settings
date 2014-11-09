@@ -1,0 +1,32 @@
+{
+	"installed_packages":
+	[
+		"AngularJS",
+		"BeautifyRuby",
+		"Better CoffeeScript",
+		"CodeFormatter",
+		"Color Highlighter",
+		"fish-shell",
+		"GitGutter",
+		"HTML5",
+		"HTMLBeautify",
+		"Origami",
+		"Pretty JSON",
+		"rsub",
+		"Sass",
+		"SassBeautify",
+		"SideBarEnhancements",
+		"SideBarGit",
+		"SublimeLinter",
+		"SublimeLinter-coffeelint",
+		"SublimeLinter-html-tidy",
+		"SublimeLinter-jshint",
+		"SublimeLinter-json",
+		"SublimeLinter-xmllint",
+		"Swift",
+		"SyncedSideBar",
+		"Theme - Aprosopo",
+		"Tubsted Color Schemes",
+		"Vagrant"
+	]
+}
