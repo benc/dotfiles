@@ -1,3 +1,0 @@
-function swift
-	command xcrun swift -v -sdk (xcrun --show-sdk-path --sdk iphonesimulator)
-end
