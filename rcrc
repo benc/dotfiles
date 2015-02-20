@@ -1,1 +1,1 @@
-EXCLUDES="README.md LICENSE jetbrains fonts iterm sublime textmate tower fish"
+EXCLUDES="README.md LICENSE jetbrains fonts iterm sublime textmate tower"

@@ -7,7 +7,7 @@
 # https://github.com/bpinto/oh-my-fish
 
 set fish_path $HOME/.oh-my-fish
-set fish_custom $HOME/.dotfiles/fish
+set fish_custom $HOME/.dotfiles/fish_custom
 set fish_theme robbyrussell
 set fish_plugins brew bundler rails rbenv sublime node
 
