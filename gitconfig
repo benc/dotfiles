@@ -1,8 +1,6 @@
 [user]
 	name = Ben Cochez
 	email = ben@cochez.info
-[core]
-	excludesfile = /Users/benc/.gitignore_global
 [merge]
   keepBackup = false
 	tool = sourcetree
