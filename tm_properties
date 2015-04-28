@@ -1,6 +1,12 @@
+# GLOBAL TEXTMATE PROPERTIES
+# ==========================
+#
+# More info: http://wiki.macromates.com/Reference/Settings
+
+# Paths
 TM_GIT = "/usr/local/bin/git"
 TM_HG = "/usr/local/bin/hg"
-TM_RUBY = "/Users/benc/.rbenv/shims/ruby"
+TM_RUBY = "~/.rbenv/shims/ruby"
 TM_FULLNAME = "Ben Cochez"
 
 # Default editing configuration
@@ -11,29 +17,63 @@ encoding = UTF-8
 wrapColumn = 160
 showWrapColumn = true
 
-excludeFiles = "*.{so,pyc,o,scssc}"
-excludeDirectories = "build,dist,tmp,log,gems,vendor"
+# NOTE
+# Entries uncommented here will be overwritten if they are specified in a projects .tm_properties file.
+# Use these in project .tm_properties to minimize confusion.
+
+# exclude
+# excludeFiles = "*.{so,pyc,o,scssc,sublime-project,sublime-workspace,iml}"
+# excludeDirectories = "{build,dist,tmp,log,gems,vendor,target,.idea}"
+# excludeInBrowser
+# excludeInFolderSearch = '{node_modules,bower_components,vendor,public}'
+# excludeInFileChooser
+# excludeFilesInBrowser
+# excludeDirectoriesInBrowser
+# include
+# includeFiles
+# includeDirectories
+# includeInBrowser
+# includeInFileChooser
+# includeFilesInBrowser = "{.gitignore}"
+# includeDirectoriesInBrowser
+# includeFilesInFileChooser
 
 followSymbolicLinks = true
 
 # File type specific configuration
 [ text ]
 showInvisibles = true
-spellChecking = true
+softWrap = true
+wrapColumn = "Use Window Frame"
+softTabs = true
+tabSize = 4
 
-[ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib} ]
-binary = true
+[ text.plain ]
+softTabs = false
+tabSize = 4
+
+[ text.html.markdown ]
+softTabs = false
+tabSize = 4
 
 [ source ]
 softTabs = true
 tabSize = 2
 
 [ source.python ]
-softTabs = true
 tabSize = 4
+
+[ source.java ]
+tabSize = 4
+
+[ *.{icns,ico,jpg,jpeg,m4v,nib,pdf,png,psd,pyc,rtf,tif,tiff,xib} ]
+binary = true
 
 [ "{README,INSTALL,LICENSE,TODO}" ]
 fileType = "text.plain"
+
+[ "{Capfile,Gemfile,Gemfile.lock,Guardfile,Vagrantfile}" ]
+fileType = source.ruby
 
 [ attr.file.unknown-type ]
 fileType = "text.plain"
