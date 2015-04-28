@@ -53,3 +53,7 @@ sftp-config.json
 *.tmproj
 *.tmproject
 tmtags
+
+s101plugin.state
+
+.Ulysses-Group.plist
