@@ -1,7 +1,7 @@
 # Maven
 # =====
 #
-# NOTE: on OSX, install GNU sed: 
+# NOTE: on OSX, install GNU sed:
 #
 #   brew install gnu-sed --default-names
 #
@@ -33,24 +33,14 @@ set -x BACKGROUND_WHITE (tput setab 7)
 set -x RESET_FORMATTING (tput sgr0)
 
 function mvn
-	# Support custom settings file
-	if test -f .settings.xml
-		set settingsXml .settings.xml
-	else
-		set settingsXml $HOME/.m2/settings.xml
-	end
-
-	echo Using maven settings $settingsXml
-	echo ">>>"
-	
 	# Filter mvn output using sed
-	command mvn --settings $settingsXml $argv | \
+	command mvn $argv | \
 	    sed -e "s/\(\[INFO\]\)\(.*\)/$TEXT_BLUE$BOLD\1$RESET_FORMATTING\2/g" \
                -e "s/\(\[INFO\]\ BUILD SUCCESSFUL\)/$BOLD$TEXT_GREEN\1$RESET_FORMATTING/g" \
                -e "s/\(\[WARNING\]\)\(.*\)/$BOLD$TEXT_YELLOW\1$RESET_FORMATTING\2/g" \
                -e "s/\(\[ERROR\]\)\(.*\)/$BOLD$TEXT_RED\1$RESET_FORMATTING\2/g" \
                -e "s/Tests run: \([^,]*\), Failures: \([^,]*\), Errors: \([^,]*\), Skipped: \([^,]*\)/$BOLD$TEXT_GREENTests run: \1$RESET_FORMATTING, Failures: $BOLD$TEXT_RED\2$RESET_FORMATTING, Errors: $BOLD$TEXT_RED\3$RESET_FORMATTING, Skipped: $BOLD$TEXT_YELLOW\4$RESET_FORMATTING/g"
- 
+
 	# Make sure formatting is reset
 	echo -ne $RESET_FORMATTING
 end
