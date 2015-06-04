@@ -8,10 +8,23 @@
 
 set fish_path $HOME/.oh-my-fish
 set fish_custom $HOME/.dotfiles/fish_custom
-set fish_theme robbyrussell
-set fish_plugins brew gem bundler rails rbenv sublime node jump peco ssh
 
 . $fish_path/oh-my-fish.fish
+
+Theme "robbyrussell"
+
+Plugin "brew"
+Plugin "gem"
+Plugin "bundler"
+Plugin "rails"
+Plugin "rbenv"
+Plugin "sublime"
+Plugin "node"
+Plugin "jump"
+Plugin "peco"
+Plugin "ssh"
+
+# Now, run 'omf install' to download all your desired plugins and themes.
 
 # There's a whale, there's a whale
 # There's a whale fish he cried
