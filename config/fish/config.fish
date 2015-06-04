@@ -23,6 +23,7 @@ Plugin "node"
 Plugin "jump"
 Plugin "peco"
 Plugin "ssh"
+Plugin "code"
 
 # Now, run 'omf install' to download all your desired plugins and themes.
 
