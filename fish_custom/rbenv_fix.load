@@ -1,1 +1,1 @@
-set -x RBENV_BIN_ROOT /usr/local/bin/
+set -x RBENV_BIN_ROOT /usr/local/bin
