@@ -4,28 +4,13 @@
 #
 # After you've done that, install oh-my-fish:
 #
-# https://github.com/bpinto/oh-my-fish
+# https://github.com/fish-shell/oh-my-fish
 
-set fish_path $HOME/.oh-my-fish
-set fish_custom $HOME/.dotfiles/fish_custom
+set -g OMF_PATH $HOME/.local/share/omf
+set -g OMF_CUSTOM $HOME/.dotfiles/fish_custom
+set -g OMF_CONFIG $HOME/.config/omf
 
-. $fish_path/oh-my-fish.fish
-
-Theme "robbyrussell"
-
-Plugin "brew"
-Plugin "gem"
-Plugin "bundler"
-Plugin "rails"
-Plugin "rbenv"
-Plugin "sublime"
-Plugin "node"
-Plugin "jump"
-Plugin "peco"
-Plugin "ssh"
-Plugin "code"
-
-# Now, run 'omf install' to download all your desired plugins and themes.
+source $OMF_PATH/init.fish
 
 # There's a whale, there's a whale
 # There's a whale fish he cried
