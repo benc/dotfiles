@@ -10,6 +10,9 @@ set -g OMF_PATH $HOME/.local/share/omf
 set -g OMF_CUSTOM $HOME/.dotfiles/fish_custom
 set -g OMF_CONFIG $HOME/.config/omf
 
+# `brew install z`
+set -g Z_SCRIPT_PATH /usr/local/opt/z/etc/profile.d/z.sh
+
 source $OMF_PATH/init.fish
 
 # There's a whale, there's a whale
