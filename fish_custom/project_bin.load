@@ -1,2 +1,0 @@
-### Main program
-set PATH ./bin ./bin/build_pipeline $PATH
