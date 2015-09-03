@@ -2,3 +2,6 @@ package bundler
 package mvn
 package rbenv
 package z
+package brew
+package gem
+package battery
