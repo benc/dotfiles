@@ -1,38 +1,11 @@
 [user]
 	name = Ben Cochez
-	email = ben@cochez.info
-[merge]
-  keepBackup = false
-	tool = sourcetree
-[alias]
-	sourcetree = !open -a SourceTree .
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	email = ben@cochez.consulting
 [color]
 	ui = true
 [github]
 	user = benc
-[difftool "sourcetree"]
-	cmd = /usr/local/bin/bcomp $LOCAL $REMOTE
-	path = 
-[mergetool "sourcetree"]
-	cmd = /usr/local/bin/bcomp $LOCAL $REMOTE $BASE $MERGED
-	trustExitCode = true
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[diff]
-	tool = sourcetree
-[difftool]
-	prompt = false
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-[mergetool]
-	prompt = false
-	keepBackup = false
 [help]
 	autocorrect = 1
-[filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
 [push]
 	default = simple
