@@ -1,0 +1,32 @@
+ZSHA_BASE=$HOME/.zsh-antigen
+source $ZSHA_BASE/antigen/antigen.zsh
+
+antigen-use oh-my-zsh
+antigen-bundle git
+antigen bundle npm
+antigen bundle nvm
+antigen bundle z
+antigen bundle aws
+antigen bundle mvn
+antigen bundle marked2
+
+if [ "$OSTYPE"="darwin11.0" ]; then
+    antigen-bundle osx
+fi
+
+antigen-bundle zsh-users/zsh-syntax-highlighting
+antigen-bundle zsh-users/zsh-history-substring-search
+
+antigen theme sorin
+# antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+
+antigen-apply
+
+export PATH=/usr/local/bin:/Applications/Postgres.app/Contents/Versions/9.5/bin:$PATH
+export EDITOR=subl
+
+if [ -d $HOME/.rbenv ]; then
+    eval "$(rbenv init -)"
+fi
+
+. `brew --prefix`/etc/profile.d/z.sh
