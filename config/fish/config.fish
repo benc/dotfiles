@@ -7,13 +7,21 @@
 # https://github.com/fish-shell/oh-my-fish
 
 set -g OMF_PATH $HOME/.local/share/omf
-set -g OMF_CUSTOM $HOME/.dotfiles/fish_custom
 set -g OMF_CONFIG $HOME/.config/omf
 
 # `brew install z`
 set -g Z_SCRIPT_PATH /usr/local/opt/z/etc/profile.d/z.sh
 
 source $OMF_PATH/init.fish
+
+# load some secure stuff
+source $HOME/.config/fish/secure.fish
+
+# load iterm2 shell integration
+test -e $HOME/.iterm2_shell_integration.fish ; and source $HOME/.iterm2_shell_integration.fish
+
+# load nvm
+set -gx NVM_DIR $HOME/.nvm
 
 # There's a whale, there's a whale
 # There's a whale fish he cried
