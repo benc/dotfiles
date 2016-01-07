@@ -32,9 +32,15 @@ if ! zgen saved; then
   # fancy schmancy
   zgen load chrissicool/zsh-256color
 
+  # fish like autosuggestions
+  zgen load tarruda/zsh-autosuggestions
+
   # k is a zsh script / plugin to make directory listings more readable,
   # adding a bit of color and some git status information on files and directories
   zgen load rimraf/k
+
+  # a next-generation cd command with an interactive filter
+  # zgen load b4b4r07/enhancd
 
   # automatically run zgen update and zgen selfupdate every 7 days
   zgen load unixorn/autoupdate-zgen
@@ -52,3 +58,9 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 
 # vscode
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
+
+# Enable autosuggestions automatically.
+zle-line-init() {
+    zle autosuggest-start
+}
+zle -N zle-line-init
