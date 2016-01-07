@@ -1,3 +1,6 @@
+export RBENV_ROOT=$HOME/.rbenv
+export PATH=/usr/local/bin:/Applications/Postgres.app/Contents/Versions/9.5/bin:$PATH
+
 source "$HOME/.dotfiles/zgen/zgen.zsh"
 
 # check if there's no init script
@@ -49,8 +52,6 @@ if ! zgen saved; then
   zgen save
 fi
 
-export RBENV_ROOT=$HOME/.rbenv
-export PATH=/usr/local/bin:/Applications/Postgres.app/Contents/Versions/9.5/bin:$PATH
 export EDITOR=subl
 
 # link up with iterm2
