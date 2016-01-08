@@ -20,20 +20,12 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-syntax-highlighting
   zgen load zsh-users/zsh-history-substring-search
 
-  # Set keystrokes for substring searching
-  zmodload zsh/terminfo
-  bindkey "$terminfo[kcuu1]" history-substring-search-up
-  bindkey "$terminfo[kcud1]" history-substring-search-down
-
   # completions
   zgen load zsh-users/zsh-completions src
 
   # pure theme (async)
   zgen load mafredri/zsh-async
   zgen load sindresorhus/pure
-
-  # fancy schmancy
-  zgen load chrissicool/zsh-256color
 
   # fish like autosuggestions
   zgen load tarruda/zsh-autosuggestions
@@ -47,6 +39,9 @@ if ! zgen saved; then
 
   # automatically run zgen update and zgen selfupdate every 7 days
   zgen load unixorn/autoupdate-zgen
+
+  # a zsh plugin to help remembering those aliases you once defined
+  zgen load djui/alias-tips
 
   # save all to init script
   zgen save
@@ -65,3 +60,4 @@ zle-line-init() {
     zle autosuggest-start
 }
 zle -N zle-line-init
+AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
