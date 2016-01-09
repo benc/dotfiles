@@ -14,6 +14,9 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/rbenv
   zgen oh-my-zsh plugins/nvm
   zgen oh-my-zsh plugins/bgnotify
+  zgen oh-my-zsh plugins/spring
+  zgen oh-my-zsh plugins/sublime
+  zgen oh-my-zsh plugins/vagrant
 
   # history, syntax highlighting
   # NOTE if zsh-syntax-highlighting is bundled after zsh-history-substring-search, they break, so get the order right.
