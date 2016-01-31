@@ -30,9 +30,6 @@ if ! zgen saved; then
   zgen load mafredri/zsh-async
   zgen load sindresorhus/pure
 
-  # fish like autosuggestions
-  zgen load tarruda/zsh-autosuggestions
-
   # k is a zsh script / plugin to make directory listings more readable,
   # adding a bit of color and some git status information on files and directories
   zgen load rimraf/k
@@ -46,6 +43,10 @@ if ! zgen saved; then
   # a zsh plugin to help remembering those aliases you once defined
   zgen load djui/alias-tips
 
+  # fish like autosuggestions - should be loaded last
+  # zgen load tarruda/zsh-autosuggestions
+  zgen load tarruda/zsh-autosuggestions.git . v0.1.x
+
   # save all to init script
   zgen save
 fi
@@ -58,9 +59,15 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 # vscode
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
 
+# history substring search: bind UP and DOWN arrow keys
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
+
 # Enable autosuggestions automatically.
-zle-line-init() {
-    zle autosuggest-start
-}
-zle -N zle-line-init
-AUTOSUGGESTION_ACCEPT_RIGHT_ARROW=1
+zle -N zle-line-init autosuggest_start
+
+# phantomjs
+export PHANTOMJS_BIN=/opt/phantomjs/phantomjs-2.1.1-macosx/bin
+
+# checkstyle
+alias checkstyle-report="ag --before=5 severity=\"error **/target/checkstyle-result.xml"
