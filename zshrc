@@ -34,18 +34,11 @@ if ! zgen saved; then
   # adding a bit of color and some git status information on files and directories
   zgen load rimraf/k
 
-  # a next-generation cd command with an interactive filter
-  # zgen load b4b4r07/enhancd
-
-  # automatically run zgen update and zgen selfupdate every 7 days
-  zgen load unixorn/autoupdate-zgen
-
   # a zsh plugin to help remembering those aliases you once defined
   zgen load djui/alias-tips
 
   # fish like autosuggestions - should be loaded last
-  # zgen load tarruda/zsh-autosuggestions
-  zgen load tarruda/zsh-autosuggestions.git . v0.1.x
+  zgen load tarruda/zsh-autosuggestions
 
   # save all to init script
   zgen save
@@ -60,14 +53,18 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
 
 # history substring search: bind UP and DOWN arrow keys
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # Enable autosuggestions automatically.
-zle -N zle-line-init autosuggest_start
+# zle -N zle-line-init autosuggest_start
 
 # phantomjs
-export PHANTOMJS_BIN=/opt/phantomjs/phantomjs-2.1.1-macosx/bin
+export PHANTOMJS_BIN=/usr/local/bin/phantomjs
+
+# vagrant
+export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 # checkstyle
-alias checkstyle-report="ag --before=5 severity=\"error **/target/checkstyle-result.xml"
+alias checkstyle-report='ag --before=5 severity=\"error **/target/checkstyle-result.xml\"'
