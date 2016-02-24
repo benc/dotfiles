@@ -86,4 +86,4 @@ export PHANTOMJS_BIN=/usr/local/bin/phantomjs
 export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 # checkstyle
-alias checkstyle-report='ag --before=5 severity=\"error **/target/checkstyle-result.xml\"'
+alias checkstyle-report="ag --before=5 severity=\\\"error **/target/checkstyle-result.xml"
