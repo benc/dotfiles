@@ -68,9 +68,6 @@ export EDITOR=subl
 # link up with iterm2
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
-# vscode
-alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
-
 # history substring search: bind UP and DOWN arrow keys
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
