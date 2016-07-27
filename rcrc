@@ -1,1 +1,1 @@
-EXCLUDES="README.md LICENSE jetbrains fonts iterm sublime textmate tower"
+EXCLUDES="README.md LICENSE iterm jetbrains vscode setup_vscode"

@@ -1,0 +1,15 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.fontFamily": "Source Code Pro, monospace",
+    "editor.fontSize": 14,
+    "editor.renderIndentGuides": true,
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "onFocusChange",
+    "terminal.external.osxExec": "iTerm.app",
+    "remote.port": 52689,
+    "remote.onstartup": true,
+    "files.associations": {
+        "Capfile": "ruby",
+        "Vagrantfile": "ruby"
+    }
+}
