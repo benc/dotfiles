@@ -63,7 +63,7 @@ if ! zgen saved; then
   zgen save
 fi
 
-export EDITOR=subl
+export EDITOR=code
 
 # link up with iterm2
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
