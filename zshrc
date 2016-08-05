@@ -1,5 +1,5 @@
 export RBENV_ROOT=$HOME/.rbenv
-export PATH=/usr/local/bin:/Applications/Postgres.app/Contents/Versions/9.5/bin:$PATH
+export PATH=/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/9.5/bin:$PATH
 
 source "$HOME/.dotfiles/zgen/zgen.zsh"
 
@@ -84,3 +84,6 @@ export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 # checkstyle
 alias checkstyle-report="ag --before=5 severity=\\\"error **/target/checkstyle-result.xml"
+
+# node stuff
+alias nuke_modules="rm -rf node_modules; npm install; npm prune"
