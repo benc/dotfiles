@@ -22,5 +22,9 @@
         "key": "shift+cmd+d",
         "command": "extension.dash.specific",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+e",
+        "command": "workbench.action.quickOpen"
     }
 ]
