@@ -1,5 +1,5 @@
 export RBENV_ROOT=$HOME/.rbenv
-export PATH=/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/9.5/bin:$PATH
+export PATH=/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH
 
 source "$HOME/.dotfiles/zgen/zgen.zsh"
 
