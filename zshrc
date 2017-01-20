@@ -1,6 +1,4 @@
-export RBENV_ROOT=$HOME/.rbenv
-export PATH=/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH
-
+export PATH=~/.rbenv/shims:/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH
 source "$HOME/.dotfiles/zgen/zgen.zsh"
 
 # check if there's no init script
@@ -13,29 +11,10 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/git
   zgen oh-my-zsh plugins/z
   zgen oh-my-zsh plugins/bgnotify
-
   zgen oh-my-zsh plugins/rbenv
-  # zgen oh-my-zsh plugins/bundler
-  # zgen oh-my-zsh plugins/gem
-  # zgen oh-my-zsh plugins/rake
-  # zgen oh-my-zsh plugins/rake-fast
-  # zgen oh-my-zsh plugins/ruby
-
   zgen oh-my-zsh plugins/nvm
-  # zgen oh-my-zsh plugins/bower
-  # zgen oh-my-zsh plugins/gulp
-
-  # zgen oh-my-zsh plugins/spring
   zgen oh-my-zsh plugins/mvn
-  # zgen oh-my-zsh plugins/scala
-
-  # zgen oh-my-zsh plugins/bbedit
-  zgen oh-my-zsh plugins/sublime
-  # zgen oh-my-zsh plugins/marked2
-  # zgen oh-my-zsh plugins/forklift
-
-  zgen oh-my-zsh plugins/vagrant
-  zgen oh-my-zsh plugins/aws
+  zgen oh-my-zsh plugins/marked2
 
   # history, syntax highlighting
   # NOTE if zsh-syntax-highlighting is bundled after zsh-history-substring-search, they break, so get the order right.
@@ -48,10 +27,6 @@ if ! zgen saved; then
   # pure theme (async)
   zgen load mafredri/zsh-async
   zgen load sindresorhus/pure
-
-  # k is a zsh script / plugin to make directory listings more readable,
-  # adding a bit of color and some git status information on files and directories
-  zgen load rimraf/k
 
   # a zsh plugin to help remembering those aliases you once defined
   zgen load djui/alias-tips
@@ -79,7 +54,7 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 # phantomjs
 export PHANTOMJS_BIN=/usr/local/bin/phantomjs
 
-# vagrant
+# vagrant & vmware fusion
 export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 # checkstyle
@@ -87,3 +62,9 @@ alias checkstyle-report="ag --before=5 severity=\\\"error **/target/checkstyle-r
 
 # node stuff
 alias nuke_modules="rm -rf node_modules; npm install; npm prune"
+
+# lunchy
+LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+  . $LUNCHY_DIR/lunchy-completion.zsh
+fi
