@@ -14,6 +14,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/rbenv
   zgen oh-my-zsh plugins/nvm
   zgen oh-my-zsh plugins/mvn
+  zgen oh-my-zsh plugins/virtualenv
   zgen oh-my-zsh plugins/marked2
 
   # history, syntax highlighting
