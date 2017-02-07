@@ -8,6 +8,7 @@
     "terminal.external.osxExec": "iTerm.app",
     "remote.port": 52689,
     "remote.onstartup": true,
+    "typescript.referencesCodeLens.enabled": true,
     "workbench.editor.showTabs": false,
     "files.associations": {
         "Capfile": "ruby",
