@@ -69,3 +69,7 @@ LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
 if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
   . $LUNCHY_DIR/lunchy-completion.zsh
 fi
+
+# use JDK8 as default
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+
