@@ -8,10 +8,13 @@
     "terminal.external.osxExec": "iTerm.app",
     "remote.port": 52689,
     "remote.onstartup": true,
+    "editor.minimap.enabled": true,
     "typescript.referencesCodeLens.enabled": true,
     "workbench.editor.showTabs": false,
     "files.associations": {
         "Capfile": "ruby",
         "Vagrantfile": "ruby"
-    }
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "vsicons.projectDetection.autoReload": true
 }

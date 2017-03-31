@@ -73,3 +73,9 @@ fi
 # use JDK8 as default
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
+# GPGTools launches gpg-agent, we'll have to let SSH know we want to use gpg-agent as ssh-agent
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+    . "${HOME}/.gpg-agent-info"
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
+fi
