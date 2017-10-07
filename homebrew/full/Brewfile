@@ -1,0 +1,133 @@
+tap "thoughtbot/formulae"
+tap "homebrew/core"
+tap "homebrew/versions"
+tap "homebrew/bundle"
+tap "homebrew/services"
+tap "caskroom/drivers"
+tap "caskroom/fonts"
+tap "caskroom/cask"
+tap "caskroom/eid"
+cask "java"
+brew "awscli"
+brew "ccat"
+brew "coreutils"
+brew "elasticsearch@2.4", restart_service: true
+brew "exa"
+brew "git"
+brew "htop"
+brew "m-cli"
+brew "mas"
+brew "maven"
+brew "mpv"
+brew "phantomjs"
+brew "python"
+brew "rbenv"
+brew "sbt"
+brew "terminal-notifier"
+brew "the_silver_searcher"
+brew "thefuck"
+brew "tldr"
+brew "v8@3.15"
+brew "wget"
+brew "zsh"
+brew "thoughtbot/formulae/rcm"
+cask "1password"
+cask "ableton-live-suite"
+cask "aerial"
+cask "airfoil"
+cask "appcleaner"
+cask "arq"
+cask "audio-hijack"
+cask "bartender"
+cask "bbedit"
+cask "betterzip"
+cask "beyond-compare"
+cask "caprine"
+cask "carbon-copy-cloner"
+cask "cycling74-max"
+cask "daisydisk"
+cask "dash"
+cask "debookee"
+cask "devonthink-pro-office"
+cask "docker"
+cask "dragand"
+cask "dropbox"
+cask "droplr"
+cask "dropzone"
+cask "fantastical"
+cask "firefox"
+cask "fission"
+cask "google-chrome"
+cask "gpgtools"
+cask "hazel"
+cask "hipchat"
+cask "houdahspot"
+cask "iina"
+cask "imazing"
+cask "iterm2"
+cask "jetbrains-toolbox"
+cask "keyboard-maestro"
+cask "kitematic"
+cask "launchbar"
+cask "loopback"
+cask "mailbutler"
+cask "marked"
+cask "omnifocus"
+cask "omnigraffle"
+cask "paw"
+cask "pdfexpert"
+cask "postgres"
+cask "resolutionator"
+cask "screens"
+cask "shimo"
+cask "skype"
+cask "soulver"
+cask "soundsource"
+cask "spotify"
+cask "timing"
+cask "totals"
+cask "tower"
+cask "transmit"
+cask "viscosity"
+cask "visual-studio-code"
+cask "vmware-fusion"
+cask "witch"
+cask "wwdc"
+cask "caskroom/drivers/xerox-print-driver"
+cask "caskroom/eid/eid-be"
+cask "caskroom/eid/eid-be-viewer"
+cask "caskroom/fonts/font-hasklig"
+cask "caskroom/fonts/font-source-code-pro"
+mas "1Blocker", id: 1107421413
+mas "Affinity Designer", id: 824171161
+mas "Affinity Photo", id: 824183456
+mas "Browser Fairy", id: 483014855
+mas "Day One", id: 1055511498
+mas "Deliveries", id: 924726344
+mas "djay Pro", id: 947578651
+mas "File Multi Tool 6", id: 1194004025
+mas "FineReader OCR Pro", id: 687301476
+mas "Forecast Bar", id: 982710545
+mas "Formatter", id: 1190228172
+mas "GAget", id: 968487158
+mas "Irvue", id: 1039633667
+mas "macOS High Sierra", id: Install
+mas "Marked 2", id: 890031187
+mas "MindNode", id: 992076693
+mas "Paprika Recipe Manager", id: 451907568
+mas "Parcel", id: 639968404
+mas "PCalc", id: 403504866
+mas "PopClip", id: 445189367
+mas "Reeder", id: 880001334
+mas "ScanSnap Cloud", id: 1170434079
+mas "Server", id: 883878097
+mas "Shazam", id: 897118787
+mas "Simplify", id: 448003584
+mas "Slack", id: 803453959
+mas "SnippetsLab", id: 1006087419
+mas "Translate Tab", id: 458887729
+mas "Tweetbot", id: 557168941
+mas "UlyssesMac", id: 1225570693
+mas "WhatsApp", id: 1147396723
+mas "WiFi Explorer", id: 494803304
+mas "WiFi Signal", id: 525912054

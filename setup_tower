@@ -1,0 +1,2 @@
+#!/bin/bash
+ln -sf $HOME/.dotfiles/tower/environment.plist "$HOME/Library/Application Support/com.fournova.Tower2/environment.plist"

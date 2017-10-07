@@ -1,4 +1,4 @@
-export PATH=~/.rbenv/shims:/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH
+export PATH=~/.rbenv/shims:/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 source "$HOME/.dotfiles/zgen/zgen.zsh"
 
 # check if there's no init script
@@ -12,7 +12,8 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/z
   zgen oh-my-zsh plugins/bgnotify
   zgen oh-my-zsh plugins/rbenv
-  zgen oh-my-zsh plugins/nvm
+  zgen oh-my-zsh plugins/command-not-found
+  zgen oh-my-zsh plugins/n
   zgen oh-my-zsh plugins/mvn
   zgen oh-my-zsh plugins/virtualenv
   zgen oh-my-zsh plugins/marked2
@@ -79,3 +80,20 @@ if [ -f "${HOME}/.gpg-agent-info" ]; then
     export GPG_AGENT_INFO
     export SSH_AUTH_SOCK
 fi
+
+# Timings integration
+DISABLE_AUTO_TITLE="true"
+PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE};"
+
+# Node, n and avn
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+# What the
+eval "$(thefuck --alias)"
+
+# Pimp
+alias ls="exa"
+alias cat="ccat"
+alias top="htop"

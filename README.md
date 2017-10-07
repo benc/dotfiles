@@ -15,8 +15,12 @@ Install:
     brew install zsh
     # configure zsh as your default shell
     git clone https://github.com/benc/dotfiles.git ~/.dotfiles
+    cd ~/.dotfiles; git submodule update --init; cd
     brew tap thoughtbot/formulae
     brew install rcm
-    rcup rcrc; and rcup
+    rcup rcrc; rcup
     # vscode settings need a separate installation until https://github.com/thoughtbot/rcm/issues/135 is resolved
-    ./dotfiles/setup_vscode
+    ~/.dotfiles/setup_vscode
+    ~/.dotfiles/setup_tower
+    # install dependencies
+    cd ~/.dotfiles/homebrew; brew bundle

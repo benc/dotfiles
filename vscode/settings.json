@@ -1,20 +1,21 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "editor.fontFamily": "Source Code Pro, monospace",
+    "editor.fontFamily": "Hasklig",
+    "editor.fontLigatures": true,
     "editor.fontSize": 14,
     "editor.renderIndentGuides": true,
+    "editor.minimap.enabled": true,
     "files.trimTrailingWhitespace": true,
     "files.autoSave": "onFocusChange",
     "terminal.external.osxExec": "iTerm.app",
     "remote.port": 52689,
     "remote.onstartup": true,
-    "editor.minimap.enabled": true,
-    "typescript.referencesCodeLens.enabled": true,
+    "remote.dontShowPortAlreadyInUseError": true,
     "workbench.editor.showTabs": false,
     "files.associations": {
         "Capfile": "ruby",
         "Vagrantfile": "ruby"
     },
-    "workbench.iconTheme": "vscode-icons",
-    "vsicons.projectDetection.autoReload": true
+    "window.nativeTabs": true,
+    "workbench.iconTheme": "vscode-icons"
 }

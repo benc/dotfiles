@@ -1,1 +1,1 @@
-EXCLUDES="README.md LICENSE iterm jetbrains vscode setup_vscode"
+EXCLUDES="README.md LICENSE iterm jetbrains vscode setup_vscode tower setup_tower homebrew"
