@@ -12,6 +12,10 @@ I have:
 
 Install:
 
+    brew install rbenv
+    rbenv install 2.4.2 # or the most recent version
+    rbenv global 2.4.2
+    gem install lunchy terminal-notifier
     brew install zsh
     # configure zsh as your default shell
     git clone https://github.com/benc/dotfiles.git ~/.dotfiles
