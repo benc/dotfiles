@@ -35,11 +35,13 @@ cask "1password"
 cask "ableton-live-suite"
 cask "aerial"
 cask "airfoil"
+cask "anki"
 cask "appcleaner"
 cask "arq"
 cask "audio-hijack"
 cask "bartender"
 cask "bbedit"
+cask "beoplay-software-update"
 cask "betterzip"
 cask "beyond-compare"
 cask "caprine"
@@ -93,14 +95,15 @@ cask "visual-studio-code"
 cask "vmware-fusion"
 cask "witch"
 cask "wwdc"
+cask "caskroom/drivers/logitech-options"
 cask "caskroom/drivers/xerox-print-driver"
 cask "caskroom/eid/eid-be"
 cask "caskroom/eid/eid-be-viewer"
 cask "caskroom/fonts/font-hasklig"
 cask "caskroom/fonts/font-source-code-pro"
-mas "1Blocker", id: 1107421413
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
+mas "Better", id: 1121192229
 mas "Browser Fairy", id: 483014855
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 924726344
@@ -111,13 +114,13 @@ mas "Forecast Bar", id: 982710545
 mas "Formatter", id: 1190228172
 mas "GAget", id: 968487158
 mas "Irvue", id: 1039633667
-mas "macOS High Sierra", id: Install
 mas "Marked 2", id: 890031187
 mas "MindNode", id: 992076693
 mas "Paprika Recipe Manager", id: 451907568
 mas "Parcel", id: 639968404
 mas "PCalc", id: 403504866
 mas "PopClip", id: 445189367
+mas "Quiver", id: 866773894
 mas "Reeder", id: 880001334
 mas "ScanSnap Cloud", id: 1170434079
 mas "Server", id: 883878097
