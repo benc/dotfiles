@@ -17,14 +17,12 @@ Install:
     rbenv install 2.4.2 # or the most recent version
     rbenv global 2.4.2
     gem install lunchy terminal-notifier
-
-    # configure zsh as your default shell
-    brew install zsh
+    brew install zsh zplug
     git clone https://github.com/benc/dotfiles.git ~/.dotfiles
-    cd ~/.dotfiles; git submodule update --init; cd
     brew tap thoughtbot/formulae
     brew install rcm
     rcup rcrc; rcup
+    zplug install; zplug load
 
     # vscode settings need a separate installation until https://github.com/thoughtbot/rcm/issues/135 is resolved
     ~/.dotfiles/setup_vscode
@@ -34,3 +32,5 @@ Install:
 
     # install tooling using brew
     cd ~/.dotfiles/homebrew; brew bundle
+
+    # make sure iTerms shell is set to /usr/local/bin/zsh instead of "Login shell"
