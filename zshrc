@@ -34,6 +34,9 @@ zplug "sindresorhus/pure", use:pure.zsh, as:theme
 zplug "changyuheng/fz", defer:1 # needs brew install fzf
 zplug "rupa/z", use:z.sh
 
+# jump up
+zplug "shannonmoeller/up", use:"up.sh", defer:1
+
 # a zsh plugin to help remembering those aliases you once defined
 zplug "djui/alias-tips"
 
