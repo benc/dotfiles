@@ -31,6 +31,7 @@ zplug "mafredri/zsh-async"
 zplug "sindresorhus/pure", use:pure.zsh, as:theme
 
 # jump around
+zplug "changyuheng/fz", defer:1 # needs brew install fzf
 zplug "rupa/z", use:z.sh
 
 # a zsh plugin to help remembering those aliases you once defined
