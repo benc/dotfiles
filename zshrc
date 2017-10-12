@@ -94,7 +94,8 @@ export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_P
 eval "$(thefuck --alias)"
 
 # Update all the things
-alias emerge-world="sudo softwareupdate --install --recommended; brew update; brew upgrade; brew cleanup; brew cask cleanup"
+alias update-casks="brew cask outdated --greedy --verbose | grep -v \"(latest)\" | cut -f1 -d\" \" | xargs brew cask reinstall"
+alias update="softwareupdate --install --recommended; brew update; brew upgrade; brew cleanup; update-casks; brew cask cleanup"
 
 # Pimp
 alias ls="exa"
