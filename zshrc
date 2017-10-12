@@ -95,7 +95,7 @@ eval "$(thefuck --alias)"
 
 # Update all the things
 alias update-casks="brew cask outdated --greedy --verbose | grep -v \"(latest)\" | cut -f1 -d\" \" | xargs brew cask reinstall"
-alias update="softwareupdate --install --recommended; brew update; brew upgrade; brew cleanup; update-casks; brew cask cleanup"
+alias update="softwareupdate --install --all; brew update; brew upgrade; update-casks; brew cleanup -s; brew cask cleanup; brew prune"
 
 # Pimp
 alias ls="exa"
