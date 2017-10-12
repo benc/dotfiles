@@ -1,6 +1,18 @@
 export PATH=~/.rbenv/shims:/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export EDITOR=code
 
+### HISTORY ###
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+
 ### ZPLUG ###
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
@@ -24,16 +36,14 @@ zplug "sindresorhus/pure", use:pure.zsh, as:theme
 zplug "djui/alias-tips"
 
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2 # run after compinit
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
-
-zplug check --verbose || zplug install
-zplug load
 
 if zplug check "zsh-users/zsh-autosuggestions"; then
   ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
   ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}")
+  ZSH_AUTOSUGGEST_USE_ASYNC=true
 fi
 
 if zplug check "zsh-users/zsh-history-substring-search"; then
@@ -43,6 +53,9 @@ if zplug check "zsh-users/zsh-history-substring-search"; then
   bindkey "$terminfo[cuu1]" history-substring-search-up
   bindkey "$terminfo[cud1]" history-substring-search-down
 fi
+
+zplug check --verbose || zplug install
+zplug load
 
 ### SETTINGS & TOOLING CONFIGURATION ###
 

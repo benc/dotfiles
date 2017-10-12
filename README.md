@@ -22,7 +22,7 @@ Install:
     brew tap thoughtbot/formulae
     brew install rcm
     rcup rcrc; rcup
-    zplug install; zplug load
+    zplug update; zplug load
 
     # vscode settings need a separate installation until https://github.com/thoughtbot/rcm/issues/135 is resolved
     ~/.dotfiles/setup_vscode
