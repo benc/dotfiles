@@ -91,7 +91,7 @@ export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE};"
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 # What the
-eval "$(thefuck --alias)"
+eval "$(thefuck --alias fu)"
 
 # Update all the things
 alias update-casks="brew cask outdated --greedy --verbose | grep -v \"(latest)\" | cut -f1 -d\" \" | xargs brew cask reinstall"
