@@ -24,13 +24,15 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/bgnotify", from:oh-my-zsh
 zplug "plugins/rbenv", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
-zplug "plugins/z", from:oh-my-zsh
-zplug "plugins/n", from:oh-my-zsh
 zplug "plugins/mvn", from:oh-my-zsh
+zplug "plugins/n", from:oh-my-zsh
 
 # pure theme (async)
 zplug "mafredri/zsh-async"
 zplug "sindresorhus/pure", use:pure.zsh, as:theme
+
+# jump around
+zplug "rupa/z", use:z.sh
 
 # a zsh plugin to help remembering those aliases you once defined
 zplug "djui/alias-tips"
