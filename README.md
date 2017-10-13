@@ -66,20 +66,20 @@ To update the system, use the `update` alias.
 
 ### CLI
 
-ZSH, zplug, oh-my-zsh:
+#### ZSH, zplug, oh-my-zsh
 
 * `zsh` with completions, syntax highlighting, history search, autosuggestions
 * [command not found](https://github.com/Homebrew/homebrew-command-not-found) support
 * notifications for long-running commands
 * alias hints when running commands
 
-Integrations:
+#### Integrations
 
 * gpg as ssh (using gpgtools)
 * iterm2 integration
 * timings 2 integration
 
-Tooling:
+#### Tooling
 
 * [`fu`](https://github.com/nvbn/thefuck)
 * [`z`](https://github.com/rupa/z) with [added](https://github.com/changyuheng/fz) [`fzf`](https://github.com/junegunn/fzf) oomph
@@ -92,10 +92,16 @@ Tooling:
 * `fzf`
 * `ag`
 
-Java Development
+#### Java Development
 
 * Java 8 is standard
 * `checkstyle-report`
 
-Ruby development: rbenv
-Node development: n + avn
+#### Ruby development
+
+rbenv
+
+#### Node development
+
+* n + avn
+* Everything in `./node_modules/.bin/` is accessible in the terminal
