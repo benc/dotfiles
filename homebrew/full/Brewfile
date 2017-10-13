@@ -57,6 +57,7 @@ cask "daisydisk"
 cask "dash"
 cask "debookee"
 cask "devonthink-pro-office"
+cask "disk-sensei"
 cask "docker"
 cask "dragand"
 cask "dropbox"
@@ -82,6 +83,7 @@ cask "little-snitch"
 cask "loopback"
 cask "mailbutler"
 cask "marked"
+cask "microsoft-office"
 cask "omnifocus"
 cask "omnigraffle"
 cask "paw"
@@ -95,6 +97,7 @@ cask "skype"
 cask "soulver"
 cask "soundsource"
 cask "spotify"
+cask "teamviewer"
 cask "timing"
 cask "totals"
 cask "tower"
@@ -143,3 +146,4 @@ mas "UlyssesMac", id: 1225570693
 mas "WhatsApp", id: 1147396723
 mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
+mas "Xcode", id: 497799835
