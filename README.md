@@ -1,7 +1,5 @@
 # Dotfiles
 
-See [http://dotfiles.github.io/]()
-
 ## Installation
 
 ### Prerequisites
