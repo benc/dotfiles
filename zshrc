@@ -87,7 +87,10 @@ export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE};"
 
 # Node, n and avn
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
-export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+
+# start node 8.7.0 by default
+n 8.7.0
 
 # What the
 eval "$(thefuck --alias fu)"
