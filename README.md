@@ -7,7 +7,6 @@
 * macos
 * [XCode](https://developer.apple.com/xcode/) or [XCode Command Line Tools](https://developer.apple.com/download/more/)
 * [Homebrew](http://mxcl.github.com/homebrew/)
-* [ZSH](http://www.zsh.org/) + [zgen](https://github.com/tarjoilija/zgen)
 
 ### dotfiles
 
