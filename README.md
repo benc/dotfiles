@@ -59,6 +59,7 @@ To update the system, use the `update` alias.
 
 [`brew bundle`](https://github.com/Homebrew/homebrew-bundle) is used to manage installations. To update the brewfiles:
 
+    # >> choose which collection to update
     cd ~/.dotfiles/homebrew/full; brew bundle dump --force
     cd ~/.dotfiles/homebrew/server; brew bundle dump --force
 
@@ -69,11 +70,10 @@ To update the system, use the `update` alias.
 * `zsh` with completions, syntax highlighting, history search, autosuggestions
 * [command not found](https://github.com/Homebrew/homebrew-command-not-found) support
 * notifications for long-running commands
-* alias hints when running commands
-
+* gives suggestions to available aliases when running commands
 #### Integrations
 
-* gpg as ssh (using [GpgTools](https://gpgtools.org/))
+* `gpg` as `ssh` (using [GpgTools](https://gpgtools.org/))
 * [iTerm2](https://iterm2.com/) ZSH integration
 * [Timing 2](https://timingapp.com/) ZSH integration
 
