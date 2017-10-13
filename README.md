@@ -73,9 +73,9 @@ To update the system, use the `update` alias.
 
 #### Integrations
 
-* gpg as ssh (using gpgtools)
-* iterm2 integration
-* timings 2 integration
+* gpg as ssh (using [GpgTools](https://gpgtools.org/))
+* [iTerm2](https://iterm2.com/) ZSH integration
+* [Timing 2](https://timingapp.com/) ZSH integration
 
 #### Tooling
 
@@ -87,8 +87,8 @@ To update the system, use the `update` alias.
 * `ls` is [exa](https://github.com/ogham/exa)
 * `cat` is [ccat](https://github.com/jingweno/ccat)
 * `top` is [htop](https://github.com/hishamhm/htop)
-* `fzf`
-* `ag`
+* [`fzf`](https://github.com/junegunn/fzf)
+* [`ag`](https://github.com/ggreer/the_silver_searcher)
 
 #### Java Development
 
@@ -97,9 +97,9 @@ To update the system, use the `update` alias.
 
 #### Ruby development
 
-rbenv
+[`rbenv`](https://github.com/rbenv/rbenv)
 
 #### Node development
 
-* n + avn
+* [`n`](https://github.com/tj/n) + [`avn`](https://github.com/wbyoung/avn)
 * Everything in `./node_modules/.bin/` is accessible in the terminal
