@@ -42,3 +42,11 @@ Install:
     cd ~/.dotfiles/homebrew/full; brew bundle install
     cd ~/.dotfiles/homebrew/server; brew bundle install
 
+## Updates
+
+To update the system, use the `update` alias.
+
+[`brew bundle`](https://github.com/Homebrew/homebrew-bundle) is used to manage installations. To update the brewfiles:
+
+    cd ~/.dotfiles/homebrew/full; brew bundle dump --force
+    cd ~/.dotfiles/homebrew/server; brew bundle dump --force
