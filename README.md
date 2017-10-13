@@ -4,9 +4,10 @@ See [http://dotfiles.github.io/]()
 
 ## Installation
 
-I have:
+Prerequisites:
 
-* OSX
+* macos
+* [XCode](https://developer.apple.com/xcode/) or [XCode Command Line Tools](https://developer.apple.com/download/more/)
 * [Homebrew](http://mxcl.github.com/homebrew/)
 * [ZSH](http://www.zsh.org/) + [zgen](https://github.com/tarjoilija/zgen)
 
@@ -32,9 +33,12 @@ Install:
 
     # install zshell
     brew install zsh zplug
-    zplug update; zplug load
+
+    # after installation of zshell,  make sure iTerms shell is set to /usr/local/bin/zsh instead of "Login shell"
+    # then, open a new terminal to initialize zplug
 
     # install tooling using brew
-    cd ~/.dotfiles/homebrew; brew bundle
+    # >> choose which collection to install
+    cd ~/.dotfiles/homebrew/full; brew bundle install
+    cd ~/.dotfiles/homebrew/server; brew bundle install
 
-    # make sure iTerms shell is set to /usr/local/bin/zsh instead of "Login shell"
