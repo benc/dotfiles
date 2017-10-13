@@ -52,7 +52,10 @@ See [http://dotfiles.github.io/]()
     # n is installed using brew, make sure you're using zsh & config at this moment
     npm install -g avn avn-nvm avn-n # run for each node version
     avn setup # run only once
-## Updates
+
+## Usage
+
+### Updates
 
 To update the system, use the `update` alias.
 
@@ -60,3 +63,39 @@ To update the system, use the `update` alias.
 
     cd ~/.dotfiles/homebrew/full; brew bundle dump --force
     cd ~/.dotfiles/homebrew/server; brew bundle dump --force
+
+### CLI
+
+ZSH, zplug, oh-my-zsh:
+
+* `zsh` with completions, syntax highlighting, history search, autosuggestions
+* [command not found](https://github.com/Homebrew/homebrew-command-not-found) support
+* notifications for long-running commands
+* alias hints when running commands
+
+Integrations:
+
+* gpg as ssh (using gpgtools)
+* iterm2 integration
+* timings 2 integration
+
+Tooling:
+
+* [`fu`](https://github.com/nvbn/thefuck)
+* [`z`](https://github.com/rupa/z) with [added](https://github.com/changyuheng/fz) [`fzf`](https://github.com/junegunn/fzf) oomph
+* [`up`](https://github.com/shannonmoeller/up)
+* `nuke_modules` removes a node_modules dir and reinstalls it
+* `update` will update all the things
+* `ls` is [exa](https://github.com/ogham/exa)
+* `cat` is [ccat](https://github.com/jingweno/ccat)
+* `top` is [htop](https://github.com/hishamhm/htop)
+* `fzf`
+* `ag`
+
+Java Development
+
+* Java 8 is standard
+* `checkstyle-report`
+
+Ruby development: rbenv
+Node development: n + avn
