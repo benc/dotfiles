@@ -31,6 +31,7 @@ brew "python"
 brew "ruby-build"
 brew "rbenv"
 brew "sbt"
+brew "telnet"
 brew "terminal-notifier"
 brew "the_silver_searcher"
 brew "thefuck"
@@ -150,7 +151,6 @@ mas "Slack", id: 803453959
 mas "SnippetsLab", id: 1006087419
 mas "Translate Tab", id: 458887729
 mas "Tweetbot", id: 557168941
-mas "UlyssesMac", id: 1225570693
 mas "WhatsApp", id: 1147396723
 mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
