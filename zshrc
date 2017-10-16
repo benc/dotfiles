@@ -64,7 +64,7 @@ zplug load
 ### SETTINGS & TOOLING CONFIGURATION ###
 
 # zsh completions
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=($(brew --prefix)/share/zsh-completions $fpath)
 
 # link up with iterm2
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
@@ -88,7 +88,7 @@ PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
 export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE};"
 
 # fzf integration, install if it does not exist
-[ -z ~/.fzf.zsh ] && /usr/local/opt/fzf/install
+[ -z ~/.fzf.zsh ] && $(brew --prefix)/opt/fzf/install
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Node, n and avn
