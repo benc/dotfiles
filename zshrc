@@ -99,7 +99,7 @@ eval "$(thefuck --alias fu)"
 
 ### ALIASES ###
 # checkstyle
-alias checkstyle-report="ag --before=5 severity=\\\"error **/target/checkstyle-result.xml"
+alias checkstyle-report="rg --before-context=5 severity=\\\"error **/target/checkstyle-result.xml"
 
 # node stuff
 alias nuke_modules="rm -rf node_modules; npm install; npm prune"
