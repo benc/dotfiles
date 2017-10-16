@@ -40,7 +40,6 @@ zplug "shannonmoeller/up", use:"up.sh", defer:1
 # a zsh plugin to help remembering those aliases you once defined
 zplug "djui/alias-tips"
 
-zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2 # run after compinit
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
@@ -63,6 +62,9 @@ zplug check --verbose || zplug install
 zplug load
 
 ### SETTINGS & TOOLING CONFIGURATION ###
+
+# zsh completions
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # link up with iterm2
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
