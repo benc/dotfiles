@@ -87,6 +87,10 @@ DISABLE_AUTO_TITLE="true"
 PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
 export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE};"
 
+# fzf integration, install if it does not exist
+[ -z ~/.fzf.zsh ] && /usr/local/opt/fzf/install
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Node, n and avn
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
