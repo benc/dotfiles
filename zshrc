@@ -74,6 +74,7 @@ export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 # use JDK8 as default
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+eval "$(jenv init -)"
 
 # GPGTools launches gpg-agent, we'll have to let SSH know we want to use gpg-agent as ssh-agent
 if [ -f "${HOME}/.gpg-agent-info" ]; then
@@ -97,6 +98,9 @@ export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_P
 
 # start node 8.7.0 by default
 n 8.7.0
+
+# install tooling if needed
+[ -z ~/.n/bin/avn ] && npm install -g npm avn avn-n
 
 # What the
 eval "$(thefuck --alias fu)"
