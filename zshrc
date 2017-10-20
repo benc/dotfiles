@@ -101,6 +101,7 @@ export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE};"
 if [ -f "${HOME}/Library/Android/sdk/tools/android" ]; then
   export ANDROID_HOME=${HOME}/Library/Android/sdk
   export PATH=${ANDROID_HOME}/tools:$PATH
+  export PATH=${ANDROID_HOME}/tools/bin:$PATH
   export PATH=${ANDROID_HOME}/platform-tools:$PATH
 fi
 
