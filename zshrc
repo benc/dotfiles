@@ -25,6 +25,7 @@ zplug "plugins/bgnotify", from:oh-my-zsh
 zplug "plugins/rbenv", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/mvn", from:oh-my-zsh
+zplug "lib/spectrum", from:oh-my-zsh # colors
 
 # pure theme (async)
 zplug "mafredri/zsh-async"
