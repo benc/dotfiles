@@ -78,10 +78,12 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 eval "$(jenv init -)"
 
 # GPGTools launches gpg-agent, we'll have to let SSH know we want to use gpg-agent as ssh-agent
-if [ -f "${HOME}/.gpg-agent-info" ]; then
-  . "${HOME}/.gpg-agent-info"
-  export GPG_AGENT_INFO
-  export SSH_AUTH_SOCK
+#
+# If succesful, you can read your SSH pubkey from your smartcard using `ssh-add -l`
+if [ -f "${HOME}/.gnupg/gpg-agent.env" ]; then
+    . "${HOME}/.gnupg/gpg-agent.env"
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
 fi
 
 # Timings integration
