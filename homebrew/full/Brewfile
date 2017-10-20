@@ -22,6 +22,7 @@ brew "elasticsearch@2.4", restart_service: true
 brew "exa"
 brew "fzf"
 brew "highlight"
+brew "hopenpgp-tools"
 brew "htop"
 brew "hub"
 brew "hugo"
