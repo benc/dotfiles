@@ -97,7 +97,7 @@ export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE};"
 [ -z ~/.fzf.zsh ] && $(brew --prefix)/opt/fzf/install
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Android tooling - managed by Android Studio
+# Android tooling - managed by IntelliJ
 if [ -f "${HOME}/Library/Android/sdk/tools/android" ]; then
   export ANDROID_HOME=${HOME}/Library/Android/sdk
   export PATH=${ANDROID_HOME}/tools:$PATH
