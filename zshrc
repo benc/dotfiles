@@ -81,6 +81,7 @@ eval "$(jenv init -)"
 #
 # If succesful, you can read your SSH pubkey from the yubikey using `ssh-add -L`
 if [ -f "${HOME}/.gnupg/gpg-agent.env" ]; then
+  /usr/local/MacGPG2/bin/gpg-connect-agent /bye # be gone, ssh agent
   gpg --card-status > /dev/null # wake up yubikey
   . "${HOME}/.gnupg/gpg-agent.env"
   export GPG_AGENT_INFO
