@@ -75,7 +75,7 @@ export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 
 # use JDK8 as default
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-eval "$(jenv init -)"
+# eval "$(jenv init -)" # disable jenv for now
 
 # GPGTools launches gpg-agent, we'll have to let SSH know we want to use gpg-agent as ssh-agent
 #
