@@ -79,7 +79,7 @@ eval "$(jenv init -)"
 
 # GPGTools launches gpg-agent, we'll have to let SSH know we want to use gpg-agent as ssh-agent
 #
-# If succesful, you can read your SSH pubkey from your smartcard using `ssh-add -l`
+# If succesful, you can read your SSH pubkey from your smartcard using `ssh-add -L`
 if [ -f "${HOME}/.gnupg/gpg-agent.env" ]; then
     . "${HOME}/.gnupg/gpg-agent.env"
     export GPG_AGENT_INFO
