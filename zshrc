@@ -97,6 +97,13 @@ export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE};"
 [ -z ~/.fzf.zsh ] && $(brew --prefix)/opt/fzf/install
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Android tooling - managed by Android Studio
+if [ -f "${HOME}/Library/Android/sdk/tools/android" ]; then
+  export ANDROID_HOME=${HOME}/Library/Android/sdk
+  export PATH=${ANDROID_HOME}/tools:$PATH
+  export PATH=${ANDROID_HOME}/platform-tools:$PATH
+fi
+
 # Node, n and avn
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
