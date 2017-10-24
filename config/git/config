@@ -13,4 +13,4 @@
 [gpg]
 	program = /usr/local/bin/gpg
 [commit]
-	gpgsign = false
+	gpgsign = true
