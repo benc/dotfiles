@@ -1,4 +1,4 @@
-export PATH=~/.rbenv/shims:/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+export PATH=~/.rbenv/shims:/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/MacGPG2/bin:$PATH
 export EDITOR=code
 
 ### HISTORY ###
@@ -25,6 +25,7 @@ zplug "plugins/bgnotify", from:oh-my-zsh
 zplug "plugins/rbenv", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/mvn", from:oh-my-zsh
+zplug "plugins/gpg-agent", from:oh-my-zsh
 zplug "lib/spectrum", from:oh-my-zsh # colors
 
 # pure theme (async)
@@ -76,17 +77,6 @@ export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 # use JDK8 as default
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 # eval "$(jenv init -)" # disable jenv for now
-
-# GPGTools launches gpg-agent, we'll have to let SSH know we want to use gpg-agent as ssh-agent
-#
-# If succesful, you can read your SSH pubkey from the yubikey using `ssh-add -L`
-if [ -f "${HOME}/.gnupg/gpg-agent.env" ]; then
-  /usr/local/MacGPG2/bin/gpg-connect-agent /bye # be gone, ssh agent
-  gpg --card-status > /dev/null # wake up yubikey
-  . "${HOME}/.gnupg/gpg-agent.env"
-  export GPG_AGENT_INFO
-  export SSH_AUTH_SOCK
-fi
 
 # Timings integration
 DISABLE_AUTO_TITLE="true"
