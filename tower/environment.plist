@@ -4,7 +4,5 @@
   <dict>
     <key>PATH</key>
     <string>/Users/benc/.avn/bin:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:/Users/benc/.rbenv/shims:/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/9.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/Users/benc/.n/bin</string>
-    <key>SSH_AUTH_SOCK</key>
-    <string>$HOME/.gnupg/S.gpg-agent.ssh</string>
   </dict>
 </plist>
