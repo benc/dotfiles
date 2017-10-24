@@ -79,13 +79,11 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 # GPGTools launches gpg-agent, we'll have to let SSH know we want to use gpg-agent as ssh-agent
 #
-# If succesful, you can read your SSH pubkey from the yubikey using `ssh-add -L`
+# This is done using launchd, we just read the correct variables here and move once
+#
 if [ -f "${HOME}/.gnupg/gpg-agent.env" ]; then
-  /usr/local/MacGPG2/bin/gpg-connect-agent /bye # be gone, ssh agent
-  gpg --card-status > /dev/null # wake up yubikey
-  . "${HOME}/.gnupg/gpg-agent.env"
-  export GPG_AGENT_INFO
-  export SSH_AUTH_SOCK
+  export GPG_AGENT_INFO=$(launchctl getenv GPG_AGENT_INFO)
+  export SSH_AUTH_SOCK=$(launchctl getenv SSH_AUTH_SOCK)
 fi
 
 # Timings integration

@@ -1,0 +1,3 @@
+#!/bin/bash
+ln -sf $HOME/.dotfiles/yubikey/consulting.cochez.yubikey-ssh-support.plist "$HOME/Library/LaunchAgents/"
+launchctl load  ~/Library/LaunchAgents/consulting.cochez.yubikey-ssh-support.plist
