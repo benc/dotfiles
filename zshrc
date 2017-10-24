@@ -131,5 +131,5 @@ alias update="softwareupdate --install --all --verbose; mas upgrade; brew update
 
 # Pimp
 alias ls="exa"
-alias cat="ccat"
+alias cat="ccat --bg=\"dark\""
 alias top="htop"
