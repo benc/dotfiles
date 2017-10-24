@@ -13,6 +13,8 @@ echo
 # be gone, ssh agent
 /usr/local/MacGPG2/bin/gpg-connect-agent --verbose /bye
 
+gpg --card-status > /dev/null # wake up yubikey
+
 # source gpg stuff
 . "${HOME}/.gnupg/gpg-agent.env"
 
