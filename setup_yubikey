@@ -1,10 +1,22 @@
 #!/bin/bash
 #
-# replace ssh agent with gpg-agent:
-
-# - unload ssh agent
-sudo launchctl unload -w /System/Library/LaunchAgents/com.openssh.ssh-agent.plist
-
-# - gpg-agent is already managed by gpgtools, we only need to export ssh_auth_sock variables to the system
+# !!! disable ssh agent !!!
+#
+# disable sip: reboot into recovery mode (cmd-r), and run
+#
+#   csrutil disable
+#
+# disable SSH agent by adding this to /System/Library/LaunchAgents/com.openssh.ssh-agent.plist
+#
+# 	<key>Disabled</key>
+#	<true/>
+#
+# enable sip: reboot into recovery mode (cmd-r), and run
+#
+#   csrutil enable
+#
+# gpg-agent is already managed by gpgtools, we only need to export ssh_auth_sock variables to the system
+# we do that by running a script using launchd, and exporting the env vars using launchctl setenv
+#
 ln -sf $HOME/.dotfiles/yubikey/consulting.cochez.yubikey-ssh-support.plist "$HOME/Library/LaunchAgents/"
 launchctl load  ~/Library/LaunchAgents/consulting.cochez.yubikey-ssh-support.plist
