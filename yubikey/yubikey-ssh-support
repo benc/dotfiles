@@ -21,8 +21,10 @@ gpg --card-status > /dev/null # wake up yubikey
 # export vars to CLI and UI apps
 echo GPG_AGENT_INFO $GPG_AGENT_INFO
 echo SSH_AUTH_SOCK $SSH_AUTH_SOCK
+echo SSH_AGENT_PID $SSH_AGENT_PID
 launchctl setenv GPG_AGENT_INFO $GPG_AGENT_INFO
 launchctl setenv SSH_AUTH_SOCK $SSH_AUTH_SOCK
+launchctl setenv SSH_AGENT_PID $SSH_AGENT_PID
 
 echo
 echo ">>> yubikey ssh support END <<<"
