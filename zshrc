@@ -2,7 +2,8 @@ export PATH=~/.rbenv/shims:/usr/local/bin:./node_modules/.bin:/Applications/Post
 export EDITOR=code
 
 ### SHORTHANDS ###
-setopt auto_cd
+setopt AUTOCD # ..
+# setopt CORRECT # show corrections for commands
 
 ### HISTORY ###
 export HISTFILE=~/.zsh_history
