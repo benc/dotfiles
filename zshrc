@@ -1,6 +1,10 @@
 export PATH=~/.rbenv/shims:/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export EDITOR=code
 
+# Perl complains about this
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 ### SHORTHANDS ###
 setopt AUTOCD # ..
 # setopt CORRECT # show corrections for commands
