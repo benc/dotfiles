@@ -1,6 +1,9 @@
 export PATH=~/.rbenv/shims:/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export EDITOR=code
 
+### SHORTHANDS ###
+setopt auto_cd
+
 ### HISTORY ###
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
