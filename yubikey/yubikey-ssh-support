@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# GPGTools launches gpg-agent, we'll have to let SSH know we want to use gpg-agent as ssh-agent
+#
+# If succesful, you can read your SSH pubkey from the yubikey using `ssh-add -L`
+#
+# It will also be available for UI apps like Tower
+
+echo
+echo ">>> yubikey ssh support START <<<"
+echo
+
+# be gone, ssh agent
+/usr/local/MacGPG2/bin/gpg-connect-agent --verbose /bye
+
+gpg --card-status > /dev/null # wake up yubikey
+
+# source gpg stuff
+. "${HOME}/.gnupg/gpg-agent.env"
+
+# export vars to CLI and UI apps
+echo GPG_AGENT_INFO $GPG_AGENT_INFO
+echo SSH_AUTH_SOCK $SSH_AUTH_SOCK
+echo SSH_AGENT_PID $SSH_AGENT_PID
+launchctl setenv GPG_AGENT_INFO $GPG_AGENT_INFO
+launchctl setenv SSH_AUTH_SOCK $SSH_AUTH_SOCK
+launchctl setenv SSH_AGENT_PID $SSH_AGENT_PID
+
+echo
+echo ">>> yubikey ssh support END <<<"
+echo

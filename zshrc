@@ -85,6 +85,15 @@ export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 # eval "$(jenv init -)" # disable jenv for now
 
+# GPGTools launches gpg-agent, we'll have to let SSH know we want to use gpg-agent as ssh-agent
+#
+# This is done using launchd, we just read the correct variables here and move once
+#
+if [ -f "${HOME}/.gnupg/gpg-agent.env" ]; then
+  export GPG_AGENT_INFO=$(launchctl getenv GPG_AGENT_INFO)
+  export SSH_AUTH_SOCK=$(launchctl getenv SSH_AUTH_SOCK)
+fi
+
 # Timings integration
 DISABLE_AUTO_TITLE="true"
 PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
