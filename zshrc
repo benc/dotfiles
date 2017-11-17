@@ -1,4 +1,5 @@
-export PATH=~/.rbenv/shims:/usr/local/bin:./node_modules/.bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+# bootstrap homebrew
+export PATH=/usr/local/bin:$PATH
 export EDITOR=code
 
 # Perl complains about this
@@ -111,9 +112,16 @@ if [ -f "${HOME}/Library/Android/sdk/tools/android" ]; then
   export PATH=${ANDROID_HOME}/platform-tools:$PATH
 fi
 
+# JProfiler
+export PATH=/Applications/JProfiler.app/Contents/Resources/app/bin:$PATH
+
+# Postgres app
+export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+
 # Node, n and avn
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export PATH=./node_modules/.bin:$PATH
 
 # start node 8.7.0 by default
 n 8.7.0
