@@ -10,11 +10,14 @@ tap "caskroom/versions"
 tap "caskroom/cask"
 tap "caskroom/eid"
 cask "java"
+cask "caskroom/versions/java8"
 brew "openssl"
 brew "readline"
+brew "python3"
 brew "awscli"
 brew "ccat"
 brew "coreutils"
+brew "dbus", restart_service: true
 brew "git"
 brew "docker-completion"
 brew "docker-compose-completion"
@@ -23,12 +26,14 @@ brew "dpkg"
 brew "elasticsearch@2.4", restart_service: true
 brew "exa"
 brew "fzf"
+brew "gradle"
 brew "gradle-completion"
 brew "highlight"
 brew "hopenpgp-tools"
 brew "htop"
 brew "hub"
 brew "hugo"
+brew "infer"
 brew "jenv"
 brew "jq"
 brew "jsonpp"
@@ -42,7 +47,9 @@ brew "mpv"
 brew "n"
 brew "nmap"
 brew "phantomjs"
+brew "poppler"
 brew "python"
+brew "qpdf"
 brew "ruby-build"
 brew "rbenv"
 brew "ripgrep"
@@ -54,10 +61,10 @@ brew "terminal-notifier"
 brew "the_silver_searcher"
 brew "thefuck"
 brew "tldr"
-brew "v8@3.15"
+brew "v8@3.15", link: true
 brew "wget"
 brew "ykpers"
-brew "yubico-piv-tool"
+brew "yubico-piv-tool", link: false
 brew "zplug"
 brew "zsh"
 brew "zsh-completions"
@@ -70,10 +77,12 @@ cask "airfoil"
 cask "anki"
 cask "appcleaner"
 cask "arq"
+cask "asset-catalog-tinkerer"
 cask "audio-hijack"
 cask "bartender"
 cask "bbedit"
 cask "beoplay-software-update"
+cask "bettertouchtool"
 cask "betterzip"
 cask "beyond-compare"
 cask "bitbar"
@@ -94,6 +103,7 @@ cask "fantastical"
 cask "firefox"
 cask "fission"
 cask "focus"
+cask "gitup"
 cask "google-chrome"
 cask "gotomeeting"
 cask "gpgtools"
@@ -105,6 +115,7 @@ cask "iina"
 cask "imazing"
 cask "iterm2"
 cask "jetbrains-toolbox"
+cask "jprofiler"
 cask "kap"
 cask "keybase"
 cask "keyboard-maestro"
@@ -118,7 +129,9 @@ cask "marked"
 cask "microsoft-office"
 cask "omnifocus"
 cask "omnigraffle"
+cask "omnioutliner"
 cask "pacifist"
+cask "paragon-ntfs"
 cask "paw"
 cask "pdfexpert"
 cask "postgres"
@@ -130,6 +143,7 @@ cask "skype"
 cask "soulver"
 cask "soundsource"
 cask "spotify"
+cask "stride"
 cask "surge"
 cask "teamviewer"
 cask "timing"
@@ -151,24 +165,26 @@ cask "caskroom/eid/eid-be"
 cask "caskroom/eid/eid-be-viewer"
 cask "caskroom/fonts/font-hasklig"
 cask "caskroom/fonts/font-source-code-pro"
-cask "caskroom/versions/java8"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Amphetamine", id: 937984704
 mas "Better", id: 1121192229
+mas "Better Rename 10", id: 1063663640
 mas "Browser Fairy", id: 483014855
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 924726344
-mas "djay Pro", id: 947578651
+mas "djay Pro 2", id: 1302002064
 mas "File Multi Tool 6", id: 1194004025
 mas "FineReader OCR Pro", id: 687301476
 mas "Forecast Bar", id: 982710545
 mas "Formatter", id: 1190228172
 mas "GAget", id: 968487158
 mas "Irvue", id: 1039633667
+mas "JSON Helper", id: 453114608
 mas "Marked 2", id: 890031187
+mas "MindNode", id: 1289197285
 mas "Napkin", id: 581789185
-mas "Paprika Recipe Manager", id: 451907568
+mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Parcel", id: 639968404
 mas "PCalc", id: 403504866
 mas "PopClip", id: 445189367
@@ -182,6 +198,7 @@ mas "Slack", id: 803453959
 mas "SnippetsLab", id: 1006087419
 mas "Translate Tab", id: 458887729
 mas "Tweetbot", id: 557168941
+mas "Universal Document Viewer Pro", id: 895496813
 mas "WhatsApp", id: 1147396723
 mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
