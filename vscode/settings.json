@@ -20,5 +20,15 @@
     "window.nativeTabs": true,
     "workbench.editor.showTabs": false,
     "workbench.iconTheme": "vscode-icons",
-    "vsicons.projectDetection.autoReload": true
+    "vsicons.projectDetection.autoReload": true,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressUpdateNotice": false,
+        "suppressWelcomeNotice": true
+    }
 }
