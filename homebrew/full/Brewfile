@@ -30,7 +30,6 @@ brew "gradle"
 brew "gradle-completion"
 brew "highlight"
 brew "hopenpgp-tools"
-brew "htop"
 brew "hub"
 brew "hugo"
 brew "infer"
@@ -102,6 +101,7 @@ cask "dropzone"
 cask "fantastical"
 cask "firefox"
 cask "fission"
+cask "flume"
 cask "focus"
 cask "gitup"
 cask "google-chrome"
@@ -112,7 +112,6 @@ cask "hipchat"
 cask "houdahspot"
 cask "hyper"
 cask "iina"
-cask "imazing"
 cask "iterm2"
 cask "jetbrains-toolbox"
 cask "jprofiler"
@@ -127,6 +126,7 @@ cask "loopback"
 cask "mailbutler"
 cask "marked"
 cask "microsoft-office"
+cask "numi"
 cask "omnifocus"
 cask "omnigraffle"
 cask "omnioutliner"
@@ -135,6 +135,7 @@ cask "paragon-ntfs"
 cask "paw"
 cask "pdfexpert"
 cask "postgres"
+cask "power-manager"
 cask "resolutionator"
 cask "screens"
 cask "shimo"
@@ -170,6 +171,7 @@ mas "Affinity Photo", id: 824183456
 mas "Amphetamine", id: 937984704
 mas "Better", id: 1121192229
 mas "Better Rename 10", id: 1063663640
+mas "Billings Pro", id: 434514810
 mas "Browser Fairy", id: 483014855
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 924726344
@@ -179,6 +181,7 @@ mas "FineReader OCR Pro", id: 687301476
 mas "Forecast Bar", id: 982710545
 mas "Formatter", id: 1190228172
 mas "GAget", id: 968487158
+mas "iFlicks 2", id: 731062389
 mas "Irvue", id: 1039633667
 mas "JSON Helper", id: 453114608
 mas "Marked 2", id: 890031187
@@ -190,6 +193,7 @@ mas "PCalc", id: 403504866
 mas "PopClip", id: 445189367
 mas "Quiver", id: 866773894
 mas "Reeder", id: 880001334
+mas "Revisions", id: 819348619
 mas "ScanSnap Cloud", id: 1170434079
 mas "Server", id: 883878097
 mas "Shazam", id: 897118787
