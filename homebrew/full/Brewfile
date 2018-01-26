@@ -18,14 +18,13 @@ brew "awscli"
 brew "ccat"
 brew "coreutils"
 brew "dbus", restart_service: true
-brew "git"
 brew "docker-completion"
 brew "docker-compose-completion"
 brew "docker-machine-completion"
 brew "dpkg"
-brew "elasticsearch@2.4", restart_service: true
 brew "exa"
 brew "fzf"
+brew "git"
 brew "gradle"
 brew "gradle-completion"
 brew "highlight"
@@ -87,6 +86,8 @@ cask "beyond-compare"
 cask "bitbar"
 cask "caprine"
 cask "carbon-copy-cloner"
+cask "chatmate-for-facebook"
+cask "chatmate-for-whatsapp"
 cask "cycling74-max"
 cask "daisydisk"
 cask "dash"
@@ -123,7 +124,6 @@ cask "launchbar"
 cask "launchcontrol"
 cask "little-snitch"
 cask "loopback"
-cask "mailbutler"
 cask "marked"
 cask "microsoft-office"
 cask "numi"
@@ -168,6 +168,7 @@ cask "caskroom/fonts/font-hasklig"
 cask "caskroom/fonts/font-source-code-pro"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
+mas "Agenda", id: 1287445660
 mas "Amphetamine", id: 937984704
 mas "Better", id: 1121192229
 mas "Better Rename 10", id: 1063663640
@@ -203,7 +204,6 @@ mas "SnippetsLab", id: 1006087419
 mas "Translate Tab", id: 458887729
 mas "Tweetbot", id: 557168941
 mas "Universal Document Viewer Pro", id: 895496813
-mas "WhatsApp", id: 1147396723
 mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
 mas "Xcode", id: 497799835
