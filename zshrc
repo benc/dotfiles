@@ -37,8 +37,11 @@ zplug "plugins/mvn", from:oh-my-zsh
 zplug "lib/spectrum", from:oh-my-zsh # colors
 
 # pure theme (async)
-zplug "mafredri/zsh-async"
-zplug "sindresorhus/pure", use:pure.zsh, as:theme
+# zplug "mafredri/zsh-async"
+# zplug "sindresorhus/pure", use:pure.zsh, as:theme
+
+# spaceship theme
+zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
 
 # jump around
 zplug "changyuheng/fz", defer:1 # needs brew install fzf
