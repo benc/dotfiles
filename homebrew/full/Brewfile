@@ -72,10 +72,8 @@ cask "1password"
 cask "adobe-acrobat-reader"
 cask "aerial"
 cask "airfoil"
-cask "anki"
 cask "appcleaner"
 cask "arq"
-cask "asset-catalog-tinkerer"
 cask "audio-hijack"
 cask "bartender"
 cask "bbedit"
@@ -83,7 +81,6 @@ cask "beoplay-software-update"
 cask "bettertouchtool"
 cask "betterzip"
 cask "beyond-compare"
-cask "bitbar"
 cask "caprine"
 cask "carbon-copy-cloner"
 cask "chatmate-for-facebook"
@@ -96,23 +93,19 @@ cask "debookee"
 cask "devonthink-pro-office"
 cask "disk-sensei"
 cask "docker"
-cask "dragand"
 cask "dropbox"
 cask "droplr"
 cask "dropzone"
 cask "fantastical"
 cask "firefox"
 cask "fission"
-cask "flume"
 cask "focus"
-cask "gitup"
 cask "google-chrome"
 cask "gotomeeting"
 cask "gpgtools"
 cask "hazel"
 cask "hipchat"
 cask "houdahspot"
-cask "hyper"
 cask "iina"
 cask "intel-power-gadget"
 cask "istat-menus"
@@ -129,7 +122,6 @@ cask "little-snitch"
 cask "loopback"
 cask "marked"
 cask "microsoft-office"
-cask "numi"
 cask "omnifocus"
 cask "omnigraffle"
 cask "omnioutliner"
@@ -172,11 +164,9 @@ cask "caskroom/fonts/font-hasklig"
 cask "caskroom/fonts/font-source-code-pro"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
-mas "Agenda", id: 1287445660
 mas "Amphetamine", id: 937984704
 mas "Better", id: 1121192229
 mas "Better Rename 10", id: 1063663640
-mas "Billings Pro", id: 434514810
 mas "Browser Fairy", id: 483014855
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 924726344
@@ -197,9 +187,7 @@ mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Parcel", id: 639968404
 mas "PCalc", id: 403504866
 mas "PopClip", id: 445189367
-mas "Quiver", id: 866773894
 mas "Reeder", id: 880001334
-mas "Revisions", id: 819348619
 mas "ScanSnap Cloud", id: 1170434079
 mas "Server", id: 883878097
 mas "Shazam", id: 897118787
