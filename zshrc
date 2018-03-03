@@ -41,7 +41,38 @@ zplug "lib/spectrum", from:oh-my-zsh # colors
 # zplug "sindresorhus/pure", use:pure.zsh, as:theme
 
 # spaceship theme
-zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
+# zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
+
+# powerlevel9k theme
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir dir_writable rbenv node_version ssh vcs)
+
+POWERLEVEL9K_MODE=nerdfont-complete # brew cask install font-hack-nerd-font, and set the non-ascii font option in iTerm 2 to "Knack Nerd Font"
+
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+
+POWERLEVEL9K_DIR_HOME_BACKGROUND='002'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='075'
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='000'
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='003'
+
+POWERLEVEL9K_RBENV_BACKGROUND="black"
+POWERLEVEL9K_RBENV_FOREGROUND="249"
+POWERLEVEL9K_RBENV_VISUAL_IDENTIFIER_COLOR="red"
+
+POWERLEVEL9K_NODE_VERSION_BACKGROUND="232"
+POWERLEVEL9K_NODE_VERSION_FOREGROUND="249"
+POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_COLOR="green"
+
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰ ❱ "
+
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
 
 # jump around
 zplug "changyuheng/fz", defer:1 # needs brew install fzf
