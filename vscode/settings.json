@@ -20,5 +20,8 @@
     "terminal.external.osxExec": "iTerm.app",
     "window.nativeTabs": true,
     "workbench.editor.showTabs": false,
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "extensions.ignoreRecommendations": false,
+    "typescript.experimental.syntaxFolding": true,
+    "terminal.integrated.shell.osx": "/usr/local/bin/zsh"
 }

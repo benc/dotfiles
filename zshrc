@@ -41,38 +41,38 @@ zplug "lib/spectrum", from:oh-my-zsh # colors
 # zplug "sindresorhus/pure", use:pure.zsh, as:theme
 
 # spaceship theme
-# zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
+zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
 
-# powerlevel9k theme
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir dir_writable rbenv node_version ssh vcs)
+# # powerlevel9k theme
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir dir_writable rbenv node_version ssh vcs)
 
-POWERLEVEL9K_MODE=nerdfont-complete # brew cask install font-hack-nerd-font, and set the non-ascii font option in iTerm 2 to "Knack Nerd Font"
+# POWERLEVEL9K_MODE=nerdfont-complete # brew cask install font-hack-nerd-font, and set the non-ascii font option in iTerm 2 to "Knack Nerd Font"
 
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+# POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+# POWERLEVEL9K_SHORTEN_DELIMITER=""
+# POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
-POWERLEVEL9K_DIR_HOME_BACKGROUND='002'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='075'
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='000'
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='003'
+# POWERLEVEL9K_DIR_HOME_BACKGROUND='002'
+# POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='075'
+# POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='000'
+# POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='003'
 
-POWERLEVEL9K_RBENV_BACKGROUND="black"
-POWERLEVEL9K_RBENV_FOREGROUND="249"
-POWERLEVEL9K_RBENV_VISUAL_IDENTIFIER_COLOR="red"
+# POWERLEVEL9K_RBENV_BACKGROUND="black"
+# POWERLEVEL9K_RBENV_FOREGROUND="249"
+# POWERLEVEL9K_RBENV_VISUAL_IDENTIFIER_COLOR="red"
 
-POWERLEVEL9K_NODE_VERSION_BACKGROUND="232"
-POWERLEVEL9K_NODE_VERSION_FOREGROUND="249"
-POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_COLOR="green"
+# POWERLEVEL9K_NODE_VERSION_BACKGROUND="232"
+# POWERLEVEL9K_NODE_VERSION_FOREGROUND="249"
+# POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_COLOR="green"
 
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰ ❱ "
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="╭"
+# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="╰ ❱ "
 
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
+# zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme, as:theme
 
 # jump around
 zplug "changyuheng/fz", defer:1 # needs brew install fzf
@@ -114,7 +114,7 @@ fpath=($(brew --prefix)/share/zsh-completions $fpath)
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
 # vagrant & vmware fusion
-export VAGRANT_DEFAULT_PROVIDER=vmware_fusion
+export VAGRANT_DEFAULT_PROVIDER=vmware_desktop
 
 # use JDK8 as default
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
@@ -153,7 +153,7 @@ export PATH=/Applications/JProfiler.app/Contents/Resources/app/bin:$PATH
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 
 # Node, n and avn
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn - TODO fix issue in webstorm when containing .node-version
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export PATH=./node_modules/.bin:$PATH
 
