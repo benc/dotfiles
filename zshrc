@@ -166,6 +166,16 @@ n 8.7.0
 # What the
 eval "$(thefuck --alias fu)"
 
+# Kubernetes
+source <(stern --completion=zsh)
+
+# Docker
+if [ -d "/Applications/Docker.app/Contents/Resources/etc/" ]; then
+  for f in "/Applications/Docker.app/Contents/Resources/etc/"*.zsh-completion; do
+    source "$f"
+  done
+fi
+
 ### ALIASES ###
 # checkstyle
 alias checkstyle-report="rg --before-context=5 severity=\\\"error **/target/checkstyle-result.xml"

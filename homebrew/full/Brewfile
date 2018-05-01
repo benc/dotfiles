@@ -37,6 +37,8 @@ brew "infer"
 brew "jenv"
 brew "jq"
 brew "jsonpp"
+brew "kompose"
+brew "kubernetes-helm"
 brew "libu2f-host"
 brew "libusb"
 brew "m-cli"
@@ -55,6 +57,7 @@ brew "rbenv"
 brew "ripgrep"
 brew "sbt"
 brew "ssh-copy-id"
+brew "stern"
 brew "swig"
 brew "telnet"
 brew "terminal-notifier"
@@ -92,7 +95,6 @@ cask "dash"
 cask "debookee"
 cask "devonthink-pro-office"
 cask "disk-sensei"
-cask "docker"
 cask "dropbox"
 cask "droplr"
 cask "dropzone"
@@ -129,6 +131,7 @@ cask "postgres"
 cask "power-manager"
 cask "resolutionator"
 cask "screens"
+cask "sdformatter"
 cask "shimo"
 cask "simplifyextras"
 cask "skype"
@@ -161,6 +164,7 @@ cask "caskroom/eid/eid-be-viewer"
 cask "caskroom/fonts/font-hack-nerd-font"
 cask "caskroom/fonts/font-hasklig"
 cask "caskroom/fonts/font-source-code-pro"
+cask "caskroom/versions/docker-edge"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Airmail 3", id: 918858936
@@ -181,6 +185,7 @@ mas "Garmin BaseCamp", id: 411052274
 mas "iFlicks 2", id: 731062389
 mas "Irvue", id: 1039633667
 mas "JSON Helper", id: 453114608
+mas "KeyKey", id: 1035137927
 mas "Marked 2", id: 890031187
 mas "Micro Snitch", id: 972028355
 mas "MindNode", id: 1289197285
@@ -197,6 +202,7 @@ mas "Simplify", id: 448003584
 mas "Slack", id: 803453959
 mas "SnippetsLab", id: 1006087419
 mas "Textify Me", id: 470453599
+mas "Things3", id: 904280696
 mas "Translate Tab", id: 458887729
 mas "Tweetbot", id: 557168941
 mas "Universal Document Viewer Pro", id: 895496813
