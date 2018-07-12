@@ -13,6 +13,8 @@
     "files.autoSave": "onFocusChange",
     "files.trimTrailingWhitespace": true,
     "java.errors.incompleteClasspath.severity": "ignore",
+    "java.debug.settings.enableHotCodeReplace": true,
+    "java.autobuild.enabled": true,
     "javascript.implicitProjectConfig.checkJs": true,
     "remote.port": 52689,
     "remote.onstartup": true,
@@ -23,5 +25,12 @@
     "workbench.iconTheme": "material-icon-theme",
     "extensions.ignoreRecommendations": false,
     "typescript.experimental.syntaxFolding": true,
-    "terminal.integrated.shell.osx": "/usr/local/bin/zsh"
+    "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
+    "gitlens.keymap": "chorded",
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.historyExplorer.enabled": false,
+    "java.jdt.ls.vmargs": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -javaagent:\"/Users/benc/.vscode/extensions/GabrielBB.vscode-lombok-0.9.4/server/lombok.jar\" -Xbootclasspath/a:\"/Users/benc/.vscode/extensions/GabrielBB.vscode-lombok-0.9.4/server/lombok.jar\"",
+    "npm.enableScriptExplorer": true
 }
