@@ -35,6 +35,7 @@ zplug "plugins/rbenv", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/mvn", from:oh-my-zsh
 zplug "lib/spectrum", from:oh-my-zsh # colors
+zplug "plugins/virtualenvwrapper", from:oh-my-zsh
 
 # pure theme (async)
 # zplug "mafredri/zsh-async"
@@ -157,8 +158,8 @@ export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export PATH=./node_modules/.bin:$PATH
 
-# start node 8.7.0 by default
-n 8.7.0
+# start node 10.5.0 by default
+n 10.5.0
 
 # install tooling if needed
 [ -z ~/.n/bin/avn ] && npm install -g npm avn avn-n
@@ -176,6 +177,8 @@ if [ -d "/Applications/Docker.app/Contents/Resources/etc/" ]; then
   done
 fi
 
+# pipenv
+eval "$(pipenv --completion)"
 ### ALIASES ###
 # checkstyle
 alias checkstyle-report="rg --before-context=5 severity=\\\"error **/target/checkstyle-result.xml"
