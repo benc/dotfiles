@@ -57,3 +57,7 @@ tmtags
 s101plugin.state
 
 .Ulysses-Group.plist
+
+*.hsw
+*.hsp
+structure101-*
