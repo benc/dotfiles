@@ -22,6 +22,7 @@ brew "docker-completion"
 brew "docker-compose-completion"
 brew "docker-machine-completion"
 brew "dpkg"
+brew "elasticsearch@2.4", restart_service: true
 brew "exa"
 brew "fzf"
 brew "git"
