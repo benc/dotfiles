@@ -31,6 +31,7 @@
         "suppressShowKeyBindingsNotice": true
     },
     "gitlens.historyExplorer.enabled": false,
-    "java.jdt.ls.vmargs": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -javaagent:\"/Users/benc/.vscode/extensions/GabrielBB.vscode-lombok-0.9.4/server/lombok.jar\" -Xbootclasspath/a:\"/Users/benc/.vscode/extensions/GabrielBB.vscode-lombok-0.9.4/server/lombok.jar\"",
-    "npm.enableScriptExplorer": true
+    "java.jdt.ls.vmargs": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -javaagent:\"/Users/benc/.vscode/extensions/gabrielbb.vscode-lombok-0.9.6/server/lombok.jar\" -Xbootclasspath/a:\"/Users/benc/.vscode/extensions/gabrielbb.vscode-lombok-0.9.6/server/lombok.jar\"",
+    "npm.enableScriptExplorer": true,
+    "breadcrumbs.enabled": true
 }

@@ -188,7 +188,7 @@ alias nuke_modules="rm -rf node_modules; npm install; npm prune"
 
 # Update all the things
 alias update-casks="brew cask outdated --greedy --verbose | grep -v \"(latest)\" | cut -f1 -d\" \" | xargs brew cask reinstall"
-alias update="softwareupdate --install --all --verbose; mas upgrade; brew update; brew upgrade; update-casks; brew cleanup -s; brew cask cleanup; brew prune"
+alias update="softwareupdate --install --all --verbose; mas upgrade; brew update; brew upgrade; update-casks; brew cleanup -s; brew prune"
 
 # Pimp
 alias ls="exa"
