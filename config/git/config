@@ -12,5 +12,5 @@
 	default = simple
 [gpg]
 	program = /usr/local/bin/gpg
-# [commit]
-# 	gpgsign = true
+[commit]
+ 	gpgsign = true
