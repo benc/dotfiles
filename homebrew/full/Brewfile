@@ -8,48 +8,52 @@ tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "thoughtbot/formulae"
-brew "aria2"
+cask "adoptopenjdk"
+cask "adoptopenjdk8"
 brew "openssl"
+brew "aria2"
 brew "readline"
 brew "python"
 brew "awscli"
+brew "bash"
+brew "gettext", link: true
 brew "ccat"
 brew "coreutils"
-brew "dbus", restart_service: true
+brew "dbus"
 brew "docker-compose-completion"
 brew "docker-machine-completion"
 brew "dpkg"
-brew "elasticsearch@2.4", restart_service: true
+brew "duti"
 brew "exa"
 brew "exiftool"
+brew "ffmpeg"
 brew "fzf"
 brew "git"
 brew "gnu-sed"
-brew "python@2"
 brew "gradle"
 brew "gradle-completion"
 brew "highlight"
 brew "hopenpgp-tools"
 brew "hub"
 brew "hugo"
-brew "infer"
 brew "jenv"
 brew "jq"
 brew "jsonpp"
 brew "kompose"
-brew "kubernetes-helm"
 brew "libdvdcss"
 brew "libu2f-host"
 brew "libusb"
 brew "m-cli"
 brew "mas"
 brew "maven"
+brew "python@2"
 brew "monkeysphere"
+brew "youtube-dl"
 brew "mpv", args: ["HEAD"]
 brew "mtr"
 brew "nmap"
 brew "nnn"
-brew "phantomjs"
+brew "pandoc"
 brew "pipenv"
 brew "poppler"
 brew "qpdf"
@@ -68,40 +72,41 @@ brew "thefuck"
 brew "tldr"
 brew "v8@3.15", link: true
 brew "wget"
+brew "wireguard-tools"
 brew "ykpers"
-brew "yubico-piv-tool", link: false
+brew "yubico-piv-tool"
 brew "zplug"
 brew "zsh"
 brew "zsh-completions"
 brew "thoughtbot/formulae/rcm"
 cask "1password"
 cask "adobe-acrobat-reader"
+cask "adoptopenjdk11"
 cask "aerial"
 cask "airfoil"
 cask "apogee-duet"
 cask "appcleaner"
 cask "arduino"
-cask "arq"
 cask "audio-hijack"
 cask "bartender"
 cask "bbedit"
 cask "beoplay-software-update"
-cask "bettertouchtool"
 cask "betterzip"
 cask "beyond-compare"
 cask "carbon-copy-cloner"
+cask "charles"
 cask "chatmate-for-facebook"
 cask "chatmate-for-whatsapp"
 cask "choosy"
 cask "chromium"
-cask "coconutbattery"
 cask "cursorsense"
 cask "daisydisk"
 cask "dash"
 cask "debookee"
 cask "devonthink-pro-office"
+cask "discord"
 cask "disk-sensei"
-cask "docker-edge"
+cask "docker"
 cask "dropbox"
 cask "droplr"
 cask "dropzone"
@@ -111,16 +116,18 @@ cask "eid-be-viewer"
 cask "fantastical"
 cask "firefox"
 cask "fission"
+cask "flux"
 cask "font-hack-nerd-font"
 cask "font-hasklig"
 cask "font-source-code-pro"
-cask "google-chrome"
-cask "gpgtools"
+cask "fork"
+cask "garmin-basecamp"
+cask "garmin-express"
+cask "google-backup-and-sync"
+cask "gpg-suite"
 cask "handbrake"
 cask "hazel"
-cask "hipchat"
 cask "iina"
-cask "intel-power-gadget"
 cask "istat-menus"
 cask "iterm2"
 cask "jetbrains-toolbox"
@@ -133,26 +140,29 @@ cask "launchbar"
 cask "launchcontrol"
 cask "loopback"
 cask "marked"
-cask "microsoft-office"
+cask "mattermost"
 cask "omnifocus"
 cask "omnigraffle"
 cask "omnioutliner"
 cask "pacifist"
 cask "paw"
 cask "pdf-expert"
+cask "phantomjs"
 cask "postgres"
 cask "postico"
 cask "power-manager"
 cask "resolutionator"
+cask "rocket"
 cask "screenflow"
 cask "screens"
 cask "screens-connect"
+cask "script-debugger"
 cask "sdformatter"
-cask "shimo"
-cask "simplifyextras"
+cask "setapp"
 cask "skype"
 cask "soulver"
 cask "soundsource"
+cask "spamsieve"
 cask "spotify"
 cask "steermouse"
 cask "stride"
@@ -160,30 +170,27 @@ cask "surge"
 cask "timing"
 cask "totals"
 cask "transmit"
+cask "turbo-boost-switcher"
 cask "vagrant"
 cask "vagrant-vmware-utility"
 cask "visual-studio-code"
+cask "vitamin-r"
+cask "vlc"
 cask "vmware-fusion"
-cask "witch"
 cask "wwdc"
 cask "xerox-print-driver"
 cask "xscope"
 cask "yubico-authenticator"
-cask "yubikey-manager"
-cask "yubikey-personalization-gui"
-cask "yubikey-piv-manager"
-cask "zulu"
-cask "zulu8"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
-mas "Airmail 3", id: 918858936
 mas "Amphetamine", id: 937984704
 mas "Better", id: 1121192229
 mas "Better Rename 10", id: 1063663640
 mas "CARROT Weather", id: 993487541
+mas "Core Tunnel", id: 1354318707
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 924726344
-mas "djay Pro 2", id: 1302002064
+mas "djay Pro", id: 1302002064
 mas "Expressions", id: 913158085
 mas "File Multi Tool 6", id: 1194004025
 mas "Finances", id: 1218241304
@@ -198,24 +205,28 @@ mas "Irvue", id: 1039633667
 mas "ISOBMFF Explorer", id: 1300778278
 mas "JSON Helper", id: 453114608
 mas "Micro Snitch", id: 972028355
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Microsoft Word", id: 462054704
 mas "Mimeo Photos", id: 1282504627
+mas "MindNode", id: 1289197285
+mas "Motif", id: 1404636482
 mas "Napkin", id: 581789185
 mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Parcel", id: 639968404
 mas "PCalc", id: 403504866
 mas "PopClip", id: 445189367
-mas "Reeder", id: 880001334
 mas "ScanSnap Cloud", id: 1170434079
 mas "Shazam", id: 897118787
 mas "Simplify", id: 448003584
 mas "SnippetsLab", id: 1006087419
-mas "Textual 7", id: 1262957439
-mas "Things3", id: 904280696
+mas "SubEthaEdit", id: 728530824
+mas "Textual IRC Client", id: 1262957439
 mas "ToothFairy", id: 1191449274
-mas "Translate Tab", id: 458887729
 mas "Tweetbot", id: 1384080005
-mas "Universal Document Viewer Pro", id: 895496813
 mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
 mas "Wix Photo Albums", id: 1281329434
+mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
