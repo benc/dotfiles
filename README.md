@@ -37,6 +37,9 @@
     # then, open a new terminal to initialize zplug
     cd ~/.dotfiles/homebrew/server; brew bundle install
 
+    # fix insecure directory warning
+    compaudit | xargs chmod g-w
+
 ### ruby
 
     brew install rbenv

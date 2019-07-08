@@ -7,7 +7,6 @@ tap "homebrew/cask-versions"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "homebrew/versions"
 tap "thoughtbot/formulae"
 brew "aria2"
 brew "openssl"
@@ -116,7 +115,6 @@ cask "font-hack-nerd-font"
 cask "font-hasklig"
 cask "font-source-code-pro"
 cask "google-chrome"
-cask "gotomeeting"
 cask "gpgtools"
 cask "handbrake"
 cask "hazel"
@@ -141,7 +139,7 @@ cask "omnigraffle"
 cask "omnioutliner"
 cask "pacifist"
 cask "paw"
-cask "pdfexpert"
+cask "pdf-expert"
 cask "postgres"
 cask "postico"
 cask "power-manager"
@@ -159,7 +157,6 @@ cask "spotify"
 cask "steermouse"
 cask "stride"
 cask "surge"
-cask "teamviewer"
 cask "timing"
 cask "totals"
 cask "transmit"
@@ -191,10 +188,8 @@ mas "Expressions", id: 913158085
 mas "File Multi Tool 6", id: 1194004025
 mas "Finances", id: 1218241304
 mas "FineReader OCR Pro", id: 687301476
-mas "Forecast Bar", id: 982710545
 mas "Formatter", id: 1190228172
 mas "GAget", id: 968487158
-mas "Garmin BaseCamp", id: 411052274
 mas "Gemini 2", id: 1090488118
 mas "iFlicks 2", id: 731062389
 mas "ifolor Designer", id: 446366603
@@ -211,12 +206,9 @@ mas "PCalc", id: 403504866
 mas "PopClip", id: 445189367
 mas "Reeder", id: 880001334
 mas "ScanSnap Cloud", id: 1170434079
-mas "Server", id: 883878097
 mas "Shazam", id: 897118787
 mas "Simplify", id: 448003584
-mas "Slack", id: 803453959
 mas "SnippetsLab", id: 1006087419
-mas "Textify Me", id: 470453599
 mas "Textual 7", id: 1262957439
 mas "Things3", id: 904280696
 mas "ToothFairy", id: 1191449274

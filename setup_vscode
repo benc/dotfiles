@@ -2,3 +2,11 @@
 ln -sf $HOME/.dotfiles/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
 ln -sf $HOME/.dotfiles/vscode/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"
 ln -sf $HOME/.dotfiles/vscode/snipppets "$HOME/Library/Application Support/Code/User/snipppets"
+
+# zet vscode als default editor
+editor=com.microsoft.VSCode
+extensions=(public.plain-text public.unix-executable .c .cpp .cs .css .env .erb .haml .hs .java .js .json .md .sass .scss .sh .ts .txt .yaml .yml .zsh)
+
+for extension in "${extensions[@]}"; do
+  duti -s $editor $extension all
+done

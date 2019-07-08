@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+cd $(/usr/libexec/java_home)/lib/security
+# default keystore pw is changeit
+sudo keytool -importcert -file <CAFILE> -alias <CAALIAS> -cacerts

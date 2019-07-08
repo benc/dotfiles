@@ -117,18 +117,12 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 # vagrant & vmware fusion
 export VAGRANT_DEFAULT_PROVIDER=vmware_desktop
 
-# use JDK8 as default
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+# use JDK11 as default
+export JAVA_HOME=`/usr/libexec/java_home -v 11`
 # eval "$(jenv init -)" # disable jenv for now
 
-# GPGTools launches gpg-agent, we'll have to let SSH know we want to use gpg-agent as ssh-agent
-#
-# This is done using launchd, we just read the correct variables here and move once
-#
-if [ -f "${HOME}/.gnupg/gpg-agent.env" ]; then
-  export GPG_AGENT_INFO=$(launchctl getenv GPG_AGENT_INFO)
-  export SSH_AUTH_SOCK=$(launchctl getenv SSH_AUTH_SOCK)
-fi
+# don't try to connect to spring config server
+export SPRING_CLOUD_CONFIG_ENABLED=false
 
 # Timings integration
 DISABLE_AUTO_TITLE="true"
@@ -179,6 +173,7 @@ fi
 
 # pipenv
 eval "$(pipenv --completion)"
+
 ### ALIASES ###
 # checkstyle
 alias checkstyle-report="rg --before-context=5 severity=\\\"error **/target/checkstyle-result.xml"
@@ -188,9 +183,14 @@ alias nuke_modules="rm -rf node_modules; npm install; npm prune"
 
 # Update all the things
 alias update-casks="brew cask outdated --greedy --verbose | grep -v \"(latest)\" | cut -f1 -d\" \" | xargs brew cask reinstall"
-alias update="softwareupdate --install --all --verbose; mas upgrade; brew update; brew upgrade; update-casks; brew cleanup -s; brew prune"
+alias update="softwareupdate --install --all --verbose; mas upgrade; brew update; brew upgrade; update-casks; brew cleanup -s"
 
 # Pimp
 alias ls="exa"
 alias cat="ccat --bg=\"dark\""
 alias top="htop"
+
+# NSSurge
+export https_proxy=http://127.0.0.1:8888
+export http_proxy=http://127.0.0.1:8888
+export all_proxy=socks5://127.0.0.1:6153
