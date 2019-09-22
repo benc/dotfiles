@@ -191,6 +191,6 @@ alias cat="ccat --bg=\"dark\""
 alias top="htop"
 
 # NSSurge
-export https_proxy=http://127.0.0.1:6152
-export http_proxy=http://127.0.0.1:6152
-export all_proxy=socks5://127.0.0.1:6153
+#export https_proxy=http://127.0.0.1:6152
+#export http_proxy=http://127.0.0.1:6152
+#export all_proxy=socks5://127.0.0.1:6153

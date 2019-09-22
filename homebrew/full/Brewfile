@@ -1,16 +1,14 @@
+tap "adoptopenjdk/openjdk"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
-tap "homebrew/cask-eid"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "thoughtbot/formulae"
-cask "adoptopenjdk"
 cask "adoptopenjdk8"
-brew "openssl"
 brew "aria2"
 brew "readline"
 brew "python"
@@ -20,13 +18,11 @@ brew "gettext", link: true
 brew "ccat"
 brew "coreutils"
 brew "dbus"
-brew "docker-compose-completion"
-brew "docker-machine-completion"
 brew "dpkg"
 brew "duti"
 brew "exa"
 brew "exiftool"
-brew "ffmpeg"
+brew "ffmpeg", args: ["HEAD"]
 brew "fzf"
 brew "git"
 brew "gnu-sed"
@@ -52,6 +48,7 @@ brew "mpv", args: ["HEAD"]
 brew "mtr"
 brew "nmap"
 brew "nnn"
+brew "openssl"
 brew "pandoc"
 brew "pipenv"
 brew "poppler"
@@ -81,11 +78,9 @@ brew "zsh-completions"
 brew "thoughtbot/formulae/rcm"
 cask "1password"
 cask "adobe-acrobat-reader"
-cask "adoptopenjdk11"
 cask "aerial"
 cask "airfoil"
 cask "alfred"
-cask "apogee-duet"
 cask "appcleaner"
 cask "arduino"
 cask "audio-hijack"
@@ -94,8 +89,6 @@ cask "bbedit"
 cask "beoplay-software-update"
 cask "betterzip"
 cask "calibre"
-cask "carbon-copy-cloner"
-cask "charles"
 cask "chatmate-for-facebook"
 cask "chatmate-for-whatsapp"
 cask "choosy"
@@ -103,25 +96,17 @@ cask "chromium"
 cask "cursorsense"
 cask "daisydisk"
 cask "dash"
-cask "debookee"
-cask "devonthink-pro-office"
-cask "discord"
+cask "devonthink"
 cask "disk-sensei"
 cask "docker"
 cask "dropbox"
-cask "droplr"
 cask "dropzone"
 cask "duet"
-cask "eid-be"
-cask "eid-be-viewer"
 cask "fantastical"
 cask "firefox"
 cask "fission"
 cask "flux"
-cask "font-hack-nerd-font"
 cask "font-hasklig"
-cask "font-source-code-pro"
-cask "fork"
 cask "garmin-basecamp"
 cask "garmin-express"
 cask "google-backup-and-sync"
@@ -133,11 +118,10 @@ cask "istat-menus"
 cask "iterm2"
 cask "jetbrains-toolbox"
 cask "kaleidoscope"
-cask "karabiner"
+cask "karabiner-elements"
 cask "keybase"
 cask "keyboard-maestro"
 cask "kitematic"
-cask "launchbar"
 cask "launchcontrol"
 cask "loopback"
 cask "marked"
@@ -165,10 +149,6 @@ cask "soundsource"
 cask "spamsieve"
 cask "spotify"
 cask "steermouse"
-cask "stride"
-cask "surge"
-cask "timing"
-cask "totals"
 cask "transmit"
 cask "turbo-boost-switcher"
 cask "vagrant"
@@ -181,6 +161,7 @@ cask "wwdc"
 cask "xerox-print-driver"
 cask "xscope"
 cask "yubico-authenticator"
+cask "adoptopenjdk/openjdk/adoptopenjdk11"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Amphetamine", id: 937984704
@@ -198,26 +179,21 @@ mas "Formatter", id: 1190228172
 mas "GAget", id: 968487158
 mas "Gemini 2", id: 1090488118
 mas "iFlicks 2", id: 731062389
-mas "ifolor Designer", id: 446366603
 mas "iMazing HEIC Converter", id: 1292198261
-mas "ISOBMFF Explorer", id: 1300778278
 mas "Irvue", id: 1039633667
+mas "ISOBMFF Explorer", id: 1300778278
 mas "JSON Helper", id: 453114608
 mas "Micro Snitch", id: 972028355
-mas "Mimeo Photos", id: 1282504627
-mas "Motif", id: 1404636482
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
-mas "Napkin", id: 581789185
+mas "Mimeo Photos", id: 1282504627
 mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Parcel", id: 639968404
 mas "PCalc", id: 403504866
 mas "PopClip", id: 445189367
 mas "Reeder", id: 1449412482
-mas "ScanSnap Cloud", id: 1170434079
-mas "Simplify", id: 448003584
 mas "SnippetsLab", id: 1006087419
 mas "SubEthaEdit", id: 728530824
 mas "Textual IRC Client", id: 1262957439
@@ -225,6 +201,3 @@ mas "ToothFairy", id: 1191449274
 mas "Tweetbot", id: 1384080005
 mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
-mas "Wix Photo Albums", id: 1281329434
-mas "Xcode", id: 497799835
-mas "Yoink", id: 457622435

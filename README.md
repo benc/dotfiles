@@ -14,7 +14,7 @@
     git clone https://github.com/benc/dotfiles.git ~/.dotfiles
     brew tap thoughtbot/formulae
     brew install rcm
-    rcup rcrc; rcup
+    cd /.dotfiles/; rcup rcrc; rcup
 
     # vscode settings need a separate installation until https://github.com/thoughtbot/rcm/issues/135 is resolved
     ~/.dotfiles/setup_vscode
@@ -33,10 +33,9 @@
     # install zshell
     brew install zsh zplug
 
-    # after installation of zshell,  make sure iTerms shell is set to /usr/local/bin/zsh instead of "Login shell"
-    # then, open a new terminal to initialize zplug
-    cd ~/.dotfiles/homebrew/server; brew bundle install
-
+    sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells"
+    chsh -s /usr/local/bin/zsh
+    
     # fix insecure directory warning
     compaudit | xargs chmod g-w
 
@@ -94,7 +93,7 @@ To update the system, use the `update` alias.
 
 #### Java Development
 
-* Java 8 is standard
+* Java 11 is standard
 * `checkstyle-report`
 
 #### Ruby development
