@@ -1,5 +1,5 @@
 # bootstrap homebrew
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export EDITOR=code
 
 # Perl complains about this
@@ -191,6 +191,6 @@ alias cat="ccat --bg=\"dark\""
 alias top="htop"
 
 # NSSurge
-export https_proxy=http://127.0.0.1:8888
-export http_proxy=http://127.0.0.1:8888
+export https_proxy=http://127.0.0.1:6152
+export http_proxy=http://127.0.0.1:6152
 export all_proxy=socks5://127.0.0.1:6153
