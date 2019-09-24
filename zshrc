@@ -144,9 +144,6 @@ fi
 # JProfiler
 export PATH=/Applications/JProfiler.app/Contents/Resources/app/bin:$PATH
 
-# Postgres app
-export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
-
 # Node, n and avn
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn - TODO fix issue in webstorm when containing .node-version
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
@@ -194,3 +191,7 @@ alias top="htop"
 #export https_proxy=http://127.0.0.1:6152
 #export http_proxy=http://127.0.0.1:6152
 #export all_proxy=socks5://127.0.0.1:6153
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="~/.sdkman"
+[[ -s "~/.sdkman/bin/sdkman-init.sh" ]] && source "~/.sdkman/bin/sdkman-init.sh"
