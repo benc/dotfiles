@@ -117,10 +117,6 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 # vagrant & vmware fusion
 export VAGRANT_DEFAULT_PROVIDER=vmware_desktop
 
-# use JDK11 as default
-export JAVA_HOME=`/usr/libexec/java_home -v 11`
-# eval "$(jenv init -)" # disable jenv for now
-
 # don't try to connect to spring config server
 export SPRING_CLOUD_CONFIG_ENABLED=false
 
