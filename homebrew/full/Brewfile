@@ -1,4 +1,3 @@
-tap "adoptopenjdk/openjdk"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
@@ -8,7 +7,6 @@ tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "thoughtbot/formulae"
-cask "adoptopenjdk8"
 brew "aria2"
 brew "readline"
 brew "python"
@@ -26,7 +24,6 @@ brew "ffmpeg", args: ["HEAD"]
 brew "fzf"
 brew "git"
 brew "gnu-sed"
-brew "gradle"
 brew "gradle-completion"
 brew "graphviz"
 brew "highlight"
@@ -42,7 +39,6 @@ brew "libu2f-host"
 brew "libusb"
 brew "m-cli"
 brew "mas"
-brew "maven"
 brew "youtube-dl"
 brew "mpv", args: ["HEAD"]
 brew "mtr"
@@ -78,7 +74,6 @@ brew "zsh-completions"
 brew "thoughtbot/formulae/rcm"
 cask "1password"
 cask "adobe-acrobat-reader"
-cask "aerial"
 cask "airfoil"
 cask "alfred"
 cask "appcleaner"
@@ -133,7 +128,6 @@ cask "pacifist"
 cask "paw"
 cask "pdf-expert"
 cask "phantomjs"
-cask "postgres"
 cask "postico"
 cask "power-manager"
 cask "resolutionator"
@@ -161,7 +155,6 @@ cask "wwdc"
 cask "xerox-print-driver"
 cask "xscope"
 cask "yubico-authenticator"
-cask "adoptopenjdk/openjdk/adoptopenjdk11"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Amphetamine", id: 937984704
@@ -201,3 +194,4 @@ mas "ToothFairy", id: 1191449274
 mas "Tweetbot", id: 1384080005
 mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
+mas "Yoink", id: 457622435
