@@ -145,6 +145,9 @@ export PATH=/Applications/JProfiler.app/Contents/Resources/app/bin:$PATH
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export PATH=./node_modules/.bin:$PATH
 
+# Postgres client tooling - brew install libpq
+export PATH=/usr/local/opt/libpq/bin:$PATH
+
 # start node 10.5.0 by default
 n 10.5.0
 
