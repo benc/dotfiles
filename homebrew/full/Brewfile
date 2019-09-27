@@ -7,6 +7,7 @@ tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "thoughtbot/formulae"
+cask "adoptopenjdk8"
 brew "aria2"
 brew "readline"
 brew "python"
@@ -15,6 +16,7 @@ brew "bash"
 brew "gettext", link: true
 brew "ccat"
 brew "coreutils"
+brew "cypher-shell"
 brew "dbus"
 brew "dpkg"
 brew "duti"
@@ -189,7 +191,6 @@ mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Parcel", id: 639968404
 mas "PCalc", id: 403504866
 mas "PopClip", id: 445189367
-mas "Reeder", id: 1449412482
 mas "SnippetsLab", id: 1006087419
 mas "SubEthaEdit", id: 728530824
 mas "Textual IRC Client", id: 1262957439
