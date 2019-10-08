@@ -103,11 +103,15 @@ if zplug check "zsh-users/zsh-history-substring-search"; then
   bindkey "$terminfo[cud1]" history-substring-search-down
 fi
 
+# navi - use it through homebrew until this works
+zplug denisidoro/navi
+source "$($ZPLUG_REPOS/denisidoro/navi/navi widget zsh)"
+export PATH=$ZPLUG_REPOS/denisidoro/navi/:$PATH
+
 zplug check --verbose || zplug install
 zplug load
 
 ### SETTINGS & TOOLING CONFIGURATION ###
-
 # zsh completions
 fpath=($(brew --prefix)/share/zsh-completions $fpath)
 
