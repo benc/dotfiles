@@ -174,6 +174,9 @@ fi
 # pipenv
 eval "$(pipenv --completion)"
 
+# add local commands to PATH
+export PATH=./bin:$PATH
+
 ### ALIASES ###
 # checkstyle
 alias checkstyle-report="rg --before-context=5 severity=\\\"error **/target/checkstyle-result.xml"
