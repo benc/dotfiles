@@ -1,6 +1,7 @@
 # bootstrap homebrew
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export EDITOR=code
+# export EDITOR="/usr/local/bin/mate -w"
 
 # Perl complains about this
 export LC_CTYPE=en_US.UTF-8
@@ -153,7 +154,7 @@ export PATH=./node_modules/.bin:$PATH
 export PATH=/usr/local/opt/libpq/bin:$PATH
 
 # start node 10.5.0 by default
-n 10.5.0
+n lts
 
 # install tooling if needed
 [ -z ~/.n/bin/avn ] && npm install -g npm avn avn-n
@@ -186,7 +187,7 @@ alias nuke_modules="rm -rf node_modules; npm install; npm prune"
 
 # Update all the things
 alias update-casks="brew cask outdated --greedy --verbose | grep -v \"(latest)\" | cut -f1 -d\" \" | xargs brew cask reinstall"
-alias update="softwareupdate --install --all --verbose; mas upgrade; brew update; brew upgrade; update-casks; brew cleanup -s"
+alias update="softwareupdate --install --all --verbose; mas upgrade; brew update; brew upgrade; update-casks; brew cleanup -s; sdk update; sdk upgrade"
 
 # Pimp
 alias ls="exa"
@@ -201,3 +202,5 @@ export all_proxy=socks5://127.0.0.1:6153
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="${HOME}/.sdkman"
 [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
+
+eval $(thefuck --alias)
