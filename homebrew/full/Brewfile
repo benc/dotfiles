@@ -1,3 +1,4 @@
+tap "denisidoro/tools"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
@@ -8,24 +9,30 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "thoughtbot/formulae"
 cask "adoptopenjdk8"
+brew "icu4c"
+brew "angular-cli"
 brew "aria2"
 brew "readline"
-brew "python"
 brew "awscli"
 brew "bash"
+brew "brightness"
 brew "gettext", link: true
+brew "python"
 brew "ccat"
 brew "coreutils"
 brew "cypher-shell"
 brew "dbus"
+brew "docker", link: false
 brew "dpkg"
 brew "duti"
 brew "exa"
 brew "exiftool"
-brew "ffmpeg", args: ["HEAD"]
+brew "ffmpeg"
+brew "flyway"
 brew "fzf"
 brew "git"
 brew "gnu-sed"
+brew "gpac"
 brew "gradle-completion"
 brew "graphviz"
 brew "highlight"
@@ -33,6 +40,7 @@ brew "hopenpgp-tools"
 brew "hub"
 brew "hugo"
 brew "jenv"
+brew "jid"
 brew "jq"
 brew "jsonpp"
 brew "kompose"
@@ -42,12 +50,9 @@ brew "libu2f-host"
 brew "libusb"
 brew "m-cli"
 brew "mas"
-brew "youtube-dl"
-brew "mpv", args: ["HEAD"]
 brew "mtr"
 brew "nmap"
 brew "nnn"
-brew "openssl"
 brew "pandoc"
 brew "pipenv"
 brew "poppler"
@@ -65,21 +70,24 @@ brew "telnet"
 brew "terminal-notifier"
 brew "the_silver_searcher"
 brew "thefuck"
+brew "tika"
 brew "tldr"
+brew "tor"
 brew "v8@3.15", link: true
 brew "wget"
 brew "wireguard-tools"
 brew "ykpers"
+brew "youtube-dl"
 brew "yubico-piv-tool"
-brew "z"
 brew "zplug"
 brew "zsh"
 brew "zsh-completions"
 brew "thoughtbot/formulae/rcm"
 cask "1password"
+cask "1password-cli"
 cask "adobe-acrobat-reader"
 cask "airfoil"
-cask "alfred"
+cask "alacritty"
 cask "appcleaner"
 cask "arduino"
 cask "audio-hijack"
@@ -87,17 +95,20 @@ cask "bartender"
 cask "bbedit"
 cask "beoplay-software-update"
 cask "betterzip"
+cask "brave-browser"
 cask "calibre"
 cask "chatmate-for-facebook"
 cask "chatmate-for-whatsapp"
+cask "cheatsheet"
 cask "choosy"
 cask "chromium"
+cask "chrysalis"
 cask "cursorsense"
 cask "daisydisk"
 cask "dash"
 cask "devonthink"
 cask "disk-sensei"
-cask "docker-edge"
+cask "docker"
 cask "dropbox"
 cask "dropzone"
 cask "duet"
@@ -112,6 +123,7 @@ cask "google-backup-and-sync"
 cask "gpg-suite-no-mail"
 cask "handbrake"
 cask "hazel"
+cask "hook"
 cask "iina"
 cask "istat-menus"
 cask "iterm2"
@@ -125,29 +137,34 @@ cask "launchcontrol"
 cask "loopback"
 cask "marked"
 cask "mattermost"
+cask "mpv"
 cask "omnifocus"
 cask "omnigraffle"
-cask "omnioutliner"
 cask "pacifist"
 cask "paw"
 cask "pdf-expert"
 cask "phantomjs"
+cask "plex"
+cask "plex-media-server"
 cask "postico"
 cask "power-manager"
 cask "resolutionator"
-cask "screenflow"
+cask "rq"
 cask "screens"
 cask "screens-connect"
 cask "script-debugger"
 cask "sdformatter"
 cask "setapp"
+cask "signal"
 cask "skype"
 cask "slack-beta"
 cask "soulver"
 cask "soundsource"
 cask "spamsieve"
 cask "spotify"
-cask "steermouse"
+cask "syncthing"
+cask "textmate"
+cask "tor-browser"
 cask "transmit"
 cask "turbo-boost-switcher"
 cask "vagrant"
@@ -163,9 +180,11 @@ cask "yubico-authenticator"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Amphetamine", id: 937984704
+mas "Annotate", id: 918207447
 mas "Better", id: 1121192229
 mas "Better Rename 10", id: 1063663640
 mas "CARROT Weather", id: 993487541
+mas "Core Tunnel", id: 1354318707
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 924726344
 mas "djay Pro", id: 1302002064
@@ -176,7 +195,6 @@ mas "FineReader OCR Pro", id: 687301476
 mas "Formatter", id: 1190228172
 mas "GAget", id: 968487158
 mas "Gemini 2", id: 1090488118
-mas "iFlicks 2", id: 731062389
 mas "iMazing HEIC Converter", id: 1292198261
 mas "Irvue", id: 1039633667
 mas "ISOBMFF Explorer", id: 1300778278
@@ -187,15 +205,21 @@ mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
 mas "Mimeo Photos", id: 1282504627
+mas "Motif", id: 1404636482
 mas "Paprika Recipe Manager 3", id: 1303222628
 mas "Parcel", id: 639968404
 mas "PCalc", id: 403504866
-mas "PopClip", id: 445189367
+mas "Reeder", id: 1449412482
+mas "Shazam", id: 897118787
 mas "SnippetsLab", id: 1006087419
 mas "SubEthaEdit", id: 728530824
+mas "Tampermonkey", id: 1482490089
+mas "Telegram Desktop", id: 946399090
 mas "Textual IRC Client", id: 1262957439
 mas "ToothFairy", id: 1191449274
 mas "Tweetbot", id: 1384080005
 mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
+mas "WireGuard", id: 1451685025
+mas "Xcode", id: 497799835
 mas "Yoink", id: 457622435
