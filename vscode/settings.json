@@ -22,7 +22,7 @@
     "terminal.external.osxExec": "iTerm.app",
     "window.nativeTabs": true,
     "workbench.editor.showTabs": false,
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "vscode-icons",
     "extensions.ignoreRecommendations": false,
     "typescript.experimental.syntaxFolding": true,
     "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
@@ -35,9 +35,13 @@
     "npm.enableScriptExplorer": true,
     "breadcrumbs.enabled": true,
     "window.zoomLevel": 0,
-    "java.home": "/Library/Java/JavaVirtualMachines/zulu1.8.0_181.jdk/Contents/Home",
+    "java.home": "~/.sdkman/candidates/java/11.0.4.hs-adpt",
     "gitlens.hovers.currentLine.over": "line",
     "python.jediEnabled": false,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.tabSize": 2,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
 }
