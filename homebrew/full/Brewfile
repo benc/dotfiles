@@ -56,7 +56,6 @@ brew "nnn"
 brew "pandoc"
 brew "pipenv"
 brew "poppler"
-brew "python@2"
 brew "qpdf"
 brew "ruby-build"
 brew "rbenv"
@@ -87,7 +86,6 @@ cask "1password"
 cask "1password-cli"
 cask "adobe-acrobat-reader"
 cask "airfoil"
-cask "alacritty"
 cask "appcleaner"
 cask "arduino"
 cask "audio-hijack"
@@ -99,18 +97,14 @@ cask "brave-browser"
 cask "calibre"
 cask "chatmate-for-facebook"
 cask "chatmate-for-whatsapp"
-cask "cheatsheet"
 cask "choosy"
-cask "chromium"
 cask "chrysalis"
 cask "cursorsense"
 cask "daisydisk"
 cask "dash"
 cask "devonthink"
-cask "disk-sensei"
 cask "docker"
 cask "dropbox"
-cask "dropzone"
 cask "duet"
 cask "fantastical"
 cask "firefox"
@@ -128,11 +122,8 @@ cask "iina"
 cask "istat-menus"
 cask "iterm2"
 cask "jetbrains-toolbox"
-cask "kaleidoscope"
 cask "karabiner-elements"
-cask "keybase"
 cask "keyboard-maestro"
-cask "kitematic"
 cask "launchcontrol"
 cask "loopback"
 cask "marked"
@@ -147,23 +138,21 @@ cask "phantomjs"
 cask "plex"
 cask "plex-media-server"
 cask "postico"
-cask "power-manager"
 cask "resolutionator"
 cask "rq"
 cask "screens"
 cask "screens-connect"
 cask "script-debugger"
 cask "sdformatter"
+cask "sensei"
 cask "setapp"
 cask "signal"
 cask "skype"
 cask "slack-beta"
-cask "soulver"
 cask "soundsource"
 cask "spamsieve"
 cask "spotify"
 cask "syncthing"
-cask "textmate"
 cask "tor-browser"
 cask "transmit"
 cask "turbo-boost-switcher"
@@ -173,33 +162,24 @@ cask "visual-studio-code"
 cask "vitamin-r"
 cask "vlc"
 cask "vmware-fusion"
-cask "wwdc"
 cask "xerox-print-driver"
 cask "xscope"
-cask "yubico-authenticator"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Amphetamine", id: 937984704
-mas "Annotate", id: 918207447
 mas "Better", id: 1121192229
 mas "Better Rename 10", id: 1063663640
 mas "CARROT Weather", id: 993487541
 mas "Core Tunnel", id: 1354318707
 mas "Day One", id: 1055511498
 mas "Deliveries", id: 924726344
-mas "djay Pro", id: 1302002064
 mas "Expressions", id: 913158085
 mas "File Multi Tool 6", id: 1194004025
-mas "Finances", id: 1218241304
 mas "FineReader OCR Pro", id: 687301476
 mas "Formatter", id: 1190228172
-mas "GAget", id: 968487158
 mas "Gemini 2", id: 1090488118
-mas "iMazing HEIC Converter", id: 1292198261
 mas "Irvue", id: 1039633667
-mas "ISOBMFF Explorer", id: 1300778278
 mas "JSON Helper", id: 453114608
-mas "Micro Snitch", id: 972028355
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Remote Desktop", id: 1295203466
@@ -212,10 +192,8 @@ mas "PCalc", id: 403504866
 mas "Reeder", id: 1449412482
 mas "Shazam", id: 897118787
 mas "SnippetsLab", id: 1006087419
-mas "SubEthaEdit", id: 728530824
 mas "Tampermonkey", id: 1482490089
-mas "Telegram Desktop", id: 946399090
-mas "Textual IRC Client", id: 1262957439
+mas "Telegram Lite", id: 946399090
 mas "ToothFairy", id: 1191449274
 mas "Tweetbot", id: 1384080005
 mas "WiFi Explorer", id: 494803304

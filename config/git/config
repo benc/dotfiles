@@ -1,7 +1,7 @@
 [user]
 	name = Ben Cochez
 	email = ben@cochez.consulting
-	signingkey = 0x23BD7748E3BEC65E
+	signingkey = 3045535FF7AC94C1110D563923BD7748E3BEC65E
 [color]
 	ui = true
 [github]
