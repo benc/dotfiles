@@ -38,11 +38,11 @@ Two options:
 * Launch `/usr/local/bin/zsh` in iTerm
 * Set as default shell - could be troublesome if zsh gets b0rk3d down the road
 
-    sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells"
-    chsh -s /usr/local/bin/zsh
+        sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells"
+        chsh -s /usr/local/bin/zsh
 
-    # fix insecure directory warning
-    compaudit | xargs chmod g-w
+        # fix insecure directory warning
+        compaudit | xargs chmod g-w
 
 ### ruby
 
