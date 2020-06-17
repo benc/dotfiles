@@ -14,7 +14,7 @@
     git clone https://github.com/benc/dotfiles.git ~/.dotfiles
     brew tap thoughtbot/formulae
     brew install rcm
-    cd /.dotfiles/; rcup rcrc; rcup
+    cd ~/.dotfiles/; rcup rcrc; rcup
 
     # vscode settings need a separate installation until https://github.com/thoughtbot/rcm/issues/135 is resolved
     ~/.dotfiles/setup_vscode

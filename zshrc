@@ -1,3 +1,5 @@
+# zmodload zsh/zprof enable profiler
+
 # bootstrap homebrew
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export EDITOR=code
@@ -120,6 +122,11 @@ export PATH=/Applications/JProfiler.app/Contents/Resources/app/bin:$PATH
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export PATH=./node_modules/.bin:$PATH
 
+# Asciidoc
+function asciidoc2md() {
+  asciidoctor -b docbook -a leveloffset=+1 -o - "$1" | pandoc --atx-headers --wrap=preserve -t markdown_strict -f docbook - > "$1".md
+}
+
 # Postgres client tooling - brew install libpq
 export PATH=/usr/local/opt/libpq/bin:$PATH
 
@@ -174,3 +181,5 @@ export SDKMAN_DIR="${HOME}/.sdkman"
 [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
 
 eval $(thefuck --alias)
+
+# zprof > ~/.zprof # printout profiling

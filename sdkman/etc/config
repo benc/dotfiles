@@ -6,3 +6,4 @@ sdkman_curl_max_time=10
 sdkman_beta_channel=false
 sdkman_debug_mode=false
 sdkman_colour_enable=true
+sdkman_auto_env=true
