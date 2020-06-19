@@ -4,8 +4,17 @@ ln -sf $HOME/.dotfiles/vscode/keybindings.json "$HOME/Library/Application Suppor
 ln -sf $HOME/.dotfiles/vscode/snipppets "$HOME/Library/Application Support/VSCodium/User/snipppets"
 
 # zet vscode als default editor
-editor=com.microsoft.VSCode
+editor=com.microsoft.VSCodium
 extensions=(public.plain-text public.unix-executable .c .cpp .cs .css .env .erb .haml .hs .java .js .json .md .sass .scss .sh .ts .txt .yaml .yml .zsh)
+
+code --install-extension EditorConfig.EditorConfig
+code --install-extension idleberg.applescript
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension ms-python.python
+code --install-extension Pivotal.vscode-spring-boot
+code --install-extension redhat.vscode-xml
+code --install-extension scala-lang.scala
+code --install-extension vscode-icons-team.vscode-icons
 
 for extension in "${extensions[@]}"; do
   duti -s $editor $extension all
