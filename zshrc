@@ -77,9 +77,9 @@ if zplug check "zsh-users/zsh-history-substring-search"; then
 fi
 
 # navi - use it through homebrew until this works
-zplug denisidoro/navi
-source "$($ZPLUG_REPOS/denisidoro/navi/navi widget zsh)"
-export PATH=$ZPLUG_REPOS/denisidoro/navi/:$PATH
+#zplug denisidoro/navi
+#source "$($ZPLUG_REPOS/denisidoro/navi/navi widget zsh)"
+#export PATH=$ZPLUG_REPOS/denisidoro/navi/:$PATH
 
 zplug check --verbose || zplug install
 zplug load
@@ -130,17 +130,17 @@ function asciidoc2md() {
 # Postgres client tooling - brew install libpq
 export PATH=/usr/local/opt/libpq/bin:$PATH
 
-# start node 10.5.0 by default
-n lts
+# start node
+# n v12.18.2
 
 # install tooling if needed
-[ -z ~/.n/bin/avn ] && npm install -g npm avn avn-n
+# [ -z ~/.n/bin/avn ] && npm install -g npm avn avn-n
 
 # What the
 eval "$(thefuck --alias fu)"
 
 # Kubernetes
-source <(stern --completion=zsh)
+# source <(stern --completion=zsh)
 
 # Docker
 if [ -d "/Applications/Docker.app/Contents/Resources/etc/" ]; then
@@ -172,9 +172,9 @@ alias cat="ccat --bg=\"dark\""
 alias top="htop"
 
 # NSSurge
-export https_proxy=http://127.0.0.1:6152
-export http_proxy=http://127.0.0.1:6152
-export all_proxy=socks5://127.0.0.1:6153
+# export https_proxy=http://127.0.0.1:6152
+# export http_proxy=http://127.0.0.1:6152
+# export all_proxy=socks5://127.0.0.1:6153
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="${HOME}/.sdkman"
