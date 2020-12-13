@@ -3,7 +3,6 @@
 # bootstrap homebrew
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export EDITOR=code
-# export EDITOR="/usr/local/bin/mate -w"
 
 # Perl complains about this
 export LC_CTYPE=en_US.UTF-8
@@ -34,7 +33,7 @@ zplug "zplug/zplug", hook-build:"zplug --self-manage"
 # plugins
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/bgnotify", from:oh-my-zsh
-zplug "plugins/rbenv", from:oh-my-zsh
+zplug "plugins/pyenv", from:oh-my-zsh
 zplug "plugins/pipenv", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/mvn", from:oh-my-zsh
@@ -86,6 +85,7 @@ zplug load
 
 ### SETTINGS & TOOLING CONFIGURATION ###
 # zsh completions
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 fpath=($(brew --prefix)/share/zsh-completions $fpath)
 
 # link up with iterm2
@@ -155,6 +155,12 @@ eval "$(pipenv --completion)"
 # add local commands to PATH
 export PATH=./bin:$PATH
 
+# nova
+# test -e /usr/local/share/zsh/site-functions/_nova && source /usr/local/share/zsh/site-functions/_nova
+
+# sbt
+export SBT_CREDENTIALS=~/.ivy2/.credentials
+
 ### ALIASES ###
 # checkstyle
 alias checkstyle-report="rg --before-context=5 severity=\\\"error **/target/checkstyle-result.xml"
@@ -182,4 +188,3 @@ export SDKMAN_DIR="${HOME}/.sdkman"
 
 eval $(thefuck --alias)
 
-# zprof > ~/.zprof # printout profiling

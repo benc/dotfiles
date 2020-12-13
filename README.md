@@ -44,6 +44,35 @@ Two options:
         # fix insecure directory warning
         compaudit | xargs chmod g-w
 
+### python
+
+    brew install readline xz
+    curl https://pyenv.run | bash
+
+    brew reinstall bzip2 zlib
+
+    # anaconda
+    pyenv install anaconda3-2020.07
+
+    # python 3.7.9
+    LDFLAGS="-L$(brew --prefix bzip2)/lib -L$(brew --prefix zlib)/lib" CPPFLAGS="-I$(brew --prefix bzip2)/include -I$(brew --prefix zlib)/include" pyenv install 3.7.9
+    mkdir -p $(brew --cellar python@3.7); ln -s ~/.pyenv/versions/3.7.9 $(brew --cellar python@3.7)/3.7.9
+
+    # python 3.8.6
+    LDFLAGS="-L$(brew --prefix bzip2)/lib -L$(brew --prefix zlib)/lib" CPPFLAGS="-I$(brew --prefix bzip2)/include -I$(brew --prefix zlib)/include" pyenv install 3.8.6
+    mkdir -p $(brew --cellar python@3.8); ln -s ~/.pyenv/versions/3.8.6 $(brew --cellar python@3.8)/3.8.6
+
+    # python 3.9.1
+    LDFLAGS="-L$(brew --prefix bzip2)/lib -L$(brew --prefix zlib)/lib" CPPFLAGS="-I$(brew --prefix bzip2)/include -I$(brew --prefix zlib)/include" pyenv install 3.9.1
+    mkdir -p $(brew --cellar python@3.9);  ln -s ~/.pyenv/versions/3.9.1 $(brew --cellar python@3.9)/3.9.1
+    brew link python3
+    pyenv global 3.9.1
+
+    # to install packages into the correct python
+    pyenv shell 3.8.6
+    python -m pip install --upgrade pip
+    python -m pip install pipenv
+
 ### ruby
 
     brew install rbenv

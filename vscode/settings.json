@@ -1,9 +1,8 @@
 // Place your settings in this file to overwrite the default settings
 {
     "docker.showExplorer": false,
-    "editor.fontFamily": "Hasklig",
+    "editor.fontFamily": "MonoLisa",
     "editor.fontLigatures": true,
-    "editor.fontSize": 14,
     "editor.renderIndentGuides": true,
     "editor.minimap.enabled": true,
     "files.associations": {
@@ -44,5 +43,7 @@
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.fontSize": 13
 }

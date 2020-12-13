@@ -1,21 +1,59 @@
 #!/bin/bash
-ln -sf $HOME/.dotfiles/vscode/settings.json "$HOME/Library/Application Support/VSCodium/User/settings.json"
-ln -sf $HOME/.dotfiles/vscode/keybindings.json "$HOME/Library/Application Support/VSCodium/User/keybindings.json"
-ln -sf $HOME/.dotfiles/vscode/snipppets "$HOME/Library/Application Support/VSCodium/User/snipppets"
+ln -sf $HOME/.dotfiles/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
+ln -sf $HOME/.dotfiles/vscode/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"
+ln -sf $HOME/.dotfiles/vscode/snipppets "$HOME/Library/Application Support/Code/User/snipppets"
 
 # zet vscode als default editor
-editor=com.microsoft.VSCodium
+editor=com.microsoft.VSCode
 extensions=(public.plain-text public.unix-executable .c .cpp .cs .css .env .erb .haml .hs .java .js .json .md .sass .scss .sh .ts .txt .yaml .yml .zsh)
 
+### extensions
+
+# generic
 code --install-extension EditorConfig.EditorConfig
-code --install-extension idleberg.applescript
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension ms-python.python
-code --install-extension Pivotal.vscode-spring-boot
-code --install-extension redhat.vscode-xml
-code --install-extension scala-lang.scala
 code --install-extension vscode-icons-team.vscode-icons
 
-for extension in "${extensions[@]}"; do
-  duti -s $editor $extension all
-done
+# languages
+code --install-extension redhat.vscode-xml
+code --install-extension redhat.vscode-yaml
+
+# Applescript
+code --install-extension idleberg.applescript
+
+# Python
+code --install-extension ms-azuretools.vscode-docker
+
+# Python
+code --install-extension ms-python.python
+
+# Java/Scala
+code --install-extension redhat.java
+code --install-extension vscjava.vscode-java-debug
+code --install-extension vscjava.vscode-java-test
+code --install-extension vscjava.vscode-java-dependency
+code --install-extension VisualStudioExptTeam.vscodeintellicode
+code --install-extension Pivotal.vscode-spring-boot
+code --install-extension vscjava.vscode-spring-boot-dashboard
+code --install-extension scala-lang.scala
+
+# js, ts & angular
+code --install-extension Angular.ng-template
+code --install-extension cyrilletuzi.angular-schematics
+code --install-extension msjsdiag.debugger-for-chrome
+code --install-extension esbenp.prettier-vscode
+code --install-extension christian-kohler.path-intellisense
+code --install-extension christian-kohler.npm-intellisense
+code --install-extension mrmlnc.vscode-scss
+code --install-extension ms-vscode.vscode-typescript-tslint-plugin
+code --install-extension pflannery.vscode-versionlens
+code --install-extension ms-vscode.js-debug
+
+# postgres
+code --install-extension ms-ossdata.vscode-postgresql
+
+# big data
+code --install-extension mshdinsight.azure-hdinsight
+
+# for extension in "${extensions[@]}"; do
+#   duti -s $editor $extension all
+# done
