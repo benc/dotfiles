@@ -1,0 +1,66 @@
+#!/bin/bash
+
+### ZPLUG ###
+# echo "💡 Loading zsh customizations..."
+# echo "💡 zplug: init..."
+export ZPLUG_HOME=$HOME/.zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+
+# echo "💡 zplug: loading plugins..."
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/bgnotify", from:oh-my-zsh
+zplug "plugins/command-not-found", from:oh-my-zsh
+
+{{ if eq .chezmoi.os "linux" -}}
+zplug "plugins/ssh-agent", from:oh-my-zsh
+{{ end }}
+
+# a zsh plugin to help remembering those aliases you once defined
+zplug "djui/alias-tips"
+
+# fzf zsh extensions
+zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
+
+# syntax highlighting
+zplug "zdharma-continuum/fast-syntax-highlighting", defer:1
+
+# fish like autosuggestions
+zplug "zsh-users/zsh-autosuggestions", as:plugin, defer:2
+
+# zsh completions
+zplug 'zsh-users/zsh-completions', depth:1 # more completions
+
+# autocomplete
+zplug "marlonrichert/zsh-autocomplete"
+
+# # old completion
+# echo "💡 zplug: loading completion and history..."
+# zplug "lib/completion", from:oh-my-zsh
+# zplug "lib/history", from:oh-my-zsh
+# zplug "zsh-users/zsh-history-substring-search", defer:3
+
+# if zplug check "zsh-users/zsh-autosuggestions"; then
+#   ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-search-down)
+#   ZSH_AUTOSUGGEST_CLEAR_WIDGETS=("${(@)ZSH_AUTOSUGGEST_CLEAR_WIDGETS:#(up|down)-line-or-history}")
+#   ZSH_AUTOSUGGEST_USE_ASYNC=true
+# fi
+
+# if zplug check "zsh-users/zsh-history-substring-search"; then
+#   zmodload zsh/terminfo
+#   bindkey '^[[A' history-substring-search-up
+#   bindkey '^[[B' history-substring-search-down
+#   bindkey "$terminfo[kcuu1]" history-substring-search-up
+#   bindkey "$terminfo[kcud1]" history-substring-search-down
+#   bindkey "$terminfo[cuu1]" history-substring-search-up
+#   bindkey "$terminfo[cud1]" history-substring-search-down
+# fi
+
+# echo "💡 zplug: check for new versions..."
+zplug check --verbose || zplug install
+
+# echo "💡 zplug: load..."
+zplug load
+
+# echo "💡 zplug: loaded!"

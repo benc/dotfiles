@@ -1,0 +1,68 @@
+{{- $name := "Ben Cochez" -}}
+{{- $email := "ben@cochez.consulting" -}}
+{{- $signingkey := "3045535FF7AC94C1110D563923BD7748E3BEC65E" -}}
+
+{{- $data := . }}
+{{- $_ := set $data "host" (default (dict) (get $data "host")) -}}
+{{- $_ := set $data "user" (default (dict) (get $data "user")) -}}
+
+{{- if stdinIsATTY -}}
+{{- $name = promptStringOnce $data.user "name" "Your Name" $name -}}
+{{- $email = promptStringOnce $data.user "email" "Your Email" $email -}}
+{{- $signingkey = promptStringOnce $data.user "signingkey" "Your GPG Signing Key" $signingkey -}}
+
+{{- writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
+
+{{- else -}}
+{{-   $headless = true -}}
+{{-   writeToStdout "Chezmoi is running in headless environment.\n" -}}
+{{- end -}}
+
+{{- $tools_flavor := "unknown" -}}
+{{- if eq .chezmoi.os "darwin" "dragonfly" "dragonfly" "freebsd" "ios" "netbsd" "openbsd" -}}
+{{-   $tools_flavor = "bsd" -}}
+{{- else if eq .chezmoi.os "android" "linux" "windows" -}}
+{{-   $tools_flavor = "gnu" -}}
+{{- end -}}
+{{- $is_linux := eq .chezmoi.os "linux" -}}
+{{- $is_macos := eq .chezmoi.os "darwin" -}}
+{{- $is_windows := eq .chezmoi.os "windows" -}}
+{{- $is_wsl := false -}}
+{{- if and $is_linux (get .chezmoi "kernel") -}}
+{{-   if hasSuffix "Microsoft" .chezmoi.kernel.osrelease -}}
+{{-     $is_wsl = true -}}
+{{-   end -}}
+{{- end -}}
+
+[diff]
+command = "/usr/local/bin/ksdiff"
+
+[merge]
+command = "/usr/local/bin/ksdiff"
+
+[edit]
+command = "code"
+
+[git]
+autoCommit = true
+    
+[data]
+editor = "code"
+
+[data.os]
+tools_flavor = {{ $tools_flavor | quote }}
+linux = {{ $is_linux }}
+macos = {{ $is_macos }}
+windows = {{ $is_windows }}
+wsl = {{ $is_wsl }}
+
+[data.python]
+version = "3.11"
+
+[data.ruby]
+version = "3.2.0"
+
+[data.user]
+email = {{ $email | quote }}
+name = {{ $name | quote }}
+signingkey = {{ $signingkey | quote }}

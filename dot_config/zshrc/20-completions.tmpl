@@ -1,0 +1,23 @@
+#!/bin/bash
+
+{{ if eq .chezmoi.os "darwin" -}}
+if (( ${+commands[brew]} )); then
+  fpath+="$(brew --prefix)/share/zsh/site-functions"
+  fpath+="$(brew --prefix)/share/zsh-completions"
+fi
+{{ end -}}
+
+# pipenv
+if (( ${+commands[pipenv]} )); then
+  eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
+fi
+
+# pip
+if (( ${+commands[pip]} )); then
+  eval "$(pip completion --zsh)"
+fi
+
+# chezmoi
+if (( ${+commands[chezmoi]} )); then
+  eval "$(chezmoi completion zsh)"
+fi

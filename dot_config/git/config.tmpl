@@ -1,0 +1,39 @@
+[user]
+    name = {{ .user.name }}
+    email = {{ .user.email }}
+	signingkey = {{ .user.signingkey }}
+[color]
+	ui = true
+[github]
+	user = benc
+[core]
+    editor = {{ .editor }}
+[help]
+	autocorrect = 1
+[pull]
+    rebase = true
+[push]
+	default = simple
+[init]
+	defaultBranch = main
+{{ if eq .chezmoi.os "darwin" }}
+[gpg]
+ 	program = /usr/local/MacGPG2/bin/gpg2
+{{ end }}
+[commit]
+  	gpgsign = true
+{{ if eq .chezmoi.os "darwin" }}
+[diff]
+       tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+       cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+       prompt = false
+[merge]
+       tool = Kaleidoscope
+[mergetool "Kaleidoscope"]
+       cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+       trustExitCode = true
+[mergetool]
+       prompt = false
+{{ end }}

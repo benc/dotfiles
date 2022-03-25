@@ -1,0 +1,9 @@
+#!/bin/bash
+
+{{ if eq .chezmoi.os "darwin" -}}
+if [ -d "/Applications/Docker.app/Contents/Resources/etc/" ]; then
+  for f in "/Applications/Docker.app/Contents/Resources/etc/"*.zsh-completion; do
+    source "$f"
+  done
+fi
+{{ end -}}

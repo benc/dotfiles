@@ -1,0 +1,20 @@
+\set QUIET 1
+\pset null '¤'
+
+-- stop on first error
+-- \set ON_ERROR_STOP on
+
+-- nicer prompt
+\set PROMPT1 '\npsql %[%033[0;33;32m%]%/%[%033[0m%] on %[%033[0;33;33m%]%M%[%033[0m%] as %[%033[0;33;35m%]%n%[%033[0m%] %[%033[0;33;36m%]%x%[%033[0m%]\n%R> '
+\set PROMPT2 '%R> '
+
+-- Show how long each query takes to execute
+\timing
+
+-- Use best available output format
+\x auto
+\set VERBOSITY verbose
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+\unset QUIET

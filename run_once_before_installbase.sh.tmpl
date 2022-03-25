@@ -1,0 +1,235 @@
+#!/bin/sh
+{{ if eq .chezmoi.os "linux" -}}
+echo "💡 Updating apt..."
+sudo apt update
+
+echo "💡 Installing generic tooling (shell, utilities, ...)"
+sudo apt install -y zsh exa fzf htop jq ripgrep git locales keychain httpie zoxide grc
+
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install | bash
+curl -fsSL https://starship.rs/install.sh | sh -s -- -y
+
+sudo echo "LC_ALL=en_US.UTF-8" >> /etc/environment
+sudo echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+sudo echo "LANG=en_US.UTF-8" > /etc/locale.conf
+sudo locale-gen en_US.UTF-8
+
+echo "💡 Installing sdkman dependencies..."
+sudo apt install -y unzip zip curl
+
+echo "💡 Installing pyenv dependencies..."
+sudo apt install -y build-essential libssl-dev zlib1g-dev \
+libbz2-dev libreadline-dev libsqlite3-dev curl llvm \
+libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+echo "💡 Installing ruby-build dependencies..."
+sudo apt install -y libyaml-dev
+EOF
+
+echo "💡 Installing n-install dependencies..."
+sudo apt install -y make
+
+echo "💡 Installing 1Password CLI..."
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --batch --yes --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" | sudo tee /etc/apt/sources.list.d/1password.list
+sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --batch --yes --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+sudo apt update && sudo apt install 1password-cli
+
+echo "💡 Setting default shell to ZSH..."
+sudo chsh -s /usr/bin/zsh $(whoami)
+{{ end -}}
+
+{{ if eq .chezmoi.os "windows" -}}
+winget install --id Microsoft.Powershell --source winget
+winget install --id Starship.Starship
+winget install --id Eugeny.Tabby
+winget install --id Vercel.Hyper
+
+winget install --id tailscale.tailscale
+
+winget install --id Microsoft.Sysinternals.ProcessExplorer
+
+winget install --id Nvidia.GeForceExperience
+winget install --id Intel.IntelDriverAndSupportAssistant
+
+# winget install --id Docker.DockerDesktop
+
+winget install --id JetBrains.Toolbox
+winget install --id SaaSGroup.Tower
+winget install --id ScooterSoftware.BeyondCompare4
+winget install --id Microsoft.VisualStudioCode
+
+# TODO setup SSH
+#
+# TODO add reg key to set shell to bash with a default wsl distro - so jetbrains remote works WITHOUT setting up SSH in WSL2!
+# wsl --install -d Ubuntu
+# wsl --set-default Ubuntu
+# New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\WINDOWS\System32\bash.exe" -PropertyType String -Force
+{{ end -}}
+
+{{ if eq .chezmoi.os "darwin" -}}
+
+if [ ! -f "/usr/local/bin/brew" ]; then
+    echo "💡 Installing homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+echo "💡 Installing generic tooling (shell, utilities, ...)"
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "zsh"
+brew "exa"
+brew "fzf"
+brew "htop"
+brew "jq"
+brew "ripgrep"
+brew "httpie"
+brew "navi"
+brew "starship"
+brew "terminal-notifier"
+brew "m-cli"
+brew "mas"
+brew "zoxide"
+brew "watch"
+brew "grc"
+EOF
+
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+
+echo "💡 Installing 1Password CLI..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+cask "1password/tap/1password-cli"
+EOF
+
+echo "💡 Installing Tailscale..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+mas "Tailscale", id: 1475387142
+EOF
+
+echo "💡 Installing developer tools..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "coreutils"
+brew "git"
+cask "gpg-suite-no-mail"
+EOF
+
+echo "💡 Installing sdkman dependencies..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "curl"
+brew "zip"
+brew "unzip"
+EOF
+
+echo "💡 Installing pyenv dependencies..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "openssl"
+brew "readline"
+brew "sqlite3"
+brew "xz"
+brew "zlib"
+brew "tcl-tk"
+EOF
+
+echo "💡 Installing ruby-build dependencies..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "libyaml"
+EOF
+
+echo "💡 Installing go..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "go"
+EOF
+
+# echo "💡 Installing minikube..."
+# brew bundle --no-lock --file=/dev/stdin <<EOF
+# brew "minikube"
+# brew "kubernetes-cli"
+# brew "helm"
+# brew "docker"
+# brew "docker-compose"
+# brew "docker-credential-helper"
+# EOF
+#
+# mkdir -p ~/.docker/cli-plugins
+# ln -sfn /usr/local/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+
+# echo "💡 Installing microk8s..."
+# brew install multipass ubuntu/microk8s/microk8s
+# brew link --overwrite kubernetes-cli # if docker desktop is installed
+# microk8s install --yes
+# microk8s enable dashboard
+# microk8s enable dns
+# microk8s enable community; microk8s enable portainer
+# # microk8s dashboard-proxy
+# # merge output from microk8s config into .kube
+
+# microk8s uninstall
+# brew remove multipass microk8s
+
+echo "💡 Setting a couple of macos defaults..."
+
+# Increase sound quality for Bluetooth headphones/headsets
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
+# Set language and text formats
+defaults write NSGlobalDomain AppleLanguages -array "nl" "en"
+defaults write NSGlobalDomain AppleLocale -string "nl_BE@currency=EUR"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleMetricUnits -bool true
+{{ end -}}
+
+{{ if (ne .chezmoi.os "windows") -}}
+echo "💡 Setting up version managers..."
+
+if [ ! -d "${HOME}/.sdkman" ]; then
+    echo "💡 Setting up SDKMan..."
+
+    curl -s "https://get.sdkman.io?rcupdate=false" | bash
+fi
+
+# TODO what about asdf for python, ruby, java?
+if [ ! -d "${HOME}/.pyenv" ]; then
+    # Set up pyenv
+    echo "💡 Setting up python (pyenv)..."
+
+    curl https://pyenv.run | bash
+
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+
+    echo "💡 Installing python..."
+
+    pyenv install --skip-existing {{ .python.version }}
+    pyenv global {{ .python.version }}
+fi
+
+if [ ! -d "${HOME}/.n" ]; then
+    echo "💡 Setting up node (n, avn)..."
+
+    curl -L https://bit.ly/n-install | N_PREFIX=$HOME/.n bash -s -- -n -y
+
+    export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+
+    $HOME/.n/bin/npm install -g npm avn avn-n
+fi
+
+if [ ! -d "${HOME}/.rbenv" ]; then
+    echo "💡 Setting up ruby (rbenv)..."
+
+    git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
+    git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
+
+    echo "💡 Installing ruby..."
+
+    eval "$(~/.rbenv/bin/rbenv init -)"
+
+    rbenv install {{ .ruby.version }}
+    rbenv global {{ .ruby.version }}
+fi
+
+echo "💡 System initialisation done. Please open a new terminal now..."
+{{ end -}}
