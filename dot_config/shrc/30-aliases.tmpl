@@ -10,3 +10,4 @@ alias cat="ccat --bg=\"dark\""
 alias top="htop"
 
 alias nuke_modules="rm -rf node_modules; npm install; npm prune"
+alias zkill="ps aux | fzf | awk '{print $2}' | xargs kill -9"
