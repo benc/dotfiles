@@ -6,3 +6,10 @@ if [ -d "${HOME}/.config/shrc" ]; then
         . "$file"
     done
 fi
+
+if [ -d "${HOME}/.config/bashrc" ]; then
+    for file in "${HOME}/.config/bashrc"/*; do
+        # shellcheck source=/dev/null
+        . "$file"
+    done
+fi
