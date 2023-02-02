@@ -1,0 +1,8 @@
+#!/bin/bash
+export LANG='en_US.UTF-8'
+export EDITOR=code
+export PATH="$HOME/bin:$PATH"
+
+{{ if .os.macos -}}
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin
+{{- end }}
