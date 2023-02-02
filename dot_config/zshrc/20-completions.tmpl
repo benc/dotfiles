@@ -1,6 +1,6 @@
 #!/bin/bash
 
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if .os.macos -}}
 if (( ${+commands[brew]} )); then
   fpath+="$(brew --prefix)/share/zsh/site-functions"
   fpath+="$(brew --prefix)/share/zsh-completions"

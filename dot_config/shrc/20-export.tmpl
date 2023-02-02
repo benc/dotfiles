@@ -6,9 +6,9 @@ if service docker status 2>&1 | grep -q "is not running"; then
 fi
 # {{ end }}
 
-# {{ if eq .chezmoi.os "darwin" }}
+# {{ if .os.macos }}
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-# {{ else if eq .chezmoi.os "linux" }}
+# {{ else if .os.linux }}
 
 # {{ end }}
 

@@ -13,7 +13,7 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/bgnotify", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 
-{{ if eq .chezmoi.os "linux" -}}
+{{ if .os.linux -}}
 zplug "plugins/ssh-agent", from:oh-my-zsh
 {{ end }}
 

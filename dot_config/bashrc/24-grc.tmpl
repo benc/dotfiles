@@ -1,7 +1,7 @@
 GRC_ALIASES=true
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if .os.macos -}}
 [[ -s "`brew --prefix`/etc/grc.sh" ]] && source `brew --prefix`/etc/grc.sh
 {{ end -}}
-{{ if eq .chezmoi.os "linux" -}}
+{{ if .os.linux -}}
 [[ -s "/etc/grc.sh" ]] && source /etc/grc.sh
 {{ end -}}
