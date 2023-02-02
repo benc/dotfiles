@@ -1,5 +1,5 @@
 #!/bin/sh
-{{ if eq .chezmoi.os "linux" -}}
+{{ if .os.linux -}}
 echo "💡 Updating apt..."
 sudo apt update
 
@@ -42,11 +42,27 @@ sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --batch --yes --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
 sudo apt update && sudo apt install 1password-cli
 
+{{ if .os.wsl -}}
+echo "💡 Enabling Jetbrains Gateway on WSL..."
+sudo apt remove -y --purge openssh-server
+sudo apt install -y openssh-server
+sudo service ssh --full-restart
+
+sudo grep -qxF '%sudo ALL=NOPASSWD: /etc/init.d/ssh' /etc/sudoers || echo '%sudo ALL=NOPASSWD: /etc/init.d/ssh' | sudo EDITOR='tee -a' visudo
+%sudo ALL=NOPASSWD: /etc/init.d/ssh
+
+sudo touch /etc/wsl.conf
+sudo grep -qxF '[boot]' /etc/wsl.conf || echo '[boot]' | sudo tee -a /etc/wsl.conf
+sudo grep -qxF 'command = service ssh start' /etc/wsl.conf || echo 'command = service ssh start' | sudo tee -a /etc/wsl.conf
+
+echo "Remember to setup https://github.com/shayne/go-wsl2-host. Script based on: https://gist.github.com/bubba-h57/3b212d8a8d56e1c35218515dd220371c"
+{{ end -}}
+
 echo "💡 Setting default shell to ZSH..."
 sudo chsh -s /usr/bin/zsh $(whoami)
 {{ end -}}
 
-{{ if eq .chezmoi.os "windows" -}}
+{{ if .os.windows -}}
 winget install --id Microsoft.Powershell --source winget
 winget install --id Starship.Starship
 winget install --id Eugeny.Tabby
@@ -74,7 +90,7 @@ winget install --id Microsoft.VisualStudioCode
 # New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\WINDOWS\System32\bash.exe" -PropertyType String -Force
 {{ end -}}
 
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if .os.macos -}}
 
 if [ ! -f "/usr/local/bin/brew" ]; then
     echo "💡 Installing homebrew..."
@@ -189,7 +205,7 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 {{ end -}}
 
-{{ if (ne .chezmoi.os "windows") -}}
+{{ if not .os.windows -}}
 echo "💡 Setting up version managers..."
 
 if [ ! -d "${HOME}/.sdkman" ]; then

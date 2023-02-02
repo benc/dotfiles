@@ -45,12 +45,11 @@ command = "code"
 
 [git]
 autoCommit = true
-    
+
 [data]
 editor = "code"
 
 [data.os]
-tools_flavor = {{ $tools_flavor | quote }}
 linux = {{ $is_linux }}
 macos = {{ $is_macos }}
 windows = {{ $is_windows }}
