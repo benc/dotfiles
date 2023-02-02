@@ -29,7 +29,7 @@
 {{- $is_windows := eq .chezmoi.os "windows" -}}
 {{- $is_wsl := false -}}
 {{- if and $is_linux (get .chezmoi "kernel") -}}
-{{-   if hasSuffix "Microsoft" .chezmoi.kernel.osrelease -}}
+{{-   if hasSuffix "microsoft-standard-WSL2" .chezmoi.kernel.osrelease -}}
 {{-     $is_wsl = true -}}
 {{-   end -}}
 {{- end -}}
