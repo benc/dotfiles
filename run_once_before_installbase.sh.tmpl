@@ -49,13 +49,12 @@ sudo apt install -y openssh-server
 sudo service ssh --full-restart
 
 sudo grep -qxF '%sudo ALL=NOPASSWD: /etc/init.d/ssh' /etc/sudoers || echo '%sudo ALL=NOPASSWD: /etc/init.d/ssh' | sudo EDITOR='tee -a' visudo
-%sudo ALL=NOPASSWD: /etc/init.d/ssh
 
 sudo touch /etc/wsl.conf
 sudo grep -qxF '[boot]' /etc/wsl.conf || echo '[boot]' | sudo tee -a /etc/wsl.conf
 sudo grep -qxF 'command = service ssh start' /etc/wsl.conf || echo 'command = service ssh start' | sudo tee -a /etc/wsl.conf
 
-echo "Remember to setup https://github.com/shayne/go-wsl2-host. Script based on: https://gist.github.com/bubba-h57/3b212d8a8d56e1c35218515dd220371c"
+echo "💡 Remember to setup https://github.com/shayne/go-wsl2-host. Script based on: https://gist.github.com/bubba-h57/3b212d8a8d56e1c35218515dd220371c"
 {{ end -}}
 
 echo "💡 Setting default shell to ZSH..."
