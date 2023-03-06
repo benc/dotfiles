@@ -202,6 +202,8 @@ brew "kubernetes-cli"
 brew "helm"
 EOF
 
+go install github.com/jrockway/kubectl-jq/cmd/kubectl-jq@latest
+
 # echo "💡 Installing minikube..."
 # brew bundle --no-lock --file=/dev/stdin <<EOF
 # brew "minikube"
