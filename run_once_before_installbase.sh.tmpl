@@ -17,6 +17,7 @@ sudo locale-gen en_US.UTF-8
 
 # echo "💡 Installing kubernetes tooling..."
 # sudo apt install -y k9s helm
+# go install github.com/jrockway/kubectl-jq/cmd/kubectl-jq@latest
 
 echo "💡 Installing sdkman dependencies..."
 sudo apt install -y unzip zip curl
@@ -200,6 +201,7 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "k9s"
 brew "kubernetes-cli"
 brew "helm"
+brew tap jrockway/tap; brew install jrockway/tap/kubectl-jq
 EOF
 
 go install github.com/jrockway/kubectl-jq/cmd/kubectl-jq@latest
