@@ -1,0 +1,7 @@
+#!/bin/bash
+
+{{ if .os.macos -}}
+if [ -d "/Applications/JProfiler.app" ]; then
+  PATH=/Applications/JProfiler.app/Contents/Resources/app/bin:$PATH
+fi
+{{ end -}}
