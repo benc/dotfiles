@@ -34,11 +34,23 @@
 {{-   end -}}
 {{- end -}}
 
+{{ if .os.windows -}}
+[interpreters.ps1]
+command = "pwsh"
+args = ["-NoLogo"]
+
+[cd]
+command = "pwsh"
+args = ["-NoLogo", "-NoExit", "-Command", "& {Set-Location $env:HOMEPATH/.local/share/chezmoi}"]
+{{- end }}
+
+{{ if .os.macos -}}
 [diff]
 command = "/usr/local/bin/ksdiff"
 
 [merge]
 command = "/usr/local/bin/ksdiff"
+{{- end }}
 
 [edit]
 command = "code"

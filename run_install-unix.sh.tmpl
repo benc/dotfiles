@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 {{ if .os.linux -}}
 echo "💡 Updating apt..."
 sudo apt update
@@ -69,59 +70,6 @@ echo "   * W11: Open the firewall"
 
 echo "💡 Setting default shell to ZSH..."
 sudo chsh -s /usr/bin/zsh $(whoami)
-{{ end -}}
-
-{{ if .os.windows -}}
-winget upgrade --all
-
-winget install --id Microsoft.Powershell --source winget
-winget install --id Starship.Starship
-winget install --id Eugeny.Tabby
-winget install --id Vercel.Hyper
-
-winget install --id tailscale.tailscale
-
-winget install --id Microsoft.Sysinternals.ProcessExplorer
-
-winget install --id Nvidia.GeForceExperience
-winget install --id Intel.IntelDriverAndSupportAssistant
-
-# winget install --id Docker.DockerDesktop
-
-winget install --id JetBrains.Toolbox
-winget install --id SaaSGroup.Tower
-winget install --id ScooterSoftware.BeyondCompare4
-winget install --id Microsoft.VisualStudioCode
-
-# install hyperv
-# DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
-
-# install wsl2
-# wsl --install
-# wsl --set-default-version 2
-
-# wsl --update
-# wsl --install -d Ubuntu
-
-# Stop ubuntu
-# wsl --stop -d Ubuntu
-#
-
-# Add .wslconfig script with:
-#
-# In elevated cmd, run
-# netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=2222
-# netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=2222 connectaddress=192.168.1.44 connectport=2222
-# # netsh interface portproxy show all
-# # netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=2222
-# netsh advfirewall firewall add rule name="Open Port 2222 for WSL2" dir=in action=allow protocol=TCP localport=2222
-
-# TODO setup SSH
-#
-# TODO add reg key to set shell to bash with a default wsl distro - so jetbrains remote works WITHOUT setting up SSH in WSL2!
-# wsl --install -d Ubuntu
-# wsl --set-default Ubuntu
-# New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\WINDOWS\System32\bash.exe" -PropertyType String -Force
 {{ end -}}
 
 {{ if .os.macos -}}
