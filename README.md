@@ -28,7 +28,11 @@ Prerequisites, run in an *elevated* powershell prompt:
 Run in a *regular* powershell prompt:
 
     (irm -useb https://get.chezmoi.io/ps1) | powershell -c -
-    .\bin\chezmoi.exe init --apply benc
+    .\bin\chezmoi.exe init https://github.com/benc/dotfiles.git
+
+Run in an *elevated* powershell prompt:
+
+    chezmoi apply
 
 # Usage
 

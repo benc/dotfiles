@@ -1,1 +1,19 @@
+key.txt.age
 README.md
+
+{{ if not .os.windows -}}
+Documents
+decrypt-private-key-windows.ps1
+install-windows.ps1
+{{- end }}
+
+# unix files
+{{ if .os.windows -}}
+.config/htop
+.config/mpv
+.config/shrc
+.config/zshrc
+.bash_profile
+.zshrc
+install-unix.sh
+{{- end }}
