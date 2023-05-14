@@ -5,7 +5,7 @@ gsudo {
     Update-Module
 
     Write-Host "`nInstall choco packages"
-    choco install bat delta dust fd fzf lf ripgrep -y
+    choco install bat delta fd fzf lf ripgrep -y
 
     Write-Host "`nInstall modules"
     Install-Module git-aliases -Scope CurrentUser -Allowclobber
@@ -18,7 +18,7 @@ gsudo {
 }
 
 # install hyperv
-# DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
+DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
 
 # install wsl2
 # wsl --install
@@ -58,15 +58,12 @@ function wingetInstallIfNotInstalled($id) {
 }
 
 wingetInstallIfNotInstalled("AgileBits.1Password")
-wingetInstallIfNotInstalled("Starship.Starship")
-wingetInstallIfNotInstalled("ajeetdsouza.zoxide")
-wingetInstallIfNotInstalled("Eugeny.Tabby")
+wingetInstallIfNotInstalled("zoxide")
 wingetInstallIfNotInstalled("ScooterSoftware.BeyondCompare4")
 wingetInstallIfNotInstalled("Microsoft.Sysinternals.ProcessExplorer")
 wingetInstallIfNotInstalled("Microsoft.WindowsTerminal")
 wingetInstallIfNotInstalled("JetBrains.Toolbox")
 wingetInstallIfNotInstalled("SaaSGroup.Tower")
-wingetInstallIfNotInstalled("Vercel.Hyper")
 wingetInstallIfNotInstalled("WinSCP.WinSCP")
 wingetInstallIfNotInstalled("Giorgiotani.Peazip")
 wingetInstallIfNotInstalled("Microsoft.VisualStudioCode")
@@ -79,3 +76,4 @@ wingetInstallIfNotInstalled("tailscale.tailscale")
 wingetInstallIfNotInstalled("OpenJS.NodeJS.LTS")
 wingetInstallIfNotInstalled("Zoom.Zoom")
 wingetInstallIfNotInstalled("IVPN.IVPN")
+wingetInstallIfNotInstalled("Logitech.LogiTune")

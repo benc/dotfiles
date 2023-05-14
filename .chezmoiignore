@@ -1,14 +1,15 @@
 key.txt.age
 README.md
 
-{{ if not .os.windows -}}
+# ignore on windows
+{{ if ne .chezmoi.os "windows" -}}
 Documents
 decrypt-private-key-windows.ps1
 install-windows.ps1
 {{- end }}
 
-# unix files
-{{ if .os.windows -}}
+# ignore on *nix
+{{ if eq .chezmoi.os "windows" -}}
 .config/htop
 .config/mpv
 .config/shrc

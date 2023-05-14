@@ -34,7 +34,7 @@
 {{-   end -}}
 {{- end -}}
 
-{{ if .os.windows -}}
+{{ if eq .chezmoi.os "windows" -}}
 [interpreters.ps1]
 command = "pwsh"
 args = ["-NoLogo"]
@@ -44,7 +44,7 @@ command = "pwsh"
 args = ["-NoLogo", "-NoExit", "-Command", "& {Set-Location $env:HOMEPATH/.local/share/chezmoi}"]
 {{- end }}
 
-{{ if .os.macos -}}
+{{ if eq .chezmoi.os "darwin" -}}
 [diff]
 command = "/usr/local/bin/ksdiff"
 
