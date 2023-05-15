@@ -65,12 +65,18 @@ echo "💡 Setting default shell to ZSH..."
 sudo chsh -s /usr/bin/zsh $(whoami)
 {{ end -}}
 
+{{ if .os.macos -}}
 if [ ! -f "/usr/local/bin/brew" ]; then
     echo "💡 Installing homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+{{ end -}}
 
 {{ if .os.linux -}}
+if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+    echo "💡 Installing homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{ end -}}
 
