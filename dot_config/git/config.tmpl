@@ -16,12 +16,27 @@
 	default = simple
 [init]
 	defaultBranch = main
+
 {{ if .os.macos }}
 [gpg]
  	program = /usr/local/MacGPG2/bin/gpg2
 [commit]
   	gpgsign = true
 {{ end }}
+
+{{ if .os.windows }}
+[user]
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPWGB27LVLAL2rDi8sihEMSWBc7SOixRFy962vc43umV
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "C:/Users/ben/AppData/Local/1Password/app/8/op-ssh-sign.exe"
+
+[commit]
+  gpgsign = true
+{{ end }}
+
 {{ if .os.macos }}
 [diff]
        tool = Kaleidoscope
