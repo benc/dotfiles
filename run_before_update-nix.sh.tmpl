@@ -16,7 +16,7 @@ echo "💡 Updating homebrew..."
 brew update; HOMEBREW_NO_ENV_HINTS=true brew upgrade
 
 {{ if .os.macos -}}
-HOMEBREW_NO_ENV_HINTS=true brew outdated --cask --greedy --verbose | grep -v \"(latest)\" | cut -f1 -d\" \" | xargs brew reinstall --cask
+HOMEBREW_NO_ENV_HINTS=true brew outdated --cask --greedy --verbose | grep -v \"\(latest\)\" | cut -f1 -d\" \" | xargs brew reinstall --cask
 {{ end -}}
 
 echo "💡 Updating sdkman..."
