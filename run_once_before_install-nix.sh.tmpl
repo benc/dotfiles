@@ -180,6 +180,7 @@ if [ ! -d "${HOME}/.sdkman" ]; then
 fi
 
 echo "💡 Installing java 11, java 17, gradle, maven..."
+. "${HOME}/.sdkman/bin/sdkman-init.sh"
 sdk install {{ .java.v11 }}
 sdk install {{ .java.v17 }}
 sdk install {{ .java.gradle }}
