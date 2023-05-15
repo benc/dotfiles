@@ -1,6 +1,5 @@
 {{- $name := "Ben Cochez" -}}
-{{- $email := "ben@cochez.consulting" -}}
-{{- $signingkey := "3045535FF7AC94C1110D563923BD7748E3BEC65E" -}}
+{{- $email := "ben@kyber.be" -}}
 
 {{- $data := . }}
 {{- $_ := set $data "host" (default (dict) (get $data "host")) -}}
@@ -9,7 +8,6 @@
 {{- if stdinIsATTY -}}
 {{- $name = promptStringOnce $data.user "name" "Your Name" $name -}}
 {{- $email = promptStringOnce $data.user "email" "Your Email" $email -}}
-{{- $signingkey = promptStringOnce $data.user "signingkey" "Your GPG Signing Key" $signingkey -}}
 
 {{- writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
 
@@ -76,4 +74,3 @@ version = "3.2.0"
 [data.user]
 email = {{ $email | quote }}
 name = {{ $name | quote }}
-signingkey = {{ $signingkey | quote }}

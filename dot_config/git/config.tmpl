@@ -1,55 +1,85 @@
 [user]
-    name = {{ .user.name }}
-    email = {{ .user.email }}
-	signingkey = {{ .user.signingkey }}
+  name = {{ .user.name }}
+  email = {{ .user.email }}
+
 [color]
-	ui = true
+  ui = true
+
 [github]
-	user = benc
+  user = benc
+
 [core]
-    editor = {{ .editor }}
+  editor = {{ .editor }}
+
 [help]
-	autocorrect = 1
+  autocorrect = 1
+
 [pull]
-    rebase = true
+  rebase = true
+
 [push]
-	default = simple
+  default = simple
+
 [init]
-	defaultBranch = main
+  defaultBranch = main
 
-{{ if .os.macos }}
-[gpg]
- 	program = /usr/local/MacGPG2/bin/gpg2
-[commit]
-  	gpgsign = true
-{{ end }}
-
-{{ if .os.windows }}
 [user]
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPfw39lhA+fsCkUzswDDLIuEmU4k0J267ZShiSY0Jand
 
 [gpg]
   format = ssh
 
+{{ if .os.windows }}
 [gpg "ssh"]
   program = "C:/Users/ben/AppData/Local/1Password/app/8/op-ssh-sign.exe"
-
-[commit]
-  gpgsign = true
+  allowedSignersFile = {{ .chezmoi.homeDir }}/.config/git/allowed_signers
 {{ end }}
 
 {{ if .os.macos }}
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+  allowedSignersFile = {{ .chezmoi.homeDir }}/.config/git/allowed_signers
+{{ end }}
+
+[commit]
+  gpgsign = true
+
+{{ if .os.macos }}
 [diff]
-       tool = Kaleidoscope
+  tool = Kaleidoscope
+
 [difftool "Kaleidoscope"]
-       cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
 [difftool]
-       prompt = false
+  prompt = false
+
 [merge]
-       tool = Kaleidoscope
+  tool = Kaleidoscope
 [mergetool "Kaleidoscope"]
-       cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-       trustExitCode = true
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
+
 [mergetool]
-       prompt = false
+  prompt = false
+{{ end }}
+
+{{ if .os.windows }}
+[diff]
+  tool = BeyondCompare
+
+[difftool "BeyondCompare"]
+  cmd = \"C:/Program Files/Beyond Compare 4 /BCompare.exe\" \"$LOCAL\" \"$REMOTE\"
+
+[difftool]
+  prompt = false
+
+[merge]
+  tool = BeyondCompare
+[mergetool "BeyondCompare"]
+  cmd = \"C:/Program Files/Beyond Compare 4 /BCompare.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+  trustExitCode = true
+
+[mergetool]
+  prompt = false
 {{ end }}
