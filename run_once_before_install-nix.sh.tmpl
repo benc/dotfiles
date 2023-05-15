@@ -215,6 +215,7 @@ fi
 
 echo "💡 Installing ruby..."
 
+git -C ~/.rbenv/plugins/ruby-build/ pull
 eval "$(~/.rbenv/bin/rbenv init -)"
 
 rbenv install --skip-existing {{ .ruby.version }}
