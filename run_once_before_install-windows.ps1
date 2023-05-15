@@ -15,14 +15,13 @@ gsudo {
 
     Write-Host "`nSet execution policy"
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-}
 
-# hyperv
-DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
+    # hyperv
+    DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
+}
 
 # wsl2
 wsl --update
-# wsl --install -d Ubuntu-22.04
 
 # Add .wslconfig script with:
 #
@@ -35,10 +34,6 @@ wsl --update
 
 # TODO setup SSH
 # New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\WINDOWS\System32\bash.exe" -PropertyType String -Force
-
-Write-Host "Update winget packages"
-winget upgrade --all
-Write-Host("")
 
 function wingetInstallIfNotInstalled($id) {
     Write-Host("Install $id if not installed")
