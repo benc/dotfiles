@@ -70,6 +70,10 @@ if [ ! -f "/usr/local/bin/brew" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+{{ if .os.linux -}}
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{ end -}}
+
 echo "💡 Installing generic tooling (shell, utilities, ...)"
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "zsh"
