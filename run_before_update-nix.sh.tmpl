@@ -2,7 +2,7 @@
 
 {{ if .os.linux -}}
 echo "💡 Updating apt..."
-sudo apt update -y
+sudo apt update; sudo apt upgrade -y
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{ end -}}
