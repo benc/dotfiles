@@ -179,6 +179,12 @@ if [ ! -d "${HOME}/.sdkman" ]; then
     curl -s "https://get.sdkman.io?rcupdate=false" | bash
 fi
 
+echo "💡 Installing java 11, java 17, gradle, maven..."
+sdk install {{ .java.v11 }}
+sdk install {{ .java.v17 }}
+sdk install {{ .java.gradle }}
+sdk install {{ .java.maven }}
+
 # TODO what about asdf for python, ruby, java?
 if [ ! -d "${HOME}/.pyenv" ]; then
     # Set up pyenv
