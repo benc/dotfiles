@@ -217,7 +217,7 @@ echo "💡 Installing ruby..."
 
 eval "$(~/.rbenv/bin/rbenv init -)"
 
-rbenv install {{ .ruby.version }}
+rbenv install --skip-existing {{ .ruby.version }}
 rbenv global {{ .ruby.version }}
 
 echo "💡 System initialisation done. Please open a new terminal now..."
