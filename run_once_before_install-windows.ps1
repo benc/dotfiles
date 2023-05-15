@@ -5,7 +5,7 @@ gsudo {
     Update-Module
 
     Write-Host "`nInstall choco packages"
-    choco install bat delta fd fzf lf ripgrep op npiperelay -y
+    choco install bat delta fd fzf lf ripgrep op npiperelay zoxide -y
 
     Write-Host "`nInstall modules"
     Install-Module git-aliases -Scope CurrentUser -Allowclobber
@@ -42,7 +42,6 @@ function wingetInstallIfNotInstalled($id) {
 }
 
 wingetInstallIfNotInstalled("AgileBits.1Password")
-wingetInstallIfNotInstalled("zoxide")
 wingetInstallIfNotInstalled("ScooterSoftware.BeyondCompare4")
 wingetInstallIfNotInstalled("Microsoft.Sysinternals.ProcessExplorer")
 wingetInstallIfNotInstalled("Microsoft.WindowsTerminal")

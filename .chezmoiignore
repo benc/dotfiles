@@ -1,14 +1,11 @@
 key.txt.age
 README.md
 
-# ignore on windows
 {{ if ne .chezmoi.os "windows" -}}
-Documents
-decrypt-private-key-windows.ps1
 install-windows.ps1
+update-windows.ps1
 {{- end }}
 
-# ignore on *nix
 {{ if eq .chezmoi.os "windows" -}}
 .config/htop
 .config/mpv
@@ -16,5 +13,6 @@ install-windows.ps1
 .config/zshrc
 .bash_profile
 .zshrc
-install-unix.sh
+install-nix.sh
+update-nix.sh
 {{- end }}
