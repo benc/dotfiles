@@ -181,10 +181,10 @@ fi
 
 echo "💡 Installing java 11, java 17, gradle, maven..."
 . "${HOME}/.sdkman/bin/sdkman-init.sh"
-sdk install {{ .java.v11 }}
-sdk install {{ .java.v17 }}
-sdk install {{ .java.gradle }}
-sdk install {{ .java.maven }}
+sdk install java {{ .java.v11 }}
+sdk install java {{ .java.v17 }}
+sdk install gradle {{ .java.gradle }}
+sdk install maven {{ .java.maven }}
 
 # TODO what about asdf for python, ruby, java?
 if [ ! -d "${HOME}/.pyenv" ]; then

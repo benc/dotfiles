@@ -39,7 +39,7 @@ Run in a *regular* powershell prompt:
     chezmoi apply
 
     # update system with the latest dotfiles
-    chezmoi update
+    chezmoi update --init
 
 ## Troubleshooting
 
