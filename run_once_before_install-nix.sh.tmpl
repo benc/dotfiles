@@ -5,20 +5,12 @@ echo "💡 Updating apt..."
 sudo apt update
 
 echo "💡 Installing generic tooling (shell, utilities, ...)"
-sudo apt install -y zsh exa fzf htop jq ripgrep git locales keychain httpie zoxide grc
-
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install | bash
-curl -fsSL https://starship.rs/install.sh | sh -s -- -y
+sudo apt install -y git locales keychain
 
 sudo echo "LC_ALL=en_US.UTF-8" >> /etc/environment
 sudo echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 sudo echo "LANG=en_US.UTF-8" > /etc/locale.conf
 sudo locale-gen en_US.UTF-8
-
-# echo "💡 Installing kubernetes tooling..."
-# sudo apt install -y k9s helm
-# go install github.com/jrockway/kubectl-jq/cmd/kubectl-jq@latest
 
 echo "💡 Installing sdkman dependencies..."
 sudo apt install -y unzip zip curl
@@ -67,14 +59,11 @@ sudo apt update && sudo apt install 1password-cli
 # echo "   * W11: Open the firewall"
 
 sudo apt install -y socat
-
 {{ end -}}
 
 echo "💡 Setting default shell to ZSH..."
 sudo chsh -s /usr/bin/zsh $(whoami)
 {{ end -}}
-
-{{ if .os.macos -}}
 
 if [ ! -f "/usr/local/bin/brew" ]; then
     echo "💡 Installing homebrew..."
@@ -93,8 +82,10 @@ brew "httpie"
 brew "navi"
 brew "starship"
 brew "terminal-notifier"
+{{ if .os.macos -}}
 brew "m-cli"
 brew "mas"
+{{ end -}}
 brew "zoxide"
 brew "watch"
 brew "grc"
@@ -102,6 +93,7 @@ EOF
 
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
+{{ if .os.macos -}}
 echo "💡 Installing 1Password CLI..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 cask "1password/tap/1password-cli"
@@ -116,7 +108,6 @@ echo "💡 Installing developer tools..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "coreutils"
 brew "git"
-cask "gpg-suite-no-mail"
 EOF
 
 echo "💡 Installing sdkman dependencies..."
@@ -145,6 +136,7 @@ echo "💡 Installing go..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "go"
 EOF
+{{ end -}}
 
 echo "💡 Installing kubernetes tooling..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
@@ -155,30 +147,7 @@ EOF
 
 go install github.com/jrockway/kubectl-jq/cmd/kubectl-jq@latest
 
-# echo "💡 Installing minikube..."
-# brew bundle --no-lock --file=/dev/stdin <<EOF
-# brew "minikube"
-# brew "docker"
-# brew "docker-compose"
-# brew "docker-credential-helper"
-# EOF
-#
-# mkdir -p ~/.docker/cli-plugins
-# ln -sfn /usr/local/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
-
-# echo "💡 Installing microk8s..."
-# brew install multipass ubuntu/microk8s/microk8s
-# brew link --overwrite kubernetes-cli # if docker desktop is installed
-# microk8s install --yes
-# microk8s enable dashboard
-# microk8s enable dns
-# microk8s enable community; microk8s enable portainer
-# # microk8s dashboard-proxy
-# # merge output from microk8s config into .kube
-
-# microk8s uninstall
-# brew remove multipass microk8s
-
+{{ if .os.macos -}}
 echo "💡 Setting a couple of macos defaults..."
 
 # Increase sound quality for Bluetooth headphones/headsets
@@ -210,12 +179,12 @@ if [ ! -d "${HOME}/.pyenv" ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
-
-    echo "💡 Installing python..."
-
-    pyenv install --skip-existing {{ .python.version }}
-    pyenv global {{ .python.version }}
 fi
+
+echo "💡 Installing python..."
+
+pyenv install --skip-existing {{ .python.version }}
+pyenv global {{ .python.version }}
 
 if [ ! -d "${HOME}/.n" ]; then
     echo "💡 Setting up node (n, avn)..."
@@ -232,14 +201,14 @@ if [ ! -d "${HOME}/.rbenv" ]; then
 
     git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
     git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
-
-    echo "💡 Installing ruby..."
-
-    eval "$(~/.rbenv/bin/rbenv init -)"
-
-    rbenv install {{ .ruby.version }}
-    rbenv global {{ .ruby.version }}
 fi
+
+echo "💡 Installing ruby..."
+
+eval "$(~/.rbenv/bin/rbenv init -)"
+
+rbenv install {{ .ruby.version }}
+rbenv global {{ .ruby.version }}
 
 echo "💡 System initialisation done. Please open a new terminal now..."
 {{ end -}}

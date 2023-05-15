@@ -1,1 +1,9 @@
 #!/bin/bash
+
+{{ if .os.linux -}}
+echo "💡 Updating apt..."
+sudo apt update -y
+{{ end -}}
+
+echo "💡 Updating homebrew..."
+brew update; HOMEBREW_NO_ENV_HINTS=true brew upgrade
