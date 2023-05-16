@@ -22,3 +22,5 @@ HOMEBREW_NO_ENV_HINTS=true brew outdated --cask --greedy --verbose | grep -v \"\
 echo "💡 Updating sdkman..."
 . "${HOME}/.sdkman/bin/sdkman-init.sh"
 sdk upgrade
+
+eval $(op signin)
