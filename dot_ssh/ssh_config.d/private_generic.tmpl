@@ -11,18 +11,18 @@ Host *
 
   {{ if .os.macos -}}
   # Use 1Password ssh agent
-	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
   {{ end -}}
-  {{ if .os.wsl -}}
+  {{ if (and (.os.linux) (.os.wsl)) }}
   # Use 1Password ssh agent
   IdentityAgent "~/.config/wsl/agent-1password.sock"
-  {{ end -}}
-  {{ if .os.linux -}}
+  {{ end}}
+  {{ if (and (.os.linux) (ne .os.wsl)) }}
   # Use 1Password ssh agent
   IdentityAgent "~/.1password/agent.sock"
-  {{ end -}}
+  {{ end}}
 
-# Disable strict host key checking for tunnels
 Host localhost
+  # Disable strict host key checking for tunnels
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
