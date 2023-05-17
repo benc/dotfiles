@@ -2,9 +2,13 @@
 
 ## Macos/linux/wsl
 
+If you're on a workstation, install 1Password and the CLI. Make sure they're coupled together.
+
     sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply benc
 
 ## Windows 11
+
+If you're on a workstation, install 1Password and the CLI. Make sure they're coupled together.
 
 Prerequisites:
 
