@@ -164,6 +164,7 @@ go install github.com/jrockway/kubectl-jq/cmd/kubectl-jq@latest
 echo "💡 Installing AWS tooling..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "awscli"
+brew "aws-iam-authenticator"
 EOF
 
 {{ if .os.macos -}}
