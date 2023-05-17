@@ -13,14 +13,15 @@ Host *
   # Use 1Password ssh agent
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
   {{ end -}}
-  {{ if (and (.os.linux) (.os.wsl)) }}
+  {{ if .os.linux -}}
+  {{ if os.wsl }}
   # Use 1Password ssh agent
   IdentityAgent "~/.config/wsl/agent-1password.sock"
-  {{ end}}
-  {{ if (and (.os.linux) (ne .os.wsl)) }}
+  {{ else }}
   # Use 1Password ssh agent
   IdentityAgent "~/.1password/agent.sock"
-  {{ end}}
+  {{ end }}
+  {{ end }}
 
 Host localhost
   # Disable strict host key checking for tunnels
