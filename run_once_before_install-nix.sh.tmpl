@@ -83,6 +83,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 echo "💡 Installing generic tooling (shell, utilities, ...)"
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "zsh"
+brew "bash-completion"
 brew "exa"
 brew "ccat"
 brew "fzf"
@@ -102,7 +103,9 @@ brew "mas"
 {{ end -}}
 EOF
 
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+if [ ! -d "${HOME}/.zplug" ]; then
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+fi
 
 {{ if .os.macos -}}
 echo "💡 Installing 1Password CLI..."
