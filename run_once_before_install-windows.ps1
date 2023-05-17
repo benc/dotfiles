@@ -33,10 +33,7 @@ gsudo {
     choco install bat delta fd fzf lf ripgrep op npiperelay zoxide awscli aws-iam-authenticator -y
 
     Write-Host "`nInstall modules"
-    Install-Module git-aliases -Scope CurrentUser -Allowclobber
     Install-Module -Name PSFzf
-    Install-Module posh-git -Scope CurrentUser -AllowClobber
-    Install-Module -Name Terminal-Icons -Repository PSGallery
 
     Write-Host "`nSet execution policy"
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser

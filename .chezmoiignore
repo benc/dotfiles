@@ -2,6 +2,8 @@ key.txt.age
 README.md
 
 {{ if ne .chezmoi.os "windows" -}}
+AppData
+Documents
 install-windows.ps1
 update-windows.ps1
 {{- end }}
