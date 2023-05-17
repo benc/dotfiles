@@ -63,9 +63,13 @@ export PATH=./bin:$PATH
 export VISUAL="{{ .editor }}"
 export EDITOR="{{ .editor }}"
 
-# {{ if .os.wsl }}
+{{ if .os.wsl }}
 export BROWSER="wslview"
-# {{ end }}
+{{ end }}
+
+{{ if .os.linux }}
+export PATH="/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH"
+{{ end }}
 
 # # if ${HOME}/.pyenv exists and pyenv is installed, then initialize pyenv
 # if [ -d "${HOME}/.pyenv" ] && command -v pyenv >/dev/null 2>&1; then
@@ -77,11 +81,4 @@ export BROWSER="wslview"
 #     eval "$(pyenv virtualenv-init -)"
 #   fi
 #   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-# fi
-
-# auto-update dotfiles
-# if [ "${AUTO_UPDATE_DOTFILES}" = "true" ]; then
-#   if [ -x "${HOME}/.local/bin/dotu" ]; then
-#     "${HOME}/.local/bin/dotu" -f
-#   fi
 # fi
