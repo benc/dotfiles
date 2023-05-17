@@ -92,14 +92,14 @@ brew "ripgrep"
 brew "httpie"
 brew "navi"
 brew "starship"
+brew "zoxide"
+brew "watch"
+brew "grc"
 {{ if .os.macos -}}
 brew "terminal-notifier"
 brew "m-cli"
 brew "mas"
 {{ end -}}
-brew "zoxide"
-brew "watch"
-brew "grc"
 EOF
 
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
@@ -158,6 +158,11 @@ EOF
 
 go install github.com/jrockway/kubectl-jq/cmd/kubectl-jq@latest
 
+echo "💡 Installing AWS tooling..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "awscli"
+EOF
+
 {{ if .os.macos -}}
 echo "💡 Setting a couple of macos defaults..."
 
@@ -171,7 +176,6 @@ defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 {{ end -}}
 
-{{ if not .os.windows -}}
 echo "💡 Setting up version managers..."
 
 if [ ! -d "${HOME}/.sdkman" ]; then
@@ -230,4 +234,3 @@ rbenv install --skip-existing {{ .ruby.version }}
 rbenv global {{ .ruby.version }}
 
 echo "💡 System initialisation done. Please open a new terminal now..."
-{{ end -}}
