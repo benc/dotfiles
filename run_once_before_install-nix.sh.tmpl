@@ -5,7 +5,7 @@ echo "💡 Updating apt..."
 sudo apt update
 
 echo "💡 Installing generic tooling (shell, utilities, ...)"
-sudo apt install -y git locales keychain
+sudo apt install -y git locales keychain golang
 
 sudo echo "LC_ALL=en_US.UTF-8" >> /etc/environment
 sudo echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
