@@ -14,7 +14,7 @@ Host *
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
   {{ end -}}
   {{ if .os.linux -}}
-  {{ if os.wsl }}
+  {{ if .os.wsl }}
   # Use 1Password ssh agent
   IdentityAgent "~/.config/wsl/agent-1password.sock"
   {{ else }}
