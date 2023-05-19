@@ -10,8 +10,12 @@
 
 [core]
   editor = {{ .editor }}
+
+  {{ if .os.windows }}
   autocrlf = input
   eol = lf
+  symlinks = true
+  {{ end }}
 
 [help]
   autocorrect = 1
