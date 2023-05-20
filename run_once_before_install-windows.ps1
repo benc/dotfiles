@@ -74,25 +74,13 @@ gsudo {
     $authorizedKeysPath = "$Env:ProgramData\ssh\administrators_authorized_keys"
     $authorizedKeys | Set-Content -Path $authorizedKeysPath
 
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Program Files\PowerShell\7\pwsh.exe" -Verbose
 
     Restart-Service sshd
     Get-Service ssh-agent
 
     # hyperv
     DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
-
-    # # allow port forwarding for jetbrains gateway in WSL2
-    # $Port = 2222
-
-    # New-NetFireWallRule -DisplayName 'WSL 2 Jetbrains Gateway Unlock' -Direction Outbound -LocalPort $Port -Action Allow -Protocol TCP
-    # New-NetFireWallRule -DisplayName 'WSL 2 Jetbrains Gateway Unlock' -Direction Inbound -LocalPort $Port -Action Allow -Protocol TCP
-
-    # netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=$Port
-    # netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=$Port connectaddress=192.168.1.44 connectport=2222
-    # netsh interface portproxy show v4tov4
-
-    # ALTERNATIVE SOLUTION (easier) when Jetbrains Gateway supports SSHing into a Windows box https://www.jetbrains.com/help/idea/prerequisites.html
-    Set-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Program Files\PowerShell\7\pwsh.exe" -Verbose
 }
 
 refreshenv

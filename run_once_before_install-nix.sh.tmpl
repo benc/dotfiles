@@ -36,27 +36,23 @@ curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --b
 sudo apt update && sudo apt install 1password-cli
 
 {{ if .os.wsl -}}
-# Script based on: https://gist.github.com/bubba-h57/3b212d8a8d56e1c35218515dd220371c
-# echo "💡 Enabling Jetbrains Gateway on WSL..."
-# sudo apt remove -y --purge openssh-server
-# sudo apt install -y openssh-server
-# sudo sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
-# sudo sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 0.0.0.0/g' /etc/ssh/sshd_config
-# sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
-# sudo grep -qxF 'AllowUsers benc' /etc/ssh/sshd_config || echo 'AllowUsers benc' | sudo tee -a /etc/ssh/sshd_config
-# sudo service ssh --full-restart
+echo "💡 Enabling Jetbrains Gateway on WSL..."
 
-# sudo grep -qxF '%sudo ALL=NOPASSWD: /etc/init.d/ssh' /etc/sudoers || echo '%sudo ALL=NOPASSWD: /etc/init.d/ssh' | sudo EDITOR='tee -a' visudo
+sudo apt remove -y --purge openssh-server
+sudo apt install -y openssh-server
+sudo sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
+sudo sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 0.0.0.0/g' /etc/ssh/sshd_config
+sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
+sudo grep -qxF 'AllowUsers benc' /etc/ssh/sshd_config || echo 'AllowUsers benc' | sudo tee -a /etc/ssh/sshd_config
+sudo service ssh --full-restart
 
-# sudo touch /etc/wsl.conf
-# sudo grep -qxF '[boot]' /etc/wsl.conf || echo '[boot]' | sudo tee -a /etc/wsl.conf
-# sudo grep -qxF 'command = service ssh start' /etc/wsl.conf || echo 'command = service ssh start' | sudo tee -a /etc/wsl.conf
+sudo grep -qxF '%sudo ALL=NOPASSWD: /etc/init.d/ssh' /etc/sudoers || echo '%sudo ALL=NOPASSWD: /etc/init.d/ssh' | sudo EDITOR='tee -a' visudo
 
-# echo "💡 Remember to finish the setup: "
-# echo "   * Ubuntu WSL: You should add your public keys to ~/.ssh/authorized_keys"
-# echo "   * W11: Set up https://github.com/shayne/go-wsl2-host"
-# echo "   * W11: Add port forwarding"
-# echo "   * W11: Open the firewall"
+sudo touch /etc/wsl.conf
+sudo grep -qxF '[boot]' /etc/wsl.conf || echo '[boot]' | sudo tee -a /etc/wsl.conf
+sudo grep -qxF 'command = service ssh start' /etc/wsl.conf || echo 'command = service ssh start' | sudo tee -a /etc/wsl.conf
+
+# you can access the SSH server through proxyjump
 
 sudo apt install -y socat
 {{ end -}}
