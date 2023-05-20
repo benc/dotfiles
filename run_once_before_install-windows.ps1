@@ -68,12 +68,14 @@ gsudo {
     New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Outbound -LocalPort $Port -Action Allow -Protocol TCP
     New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Inbound -LocalPort $Port -Action Allow -Protocol TCP
 
+    $wsl_ip = (wsl hostname -I).trim()
+    Write-Host "WSL Machine IP: ""$wsl_ip"""
     netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=$Port
-    netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=$Port connectaddress=127.0.0.1 connectport=2222
+    netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=$Port connectaddress=$wsl_ip connectport=2222
     netsh interface portproxy show v4tov4
 
     # autostart wsl2 on boot
-    $Action = New-ScheduledTaskAction -Execute "wscript.exe" -Argument "$env:USERPROFILE\Documents\run_wsl2_at_startup.vbs"
+    $Action = New-ScheduledTaskAction -Execute "wscript.exe" -Argument "$env:USERPROFILE\Documents\Scripts\run_wsl2_at_startup.vbs"
     $username = [Environment]::UserName
     $Trigger = New-ScheduledTaskTrigger -AtLogOn -User $username
     $Trigger.Delay = "PT15S" # 15 second delay
@@ -81,6 +83,16 @@ gsudo {
     $Principal = New-ScheduledTaskPrincipal -UserId $username -LogonType Interactive -RunLevel Highest
     $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Principal $Principal -Settings $Settings
     Register-ScheduledTask "Start WSL2" -InputObject $Task -Force
+
+    # proxy wsl2 ssh on boot
+    $Action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument "-ExecutionPolicy Bypass -File `"$env:USERPROFILE\Documents\proxy_wsl2.ps1`""
+    $username = [Environment]::UserName
+    $Trigger = New-ScheduledTaskTrigger -AtLogon -User $username
+    $Trigger.Delay = "PT30S" # 30 second delay
+    $Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -DontStopOnIdleEnd
+    $Principal = New-ScheduledTaskPrincipal -UserId $username -LogonType Interactive -RunLevel Highest
+    $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Principal $Principal -Settings $Settings
+    Register-ScheduledTask "Route WSL2 SSH" -InputObject $Task -Force
 
     # hyperv
     DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
