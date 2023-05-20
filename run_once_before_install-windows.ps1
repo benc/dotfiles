@@ -51,28 +51,11 @@ gsudo {
 
     $config = Get-Content $configFilePath
 
-    $newConfig = $config | ForEach-Object {
-        $line = $_
-        if ($line -match "^#?PubkeyAuthentication") {
-            $line = "PubkeyAuthentication yes"
-        }
-        elseif ($line -match "^#?PasswordAuthentication") {
-            $line = "PasswordAuthentication no"
-        }
-        return $line
-    }
-
-    $newConfig | Out-File -Encoding utf8 $configFilePath
-
-    $authorizedKeys = & op document get bcyfxsdxcjbaselrwoqyicavgi
-
-    if ($LASTEXITCODE -ne 0) {
-        Write-Error "Failed to run 'op' command"
-        exit $LASTEXITCODE
-    }
-
-    $authorizedKeysPath = "$Env:ProgramData\ssh\administrators_authorized_keys"
-    $authorizedKeys | Set-Content -Path $authorizedKeysPath
+    ((Get-Content -path C:\ProgramData\ssh\sshd_config -Raw) `
+    -replace '#PubkeyAuthentication yes','PubkeyAuthentication yes' `
+    -replace '#PasswordAuthentication yes','PasswordAuthentication no' `
+    -replace 'Match Group administrators','#Match Group administrators' `
+    -replace 'AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys','#AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys') | Set-Content -Path C:\ProgramData\ssh\sshd_config
 
     Set-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Program Files\PowerShell\7\pwsh.exe" -Verbose
 
