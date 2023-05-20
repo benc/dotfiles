@@ -90,12 +90,14 @@ gsudo {
     netsh interface portproxy show v4tov4
 
     # autostart wsl2 on boot
-    $Action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "$env:USERPROFILE\Documents\PowerShell\Start-WSL2.ps1"
-    $Trigger = New-ScheduledTaskTrigger -AtStartup
-    $Principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount
+    $Action = New-ScheduledTaskAction -Execute "wscript.exe" -Argument "$env:USERPROFILE\Documents\run_wsl2_at_startup.vbs"
+    $username = [Environment]::UserName
+    $Trigger = New-ScheduledTaskTrigger -AtLogOn -User $username
+    $Trigger.Delay = "PT15S" # 15 second delay
     $Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -DontStopOnIdleEnd
+    $Principal = New-ScheduledTaskPrincipal -UserId $username -LogonType Interactive -RunLevel Highest
     $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Principal $Principal -Settings $Settings
-    Register-ScheduledTask "Start WSL2" -InputObject $Task
+    Register-ScheduledTask "Start WSL2" -InputObject $Task -Force
 
     # hyperv
     DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
