@@ -59,6 +59,7 @@ sudo grep -qxF 'command = service ssh start' /etc/wsl.conf || echo 'command = se
 
 # you can access the SSH server through proxyjump
 
+echo "💡 Enabling piping of 1password SSH agent to WSL..."
 sudo apt install -y socat
 {{ end -}}
 
