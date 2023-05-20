@@ -34,17 +34,12 @@
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "profiles":
     {
-        "defaults": {
+        "defaults":
+        {
             "font":
             {
-                "face": "MonoLisa Nerd Font",
-                "size": 10
-            },
-            "historySize": 9001,
-            "opacity": 55,
-            "padding": "4",
-            "snapOnInput": true,
-            "useAcrylic": true
+                "face": "MonoLisa Nerd Font"
+            }
         },
         "list":
         [
@@ -67,6 +62,10 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
+                "font":
+                {
+                    "size": 10.0
+                },
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
@@ -79,6 +78,10 @@
                 "source": "Windows.Terminal.Wsl"
             },
             {
+                "font":
+                {
+                    "size": 10.0
+                },
                 "guid": "{d7b20cea-47a9-518c-95a4-c8bd91e2e1c6}",
                 "hidden": false,
                 "name": "Ubuntu 22.04.2 LTS",
