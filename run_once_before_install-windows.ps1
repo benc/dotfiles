@@ -43,23 +43,60 @@ gsudo {
     Write-Host "`nEnable Windows Developer Mode"
     Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock -Name AllowDevelopmentWithoutDevLicense -Value 1 -Verbose
 
+    # ssh
+    Add-WindowsCapability -Online -Name OpenSSH.Server
+    Get-Service -Name sshd | Set-Service -StartupType Automatic
+
+    $configFilePath = "$Env:ProgramData\ssh\sshd_config"
+
+    $config = Get-Content $configFilePath
+
+    $newConfig = $config | ForEach-Object {
+        $line = $_
+        if ($line -match "^#?PubkeyAuthentication") {
+            $line = "PubkeyAuthentication yes"
+        }
+        elseif ($line -match "^#?PasswordAuthentication") {
+            $line = "PasswordAuthentication no"
+        }
+        return $line
+    }
+
+    $newConfig | Out-File -Encoding utf8 $configFilePath
+
+    $authorizedKeys = & op document get bcyfxsdxcjbaselrwoqyicavgi
+
+    if ($LASTEXITCODE -ne 0) {
+        Write-Error "Failed to run 'op' command"
+        exit $LASTEXITCODE
+    }
+
+    $authorizedKeysPath = "$Env:ProgramData\ssh\administrators_authorized_keys"
+    $authorizedKeys | Set-Content -Path $authorizedKeysPath
+
+
+    Restart-Service sshd
+    Get-Service ssh-agent
+
     # hyperv
     DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
+
+    # # allow port forwarding for jetbrains gateway in WSL2
+    # $Port = 2222
+
+    # New-NetFireWallRule -DisplayName 'WSL 2 Jetbrains Gateway Unlock' -Direction Outbound -LocalPort $Port -Action Allow -Protocol TCP
+    # New-NetFireWallRule -DisplayName 'WSL 2 Jetbrains Gateway Unlock' -Direction Inbound -LocalPort $Port -Action Allow -Protocol TCP
+
+    # netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=$Port
+    # netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=$Port connectaddress=192.168.1.44 connectport=2222
+    # netsh interface portproxy show v4tov4
+
+    # ALTERNATIVE SOLUTION (easier) when Jetbrains Gateway supports SSHing into a Windows box https://www.jetbrains.com/help/idea/prerequisites.html
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Program Files\PowerShell\7\pwsh.exe" -Verbose
 }
 
 refreshenv
 
 # wsl2
 wsl --update
-
-# Add .wslconfig script with:
-#
-# In elevated cmd, run
-# netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=2222
-# netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=2222 connectaddress=192.168.1.44 connectport=2222
-# # netsh interface portproxy show all
-# # netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=2222
-# netsh advfirewall firewall add rule name="Open Port 2222 for WSL2" dir=in action=allow protocol=TCP localport=2222
-
-# TODO setup SSH
-# New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\WINDOWS\System32\bash.exe" -PropertyType String -Force
+wsl --set-default-version 2 # always use wsl2

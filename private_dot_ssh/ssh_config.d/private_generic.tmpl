@@ -1,0 +1,24 @@
+Host *
+  {{ if .os.macos -}}
+  # Allow storing passphrases in the macOS keychain.
+  # See https://developer.apple.com/library/archive/technotes/tn2449/_index.html
+  UseKeychain yes
+  AddKeysToAgent yes
+  {{ end -}}
+
+  ServerAliveCountMax 6
+  ServerAliveInterval 300
+
+  {{ if .os.macos -}}
+  # Use 1Password ssh agent
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  {{ end -}}
+  {{ if .os.linux -}}
+  # Use 1Password ssh agent
+  IdentityAgent "~/.1password/agent.sock"
+  {{ end }}
+
+Host localhost
+  # Disable strict host key checking for tunnels
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null

@@ -12,7 +12,7 @@
   editor = {{ .editor }}
 
   {{ if .os.windows }}
-  autocrlf = input
+  autocrlf = false
   eol = lf
   symlinks = true
   {{ end }}
@@ -35,6 +35,16 @@
 [user]
   # from 1password
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPfw39lhA+fsCkUzswDDLIuEmU4k0J267ZShiSY0Jand
+
+{{ if .os.windows }}
+[credential]
+  helper = manager
+{{ end }}
+
+{{ if .os.macos }}
+[credential]
+  helper = osxkeychain
+{{ end }}
 
 [gpg]
   format = ssh
