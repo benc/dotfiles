@@ -17,4 +17,5 @@ update-windows.ps1
 .zshrc
 install-nix.sh
 update-nix.sh
+.wslconfig
 {{- end }}

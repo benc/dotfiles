@@ -79,6 +79,24 @@ gsudo {
     Restart-Service sshd
     Get-Service ssh-agent
 
+    # allow wsl2 ssh port forwarding
+    $Port = 2222
+
+    New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Outbound -LocalPort $Port -Action Allow -Protocol TCP
+    New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Inbound -LocalPort $Port -Action Allow -Protocol TCP
+
+    netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=$Port
+    netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=$Port connectaddress=127.0.0.1 connectport=2222
+    netsh interface portproxy show v4tov4
+
+    # autostart wsl2 on boot
+    $Action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "$env:USERPROFILE\Documents\PowerShell\Start-WSL2.ps1"
+    $Trigger = New-ScheduledTaskTrigger -AtStartup
+    $Principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount
+    $Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -DontStopOnIdleEnd
+    $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Principal $Principal -Settings $Settings
+    Register-ScheduledTask "Start WSL2" -InputObject $Task
+
     # hyperv
     DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
 }
