@@ -52,3 +52,9 @@ Run in a *regular* powershell prompt:
 
     chezmoi -v apply
     chezmoi doctor
+
+### WSL2 backup
+
+    wsl --terminate "Ubuntu-22.04"
+    wsl --export Ubuntu-22.04 ubuntu-22.04-backup.tar
+    wsl --import Ubuntu-22.04 <InstallationLocation> ubuntu-22.04-backup.tar
