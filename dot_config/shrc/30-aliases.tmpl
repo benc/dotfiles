@@ -1,15 +1,11 @@
 #!/bin/bash
-
-# {{ if .os.macos }}
-alias update-casks="HOMEBREW_NO_ENV_HINTS=true brew outdated --cask --greedy --verbose | grep -v \"(latest)\" | cut -f1 -d\" \" | xargs brew reinstall --cask"
-alias update="softwareupdate --install --all --verbose; mas upgrade; brew update; HOMEBREW_NO_ENV_HINTS=true brew upgrade; update-casks; brew cleanup -s; sdk update; sdk upgrade; chezmoi upgrade; "
-# {{ end }}
-
 alias ls="exa"
 alias cat="ccat --bg=\"dark\""
 alias top="htop"
 
 alias nuke_modules="rm -rf node_modules; npm install; npm prune"
+
+alias jkill="function _jkill(){ jps -l | grep \$1 | awk '{print \$1}' | xargs kill -9 ; }; _jkill"
 
 fkill() {
   pid=$(ps -ef | sed 1d | fzf -m --ansi --color fg:-1,bg:-1,hl:46,fg+:40,bg+:233,hl+:46 --color prompt:166,border:46 --height 40%  --border=sharp --prompt="➤  " --pointer="➤ " --marker="➤ " | awk '{print $2}')
