@@ -147,6 +147,12 @@ echo "💡 Installing ruby-build dependencies..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "libyaml"
 EOF
+
+echo "💡 Installing powershell..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+cask "powershell"
+EOF
+
 {{ end -}}
 
 echo "💡 Installing go..."
@@ -162,6 +168,12 @@ brew "helm"
 EOF
 
 go install github.com/jrockway/kubectl-jq/cmd/kubectl-jq@latest
+
+echo "💡 Installing data stuff..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "libpq"
+brew "cypher-shell"
+EOF
 
 echo "💡 Installing AWS tooling..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
