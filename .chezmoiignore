@@ -6,6 +6,7 @@ AppData
 Documents
 install-windows.ps1
 update-windows.ps1
+.wslconfig
 {{- end }}
 
 {{ if eq .chezmoi.os "windows" -}}
@@ -17,5 +18,4 @@ update-windows.ps1
 .zshrc
 install-nix.sh
 update-nix.sh
-.wslconfig
 {{- end }}
