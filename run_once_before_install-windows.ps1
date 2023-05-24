@@ -21,7 +21,6 @@ wingetInstallIfNotInstalled("gerardog.gsudo")
 wingetInstallIfNotInstalled("tailscale.tailscale")
 wingetInstallIfNotInstalled("IVPN.IVPN")
 wingetInstallIfNotInstalled("Logitech.LogiTune")
-wingetInstallIfNotInstalled("JanDeDobbeleer.OhMyPosh")
 wingetInstallIfNotInstalled("RandyRants.SharpKeys")
 wingetInstallIfNotInstalled("Flow-Launcher.Flow-Launcher")
 
