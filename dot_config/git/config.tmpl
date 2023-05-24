@@ -14,7 +14,13 @@
   {{ if .os.windows }}
   autocrlf = false
   eol = lf
-  symlinks = true
+  filemode = false
+  {{ end }}
+
+  {{ if .os.wsl }}
+  autocrlf = false
+  eol = lf
+  filemode = false
   {{ end }}
 
 [help]
