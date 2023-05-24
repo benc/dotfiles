@@ -1,4 +1,4 @@
-$configPath = Join-Path $env:USERPROFILE "\.config\posh"
+$configPath = Join-Path $env:USERPROFILE "\.config\powershell\profile_d"
 
 if (Test-Path $configPath) {
     $configFiles = Get-ChildItem -Path $configPath -Filter "*.ps1" -File
