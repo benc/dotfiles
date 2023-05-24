@@ -75,7 +75,7 @@ gsudo {
     netsh interface portproxy show v4tov4
 
     # autostart wsl2 on boot
-    $Action = New-ScheduledTaskAction -Execute "wscript.exe" -Argument "$env:USERPROFILE\Documents\Scripts\run_wsl2_at_startup.vbs"
+    $Action = New-ScheduledTaskAction -Execute "pwsh.exe" -Argument "-ExecutionPolicy Bypass -File `"$env:USERPROFILE\Documents\Scripts\run_wsl2_at_startup.ps1`""
     $username = [Environment]::UserName
     $Trigger = New-ScheduledTaskTrigger -AtLogOn -User $username
     $Trigger.Delay = "PT15S" # 15 second delay
@@ -84,8 +84,9 @@ gsudo {
     $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Principal $Principal -Settings $Settings
     Register-ScheduledTask "Start WSL2" -InputObject $Task -Force
 
+
     # proxy wsl2 ssh on boot
-    $Action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument "-ExecutionPolicy Bypass -File `"$env:USERPROFILE\Documents\proxy_wsl2.ps1`""
+    $Action = New-ScheduledTaskAction -Execute 'pwsh.exe' -Argument "-ExecutionPolicy Bypass -File `"$env:USERPROFILE\Documents\Scripts\proxy_wsl2.ps1`""
     $username = [Environment]::UserName
     $Trigger = New-ScheduledTaskTrigger -AtLogon -User $username
     $Trigger.Delay = "PT30S" # 30 second delay
