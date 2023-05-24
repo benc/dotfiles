@@ -1,31 +1,9 @@
-# Starship
-if (Get-Command starship -errorAction SilentlyContinue) {
-    Invoke-Expression (&starship init powershell)
-}
+$configPath = Join-Path $PSScriptRoot "$env:USERPROFILE\.config\posh"
 
-# fzf
-if (Get-Command fzf -errorAction SilentlyContinue) {
-    Import-Module PSReadLine # before PSFzf
-    Import-Module PsFzf
+if (Test-Path $configPath) {
+    $configFiles = Get-ChildItem -Path $configPath -Filter "*.ps1" -File
 
-    # PSReadLine configuration
-    # Shows navigable menu of all options when hitting Tab
-    Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-
-    # PsFzf configuration
-    Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+f' -PSReadlineChordReverseHistory 'Ctrl+r'
-    $env:FZF_DEFAULT_OPTS = '--height 40% --layout=reverse --info=inline'
-    # https://github.com/junegunn/fzf/wiki/Windows#relative-filepaths
-    $env:FZF_DEFAULT_COMMAND = 'rg --files . 2> nul'
-}
-
-# Zoxide: https://github.com/ajeetdsouza/Zoxide
-if (Get-Command zoxide -errorAction SilentlyContinue) {
-    Invoke-Expression (& { (zoxide init powershell | Out-String) })
-}
-
-# Chocolatey profile
-$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-if (Test-Path($ChocolateyProfile)) {
-    Import-Module "$ChocolateyProfile"
+    foreach ($file in $configFiles) {
+        . $file.FullName
+    }
 }
