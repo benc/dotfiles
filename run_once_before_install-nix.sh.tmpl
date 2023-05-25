@@ -193,6 +193,21 @@ defaults write NSGlobalDomain AppleLanguages -array "nl" "en"
 defaults write NSGlobalDomain AppleLocale -string "nl_BE@currency=EUR"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
+
+# Always use exapnded print dialog
+defaults write -g PMPrintingExpandedStateForPrint -bool TRUE
+
+# Never go into computer sleep mode
+sudo systemsetup -setcomputersleep Off > /dev/null
+
+# Hibernate mode 3: Copy RAM to disk so the system state can still be restored in case of a power failure.
+sudo pmset -a hibernatemode 3
+
+# Enable powernap
+sudo pmset -a powernap 1
+
+# Disable lowpowermode
+sudo pmset -a lowpowermode 0
 {{ end -}}
 
 echo "💡 Setting up version managers..."
