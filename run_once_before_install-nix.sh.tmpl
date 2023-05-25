@@ -208,6 +208,14 @@ sudo pmset -a powernap 1
 
 # Disable lowpowermode
 sudo pmset -a lowpowermode 0
+
+# Save screenshots to the ~/Pictures/Screenshots folder
+mkdir -p "${HOME}/Pictures/Screenshots"
+defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots"
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 {{ end -}}
 
 echo "💡 Setting up version managers..."
