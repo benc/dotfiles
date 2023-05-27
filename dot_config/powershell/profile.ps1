@@ -1,4 +1,4 @@
-$configPath = "~/.config/powershell/profile_d"
+$configPath = "~/.config/powershell/profile.d"
 
 if (Test-Path $configPath) {
     $configFiles = Get-ChildItem -Path $configPath -Filter "*.ps1" -File
