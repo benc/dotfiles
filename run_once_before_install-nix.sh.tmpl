@@ -160,6 +160,11 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "go"
 EOF
 
+echo "💡 Installing mutagen..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "mutagen-io/mutagen/mutagen"
+EOF
+
 echo "💡 Installing kubernetes tooling..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "k9s"
