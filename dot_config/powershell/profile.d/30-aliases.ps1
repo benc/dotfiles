@@ -7,7 +7,7 @@ function jkill ($Id) {
     }
 }
 
-function Nuke-Modules {
+function nuke_modules {
     Remove-Item -Path "node_modules" -Recurse -Force
     npm install
     npm prune
