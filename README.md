@@ -8,8 +8,11 @@ If you're on a workstation, install 1Password and the CLI. Make sure they're cou
 
 ## Windows 11
 
+First, make sure you have [winget-cli](https://github.com/microsoft/winget-cli) installed.
+
 Prerequisites:
 
+    winget install --id Microsoft.VisualStudioCode
     winget install --id Microsoft.Powershell
     winget install --id Microsoft.WindowsTerminal
 
@@ -25,7 +28,7 @@ Prerequisites, run in an *elevated* powershell prompt:
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
     # 1password CLI
-    gsudo choco add op
+    gsudo choco install op -y
 
 Make sure 1Password exposes the SSH agent, and that the CLI is coupled.
 
@@ -33,7 +36,7 @@ Run in a *regular* powershell prompt:
 
     (irm -useb https://get.chezmoi.io/ps1) | powershell -c -
     .\bin\chezmoi.exe init https://github.com/benc/dotfiles.git
-    chezmoi apply
+    .\bin\chezmoi.exe apply
 
 # Usage
 
