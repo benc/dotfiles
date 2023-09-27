@@ -1,5 +1,6 @@
 key.txt.age
 README.md
+scripts
 
 {{ if ne .chezmoi.os "windows" -}}
 AppData
