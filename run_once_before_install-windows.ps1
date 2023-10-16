@@ -34,7 +34,7 @@ gsudo {
     Update-Module
 
     Write-Host "`nInstall choco packages"
-    choco install bat delta fd fzf lf ripgrep op npiperelay zoxide awscli aws-iam-authenticator -y
+    choco install bat delta fd fzf lf ripgrep xh op npiperelay zoxide awscli aws-iam-authenticator -y
 
     Write-Host "`nInstall modules"
     Install-Module -Name PSFzf
