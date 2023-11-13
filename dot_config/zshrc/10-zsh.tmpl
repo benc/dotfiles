@@ -1,5 +1,8 @@
 setopt AUTOCD # ..
-# setopt CORRECT # show corrections for commands
+
+### compedit
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit 
 
 ### HISTORY ###
 export HISTFILE=~/.zsh_history

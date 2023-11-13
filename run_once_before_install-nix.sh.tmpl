@@ -95,6 +95,7 @@ brew "xh"
 brew "navi"
 brew "starship"
 brew "zoxide"
+brew "sheldon"
 brew "watch"
 brew "grc"
 brew "git"
@@ -235,6 +236,7 @@ echo "💡 Installing java 11, java 17, gradle, maven..."
 . "${HOME}/.sdkman/bin/sdkman-init.sh"
 sdk install java {{ .java.v11 }}
 sdk install java {{ .java.v17 }}
+sdk install java {{ .java.v21 }}
 sdk install gradle {{ .java.gradle }}
 sdk install maven {{ .java.maven }}
 

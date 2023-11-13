@@ -12,10 +12,11 @@ if (( ${+commands[pipenv]} )); then
   eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 fi
 
-# pip
-if (( ${+commands[pip]} )); then
-  eval "$(pip completion --zsh)"
-fi
+# TODO geven error
+# # pip
+# if (( ${+commands[pip]} )); then
+#   eval "$(pip completion --zsh)"
+# fi
 
 # chezmoi
 if (( ${+commands[chezmoi]} )); then

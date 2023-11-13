@@ -56,6 +56,10 @@ Run in a *regular* powershell prompt:
     chezmoi -v apply
     chezmoi doctor
 
+Compedit issues:
+
+    compaudit | xargs chmod g-w,o-w
+
 ### WSL2 backup
 
     wsl --terminate "Ubuntu-22.04"
