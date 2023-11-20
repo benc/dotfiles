@@ -4,5 +4,5 @@ export EDITOR=code
 export PATH="$HOME/bin:$PATH"
 
 {{ if .os.macos -}}
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin
+export PATH=$PATH:/opt/homebrew/bin:/usr/local/bin:/usr/local/sbin
 {{- end }}

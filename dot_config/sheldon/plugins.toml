@@ -13,6 +13,9 @@ github = "zsh-users/zsh-completions"
 [plugins.zsh-autocomplete]
 github = "marlonrichert/zsh-autocomplete"
 
+[plugins.base16]
+github = "chriskempson/base16-shell"
+
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 

@@ -1,0 +1,4 @@
+{{ if .os.macos -}}
+# Homebrew on mac
+Add-Content -Path $PROFILE.CurrentUserAllHosts -Value '$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression'
+{{- end }}
