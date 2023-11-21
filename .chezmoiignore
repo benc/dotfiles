@@ -10,6 +10,10 @@ update-windows.ps1
 .wslconfig
 {{- end }}
 
+{{ if ne .chezmoi.os "darwin" -}}
+Library
+{{- end }}
+
 {{ if eq .chezmoi.os "windows" -}}
 .config/htop
 .config/mpv
@@ -19,4 +23,5 @@ update-windows.ps1
 .zshrc
 install-nix.sh
 update-nix.sh
+Library
 {{- end }}

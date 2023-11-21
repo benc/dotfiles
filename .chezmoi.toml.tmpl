@@ -1,13 +1,16 @@
 {{- $name := "Ben Cochez" -}}
 {{- $email := "ben@kyber.be" -}}
+{{- $username := "benc" -}}
 
 {{- $data := . }}
 {{- $_ := set $data "host" (default (dict) (get $data "host")) -}}
 {{- $_ := set $data "user" (default (dict) (get $data "user")) -}}
+{{- $_ := set $data "username" (default (dict) (get $data "username")) -}}
 
 {{- if stdinIsATTY -}}
 {{- $name = promptStringOnce $data.user "name" "Your Name" $name -}}
 {{- $email = promptStringOnce $data.user "email" "Your Email" $email -}}
+{{- $email = promptStringOnce $data.username "email" "Your username" $username -}}
 
 {{- writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
 
@@ -59,13 +62,13 @@ command = "C:/Program Files/Beyond Compare 4/BCompare.exe"
 {{- end }}
 
 [edit]
-command = "code"
+command = "codei"
 
 [git]
 autoCommit = true
 
 [data]
-editor = "code"
+editor = "codei"
 
 [data.os]
 linux = {{ $is_linux }}
@@ -89,3 +92,4 @@ version = "3.2.2"
 [data.user]
 email = {{ $email | quote }}
 name = {{ $name | quote }}
+username = {{ $username | quote }}
