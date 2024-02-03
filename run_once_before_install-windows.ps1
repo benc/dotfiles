@@ -26,6 +26,8 @@ wingetInstallIfNotInstalled("IVPN.IVPN")
 wingetInstallIfNotInstalled("Logitech.LogiTune")
 wingetInstallIfNotInstalled("RandyRants.SharpKeys")
 wingetInstallIfNotInstalled("Flow-Launcher.Flow-Launcher")
+wingetInstallIfNotInstalled("Mozilla.Firefox")
+wingetInstallIfNotInstalled("Mozilla.Thunderbird")
 
 Write-Host "Request administrator access"
 gsudo {
