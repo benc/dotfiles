@@ -2,11 +2,11 @@ gsudo {
   Write-Host "Update choco packages and modules"
   choco upgrade all -y
   Update-Module
+  
+  Write-Host "Update winget packages"
+  winget upgrade --all --accept-source-agreements --accept-package-agreements --silent --include-unknown
+  Write-Host("")
 }
-
-Write-Host "Update winget packages"
-winget upgrade --all
-Write-Host("")
 
 Write-Host "Run the latest portainer agent"
 docker stop portainer_agent
