@@ -82,8 +82,8 @@ local outputProjection    = "flat"
 
 
 local idfov=180.0
-local dfov=110.0
-local last_dfov  = 110.0
+local dfov=130.0
+local last_dfov  = 130.0
 local init_dfov = 0.0
 
 

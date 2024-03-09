@@ -112,14 +112,11 @@ if [ ! -d "${HOME}/.zplug" ]; then
 fi
 
 {{ if .os.macos -}}
-echo "💡 Installing 1Password CLI..."
+echo "💡 Installing utilities..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 cask "1password/tap/1password-cli"
-EOF
-
-echo "💡 Installing Tailscale..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "homebrew/cask/tailscale"
+cask "tailscale"
+cask "malwarebytes"
 EOF
 
 echo "💡 Installing developer tools..."
