@@ -171,7 +171,8 @@ brew "kubernetes-cli"
 brew "helm"
 EOF
 
-brew link --overwrite kubernetes-cli
+brew link --overwrite --force kubernetes-cli
+
 go install github.com/jrockway/kubectl-jq/cmd/kubectl-jq@latest
 
 echo "💡 Installing data stuff..."
@@ -179,6 +180,8 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "libpq"
 brew "cypher-shell"
 EOF
+
+brew link --overwrite --force libpq
 
 echo "💡 Installing AWS tooling..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
