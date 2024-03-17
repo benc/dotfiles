@@ -116,7 +116,9 @@ echo "💡 Installing utilities..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 cask "1password/tap/1password-cli"
 cask "tailscale"
+cask "bluetility"
 cask "malwarebytes"
+cask "wireshark"
 EOF
 
 echo "💡 Installing developer tools..."
@@ -171,8 +173,6 @@ brew "kubernetes-cli"
 brew "helm"
 EOF
 
-brew link --overwrite --force kubernetes-cli
-
 go install github.com/jrockway/kubectl-jq/cmd/kubectl-jq@latest
 
 echo "💡 Installing data stuff..."
@@ -180,8 +180,6 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "libpq"
 brew "cypher-shell"
 EOF
-
-brew link --overwrite --force libpq
 
 echo "💡 Installing AWS tooling..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
@@ -225,7 +223,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Enable touch id for sudo
-sudo ./scripts/enable_sudo_touch_id.sh
+sudo {{ .chezmoi.sourceDir }}/scripts/sudo_touch_id/enable_sudo_touch_id.sh
 {{ end -}}
 
 echo "💡 Setting up version managers..."

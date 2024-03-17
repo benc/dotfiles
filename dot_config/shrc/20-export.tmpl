@@ -47,6 +47,16 @@ if [ -r "${HOME}/.rbenv" ]; then
   eval "$(~/.rbenv/bin/rbenv init - zsh)"
 fi
 
+# Postgres
+if [ -r "$(brew --prefix libpq)" ]; then
+  export PATH="$(brew --prefix libpq)/bin:${PATH}"
+fi
+
+# kubernetes-cli
+if [ -r "$(brew --prefix kubernetes-cli)" ]; then
+  export PATH="$(brew --prefix kubernetes-cli)/bin:${PATH}"
+fi
+
 # Path
 if [ -d "${HOME}/.local/bin" ]; then
   export PATH="${HOME}/.local/bin:${PATH}"
@@ -65,10 +75,6 @@ export EDITOR="{{ .editor }}"
 
 {{ if .os.wsl }}
 export BROWSER="wslview"
-{{ end }}
-
-{{ if .os.linux }}
-export PATH="/home/linuxbrew/.linuxbrew/opt/libpq/bin:$PATH"
 {{ end }}
 
 # # if ${HOME}/.pyenv exists and pyenv is installed, then initialize pyenv
