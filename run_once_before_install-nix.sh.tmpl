@@ -235,6 +235,8 @@ if [ ! -d "${HOME}/.sdkman" ]; then
     curl -s "https://get.sdkman.io?rcupdate=false" | bash
 fi
 
+sdk update
+
 echo "💡 Installing java 11, java 17, gradle, maven..."
 . "${HOME}/.sdkman/bin/sdkman-init.sh"
 sdk install java {{ .java.v11 }}
