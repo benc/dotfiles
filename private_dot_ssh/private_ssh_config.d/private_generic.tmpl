@@ -1,3 +1,7 @@
+{{ if .os.macos -}}
+Include ~/.orbstack/ssh/config
+{{ end -}}
+
 Host *
   {{ if .os.macos -}}
   # Allow storing passphrases in the macOS keychain.
@@ -5,7 +9,6 @@ Host *
   UseKeychain yes
   AddKeysToAgent yes
 
-  Include ~/.orbstack/ssh/config
   {{ end -}}
 
   ServerAliveCountMax 6
