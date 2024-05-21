@@ -4,6 +4,8 @@ Host *
   # See https://developer.apple.com/library/archive/technotes/tn2449/_index.html
   UseKeychain yes
   AddKeysToAgent yes
+
+  Include ~/.orbstack/ssh/config
   {{ end -}}
 
   ServerAliveCountMax 6
