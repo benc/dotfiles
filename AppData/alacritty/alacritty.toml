@@ -1,0 +1,21 @@
+[font]
+size = 14
+
+  [font.normal]
+  family = "MonoLisaLight Nerd Font"
+
+[window]
+opacity = 0.85
+blur = true
+
+[cursor]
+unfocused_hollow = false
+thickness = 0.2
+
+  [cursor.style]
+  shape = "Underline"
+  blinking = "Always"
+
+[shell]
+# program = "C:/Program Files/PowerShell/7/pwsh.exe"
+program = "C:/Windows/System32/wsl.exe"

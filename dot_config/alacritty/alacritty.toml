@@ -1,0 +1,18 @@
+[font]
+size = 14
+
+  [font.normal]
+  family = "MonoLisaLight Nerd Font"
+
+[window]
+opacity = 0.85
+blur = true
+decorations = "buttonless"
+
+[cursor]
+unfocused_hollow = false
+thickness = 0.2
+
+  [cursor.style]
+  shape = "Underline"
+  blinking = "Always"
