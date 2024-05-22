@@ -8,6 +8,10 @@ size = 10
 opacity = 0.85
 blur = true
 
+  [window.padding]
+  x = 10
+  y = 10
+
 [cursor]
 unfocused_hollow = false
 thickness = 0.2
@@ -19,3 +23,6 @@ thickness = 0.2
 [shell]
 program = "C:/Program Files/PowerShell/7/pwsh.exe"
 # program = "wsl"
+
+[scrolling]
+history = 10000
