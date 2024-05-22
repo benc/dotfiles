@@ -12,7 +12,6 @@ wingetInstallIfNotInstalled("JetBrains.Toolbox")
 wingetInstallIfNotInstalled("SaaSGroup.Tower")
 wingetInstallIfNotInstalled("WinSCP.WinSCP")
 wingetInstallIfNotInstalled("Giorgiotani.Peazip")
-wingetInstallIfNotInstalled("Microsoft.VisualStudioCode")
 wingetInstallIfNotInstalled("Intel.IntelDriverAndSupportAssistant")
 wingetInstallIfNotInstalled("Docker.DockerDesktop")
 wingetInstallIfNotInstalled("ProxymanLLC.Proxyman")
@@ -26,6 +25,7 @@ wingetInstallIfNotInstalled("RandyRants.SharpKeys")
 wingetInstallIfNotInstalled("Flow-Launcher.Flow-Launcher")
 wingetInstallIfNotInstalled("Mozilla.Firefox")
 wingetInstallIfNotInstalled("Mozilla.Thunderbird")
+wingetInstallIfNotInstalled("Alacritty.Alacritty")
 
 Write-Host "Request administrator access"
 gsudo {
