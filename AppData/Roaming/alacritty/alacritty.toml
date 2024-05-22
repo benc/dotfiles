@@ -2,7 +2,7 @@
 size = 10
 
   [font.normal]
-  family = "MonoLisaLight Nerd Font"
+  family = "MonoLisa Nerd Font"
 
 [window]
 opacity = 0.85
