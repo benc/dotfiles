@@ -3,14 +3,14 @@ size = 10
 
   [font.normal]
   family = "MonoLisa Nerd Font"
+  style = "Light Regular"
 
 [window]
-opacity = 0.85
-blur = true
+opacity = 0.95
 
   [window.padding]
-  x = 10
-  y = 10
+  x = 8
+  y = 8
 
 [cursor]
 unfocused_hollow = false
