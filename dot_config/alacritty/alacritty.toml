@@ -7,11 +7,11 @@ size = 14
 [window]
 opacity = 0.85
 blur = true
-decorations = "buttonless"
+decorations = "transparent"
 
   [window.padding]
-  x = 10
-  y = 10
+  x = 8
+  y = 25
 
 [cursor]
 unfocused_hollow = false
@@ -22,4 +22,4 @@ thickness = 0.2
   blinking = "Always"
 
 [scrolling]
-history = 10000
+history = 100000

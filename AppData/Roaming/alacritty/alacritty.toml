@@ -25,4 +25,4 @@ program = "C:/Program Files/PowerShell/7/pwsh.exe"
 # program = "wsl"
 
 [scrolling]
-history = 10000
+history = 100000
