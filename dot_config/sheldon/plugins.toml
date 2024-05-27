@@ -16,14 +16,8 @@ github = "marlonrichert/zsh-autocomplete"
 [plugins.base16]
 github = "chriskempson/base16-shell"
 
-[plugins.zsh-defer]
-github = "romkatv/zsh-defer"
-
-# Deferred
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
-apply = ["defer"]
 
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
-apply = ["defer"]

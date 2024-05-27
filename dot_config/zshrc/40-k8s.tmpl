@@ -26,5 +26,6 @@ if (( ${+commands[kubectl]} )); then
 fi
 
 if (( ${+commands[helm]} )); then
+  # shellcheck source=/opt/homebrew/bin/helm
   source <(helm completion zsh)
 fi
