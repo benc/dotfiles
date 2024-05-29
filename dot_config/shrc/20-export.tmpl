@@ -1,4 +1,6 @@
 #!/bin/bash
+export PATH=./my/bin/:$PATH
+
 {{ if .os.wsl }}
 # The boot.systemd in /etc/wsl.conf is only for Windows 11, so this workaround is needed
 if service docker status 2>&1 | grep -q "is not running"; then

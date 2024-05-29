@@ -1,6 +1,8 @@
 # SublimeText project files
 *.sublime-workspace
 
+./my/
+
 # OSX
 .DS_Store
 .AppleDouble
