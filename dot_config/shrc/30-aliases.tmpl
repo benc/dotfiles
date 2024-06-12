@@ -1,9 +1,8 @@
 #!/bin/bash
 alias ls="eza --icons=always"
-alias cat="ccat --bg=\"dark\""
-alias top="htop"
+alias cat="bat --theme TwoDark --style=plain --paging never"
+alias top="btop"
 alias codei="code-insiders"
-
 alias nuke_modules="rm -rf node_modules; npm install; npm prune"
 alias jkill="function _jkill(){ jps -l | grep \$1 | awk '{print \$1}' | xargs kill -9 ; }; _jkill"
 alias mpvr="mpv --script-opts=360plugin-enabled=yes --panscan=1 --geometry=600x600 --volume=100"

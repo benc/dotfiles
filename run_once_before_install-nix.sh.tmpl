@@ -86,9 +86,10 @@ echo "💡 Installing generic tooling (shell, utilities, ...)"
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "zsh"
 brew "eza"
+brew "bat"
 brew "ccat"
 brew "fzf"
-brew "htop"
+brew "btop"
 brew "jq"
 brew "ripgrep"
 brew "xh"
@@ -100,6 +101,10 @@ brew "watch"
 brew "grc"
 brew "git"
 brew "pandoc"
+brew "procs"
+brew "dust"
+brew "duf"
+brew "prettyping"
 {{ if .os.macos -}}
 brew "terminal-notifier"
 brew "m-cli"
@@ -118,8 +123,7 @@ cask "1password/tap/1password-cli"
 cask "tailscale"
 cask "bluetility"
 cask "wireshark"
-cask "alacritty"
-brew "devcontainer"
+cask "warp"
 brew "lilypond"
 brew "ly"
 EOF
@@ -128,6 +132,11 @@ echo "💡 Installing developer tools..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "coreutils"
 brew "git"
+brew "devcontainer"
+brew "wrk"
+brew "hyperfine"
+brew "dive"
+brew "ctop"
 EOF
 
 echo "💡 Installing sdkman dependencies..."
@@ -261,6 +270,7 @@ fi
 
 echo "💡 Installing python..."
 
+cd "${HOME}/.pyenv/" && git pull && cd -
 pyenv install --skip-existing {{ .python.version }}
 pyenv global {{ .python.version }}
 
