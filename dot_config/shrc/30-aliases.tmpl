@@ -21,3 +21,7 @@ select_file() {
     #fd --type file --follow --hidden --exclude .git | fzf --query="$given_file"
     fzf --query="$given_file"
 }
+
+encode() {
+  nice -n 19 ffmpeg -i "$1" -vf "fps=30,scale=w=-2:h='min(1920,ih)':sws_flags=spline+accurate_rnd:in_range=tv:out_range=tv" -c:v libx264 -profile:v baseline -level:v 4.2 -colorspace bt709 -color_trc bt709 -color_primaries bt709 -color_range tv -crf 17 -preset slow -tune film -x264-params mvrange=511 -pix_fmt yuv420p -ac 2 -c:a aac -b:a 160k -movflags +faststart "${1%.*}-encoded.${1##*.}"
+}
