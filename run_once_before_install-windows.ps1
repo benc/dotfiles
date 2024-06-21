@@ -34,7 +34,7 @@ gsudo {
     Update-Module
 
     Write-Host "`nInstall choco packages"
-    choco install bat delta fd fzf lf ripgrep xh op npiperelay zoxide awscli aws-iam-authenticator pandoc -y
+    choco install exiftool bat delta fd fzf lf ripgrep xh op npiperelay zoxide awscli aws-iam-authenticator pandoc -y
 
     Write-Host "`nInstall modules"
     Install-Module -Name PSFzf
