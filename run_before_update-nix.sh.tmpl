@@ -15,11 +15,29 @@ echo "💡 Updating homebrew..."
 brew update; HOMEBREW_NO_ENV_HINTS=true brew upgrade
 
 echo "💡 Updating dev tooling..."
-vfox update --all
+. "$HOME/.asdf/asdf.sh"
+asdf update
+asdf install nodejs latest
+asdf install ruby latest
+asdf install java latest:temurin-11
+asdf install java latest:temurin-17
+asdf install java latest:temurin-21
+asdf install maven latest
+asdf install gradle latest
+# asdf install python latest:3.11
+# asdf install python latest:3.12
+asdf install python miniconda3-3.12
+asdf install golang latest
+asdf install rust latest
 
-vfox install java@11-tem
-vfox install java@17-tem
-vfox install java@21-tem
+asdf global nodejs latest
+asdf global ruby latest
+asdf global java latest:temurin-17
+asdf global maven latest
+asdf global gradle latest
+asdf global python miniconda3-3.12
+asdf global golang latest
+asdf global rust latest
 
 if command -v docker >/dev/null 2>&1; then
     echo "💡 Updating portainer agent..."
@@ -42,3 +60,5 @@ if [[ "${op_account_size}" == "0" ]]; then
 fi
 
 eval $(op signin)
+
+echo "💡 System initialisation done. Please open a new terminal now..."

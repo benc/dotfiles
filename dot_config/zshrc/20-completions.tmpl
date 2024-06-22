@@ -7,9 +7,9 @@ if (( ${+commands[brew]} )); then
 fi
 {{ end -}}
 
-# vfox
-if (( ${+commands[vfox]} )); then
-  eval "$(vfox activate zsh)"
+# asdf
+if (( ${+commands[asdf]} )); then
+  fpath=(${HOME}/.asdf/completions $fpath)
 fi
 
 # pipenv
