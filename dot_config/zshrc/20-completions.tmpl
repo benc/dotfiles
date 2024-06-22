@@ -7,6 +7,11 @@ if (( ${+commands[brew]} )); then
 fi
 {{ end -}}
 
+# asdf
+if (( ${+commands[asdf]} )); then
+  fpath=(${HOME}/.asdf/completions $fpath)
+fi
+
 # pipenv
 if (( ${+commands[pipenv]} )); then
   eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"

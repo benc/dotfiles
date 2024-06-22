@@ -14,40 +14,9 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 {{ end }}
 
-# Go
-if [ -r "${HOME}/go" ]; then
-  # echo "💡 Loading go..."
-  export PATH=$HOME/go/bin:$PATH
-fi
-
-# Java, ...: sdkman
-if [ -r "${HOME}/.sdkman/bin/sdkman-init.sh" ]; then
-  # echo "💡 Loading SDKMan..."
-  export SDKMAN_DIR="${HOME}/.sdkman"
-  # shellcheck disable=SC1091
-  . "${HOME}/.sdkman/bin/sdkman-init.sh"
-fi
-
-# Python: pyenv
-if [ -r "${HOME}/.pyenv" ]; then
-  # echo "💡 Loading pyenv..."
-  export PYENV_ROOT="$HOME/.pyenv"
-  command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init - --no-rehash)"
-fi
-
-# Node: n
-if [ -r "${HOME}/.n" ]; then
-  # echo "💡 Loading n..."
-  export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
-  export PATH=./node_modules/.bin:$PATH
-fi
-
-# Ruby: rbenv
-if [ -r "${HOME}/.rbenv" ]; then
-  # echo "💡 Loading rbenv..."
-  eval "$(~/.rbenv/bin/rbenv init - zsh)"
-fi
+# ASDF
+. "$HOME/.asdf/asdf.sh"
+export PATH="$HOME/.asdf/shims:$PATH"
 
 # Postgres
 if [ -r "$(brew --prefix libpq)" ]; then
@@ -78,15 +47,3 @@ export EDITOR="{{ .editor }}"
 {{ if .os.wsl }}
 export BROWSER="wslview"
 {{ end }}
-
-# # if ${HOME}/.pyenv exists and pyenv is installed, then initialize pyenv
-# if [ -d "${HOME}/.pyenv" ] && command -v pyenv >/dev/null 2>&1; then
-#   export PYENV_ROOT="${HOME}/.pyenv"
-#   export PATH="${PYENV_ROOT}/bin:${PATH}"
-#   eval "$(pyenv init --path)"
-#   eval "$(pyenv init -)"
-#   if which pyenv-virtualenv-init >/dev/null; then
-#     eval "$(pyenv virtualenv-init -)"
-#   fi
-#   export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-# fi

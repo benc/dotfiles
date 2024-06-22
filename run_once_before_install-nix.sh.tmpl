@@ -68,7 +68,7 @@ sudo chsh -s /usr/bin/zsh $(whoami)
 {{ end -}}
 
 {{ if .os.macos -}}
-if [ ! -f "/usr/local/bin/brew" ]; then
+if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
     echo "💡 Installing homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
@@ -110,10 +110,6 @@ brew "mas"
 {{ end -}}
 EOF
 
-if [ ! -d "${HOME}/.zplug" ]; then
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-fi
-
 {{ if .os.macos -}}
 echo "💡 Installing utilities..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
@@ -141,44 +137,11 @@ brew "ctop"
 brew "lnav"
 EOF
 
-echo "💡 Installing sdkman dependencies..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "curl"
-brew "zip"
-brew "unzip"
-EOF
-
-echo "💡 Installing pyenv dependencies..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "openssl"
-brew "readline"
-brew "sqlite3"
-brew "xz"
-brew "zlib"
-brew "tcl-tk"
-EOF
-
-echo "💡 Installing ruby-build dependencies..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "libyaml"
-EOF
-
 echo "💡 Installing powershell..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 cask "powershell"
 EOF
-
 {{ end -}}
-
-echo "💡 Installing go..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "go"
-EOF
-
-echo "💡 Installing mutagen..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "mutagen-io/mutagen/mutagen"
-EOF
 
 echo "💡 Installing kubernetes tooling..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
@@ -186,8 +149,6 @@ brew "k9s"
 brew "kubernetes-cli"
 brew "helm"
 EOF
-
-go install github.com/jrockway/kubectl-jq/cmd/kubectl-jq@latest
 
 echo "💡 Installing data stuff..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
@@ -205,100 +166,61 @@ EOF
 echo "💡 Setting a couple of macos defaults..."
 
 # Increase sound quality for Bluetooth headphones/headsets
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40 >> /dev/null
 
 # Set language and text formats
-defaults write NSGlobalDomain AppleLanguages -array "nl" "en"
-defaults write NSGlobalDomain AppleLocale -string "nl_BE@currency=EUR"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
-defaults write NSGlobalDomain AppleMetricUnits -bool true
+defaults write NSGlobalDomain AppleLanguages -array "nl" "en" >> /dev/null
+defaults write NSGlobalDomain AppleLocale -string "nl_BE@currency=EUR" >> /dev/null
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters" >> /dev/null
+defaults write NSGlobalDomain AppleMetricUnits -bool true >> /dev/null
 
 # Always use exapnded print dialog
-defaults write -g PMPrintingExpandedStateForPrint -bool TRUE
+defaults write -g PMPrintingExpandedStateForPrint -bool TRUE >> /dev/null
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
+sudo systemsetup -setcomputersleep Off > /dev/null >> /dev/null
 
 # Hibernate mode 3: Copy RAM to disk so the system state can still be restored in case of a power failure.
-sudo pmset -a hibernatemode 3
+sudo pmset -a hibernatemode 3 >> /dev/null
 
 # Enable powernap
-sudo pmset -a powernap 1
+sudo pmset -a powernap 1 >> /dev/null
 
 # Disable lowpowermode
-sudo pmset -a lowpowermode 0
+sudo pmset -a lowpowermode 0 >> /dev/null
 
 # Save screenshots to the ~/Pictures/Screenshots folder
 mkdir -p "${HOME}/Pictures/Screenshots"
-defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots"
+defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots" >> /dev/null
 
 # Avoid creating .DS_Store files on network or USB volumes
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true >> /dev/null
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true >> /dev/null
 
 # Enable touch id for sudo
-sudo {{ .chezmoi.sourceDir }}/scripts/sudo_touch_id/enable_sudo_touch_id.sh
+sudo {{ .chezmoi.sourceDir }}/scripts/sudo_touch_id/enable_sudo_touch_id.sh >> /dev/null
 {{ end -}}
 
-echo "💡 Setting up version managers..."
+echo "💡 Setting up asdf..."
+rm -rf "${HOME}/.n"
+rm -rf "${HOME}/.pyenv"
+rm -rf "${HOME}/.rbenv"
+rm -rf "${HOME}/.sdkman"
 
-if [ ! -d "${HOME}/.sdkman" ]; then
-    echo "💡 Setting up SDKMan..."
-
-    curl -s "https://get.sdkman.io?rcupdate=false" | bash
+if [ ! -d $HOME/.asdf ]; then
+    echo "💡 Installing asdf..." 
+    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf 
+    . "$HOME/.asdf/asdf.sh"
+    asdf upgrade
 fi
 
-sdk update
+. "$HOME/.asdf/asdf.sh"
 
-echo "💡 Installing java 11, java 17, gradle, maven..."
-. "${HOME}/.sdkman/bin/sdkman-init.sh"
-sdk install java {{ .java.v11 }}
-sdk install java {{ .java.v17 }}
-sdk install java {{ .java.v21 }}
-sdk install gradle {{ .java.gradle }}
-sdk install maven {{ .java.maven }}
-
-# TODO what about asdf for python, ruby, java?
-if [ ! -d "${HOME}/.pyenv" ]; then
-    # Set up pyenv
-    echo "💡 Setting up python (pyenv)..."
-
-    curl https://pyenv.run | bash
-
-    export PYENV_ROOT="$HOME/.pyenv"
-    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
-fi
-
-echo "💡 Installing python..."
-
-cd "${HOME}/.pyenv/" && git pull && cd -
-pyenv install --skip-existing {{ .python.version }}
-pyenv global {{ .python.version }}
-
-if [ ! -d "${HOME}/.n" ]; then
-    echo "💡 Setting up node (n, avn)..."
-
-    curl -L https://bit.ly/n-install | N_PREFIX=$HOME/.n bash -s -- -n -y
-
-    export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
-
-    $HOME/.n/bin/npm install -g npm avn avn-n
-fi
-
-if [ ! -d "${HOME}/.rbenv" ]; then
-    echo "💡 Setting up ruby (rbenv)..."
-
-    git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
-    git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
-fi
-
-echo "💡 Installing ruby..."
-
-git -C ~/.rbenv/plugins/ruby-build/ pull
-eval "$(~/.rbenv/bin/rbenv init -)"
-
-rbenv install --skip-existing {{ .ruby.version }}
-rbenv global {{ .ruby.version }}
-
-echo "💡 System initialisation done. Please open a new terminal now..."
+asdf plugin add nodejs
+asdf plugin add ruby
+asdf plugin add java
+asdf plugin add maven
+asdf plugin add gradle
+asdf plugin add python
+asdf plugin add golang
+asdf plugin add rust
