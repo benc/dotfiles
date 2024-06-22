@@ -1,0 +1,21 @@
+#!/bin/bash
+{{ if .os.macos -}}
+COMFYUI_DIR=$HOME/Applications/comfyui
+
+. "$HOME/.asdf/asdf.sh"
+
+conda install -y pytorch torchvision torchaudio -c pytorch-nightly
+
+if [ ! -d $COMFYUI_DIR ]; then
+    echo "💡 Cloning comfyui..." 
+    git clone https://github.com/comfyanonymous/ComfyUI.git $COMFYUI_DIR
+fi
+
+pushd $COMFYUI_DIR
+echo "💡 Installing comfyui dependencies (if needed)..."
+git pull
+pip install -r requirements.txt
+popd
+{{ end -}}
+
+echo "💡 System initialisation done. Please open a new terminal now..."
