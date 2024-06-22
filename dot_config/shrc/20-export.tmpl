@@ -14,9 +14,8 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 {{ end }}
 
-# ASDF
-. "$HOME/.asdf/asdf.sh"
-export PATH="$HOME/.asdf/shims:$PATH"
+# vfox
+export PATH="$HOME/.version-fox/shims:$PATH"
 
 # Postgres
 if [ -r "$(brew --prefix libpq)" ]; then
