@@ -1,0 +1,16 @@
+#!/bin/bash
+{{ if .os.macos -}}
+COMFYUI_DIR=$HOME/Applications/ComfyUI
+mkdir -p $COMFYUI_DIR
+
+. "$HOME/.asdf/asdf.sh"
+
+conda install -y pytorch torchvision torchaudio -c pytorch-nightly
+pip install comfy-cli
+
+pushd $COMFYUI_DIR
+comfy install --here
+popd
+{{ end -}}
+
+echo "💡 System initialisation done. Please open a new terminal now..."

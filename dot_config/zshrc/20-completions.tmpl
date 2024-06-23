@@ -22,6 +22,23 @@ if (( ${+commands[pip]} )); then
   eval "$(pip completion --zsh)"
 fi
 
+# pip
+if (( ${+commands[comfy]} )); then
+  autoload -Uz compinit
+
+  # Define custom completion for comfy
+  # Ensure that _comfy_completion is defined after compinit
+  _comfy_completion() {
+    eval $(env _TYPER_COMPLETE_ARGS="${words[1,$CURRENT]}" _COMFY_COMPLETE=complete_zsh comfy)
+  }
+
+  # Bind the completion function to the comfy command
+  compdef _comfy_completion comfy
+
+  # Other configurations (e.g., aliases, prompt, etc.)
+  zstyle ':completion:*' menu select
+fi
+
 # chezmoi
 if (( ${+commands[chezmoi]} )); then
   eval "$(chezmoi completion zsh)"
