@@ -5,12 +5,28 @@ function InstallWithWinget($id) {
 }
 
 $appsToInstall = @(
-    "AgileBits.1Password", "ScooterSoftware.BeyondCompare4", "Microsoft.Sysinternals.ProcessExplorer",
-    "Microsoft.WindowsTerminal", "JetBrains.Toolbox", "SaaSGroup.Tower", "WinSCP.WinSCP",
-    "Giorgiotani.Peazip", "Intel.IntelDriverAndSupportAssistant", "Docker.DockerDesktop",
-    "ProxymanLLC.Proxyman", "Microsoft.VisualStudioCode.Insiders", "Git.Git", "gerardog.gsudo",
-    "tailscale.tailscale", "IVPN.IVPN", "Logitech.LogiTune", "RandyRants.SharpKeys",
-    "Flow-Launcher.Flow-Launcher", "Mozilla.Firefox", "Mozilla.Thunderbird", "Alacritty.Alacritty",
+    "AgileBits.1Password", 
+    "ScooterSoftware.BeyondCompare4",
+    "Microsoft.Sysinternals.ProcessExplorer",
+    "Microsoft.WindowsTerminal",
+    "JetBrains.Toolbox",
+    "SaaSGroup.Tower", 
+    "WinSCP.WinSCP",
+    "Giorgiotani.Peazip", 
+    "Intel.IntelDriverAndSupportAssistant", 
+    "Docker.DockerDesktop",
+    "ProxymanLLC.Proxyman",
+    "Microsoft.VisualStudioCode.Insiders",
+    "Git.Git",
+    "gerardog.gsudo",
+    "tailscale.tailscale", 
+    "IVPN.IVPN", 
+    "Logitech.LogiTune", 
+    "RandyRants.SharpKeys",
+    "Flow-Launcher.Flow-Launcher", 
+    "Mozilla.Firefox", 
+    "Mozilla.Thunderbird", 
+    "Alacritty.Alacritty",
     "Anaconda.Miniconda3"
 )
 
@@ -27,7 +43,7 @@ gsudo {
     Write-Host "`nInstall choco packages"
     choco install exiftool bat delta fd fzf lf ripgrep xh op npiperelay zoxide awscli aws-iam-authenticator pandoc -y
 
-    & {{ .chezmoi.sourceDir }}/scripts/powershell/install.ps1
+    & { { .chezmoi.sourceDir } }/scripts/powershell/install.ps1
 
     Write-Host "`nSet execution policy"
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -44,10 +60,10 @@ gsudo {
     $config = Get-Content $configFilePath
 
     ((Get-Content -path C:\ProgramData\ssh\sshd_config -Raw) `
-    -replace '#PubkeyAuthentication yes','PubkeyAuthentication yes' `
-    -replace '#PasswordAuthentication yes','PasswordAuthentication no' `
-    -replace 'Match Group administrators','#Match Group administrators' `
-    -replace 'AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys','#AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys') | Set-Content -Path C:\ProgramData\ssh\sshd_config
+        -replace '#PubkeyAuthentication yes', 'PubkeyAuthentication yes' `
+        -replace '#PasswordAuthentication yes', 'PasswordAuthentication no' `
+        -replace 'Match Group administrators', '#Match Group administrators' `
+        -replace 'AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys', '#AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys') | Set-Content -Path C:\ProgramData\ssh\sshd_config
 
     Set-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Program Files\PowerShell\7\pwsh.exe" -Verbose
 
@@ -98,7 +114,8 @@ gsudo {
     # add user to docker-users group
     try {
         Add-LocalGroupMember -Group docker-users -Member $username -ErrorAction Stop
-    } catch [Microsoft.PowerShell.Commands.MemberExistsException] {
+    }
+    catch [Microsoft.PowerShell.Commands.MemberExistsException] {
     }
 
     # hyperv
