@@ -13,7 +13,7 @@ MODEL_DIR=$HOME/Models
 
 . "$HOME/.asdf/asdf.sh"
 
-pip3 install pytorch torchvision torchaudio -c pytorch-nightly
+conda install pytorch-nightly::pytorch torchvision torchaudio -c pytorch-nightly
 pip3 install comfy-cli
 pip3 install --upgrade certifi
 # pip3 -y install onnxruntime-silicon
