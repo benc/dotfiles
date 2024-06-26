@@ -13,8 +13,10 @@ MODEL_DIR=$HOME/Models
 
 . "$HOME/.asdf/asdf.sh"
 
-conda install -y pytorch torchvision torchaudio -c pytorch-nightly
+pip3 install pytorch torchvision torchaudio -c pytorch-nightly
 pip3 install comfy-cli
+pip3 install --upgrade certifi
+# pip3 -y install onnxruntime-silicon
 
 # comfy install is broken... https://github.com/Comfy-Org/comfy-cli/issues/98
 if [ ! -d "$COMFYUI_DIR" ]; then
@@ -30,9 +32,6 @@ if [ ! -d "$COMFYUI_DIR" ]; then
     popd
 
     comfy set-default "$COMFYUI_DIR"
-
-    # pip3 onnxruntime-silicon
-    pip3 install --upgrade certifi
 
     echo "💡 Setting up model dirs"
     mkdir -p "$MODEL_DIR/StableDiffusion"
