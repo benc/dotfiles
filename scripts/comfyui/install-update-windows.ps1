@@ -1,7 +1,7 @@
 $comfyUiDir = "$env:USERPROFILE/AppData/Local/Programs/ComfyUI"
 $modelDir = "$env:USERPROFILE/Models"
 
-conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch-nightly -c nvidia
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip3 install comfy-cli
 pip3 install --upgrade certifi
 
