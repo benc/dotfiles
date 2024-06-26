@@ -7,3 +7,5 @@ Add-Content -Path $PROFILE.CurrentUserAllHosts -Value '$(/opt/homebrew/bin/brew 
 If (Test-Path "$env:USERPROFILE\miniconda3\Scripts\conda.exe") {
     (& "$env:USERPROFILE\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
 }{{- end }}
+
+Set-PSReadLineKeyHandler -Chord "Tab" -Function AcceptSuggestion
