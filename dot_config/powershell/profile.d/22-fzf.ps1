@@ -1,6 +1,5 @@
 # fzf
 if (Get-Command fzf -errorAction SilentlyContinue) {
-  Install-Module PSFzf -Force
   Import-Module PSReadLine # before PSFzf
   Import-Module PsFzf
 
