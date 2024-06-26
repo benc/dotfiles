@@ -2,3 +2,7 @@
 # Homebrew on mac
 Add-Content -Path $PROFILE.CurrentUserAllHosts -Value '$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression'
 {{- end }}
+
+{{ if .os.windows -}}
+PATH=%USERPROFILE%\miniconda3\;%USERPROFILE%\miniconda3\condabin;%USERPROFILE%\miniconda3\Scripts;%PATH%
+{{- end }}
