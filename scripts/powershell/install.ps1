@@ -1,10 +1,10 @@
 $modulesToInstall = @(
     "PSWindowsUpdate",
-     "PSColor", 
-     "CompletionPredictor", 
-     "PSReadLine", 
-     "PSFzf", 
-     "PowerType"
+    "PSColor", 
+    "CompletionPredictor", 
+    "PSReadLine", 
+    "PSFzf", 
+    "PowerType"
 )
 
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
