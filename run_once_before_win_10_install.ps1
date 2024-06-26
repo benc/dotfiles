@@ -1,31 +1,22 @@
-function wingetInstallIfNotInstalled($id) {
-    Write-Host("Install $id if not installed")
+function InstallWithWinget($id) {
+    Write-Host "Installing $id if not already installed..."
     winget list --exact --id $id || winget install --exact --id $id --interactive
-    Write-Host("")
+    Write-Host ""
 }
 
-wingetInstallIfNotInstalled("AgileBits.1Password")
-wingetInstallIfNotInstalled("ScooterSoftware.BeyondCompare4")
-wingetInstallIfNotInstalled("Microsoft.Sysinternals.ProcessExplorer")
-wingetInstallIfNotInstalled("Microsoft.WindowsTerminal")
-wingetInstallIfNotInstalled("JetBrains.Toolbox")
-wingetInstallIfNotInstalled("SaaSGroup.Tower")
-wingetInstallIfNotInstalled("WinSCP.WinSCP")
-wingetInstallIfNotInstalled("Giorgiotani.Peazip")
-wingetInstallIfNotInstalled("Intel.IntelDriverAndSupportAssistant")
-wingetInstallIfNotInstalled("Docker.DockerDesktop")
-wingetInstallIfNotInstalled("ProxymanLLC.Proxyman")
-wingetInstallIfNotInstalled("Microsoft.VisualStudioCode.Insiders")
-wingetInstallIfNotInstalled("Git.Git")
-wingetInstallIfNotInstalled("gerardog.gsudo")
-wingetInstallIfNotInstalled("tailscale.tailscale")
-wingetInstallIfNotInstalled("IVPN.IVPN")
-wingetInstallIfNotInstalled("Logitech.LogiTune")
-wingetInstallIfNotInstalled("RandyRants.SharpKeys")
-wingetInstallIfNotInstalled("Flow-Launcher.Flow-Launcher")
-wingetInstallIfNotInstalled("Mozilla.Firefox")
-wingetInstallIfNotInstalled("Mozilla.Thunderbird")
-wingetInstallIfNotInstalled("Alacritty.Alacritty")
+$appsToInstall = @(
+    "AgileBits.1Password", "ScooterSoftware.BeyondCompare4", "Microsoft.Sysinternals.ProcessExplorer",
+    "Microsoft.WindowsTerminal", "JetBrains.Toolbox", "SaaSGroup.Tower", "WinSCP.WinSCP",
+    "Giorgiotani.Peazip", "Intel.IntelDriverAndSupportAssistant", "Docker.DockerDesktop",
+    "ProxymanLLC.Proxyman", "Microsoft.VisualStudioCode.Insiders", "Git.Git", "gerardog.gsudo",
+    "tailscale.tailscale", "IVPN.IVPN", "Logitech.LogiTune", "RandyRants.SharpKeys",
+    "Flow-Launcher.Flow-Launcher", "Mozilla.Firefox", "Mozilla.Thunderbird", "Alacritty.Alacritty",
+    "Anaconda.Miniconda3"
+)
+
+foreach ($app in $appsToInstall) {
+    InstallWithWinget $app
+}
 
 Write-Host "Request administrator access"
 gsudo {

@@ -5,8 +5,7 @@ scripts
 {{ if ne .chezmoi.os "windows" -}}
 AppData
 Documents
-10_install-windows.ps1
-10_update-windows.ps1
+win*
 .wslconfig
 {{- end }}
 
@@ -21,7 +20,6 @@ Library
 .config/zshrc
 .bash_profile
 .zshrc
-install-nix.sh
-update-nix.sh
+nix*
 Library
 {{- end }}

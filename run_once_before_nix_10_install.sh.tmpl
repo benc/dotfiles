@@ -200,7 +200,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true >> 
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true >> /dev/null
 
 # Reduce menu bar spacing
-defaults -currentHost write -globalDomain NSStatusItemSpacing -int 7 >> /dev/null
+defaults -currentHost write -globalDomain NSStatusItemSpacing -int 10 >> /dev/null
 defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 10 >> /dev/null
 
 # Enable touch id for sudo
