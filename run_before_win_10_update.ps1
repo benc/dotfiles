@@ -1,3 +1,5 @@
+chezmoi upgrade
+
 gsudo {
   Write-Host "Update choco packages and modules"
   choco upgrade all -y
