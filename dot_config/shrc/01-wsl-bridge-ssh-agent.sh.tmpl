@@ -1,4 +1,4 @@
-{{ if .os.wsl }}
+{{- if and (.chezmoi.osRelease) ( contains "wsl" ( lower .chezmoi.kernel.osrelease )) -}}
 #!/bin/bash
 NPIPERELAY_DIR="/mnt/c/ProgramData/chocolatey/bin/"
 

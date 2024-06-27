@@ -1,4 +1,4 @@
-{{ if .os.linux }}
+{{ if eq .chezmoi.os "linux" }}
 #!/bin/bash
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{ end }}

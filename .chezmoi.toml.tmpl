@@ -19,22 +19,6 @@
 {{-   writeToStdout "Chezmoi is running in headless environment.\n" -}}
 {{- end -}}
 
-{{- $tools_flavor := "unknown" -}}
-{{- if eq .chezmoi.os "darwin" "dragonfly" "dragonfly" "freebsd" "ios" "netbsd" "openbsd" -}}
-{{-   $tools_flavor = "bsd" -}}
-{{- else if eq .chezmoi.os "android" "linux" "windows" -}}
-{{-   $tools_flavor = "gnu" -}}
-{{- end -}}
-{{- $is_linux := eq .chezmoi.os "linux" -}}
-{{- $is_macos := eq .chezmoi.os "darwin" -}}
-{{- $is_windows := eq .chezmoi.os "windows" -}}
-{{- $is_wsl := false -}}
-{{- if and $is_linux (get .chezmoi "kernel") -}}
-{{-   if hasSuffix "microsoft-standard-WSL2" .chezmoi.kernel.osrelease -}}
-{{-     $is_wsl = true -}}
-{{-   end -}}
-{{- end -}}
-
 {{ if eq .chezmoi.os "windows" -}}
 [interpreters.ps1]
 command = "pwsh"
@@ -69,12 +53,6 @@ autoCommit = true
 
 [data]
 editor = "codei"
-
-[data.os]
-linux = {{ $is_linux }}
-macos = {{ $is_macos }}
-windows = {{ $is_windows }}
-wsl = {{ $is_wsl }}
 
 [data.user]
 email = {{ $email | quote }}

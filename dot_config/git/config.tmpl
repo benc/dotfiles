@@ -11,7 +11,7 @@
 [core]
   editor = {{ .editor }}
 
-  {{ if .os.windows }}
+  {{ if eq .chezmoi.os "windows" }}
   autocrlf = false
   eol = lf
   filemode = false
@@ -19,7 +19,7 @@
   fscache = true
   {{ end }}
 
-  {{ if .os.wsl }}
+  {{- if and (.chezmoi.osRelease) ( contains "wsl" ( lower .chezmoi.kernel.osrelease )) -}}
   autocrlf = false
   eol = lf
   filemode = false
@@ -44,12 +44,12 @@
   # from 1password
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPfw39lhA+fsCkUzswDDLIuEmU4k0J267ZShiSY0Jand
 
-{{ if .os.windows }}
+{{ if eq .chezmoi.os "windows" }}
 [credential]
   helper = manager
 {{ end }}
 
-{{ if .os.macos }}
+{{ if eq .chezmoi.os "darwin" }}
 [credential]
   helper = osxkeychain
 {{ end }}
@@ -57,13 +57,13 @@
 [gpg]
   format = ssh
 
-{{ if .os.windows }}
+{{ if eq .chezmoi.os "windows" }}
 [gpg "ssh"]
   program = "C:/Users/ben/AppData/Local/1Password/app/8/op-ssh-sign.exe"
   allowedSignersFile = {{ .chezmoi.homeDir }}/.config/git/allowed_signers
 {{ end }}
 
-{{ if .os.macos }}
+{{ if eq .chezmoi.os "darwin" }}
 [gpg "ssh"]
   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
   allowedSignersFile = {{ .chezmoi.homeDir }}/.config/git/allowed_signers
@@ -72,7 +72,7 @@
 [commit]
   gpgsign = true
 
-{{ if .os.macos }}
+{{ if eq .chezmoi.os "darwin" }}
 [diff]
   tool = Kaleidoscope
 
@@ -92,7 +92,7 @@
   prompt = false
 {{ end }}
 
-{{ if .os.windows }}
+{{ if eq .chezmoi.os "windows" }}
 [diff]
   tool = BeyondCompare
 

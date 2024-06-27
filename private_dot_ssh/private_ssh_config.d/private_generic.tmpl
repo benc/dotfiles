@@ -1,9 +1,9 @@
-{{ if .os.macos -}}
+{{ if eq .chezmoi.os "darwin" -}}
 Include ~/.orbstack/ssh/config
 {{ end -}}
 
 Host *
-  {{ if .os.macos -}}
+  {{ if eq .chezmoi.os "darwin" -}}
   # Allow storing passphrases in the macOS keychain.
   # See https://developer.apple.com/library/archive/technotes/tn2449/_index.html
   UseKeychain yes
@@ -14,11 +14,11 @@ Host *
   ServerAliveCountMax 6
   ServerAliveInterval 300
 
-  {{ if .os.macos -}}
+  {{ if eq .chezmoi.os "darwin" -}}
   # Use 1Password ssh agent
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
   {{ end -}}
-  {{ if .os.linux -}}
+  {{ if eq .chezmoi.os "linux" -}}
   # Use 1Password ssh agent
   IdentityAgent "~/.1password/agent.sock"
   {{ end }}

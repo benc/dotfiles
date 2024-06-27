@@ -1,6 +1,6 @@
 #!/bin/bash
 
-{{ if .os.linux -}}
+{{ if eq .chezmoi.os "linux" -}}
 echo "💡 Updating apt..."
 sudo apt update
 
@@ -36,12 +36,7 @@ sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --batch --yes --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
 sudo apt update && sudo apt install 1password-cli
 
-{{ if .os.macos -}}
-echo "💡 Enabling SSH..."
-sudo systemsetup -setremotelogin on
-{{ end -}}
-
-{{ if .os.wsl -}}
+{{ if (contains .chezmoi.kernel.osrelease "-WSL2") -}}
 echo "💡 Enabling OpenSSH on WSL..."
 
 sudo apt remove -y --purge openssh-server
@@ -68,14 +63,14 @@ echo "💡 Setting default shell to ZSH..."
 sudo chsh -s /usr/bin/zsh $(whoami)
 {{ end -}}
 
-{{ if .os.macos -}}
+{{ if eq .chezmoi.os "darwin" -}}
 if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
     echo "💡 Installing homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 {{ end -}}
 
-{{ if .os.linux -}}
+{{ if eq .chezmoi.os "linux" -}}
 if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
     echo "💡 Installing homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -104,14 +99,14 @@ brew "procs"
 brew "dust"
 brew "duf"
 brew "prettyping"
-{{ if .os.macos -}}
+{{ if eq .chezmoi.os "darwin" -}}
 brew "terminal-notifier"
 brew "m-cli"
 brew "mas"
 {{ end -}}
 EOF
 
-{{ if .os.macos -}}
+{{ if eq .chezmoi.os "darwin" -}}
 echo "💡 Installing utilities..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 cask "1password/tap/1password-cli"
@@ -167,7 +162,7 @@ brew "awscli"
 brew "aws-iam-authenticator"
 EOF
 
-{{ if .os.macos -}}
+{{ if eq .chezmoi.os "darwin" -}}
 echo "💡 Setting a couple of macos defaults..."
 
 # Increase sound quality for Bluetooth headphones/headsets
@@ -181,6 +176,9 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true >> /dev/null
 
 # Always use exapnded print dialog
 defaults write -g PMPrintingExpandedStateForPrint -bool TRUE >> /dev/null
+
+# Enable SSH
+sudo systemsetup -setremotelogin on
 
 # Never go into computer sleep mode
 sudo systemsetup -setcomputersleep Off > /dev/null >> /dev/null

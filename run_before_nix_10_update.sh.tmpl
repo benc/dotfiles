@@ -1,13 +1,13 @@
 #!/bin/bash
 
-{{ if .os.linux -}}
+{{ if eq .chezmoi.os "linux" -}}
 echo "💡 Updating apt..."
 sudo apt update; sudo apt upgrade -y
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{ end -}}
 
-{{ if .os.macos -}}
+{{ if eq .chezmoi.os "darwin" -}}
 softwareupdate --install --all --verbose;
 {{ end -}}
 

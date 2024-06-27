@@ -1,9 +1,9 @@
 # #!/bin/bash
 # if (( ${+commands[grc]} )); then
-#     {{ if .os.macos -}}
+#     {{ if eq .chezmoi.os "darwin" -}}
 #     source `brew --prefix`/etc/grc.zsh
 #     {{ end -}}
-#     {{ if .os.linux -}}
+#     {{ if eq .chezmoi.os "linux" -}}
 #     source /etc/grc.zsh
 #     {{ end -}}
 # fi

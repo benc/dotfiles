@@ -1,9 +1,9 @@
-{{ if .os.macos -}}
+{{ if eq .chezmoi.os "darwin" -}}
 # Homebrew on mac
 Add-Content -Path $PROFILE.CurrentUserAllHosts -Value '$(brew shellenv) | Invoke-Expression'
 {{- end }}
 
-{{ if .os.windows -}}
+{{ if eq .chezmoi.os "windows" -}}
 If (Test-Path "$env:USERPROFILE\miniconda3\Scripts\conda.exe") {
     (& "$env:USERPROFILE\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
 }{{- end }}
