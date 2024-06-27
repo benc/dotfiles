@@ -1,5 +1,5 @@
 #!/bin/bash
-export PATH=./my/bin/:$PATH
+export PATH="$(brew --prefix)/bin:./my/bin/:/usr/local/bin:/usr/local/sbin:$PATH"
 
 {{ if .os.wsl }}
 # The boot.systemd in /etc/wsl.conf is only for Windows 11, so this workaround is needed
@@ -8,15 +8,12 @@ if service docker status 2>&1 | grep -q "is not running"; then
 fi
 {{ end }}
 
-{{ if .os.macos }}
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-{{ else if .os.linux }}
-
-{{ end }}
-
 # ASDF
 . "$HOME/.asdf/asdf.sh"
 export PATH="$HOME/.asdf/shims:$PATH"
+
+# NodeJS
+export PATH="./node_modules/.bin:$PATH"
 
 # Postgres
 if [ -r "$(brew --prefix libpq)" ]; then
@@ -33,6 +30,10 @@ if [ -d "${HOME}/.local/bin" ]; then
   export PATH="${HOME}/.local/bin:${PATH}"
 fi
 
+# Path
+if [ -d "${HOME}/bin" ]; then
+  export PATH="${HOME}/bin:${PATH}"
+fi
 # Path
 if [ -d "${HOME}/bin" ]; then
   export PATH="${HOME}/bin:${PATH}"
