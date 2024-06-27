@@ -8,6 +8,13 @@
 #   sh Miniconda3-latest-MacOSX-arm64.sh
 #
 set -e
+
+ARCH=$(uname -m)
+if [ "$ARCH" != "arm64" ]; then
+    echo "This script is intended for ARM Macs only."
+    exit 1
+fi
+
 COMFYUI_DIR=$HOME/Applications/ComfyUI
 MODEL_DIR=$HOME/Models
 
