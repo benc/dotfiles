@@ -5,13 +5,22 @@ echo "💡 Updating apt..."
 sudo apt update
 
 echo "💡 Installing generic tooling (shell, utilities, ...)"
-sudo apt install -y git locales keychain
+sudo apt install -y git keychain
 
+{{   if eq .chezmoi.osRelease.id "ubuntu" }}
 sudo echo "LC_ALL=nl_BE.UTF-8" >> /etc/environment
 sudo echo "nl_BE.UTF-8 UTF-8" >> /etc/locale.gen
 sudo echo "LANG=en_US.UTF-8" > /etc/locale.conf
 sudo locale-gen en_US.UTF-8
 sudo locale-gen nl_BE.UTF-8
+{{   end }}
+
+{{   if eq .chezmoi.osRelease.id "debian" }}
+sudo apt-get install -y locales locales-all
+sudo sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+sudo sed -i -e 's/# nl_BE.UTF-8 UTF-8/nl_BE.UTF-8 UTF-8/' /etc/locale.gen
+sudo locale-gen
+{{   end }}
 
 echo "💡 Installing sdkman dependencies..."
 sudo apt install -y unzip zip curl
@@ -66,14 +75,14 @@ sudo chsh -s /usr/bin/zsh $(whoami)
 {{ if eq .chezmoi.os "darwin" -}}
 if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
     echo "💡 Installing homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 {{ end -}}
 
 {{ if eq .chezmoi.os "linux" -}}
 if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
     echo "💡 Installing homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{ end -}}
