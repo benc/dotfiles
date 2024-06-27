@@ -1,7 +1,7 @@
 # SublimeText project files
 *.sublime-workspace
 
-my/
+.local/
 
 # OSX
 .DS_Store

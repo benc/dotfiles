@@ -1,5 +1,5 @@
 #!/bin/bash
-export PATH="$(brew --prefix)/bin:./my/bin/:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$(brew --prefix)/bin:./.local/bin/:/usr/local/bin:/usr/local/sbin:$PATH"
 
 {{ if .os.wsl }}
 # The boot.systemd in /etc/wsl.conf is only for Windows 11, so this workaround is needed
