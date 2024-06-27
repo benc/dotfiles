@@ -1,6 +1,6 @@
 {{ if .os.macos -}}
 # Homebrew on mac
-Add-Content -Path $PROFILE.CurrentUserAllHosts -Value '$(/opt/homebrew/bin/brew shellenv) | Invoke-Expression'
+Add-Content -Path $PROFILE.CurrentUserAllHosts -Value '$(brew shellenv) | Invoke-Expression'
 {{- end }}
 
 {{ if .os.windows -}}
