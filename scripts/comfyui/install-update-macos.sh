@@ -20,13 +20,8 @@ MODEL_DIR=$HOME/Models
 
 . "$HOME/.asdf/asdf.sh"
 
-pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
-pip3 install comfy-cli
-pip3 install --upgrade certifi
-# pip3 -y install onnxruntime-silicon
-
 # comfy install is broken... https://github.com/Comfy-Org/comfy-cli/issues/98
-if [ ! -d "$COMFYUI_DIR" ]; then
+if [ ! -d "$COMFYUI_DIR" ]; then # install
     echo "💡 Cloning comfyui..." 
     git clone https://github.com/comfyanonymous/ComfyUI.git "$COMFYUI_DIR"
     pushd "$COMFYUI_DIR/custom_nodes" || exit
@@ -34,8 +29,18 @@ if [ ! -d "$COMFYUI_DIR" ]; then
     popd
 
     pushd "$COMFYUI_DIR" || exit
+    uv venv
+    source .venv/bin/activate
+
+    echo "layout python" > .envrc
+    direnv allow .
+
     echo "💡 Installing comfyui dependencies"
-    pip3 install -r requirements.txt
+    uv pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
+    uv pip install comfy-cli
+    uv pip install --upgrade certifi
+    # uv pip -y install onnxruntime-silicon
+    uv pip install -r requirements.txt
     popd
 
     comfy set-default "$COMFYUI_DIR"
@@ -66,6 +71,19 @@ comfyui:
   vae: VAE
 EOL
     popd
+else # upgrade
+    pushd "$COMFYUI_DIR" || exit
+    git pull
+    popd
+
+    pushd "$COMFYUI_DIR/custom_nodes" || exit
+    git pull
+    popd
+
+    pushd "$COMFYUI_DIR" || exit
+    source .venv/bin/activate
+    uv pip install --upgrade --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
+    uv pip install --upgrade certifi
+    uv pip install -r requirements.txt
 fi
 
-comfy update

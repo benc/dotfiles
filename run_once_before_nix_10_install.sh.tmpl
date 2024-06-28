@@ -108,6 +108,8 @@ brew "procs"
 brew "dust"
 brew "duf"
 brew "prettyping"
+brew "uv"
+brew "direnv"
 {{ if eq .chezmoi.os "darwin" -}}
 brew "terminal-notifier"
 brew "m-cli"
@@ -240,3 +242,7 @@ asdf plugin add gradle
 asdf plugin add python
 asdf plugin add golang
 asdf plugin add rust
+asdf plugin-add direnv
+
+asdf direnv setup --shell bash --version system
+asdf direnv setup --shell zsh --version system

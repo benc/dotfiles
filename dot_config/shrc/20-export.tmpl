@@ -48,3 +48,6 @@ export EDITOR="{{ .editor }}"
 {{- if and (.chezmoi.osRelease) ( contains "wsl" ( lower .chezmoi.kernel.osrelease )) -}}
 export BROWSER="wslview"
 {{ end }}
+
+# SBT
+export SBT_CREDENTIALS=~/.ivy2/.credentials
