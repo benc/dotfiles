@@ -1,6 +1,16 @@
 
 Import-Module PSColor
 
+# Direnv
+if (Get-Command direnv -errorAction SilentlyContinue) {
+  Invoke-Expression "$(direnv hook pwsh)"
+}
+
+# Zoxide
+if (Get-Command zoxide -errorAction SilentlyContinue) {
+  Invoke-Expression (& { (zoxide init powershell | Out-String) })
+}
+
 # Starship
 if (Get-Command starship -errorAction SilentlyContinue) {
   Invoke-Expression (&starship init powershell)
@@ -8,7 +18,10 @@ if (Get-Command starship -errorAction SilentlyContinue) {
 
 # FZF
 if (Get-Command fzf -errorAction SilentlyContinue) {
-  Import-Module PSReadLine # before PSFzf
+  if (-not (Get-Module -Name PSReadLine)) {
+    # If not loaded, import the module
+    Import-Module PSReadLine
+  }
   Import-Module PsFzf
 
   # PSReadLine configuration
@@ -22,19 +35,9 @@ if (Get-Command fzf -errorAction SilentlyContinue) {
   $env:FZF_DEFAULT_COMMAND = 'rg --files . 2> nul'
 }
 
-# Zoxide: https://github.com/ajeetdsouza/Zoxide
-if (Get-Command zoxide -errorAction SilentlyContinue) {
-  Invoke-Expression (& { (zoxide init powershell | Out-String) })
-}
-
-# Chocolatey profile
+# Chocolatey
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 
 if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
-}
-
-# Direnv
-if (Get-Command direnv -errorAction SilentlyContinue) {
-  Invoke-Expression "$(direnv hook pwsh)"
 }

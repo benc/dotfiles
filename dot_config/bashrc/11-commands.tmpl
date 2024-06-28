@@ -3,15 +3,9 @@ if type direnv &>/dev/null; then
     eval "$(direnv hook bash)"
 fi
 
-if type sheldon &>/dev/null; then
-    eval "$(sheldon source)"
-fi
-
 if type zoxide &>/dev/null; then
     eval "$(zoxide init bash)"
 fi
-
-# Note: Removed the zsh check as it's not relevant for a bash script
 
 if type starship &>/dev/null; then
     eval "$(starship init bash)"
@@ -22,21 +16,4 @@ if type navi &>/dev/null; then
 
     # navi repo add https://github.com/denisidoro/cheats
     # navi repo add https://github.com/denisidoro/navi-tldr-pages
-fi
-
-if type minikube &>/dev/null; then
-  eval "$(minikube completion bash)"
-
-  # echo "💡 Setting up minikube for use with docker..."
-  # eval $(minikube docker-env)
-  # alias mku="minikube start --driver=vmware --disk-size=100g --container-runtime=docker --memory=8184 --cpus=4; minikube addons enable metrics-server; minikube addons enable ingress"
-fi
-
-if type microk8s &>/dev/null; then
-  alias mk="microk8s kubectl"
-  alias mh="microk8s helm"
-
-  # eval "$(mk completion bash | sed s/kubectl/mk/g)"
-  # eval "$(mh completion bash | sed s/helm/mh/g)"
-  # source <(mh completion bash | sed s/helm/mh/g)
 fi

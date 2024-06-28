@@ -1,5 +1,17 @@
 #!/bin/bash
-export PATH="$(brew --prefix)/bin:./.local/bin/:/usr/local/bin:/usr/local/sbin:$PATH"
+
+# Homebrew
+if [ -f "/usr/local/bin/brew" ]; then
+  export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+fi
+
+if [ -f "/opt/homebrew/bin/brew" ]; then
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+fi
+
+if [ -f "/opt/linuxbrew/bin/brew" ]; then
+  export PATH="/opt/linuxbrew/bin:/opt/linuxbrew/sbin:$PATH"
+fi
 
 {{- if and (.chezmoi.osRelease) ( contains "wsl" ( lower .chezmoi.kernel.osrelease )) -}}
 # The boot.systemd in /etc/wsl.conf is only for Windows 11, so this workaround is needed
@@ -25,16 +37,17 @@ if [ -r "$(brew --prefix kubernetes-cli)" ]; then
   export PATH="$(brew --prefix kubernetes-cli)/bin:${PATH}"
 fi
 
-# Path
+# Local binaries
+export PATH="./.local/bin/:$PATH"
+
 if [ -d "${HOME}/.local/bin" ]; then
   export PATH="${HOME}/.local/bin:${PATH}"
 fi
 
-# Path
 if [ -d "${HOME}/bin" ]; then
   export PATH="${HOME}/bin:${PATH}"
 fi
-# Path
+
 if [ -d "${HOME}/bin" ]; then
   export PATH="${HOME}/bin:${PATH}"
 fi

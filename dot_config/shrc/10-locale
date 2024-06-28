@@ -1,6 +1,6 @@
 #!/bin/bash
-export LANG='nl_BE.UTF-8'
-export LANGUAGE='nl_BE:nl'
+export LANG='en_US.UTF-8'
+export LANGUAGE='en_US.UTF-8'
 export LC_ALL='nl_BE.UTF-8'
 export LC_CTYPE='nl_BE.UTF-8'
 export LC_COLLATE='nl_BE.UTF-8'
