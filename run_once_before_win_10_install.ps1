@@ -1,3 +1,4 @@
+# install bare essentials so we can run the rest of the script
 function InstallWithWinget($id) {
     Write-Host "Installing $id if not already installed..."
     winget list --exact --id $id || winget install --exact --id $id --accept-source-agreements --accept-package-agreements --force --disable-interactivity
@@ -6,38 +7,7 @@ function InstallWithWinget($id) {
 
 $appsToInstall = @(
     "AgileBits.1Password", 
-    "AgileBits.1Password.CLI", 
-    "ScooterSoftware.BeyondCompare4",
-    "Microsoft.Sysinternals.ProcessExplorer",
-    "Microsoft.WindowsTerminal",
-    "JetBrains.Toolbox",
-    "SaaSGroup.Tower", 
-    "WinSCP.WinSCP",
-    "Giorgiotani.Peazip", 
-    "Intel.IntelDriverAndSupportAssistant", 
-    "Docker.DockerDesktop",
-    "ProxymanLLC.Proxyman",
-    "Microsoft.VisualStudioCode.Insiders",
-    "Git.Git",
-    "gerardog.gsudo",
-    "tailscale.tailscale", 
-    "IVPN.IVPN", 
-    "Logitech.LogiTune", 
-    "RandyRants.SharpKeys",
-    "Flow-Launcher.Flow-Launcher", 
-    "Mozilla.Firefox", 
-    "Mozilla.Thunderbird", 
-    "Alacritty.Alacritty",
-    "Anaconda.Miniconda3"
-    "direnv.direnv"
-    "JohnMacFarlane.Pandoc"
-    "Amazon.AWSCLI"
-    "junegunn.fzf"
-    "ajeetdsouza.zoxide"
-    "ducaale.xh"
-    "BurntSushi.ripgrep.MSVC"
-    "OliverBetz.ExifTool"
-    "sharkdp.bat"
+    "AgileBits.1Password.CLI"
 )
 
 foreach ($app in $appsToInstall) {

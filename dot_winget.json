@@ -1,0 +1,143 @@
+{
+	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
+	"CreationDate" : "2024-06-28T12:45:20.819-00:00",
+	"Sources" : 
+	[
+		{
+			"Packages" : 
+			[
+				{
+					"PackageIdentifier" : "AgileBits.1Password"
+				},
+				{
+					"PackageIdentifier" : "Proxyman.Proxyman"
+				},
+				{
+					"PackageIdentifier" : "AgileBits.1Password.CLI"
+				},
+				{
+					"PackageIdentifier" : "ScooterSoftware.BeyondCompare4"
+				},
+				{
+					"PackageIdentifier" : "Brave.Brave"
+				},
+				{
+					"PackageIdentifier" : "BurntSushi.ripgrep.MSVC"
+				},
+				{
+					"PackageIdentifier" : "Docker.DockerDesktop"
+				},
+				{
+					"PackageIdentifier" : "voidtools.Everything"
+				},
+				{
+					"PackageIdentifier" : "OliverBetz.ExifTool"
+				},
+				{
+					"PackageIdentifier" : "Flow-Launcher.Flow-Launcher"
+				},
+				{
+					"PackageIdentifier" : "Git.Git"
+				},
+				{
+					"PackageIdentifier" : "IVPN.IVPN"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.Sysinternals.ProcessExplorer"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.WindowsTerminal"
+				},
+				{
+					"PackageIdentifier" : "Anaconda.Miniconda3"
+				},
+				{
+					"PackageIdentifier" : "Mozilla.Thunderbird"
+				},
+				{
+					"PackageIdentifier" : "NGWIN.PicPick"
+				},
+				{
+					"PackageIdentifier" : "JetBrains.Toolbox"
+				},
+				{
+					"PackageIdentifier" : "SaaSGroup.Tower"
+				},
+				{
+					"PackageIdentifier" : "ajeetdsouza.zoxide"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Community"
+				},
+				{
+					"PackageIdentifier" : "direnv.direnv"
+				},
+				{
+					"PackageIdentifier" : "ducaale.xh"
+				},
+				{
+					"PackageIdentifier" : "Derailed.k9s"
+				},
+				{
+					"PackageIdentifier" : "junegunn.fzf"
+				},
+				{
+					"PackageIdentifier" : "sharkdp.bat"
+				},
+				{
+					"PackageIdentifier" : "WinSCP.WinSCP"
+				},
+				{
+					"PackageIdentifier" : "astral-sh.uv"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
+					"PackageIdentifier" : "RandyRants.SharpKeys"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudioCode.Insiders"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
+					"PackageIdentifier" : "Giorgiotani.Peazip"
+				},
+				{
+					"PackageIdentifier" : "Amazon.AWSCLI"
+				},
+				{
+					"PackageIdentifier" : "JohnMacFarlane.Pandoc"
+				},
+				{
+					"PackageIdentifier" : "Alacritty.Alacritty"
+				},
+				{
+					"PackageIdentifier" : "Starship.Starship"
+				},
+				{
+					"PackageIdentifier" : "tailscale.tailscale"
+				},
+				{
+					"PackageIdentifier" : "Intel.IntelDriverAndSupportAssistant"
+				},
+				{
+					"PackageIdentifier" : "Logitech.LogiTune"
+				},
+				{
+					"PackageIdentifier" : "gerardog.gsudo"
+				}
+			],
+			"SourceDetails" : 
+			{
+				"Argument" : "https://cdn.winget.microsoft.com/cache",
+				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
+				"Name" : "winget",
+				"Type" : "Microsoft.PreIndexed.Package"
+			}
+		}
+	],
+	"WinGetVersion" : "1.9.1551-preview"
+}
