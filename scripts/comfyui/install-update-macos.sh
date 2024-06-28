@@ -11,8 +11,8 @@ set -e
 
 ARCH=$(uname -m)
 if [ "$ARCH" != "arm64" ]; then
-    echo "This script is intended for ARM Macs only."
-    exit 1
+    echo "This script is intended for ARM Macs only, skipping..."
+    exit 0
 fi
 
 COMFYUI_DIR=$HOME/Applications/ComfyUI
