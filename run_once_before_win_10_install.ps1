@@ -6,6 +6,7 @@ function InstallWithWinget($id) {
 
 $appsToInstall = @(
     "AgileBits.1Password", 
+    "AgileBits.1Password.CLI", 
     "ScooterSoftware.BeyondCompare4",
     "Microsoft.Sysinternals.ProcessExplorer",
     "Microsoft.WindowsTerminal",
