@@ -51,7 +51,7 @@ gsudo {
     Update-Module
 
     Write-Host "`nInstall choco packages"
-    choco install op aws-iam-authenticator -y
+    choco install aws-iam-authenticator -y
 
     & { { .chezmoi.sourceDir } }/scripts/powershell/install.ps1
 
