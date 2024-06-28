@@ -1,6 +1,6 @@
 function InstallWithWinget($id) {
     Write-Host "Installing $id if not already installed..."
-    winget list --exact --id $id || winget install --exact --id $id --interactive
+    winget list --exact --id $id || winget install --exact --id $id --accept-source-agreements --accept-package-agreements --force --disable-interactivity
     Write-Host ""
 }
 
