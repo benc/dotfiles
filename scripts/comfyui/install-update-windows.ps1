@@ -1,10 +1,6 @@
 $comfyUiDir = "$env:USERPROFILE/AppData/Local/Programs/ComfyUI"
 $modelDir = "$env:USERPROFILE/Models"
 
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-pip3 install comfy-cli
-pip3 install --upgrade certifi
-
 # comfy install is broken... https://github.com/Comfy-Org/comfy-cli/issues/98
 if (-Not (Test-Path $comfyUiDir)) {
     Write-Host "💡 Cloning comfyui..."
@@ -15,7 +11,16 @@ if (-Not (Test-Path $comfyUiDir)) {
 
     Push-Location $comfyUiDir
     Write-Host "💡 Installing comfyui dependencies"
-    pip3 install -r requirements.txt
+    uv venv
+    source .venv/bin/activate
+
+    echo "layout python" > .envrc
+    direnv allow .
+    
+    uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+    uv pip install comfy-cli
+    uv pip install --upgrade certifi
+    uv pip install -r requirements.txt
     Pop-Location
 
     comfy set-default $comfyUiDir
@@ -46,6 +51,20 @@ comfyui:
   vae: VAE
 "@ | Out-File -FilePath "extra_model_paths.yaml" -Encoding utf8
     Pop-Location
+} else {
+  Push-Location $comfyUiDir
+  Write-Host "💡 Updating comfyui dependencies"
+  git pull
+  
+  Push-Location "$comfyUiDir/custom_nodes"
+  git pull
+  Pop-Location
+
+  source .venv/bin/activate
+  uv pip install --upgrade --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
+  uv pip install --upgrade certifi
+  uv pip install -r requirements.txt
+  Pop-Location
 }
 
 comfy update
