@@ -5,6 +5,13 @@ gsudo {
   choco upgrade all -y
   Update-Module
 }
+  
+Write-Host "Update winget packages"
+winget upgrade --all --accept-source-agreements --accept-package-agreements --silent --include-unknown
+Write-Host("")
+
+# miniconda cannot be updated with winget, needs to be done with conda itself
+conda update -c base conda -y
 
 Write-Host "Run the latest portainer agent"
 docker stop portainer_agent
