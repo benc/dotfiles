@@ -62,5 +62,9 @@ export EDITOR="{{ .editor }}"
 export BROWSER="wslview"
 {{ end }}
 
+if [ -d "/Applications/JProfiler.app" ]; then
+  export PATH=/Applications/JProfiler.app/Contents/Resources/app/bin:$PATH
+fi
+
 # SBT
 export SBT_CREDENTIALS=~/.ivy2/.credentials

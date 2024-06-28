@@ -47,6 +47,9 @@
 {{ if eq .chezmoi.os "windows" }}
 [credential]
   helper = manager
+  
+[credential "helperselector"]
+  selected = manager
 {{ end }}
 
 {{ if eq .chezmoi.os "darwin" }}

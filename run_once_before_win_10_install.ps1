@@ -28,6 +28,15 @@ $appsToInstall = @(
     "Mozilla.Thunderbird", 
     "Alacritty.Alacritty",
     "Anaconda.Miniconda3"
+    "direnv.direnv"
+    "JohnMacFarlane.Pandoc"
+    "Amazon.AWSCLI"
+    "junegunn.fzf"
+    "ajeetdsouza.zoxide"
+    "ducaale.xh"
+    "BurntSushi.ripgrep.MSVC"
+    "OliverBetz.ExifTool"
+    "sharkdp.bat"
 )
 
 foreach ($app in $appsToInstall) {
@@ -41,7 +50,7 @@ gsudo {
     Update-Module
 
     Write-Host "`nInstall choco packages"
-    choco install exiftool bat delta fd fzf lf ripgrep xh op npiperelay zoxide awscli aws-iam-authenticator pandoc -y
+    choco install op aws-iam-authenticator -y
 
     & { { .chezmoi.sourceDir } }/scripts/powershell/install.ps1
 

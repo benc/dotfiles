@@ -1,7 +1,0 @@
-#!/bin/bash
-
-{{ if eq .chezmoi.os "darwin" -}}
-if [ -d "/Applications/JProfiler.app" ]; then
-  export PATH=/Applications/JProfiler.app/Contents/Resources/app/bin:$PATH
-fi
-{{ end -}}
