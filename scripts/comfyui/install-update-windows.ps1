@@ -12,7 +12,7 @@ if (-Not (Test-Path $comfyUiDir)) {
     Push-Location $comfyUiDir
     Write-Host "💡 Installing comfyui dependencies"
     uv venv
-    source .venv/bin/activate
+    .\.venv\Scripts\activate.ps1
 
     echo "layout python" > .envrc
     direnv allow .
@@ -66,5 +66,3 @@ comfyui:
   uv pip install -r requirements.txt
   Pop-Location
 }
-
-comfy update

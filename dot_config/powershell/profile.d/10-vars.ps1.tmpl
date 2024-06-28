@@ -6,6 +6,7 @@ Add-Content -Path $PROFILE.CurrentUserAllHosts -Value '$(brew shellenv) | Invoke
 {{ if eq .chezmoi.os "windows" -}}
 If (Test-Path "$env:USERPROFILE\miniconda3\Scripts\conda.exe") {
     (& "$env:USERPROFILE\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
-}{{- end }}
+}
+{{- end }}
 
 Set-PSReadLineKeyHandler -Chord "Tab" -Function AcceptSuggestion
