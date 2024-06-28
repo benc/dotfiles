@@ -1,5 +1,4 @@
 #!/bin/bash
-
 {{ if eq .chezmoi.os "darwin" -}}
 if (( ${+commands[brew]} )); then
   fpath+="$(brew --prefix)/share/zsh/site-functions"
@@ -7,22 +6,18 @@ if (( ${+commands[brew]} )); then
 fi
 {{ end -}}
 
-# asdf
 if (( ${+commands[asdf]} )); then
   fpath=(${HOME}/.asdf/completions $fpath)
 fi
 
-# pipenv
 if (( ${+commands[pipenv]} )); then
   eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 fi
 
-# pip
 if (( ${+commands[pip]} )); then
   eval "$(pip completion --zsh)"
 fi
 
-# pip
 if (( ${+commands[comfy]} )); then
   autoload -Uz compinit
 
@@ -39,22 +34,35 @@ if (( ${+commands[comfy]} )); then
   zstyle ':completion:*' menu select
 fi
 
-# chezmoi
 if (( ${+commands[chezmoi]} )); then
   eval "$(chezmoi completion zsh)"
 fi
 
-# 1password
 if (( ${+commands[op]} )); then
     eval "$(op completion zsh)"
 fi
 
-# awscli
 if (( ${+commands[aws]} )); then
     complete -C '/usr/local/bin/aws_completer' aws
 fi
 
-# kubectl
+if (( ${+commands[minikube]} )); then
+  eval "$(minikube completion zsh)"
+
+  # echo "💡 Setting up minikube for use with docker..."
+  # eval $(minikube docker-env)
+  # alias mku="minikube start --driver=vmware --disk-size=100g --container-runtime=docker --memory=8184 --cpus=4; minikube addons enable metrics-server; minikube addons enable ingress"
+fi
+
+if (( ${+commands[kompose]} )); then
+  eval "$(kompose completion zsh)"
+fi
+
 if (( ${+commands[kubectl]} )); then
-    source <(kubectl completion zsh)
+  eval "$(kubectl completion zsh)"
+fi
+
+if (( ${+commands[helm]} )); then
+  # shellcheck source=/opt/homebrew/bin/helm
+  source <(helm completion zsh)
 fi

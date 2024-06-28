@@ -1,57 +1,27 @@
 #!/bin/bash
 if (( ${+commands[direnv]} )); then
-    source "${HOME}/.config/asdf-direnv/zshrc"
+  eval "$(direnv hook zsh)"
 fi
 
 if (( ${+commands[sheldon]} )); then
-    eval "$(sheldon source)"
+  eval "$(sheldon source)"
 fi
 
 if (( ${+commands[zoxide]} )); then
-    eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh)"
 fi
 
 if (( ${+commands[zsh]} )); then
-    eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh)"
 fi
 
 if (( ${+commands[starship]} )); then
-    eval "$(starship init zsh)"
+  eval "$(starship init zsh)"
 fi
 
 if (( ${+commands[navi]} )); then
-    eval "$(navi widget zsh)"
+  eval "$(navi widget zsh)"
 
-    # navi repo add https://github.com/denisidoro/cheats
-    # navi repo add https://github.com/denisidoro/navi-tldr-pages
-fi
-
-if (( ${+commands[minikube]} )); then
-  eval "$(minikube completion zsh)"
-
-  # echo "💡 Setting up minikube for use with docker..."
-  # eval $(minikube docker-env)
-  # alias mku="minikube start --driver=vmware --disk-size=100g --container-runtime=docker --memory=8184 --cpus=4; minikube addons enable metrics-server; minikube addons enable ingress"
-fi
-
-if (( ${+commands[microk8s]} )); then
-  alias mk="microk8s kubectl"
-  alias mh="microk8s helm"
-
-  # eval "$(mk completion zsh | sed s/kubectl/mk/g)"
-  # eval "$(mh completion zsh | sed s/helm/mh/g)"
-  # source <(mh completion zsh | sed s/helm/mh/g)
-fi
-
-if (( ${+commands[kompose]} )); then
-  eval "$(kompose completion zsh)"
-fi
-
-if (( ${+commands[kubectl]} )); then
-  eval "$(kubectl completion zsh)"
-fi
-
-if (( ${+commands[helm]} )); then
-  # shellcheck source=/opt/homebrew/bin/helm
-  source <(helm completion zsh)
+  # navi repo add https://github.com/denisidoro/cheats
+  # navi repo add https://github.com/denisidoro/navi-tldr-pages
 fi

@@ -1,1 +1,1 @@
-Import-Module PSColor
+# Import-Module PSColor
