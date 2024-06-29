@@ -14,7 +14,7 @@ if (-Not (Test-Path $comfyUiDir)) {
     uv venv
     .\.venv\Scripts\activate.ps1
 
-    echo "layout python" > .envrc
+    Write-Output "layout python" > .envrc
     direnv allow .
     
     uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
@@ -60,7 +60,7 @@ comfyui:
   git pull
   Pop-Location
 
-  source .venv/bin/activate
+  .\.venv\Scripts\activate.ps1
   uv pip install --upgrade --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
   uv pip install --upgrade certifi
   uv pip install -r requirements.txt
