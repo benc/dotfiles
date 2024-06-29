@@ -39,7 +39,8 @@ $appsToInstall = @(
     "OliverBetz.ExifTool",
     "sharkdp.bat",
     "astral-sh.uv",
-    "Derailed.k9s"
+    "Derailed.k9s",
+    "topgrade-rs.topgrade"
 )
 
 foreach ($app in $appsToInstall) {
@@ -47,14 +48,8 @@ foreach ($app in $appsToInstall) {
 }
 
 Write-Host "Request administrator access"
+
 gsudo {
-    Write-Host "Update choco packages and modules"
-    choco upgrade all -y
-    Update-Module
-
-    Write-Host "`nInstall choco packages"
-    choco install aws-iam-authenticator -y
-
     & { { .chezmoi.sourceDir } }/scripts/powershell/install.ps1
 
     Write-Host "`nSet execution policy"

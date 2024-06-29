@@ -1,23 +1,12 @@
 #!/bin/bash
 
 {{ if eq .chezmoi.os "linux" -}}
-echo "💡 Updating apt..."
-sudo apt update; sudo apt upgrade -y
-
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{ end -}}
 
-{{ if eq .chezmoi.os "darwin" -}}
-softwareupdate --install --all --verbose;
-{{ end -}}
-
-echo "💡 Updating homebrew..."
-brew update; HOMEBREW_NO_ENV_HINTS=true brew upgrade
-
-echo "💡 Updating dev tooling..."
+echo "💡 Upgrade all the things..."
 chezmoi upgrade
-. "$HOME/.asdf/asdf.sh"
-asdf update
+topgrade
 
 if command -v docker >/dev/null 2>&1; then
     echo "💡 Updating portainer agent..."

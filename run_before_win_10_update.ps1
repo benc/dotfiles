@@ -1,13 +1,7 @@
+Write-Host "Update all the things"
+# winget upgrade --all --accept-source-agreements --accept-package-agreements --silent --include-unknown
 chezmoi upgrade
-
-gsudo {
-  Write-Host "Update choco packages and modules"
-  choco upgrade all -y
-  Update-Module
-}
-  
-Write-Host "Update winget packages"
-winget upgrade --all --accept-source-agreements --accept-package-agreements --silent --include-unknown
+topgrade
 Write-Host("")
 
 # miniconda cannot be updated with winget, needs to be done with conda itself
