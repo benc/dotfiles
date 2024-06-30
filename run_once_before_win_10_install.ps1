@@ -18,6 +18,7 @@ $appsToInstall = @(
     "Docker.DockerDesktop",
     "ProxymanLLC.Proxyman",
     "Microsoft.VisualStudioCode.Insiders",
+    "Microsoft.VisualStudio.2022.Community"
     "Git.Git",
     "gerardog.gsudo",
     "tailscale.tailscale", 
@@ -48,7 +49,8 @@ foreach ($app in $appsToInstall) {
     InstallWithWinget $app
 }
 
-Write-Host "Request administrator access"
+# https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2022&preserve-view=true
+winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--norestart --passive --wait --downloadThenInstall --includeRecommended --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Workload.MSBuildTools --add Microsoft.VisualStudio.Workload.NativeDesktop--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22000"
 
 gsudo {
     choco install aws-iam-authenticator -y
