@@ -17,3 +17,7 @@ if type navi &>/dev/null; then
     # navi repo add https://github.com/denisidoro/cheats
     # navi repo add https://github.com/denisidoro/navi-tldr-pages
 fi
+
+if type pixi &>/dev/null; then
+    eval "$(pixi completion --shell bash)"
+fi

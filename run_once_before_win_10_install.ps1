@@ -40,7 +40,8 @@ $appsToInstall = @(
     "sharkdp.bat",
     "astral-sh.uv",
     "Derailed.k9s",
-    "topgrade-rs.topgrade"
+    "topgrade-rs.topgrade",
+    "prefix-dev.pixi"
 )
 
 foreach ($app in $appsToInstall) {
