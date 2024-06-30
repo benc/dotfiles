@@ -153,7 +153,8 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
 cask "powershell"
 EOF
 
-pwsh -noexit "& {{ .chezmoi.sourceDir }}/scripts/powershell/install.ps1"
+
+pwsh {{ .chezmoi.sourceDir }}/scripts/powershell/install.ps1
 {{ end -}}
 
 echo "💡 Installing kubernetes tooling..."

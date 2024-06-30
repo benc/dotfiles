@@ -1,5 +1,4 @@
 $modulesToInstall = @(
-    "PSWindowsUpdate",
     "PSColor", 
     "CompletionPredictor", 
     "PSReadLine", 
@@ -7,12 +6,10 @@ $modulesToInstall = @(
     "PowerType"
 )
 
-Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-
 foreach ($module in $modulesToInstall) {
     Install-Module -Name $module
 }
 
-{{ if eq .chezmoi.os "windows" -}}
-Install-Module -Name PSWindowsUpdate
-{{- end}}
+if ($IsWindows) {
+    Install-Module -Name PSWindowsUpdate
+}
