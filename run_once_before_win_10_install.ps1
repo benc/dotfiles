@@ -144,7 +144,3 @@ gsudo {
 }
 
 refreshenv
-
-# wsl2
-wsl --update
-wsl --set-default-version 2 # always use wsl2
