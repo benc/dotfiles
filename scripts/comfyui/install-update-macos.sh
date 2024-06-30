@@ -37,7 +37,7 @@ if [ ! -d "$COMFYUI_DIR" ]; then # install
     echo "💡 Installing comfyui dependencies"
     uv pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
     uv pip install comfy-cli
-    uv pip install --upgrade certifi
+    uv pip install --upgrade certifi pip
     # uv pip -y install onnxruntime-silicon
     uv pip install -r requirements.txt
     popd
