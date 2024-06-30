@@ -10,7 +10,7 @@
 {{- if stdinIsATTY -}}
 {{- $name = promptStringOnce $data.user "name" "Your Name" $name -}}
 {{- $email = promptStringOnce $data.user "email" "Your Email" $email -}}
-{{- $email = promptStringOnce $data.username "email" "Your username" $username -}}
+{{- $username = promptStringOnce $data.username "email" "Your username" $username -}}
 
 {{- writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
 
