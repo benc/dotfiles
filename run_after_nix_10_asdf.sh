@@ -14,6 +14,9 @@ while read -r line; do
   fi
 done <<< "$data"
 
+asdf reshim python
+rm -rf "$HOME"/.local/bin/pip*
+
 echo "🔧 Configuring Java versions..."
 asdf install java latest:temurin-11
 asdf install java latest:temurin-17
