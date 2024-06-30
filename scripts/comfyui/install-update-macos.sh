@@ -29,8 +29,7 @@ if [ ! -d "$COMFYUI_DIR" ]; then # install
     popd
 
     pushd "$COMFYUI_DIR" || exit
-    uv venv
-    source .venv/bin/activate
+    uv venv && source .venv/bin/activate
 
     echo "layout python" > .envrc
     direnv allow .
