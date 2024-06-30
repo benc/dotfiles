@@ -71,18 +71,6 @@ comfyui:
 EOL
     popd
 else # upgrade
-    pushd "$COMFYUI_DIR" || exit
-    git pull
-    popd
-
-    pushd "$COMFYUI_DIR/custom_nodes" || exit
-    git pull
-    popd
-
-    pushd "$COMFYUI_DIR" || exit
-    source .venv/bin/activate
-    uv pip install --upgrade --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
-    uv pip install --upgrade certifi
-    uv pip install -r requirements.txt
+  comfy update
 fi
 

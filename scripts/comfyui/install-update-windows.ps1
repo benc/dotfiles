@@ -52,17 +52,5 @@ comfyui:
 "@ | Out-File -FilePath "extra_model_paths.yaml" -Encoding utf8
     Pop-Location
 } else {
-  Push-Location $comfyUiDir
-  Write-Host "💡 Updating comfyui dependencies"
-  git pull
-  
-  Push-Location "$comfyUiDir/custom_nodes"
-  git pull
-  Pop-Location
-
-  .\.venv\Scripts\activate.ps1
-  uv pip install --upgrade --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
-  uv pip install --upgrade certifi
-  uv pip install -r requirements.txt
-  Pop-Location
+  comfy update
 }
