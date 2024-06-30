@@ -53,7 +53,7 @@ Write-Host "Request administrator access"
 gsudo {
     choco install aws-iam-authenticator -y
     
-    & { { .chezmoi.sourceDir } }/scripts/powershell/install.ps1
+    & {{ .chezmoi.sourceDir }}/scripts/powershell/install.ps1
 
     Write-Host "`nSet execution policy"
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
