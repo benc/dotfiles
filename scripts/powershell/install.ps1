@@ -1,15 +1,12 @@
-$modulesToInstall = @(
-    "PSColor", 
-    "CompletionPredictor", 
-    "PSReadLine", 
-    "PSFzf", 
-    "PowerType"
-)
+$modulesToInstall = @("PSColor", "CompletionPredictor", "PSReadLine", "PSFzf", "PowerType", $(if ($IsWindows) { "PSWindowsUpdate" }))
 
 foreach ($module in $modulesToInstall) {
-    Install-Module -Name $module
-}
-
-if ($IsWindows) {
-    Install-Module -Name PSWindowsUpdate
+    if ($null -ne $module) {
+        if (Get-Module -ListAvailable -Name $module) {
+            Update-Module -Name $module
+        }
+        else {
+            Install-Module -Name $module -Scope CurrentUser -Force
+        }
+    }
 }
