@@ -29,9 +29,11 @@ if [ ! -d "$COMFYUI_DIR" ]; then # install
     popd
 
     pushd "$COMFYUI_DIR" || exit
-    UV_PYTHON=$HOME/.miniconda3/bin/python3 uv venv && source .venv/bin/activate
+    # uv venv --python "$(conda info --base)/bin/python3" && source .venv/bin/activate
+    uv venv && source .venv/bin/activate
 
-    echo "layout python" > .envrc
+    echo "layout python3" >> .envrc
+    echo "source .venv/bin/activate" >> .envrc
     direnv allow .
 
     echo "💡 Installing comfyui dependencies"

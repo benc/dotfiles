@@ -18,7 +18,7 @@
 disable = ["chezmoi", "containers", "pnpm", "yarn", "mas"]
 
 # Ignore failures for these steps
-ignore_failures = ["asdf"]
+# ignore_failures = ["powershell"]
 
 # List of remote machines with Topgrade installed on them
 # remote_topgrades = ["toothless", "pi", "parnas"]

@@ -9,7 +9,6 @@ while read -r line; do
   if [[ -n "$line" ]]; then  # Check for empty lines
     tool=$(echo "$line" | cut -d ' ' -f 1)
     version=$(echo "$line" | cut -d ' ' -f 2-)
-
     echo "🔧 Configuring ${tool} to ${version}"
     asdf global "${tool}" "${version}"
   fi
