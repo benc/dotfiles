@@ -25,3 +25,7 @@ fi
 if (( ${+commands[pixi]} )); then
   eval "$(pixi completion --shell zsh)"
 fi
+
+if (( ${+commands[conda]} )); then
+  eval "$(conda shell.zsh hook)"
+fi

@@ -5,9 +5,9 @@ Import-Module PSColor
 if (Get-Command direnv -errorAction SilentlyContinue) {
   Invoke-Expression "$(direnv hook pwsh)"
   
-  $env:DIRENV_CONFIG = $env:APPDATA + '\direnv\config'
-  $env:XDG_CACHE_HOME = $env:USERPROFILE + '\.cache'
-  $env:XDG_DATA_HOME = $env:USERPROFILE + '\.local\share'
+  $env:DIRENV_CONFIG = $env:APPDATA + '/direnv/config'
+  $env:XDG_CACHE_HOME = $env:USERPROFILE + '/.cache'
+  $env:XDG_DATA_HOME = $env:USERPROFILE + '/.local/share'
 }
 
 # Zoxide

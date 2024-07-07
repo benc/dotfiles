@@ -29,7 +29,7 @@ if [ ! -d "$COMFYUI_DIR" ]; then # install
     popd
 
     pushd "$COMFYUI_DIR" || exit
-    uv venv && source .venv/bin/activate
+    UV_PYTHON=$HOME/.miniconda3/bin/python3 uv venv && source .venv/bin/activate
 
     echo "layout python" > .envrc
     direnv allow .
