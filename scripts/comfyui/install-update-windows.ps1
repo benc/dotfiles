@@ -52,5 +52,6 @@ comfyui:
 "@ | Out-File -FilePath "extra_model_paths.yaml" -Encoding utf8
     Pop-Location
 } else {
+  uv pip install --upgrade comfy-cli
   comfy update
 }

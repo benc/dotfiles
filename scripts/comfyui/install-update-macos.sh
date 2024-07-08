@@ -73,6 +73,7 @@ comfyui:
 EOL
     popd
 else # upgrade
+  uv pip install --upgrade comfy-cli
   comfy update
 fi
 
