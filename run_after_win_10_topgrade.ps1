@@ -1,3 +1,3 @@
 Write-Host "Update all the things"
-topgrade --disable containers --disable chezmoi
+topgrade --yes
 Write-Host("")
