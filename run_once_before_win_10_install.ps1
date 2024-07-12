@@ -42,7 +42,8 @@ $appsToInstall = @(
     "astral-sh.uv",
     "Derailed.k9s",
     "topgrade-rs.topgrade",
-    "prefix-dev.pixi"
+    "prefix-dev.pixi",
+    "KaiKramer.KeyStoreExplorer"
 )
 
 foreach ($app in $appsToInstall) {
