@@ -43,7 +43,8 @@ $appsToInstall = @(
     "Derailed.k9s",
     "topgrade-rs.topgrade",
     "prefix-dev.pixi",
-    "KaiKramer.KeyStoreExplorer"
+    "KaiKramer.KeyStoreExplorer",
+    "LMStudio.LMStudio"
 )
 
 foreach ($app in $appsToInstall) {

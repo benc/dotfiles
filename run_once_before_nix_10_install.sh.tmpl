@@ -149,6 +149,11 @@ brew "ctop"
 brew "lnav"
 EOF
 
+echo "💡 Installing AI tools..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+cask "lm-studio"
+EOF
+
 echo "💡 Installing powershell..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 cask "powershell"
