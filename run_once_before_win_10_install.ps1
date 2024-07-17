@@ -1,10 +1,4 @@
-function InstallWithWinget($id) {
-    Write-Host "Installing $id if not already installed..."
-    winget list --exact --id $id || winget install --exact --id $id --accept-source-agreements --accept-package-agreements --disable-interactivity
-    Write-Host ""
-}
-
-$appsToInstall = @(
+$apps = @(
     "AgileBits.1Password", 
     "AgileBits.1Password.CLI",
     "ScooterSoftware.BeyondCompare4",
@@ -47,8 +41,21 @@ $appsToInstall = @(
     "LMStudio.LMStudio"
 )
 
-foreach ($app in $appsToInstall) {
-    InstallWithWinget $app
+$apps | ForEach-Object {
+    $vendor, $app = $_.Split(".")
+
+    winget list --exact --id $_ | Out-Null
+    if ($LASTEXITCODE -eq 0) {
+        Write-Output "$app from $vendor is already installed"
+    } else {
+        Write-Output "Installing $app from $vendor"
+        winget install --exact --id $_ --accept-source-agreements --accept-package-agreements --disable-interactivity
+        if ($LASTEXITCODE -eq 0) {
+            Write-Output "$app from $vendor installed successfully."
+        } else {
+            Write-Output "Failed to install $app from $vendor."
+        }
+    }
 }
 
 # https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2022&preserve-view=true
