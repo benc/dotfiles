@@ -1,7 +1,11 @@
 function InstallWithWinget($id) {
-    Write-Host "Installing $id if not already installed..."
-    winget list --exact --id $id -or winget install --exact --id $id --accept-source-agreements --accept-package-agreements --disable-interactivity
-    Write-Host ""
+    Write-Host "Checking installation status of $id..."
+    $installed = winget list --exact --id $id
+    if (-not $installed) {
+        Write-Host "Installing $id..."
+        winget install --exact --id $id --accept-source-agreements --accept-package-agreements --disable-interactivity
+        Write-Host ""
+    }
 }
 
 $appsToInstall = @(
