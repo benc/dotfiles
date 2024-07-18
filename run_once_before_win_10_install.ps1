@@ -62,7 +62,7 @@ winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--nore
 
 gsudo config CacheMode Auto
 
-scoop install aws-iam-authenticator direnv eza
+scoop install aws-iam-authenticator direnv eza mpv btop
 
 gsudo {
     & {{ .chezmoi.sourceDir }}/scripts/powershell/install.ps1

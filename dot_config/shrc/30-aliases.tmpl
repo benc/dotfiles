@@ -9,18 +9,17 @@ alias mpvr="mpv --script-opts=360plugin-enabled=yes --panscan=1 --geometry=600x6
 alias docker-recompose="docker compose stop && docker compose rm --force && docker compose pull && docker compose build --no-cache --pull && docker compose up --remove-orphans --force-recreate -d"
 
 fkill() {
-  pid=$(ps -ef | sed 1d | fzf -m --ansi --color fg:-1,bg:-1,hl:46,fg+:40,bg+:233,hl+:46 --color prompt:166,border:46 --height 40%  --border=sharp --prompt="➤  " --pointer="➤ " --marker="➤ " | awk '{print $2}')
+  pid=$(ps -ef | sed 1d | fzf -m --ansi --color fg:-1,bg:-1,hl:46,fg+:40,bg+:233,hl+:46 --color prompt:166,border:46 --height 40% --border=sharp --prompt="➤  " --pointer="➤ " --marker="➤ " | awk '{print $2}')
 
-  if [ "x$pid" != "x" ]
-  then
+  if [ "x$pid" != "x" ]; then
     kill -${1:-9} $pid
   fi
 }
 
 select_file() {
-    given_file="$1"
-    #fd --type file --follow --hidden --exclude .git | fzf --query="$given_file"
-    fzf --query="$given_file"
+  given_file="$1"
+  #fd --type file --follow --hidden --exclude .git | fzf --query="$given_file"
+  fzf --query="$given_file"
 }
 
 encode() {
