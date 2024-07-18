@@ -1,13 +1,20 @@
 
 Import-Module PSColor
 
+$env:XDG_CACHE_HOME = if ($env:HOME) { (Join-Path $env:HOME .cache) } elseif ($env:USERPROFILE) { (Join-Path $env:USERPROFILE .cache) }
+$env:XDG_DATA_HOME = if ($env:HOME) { (Join-Path $env:HOME (Join-Path .local share)) } elseif ($env:USERPROFILE) { (Join-Path $env:USERPROFILE (Join-Path .local share)) }
+$env:XDG_CONFIG_HOME = if ($env:HOME) { (Join-Path $env:HOME .config) } elseif ($env:USERPROFILE) { (Join-Path $env:USERPROFILE .config) }
+
+New-Item -ItemType Directory -Force -Path $env:XDG_CACHE_HOME | Out-Null
+New-Item -ItemType Directory -Force -Path $env:XDG_DATA_HOME | Out-Null
+New-Item -ItemType Directory -Force -Path $env:XDG_CONFIG_HOME | Out-Null
+
 # Direnv
 if (Get-Command direnv -errorAction SilentlyContinue) {
+  $env:DIRENV_CONFIG = if ($env:HOME) { (Join-Path $env:HOME (Join-Path .direnv config)) } elseif ($env:USERPROFILE) { (Join-Path $env:USERPROFILE (Join-Path .direnv config)) }
+  New-Item -ItemType Directory -Force -Path $env:DIRENV_CONFIG | Out-Null
+
   Invoke-Expression "$(direnv hook pwsh)"
-  
-  $env:DIRENV_CONFIG = $env:APPDATA + '\direnv\config'
-  $env:XDG_CACHE_HOME = $env:USERPROFILE + '\.cache'
-  $env:XDG_DATA_HOME = $env:USERPROFILE + '\.local\share'
 }
 
 # Zoxide
@@ -38,5 +45,5 @@ if (Get-Command fzf -errorAction SilentlyContinue) {
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 
 if (Test-Path($ChocolateyProfile)) {
-    Import-Module "$ChocolateyProfile"
+  Import-Module "$ChocolateyProfile"
 }
