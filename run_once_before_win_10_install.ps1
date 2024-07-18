@@ -62,7 +62,11 @@ winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--nore
 
 gsudo config CacheMode Auto
 
-scoop install aws-iam-authenticator direnv eza mpv btop
+scoop checkup
+scoop bucket add main
+scoop bucket add extras
+scoop install main/dark main/innounp # scoop checkup fixes
+scoop install main/aws-iam-authenticator main/direnv main/eza extras/mpv main/btop
 
 gsudo {
     & {{ .chezmoi.sourceDir }}/scripts/powershell/install.ps1
@@ -153,6 +157,9 @@ gsudo {
     Set-WinUserLanguageList $Lang -Force
 
     Get-WinUserLanguageList
+
+    # support long paths
+    Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
 }
 
 refreshenv
