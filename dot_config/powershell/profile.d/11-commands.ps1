@@ -1,18 +1,22 @@
 
 Import-Module PSColor
 
-$env:XDG_CACHE_HOME = if ($env:HOME) { (Join-Path $env:HOME .cache) } elseif ($env:USERPROFILE) { (Join-Path $env:USERPROFILE .cache) }
-$env:XDG_DATA_HOME = if ($env:HOME) { (Join-Path $env:HOME (Join-Path .local share)) } elseif ($env:USERPROFILE) { (Join-Path $env:USERPROFILE (Join-Path .local share)) }
-$env:XDG_CONFIG_HOME = if ($env:HOME) { (Join-Path $env:HOME .config) } elseif ($env:USERPROFILE) { (Join-Path $env:USERPROFILE .config) }
+if (-not $env:HOME) {
+  $env:HOME = $env:USERPROFILE
+}
 
-New-Item -ItemType Directory -Force -Path $env:XDG_CACHE_HOME | Out-Null
-New-Item -ItemType Directory -Force -Path $env:XDG_DATA_HOME | Out-Null
-New-Item -ItemType Directory -Force -Path $env:XDG_CONFIG_HOME | Out-Null
+$env:XDG_CACHE_HOME = Join-Path $env:HOME ".cache"
+$env:XDG_DATA_HOME = Join-Path $env:HOME (Join-Path ".local" "share")
+$env:XDG_CONFIG_HOME = Join-Path $env:HOME ".config"
+
+if (-not (Test-Path $env:XDG_CACHE_HOME)) { New-Item -ItemType Directory -Path $env:XDG_CACHE_HOME | Out-Null }
+if (-not (Test-Path $env:XDG_DATA_HOME)) { New-Item -ItemType Directory -Path $env:XDG_DATA_HOME | Out-Null }
+if (-not (Test-Path $env:XDG_CONFIG_HOME)) { New-Item -ItemType Directory -Path $env:XDG_CONFIG_HOME | Out-Null }
 
 # Direnv
 if (Get-Command direnv -errorAction SilentlyContinue) {
-  $env:DIRENV_CONFIG = if ($env:HOME) { (Join-Path $env:HOME (Join-Path .direnv config)) } elseif ($env:USERPROFILE) { (Join-Path $env:USERPROFILE (Join-Path .direnv config)) }
-  New-Item -ItemType Directory -Force -Path $env:DIRENV_CONFIG | Out-Null
+  $env:DIRENV_CONFIG = Join-Path $env:HOME (Join-Path .direnv config)
+  if (-not (Test-Path $env:DIRENV_CONFIG )) { New-Item -ItemType Directory -Path $env:DIRENV_CONFIG | Out-Null }
 
   Invoke-Expression "$(direnv hook pwsh)"
 }
