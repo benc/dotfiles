@@ -1,4 +1,5 @@
 New-Alias -Name codei -Value code-insiders
+Set-Alias which Get-Command
 
 function jkill ($Id) {
     jps -l | Where-Object { $_ -match $Id } | ForEach-Object {

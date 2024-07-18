@@ -15,6 +15,8 @@ Prerequisites:
     winget install --id Microsoft.VisualStudioCode
     winget install --id Microsoft.Powershell
     winget install --id Microsoft.WindowsTerminal
+    Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+    Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 
 Prerequisites, run in an *elevated* powershell prompt:
 
@@ -23,12 +25,6 @@ Prerequisites, run in an *elevated* powershell prompt:
 
     # git
     winget install --exact Git.Git --interactive
-
-    # chocolatey
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-
-    # 1password CLI
-    gsudo choco install op -y
 
 Make sure 1Password exposes the SSH agent, and that the CLI is coupled.
 

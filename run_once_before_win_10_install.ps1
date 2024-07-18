@@ -10,7 +10,7 @@ $apps = @(
     "Giorgiotani.Peazip", 
     "Intel.IntelDriverAndSupportAssistant", 
     "Docker.DockerDesktop",
-    "ProxymanLLC.Proxyman",
+    "Proxyman.Proxyman",
     "Microsoft.VisualStudioCode.Insiders",
     "Microsoft.VisualStudio.2022.Community"
     "Git.Git",
@@ -24,7 +24,6 @@ $apps = @(
     "Mozilla.Thunderbird", 
     "Alacritty.Alacritty",
     "Anaconda.Miniconda3",
-    "direnv.direnv",
     "JohnMacFarlane.Pandoc",
     "Amazon.AWSCLI",
     "junegunn.fzf",
@@ -59,13 +58,15 @@ $apps | ForEach-Object {
 }
 
 # https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2022&preserve-view=true
-winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--norestart --passive --wait --downloadThenInstall --includeRecommended --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Workload.MSBuildTools --add Microsoft.VisualStudio.Workload.NativeDesktop--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22000"
+winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--norestart --passive --wait --downloadThenInstall --includeRecommended --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Component.VC.CMake.Project --add Microsoft.VisualStudio.Workload.MSBuildTools --add Microsoft.VisualStudio.Workload.NativeDesktop--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22000"
+
+gsudo config CacheMode Auto
+
+scoop install aws-iam-authenticator direnv
 
 gsudo {
-    choco install aws-iam-authenticator -y
-    
     & {{ .chezmoi.sourceDir }}/scripts/powershell/install.ps1
-
+    
     Write-Host "`nSet execution policy"
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 

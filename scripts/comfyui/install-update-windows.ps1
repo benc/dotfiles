@@ -20,6 +20,7 @@ if (-Not (Test-Path $comfyUiDir)) {
     uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
     uv pip install comfy-cli
     uv pip install --upgrade certifi pip
+    conda install -c conda-forge dlib
     uv pip install -r requirements.txt
     Pop-Location
 
