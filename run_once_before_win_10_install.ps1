@@ -2,7 +2,6 @@ $apps = @(
     "AgileBits.1Password", 
     "AgileBits.1Password.CLI",
     "ScooterSoftware.BeyondCompare4",
-    "Microsoft.Sysinternals.ProcessExplorer",
     "Microsoft.WindowsTerminal",
     "JetBrains.Toolbox",
     "SaaSGroup.Tower", 
@@ -23,7 +22,6 @@ $apps = @(
     "Mozilla.Thunderbird", 
     "Alacritty.Alacritty",
     "Anaconda.Miniconda3",
-    "topgrade-rs.topgrade",
     "prefix-dev.pixi",
     "KaiKramer.KeyStoreExplorer",
     "LMStudio.LMStudio"
@@ -56,6 +54,7 @@ scoop checkup
 scoop bucket add main
 scoop bucket add extras
 scoop bucket add java
+scoop bucket add sysinternals
 
 $scoopApps = @(
     "main/dark",
@@ -74,6 +73,9 @@ $scoopApps = @(
     "main/exiftool",
     "extras/mpv",
     "main/btop",
+    "main/starship",
+    "main/topgrade",
+    "sysinternals/sysinternals-suite",
     "java/temurin11-jdk",
     "java/temurin17-jdk",
     "java/temurin21-jdk"
