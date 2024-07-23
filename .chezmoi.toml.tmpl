@@ -1,4 +1,4 @@
-# 💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
+# 💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n"
 {{- $name := "Ben Cochez" -}}
 {{- $email := "ben@kyber.be" -}}
 {{- $username := "benc" -}}
@@ -8,42 +8,44 @@
 {{- $_ := set $data "user" (default (dict) (get $data "user")) -}}
 {{- $_ := set $data "username" (default (dict) (get $data "username")) -}}
 
+# 💡
+
 [interpreters.ps1]
-    command = "pwsh"
-    args = ["-NoLogo"]
+    command = "pwsh.exe"
+    args = ["-NoLogo", "-NoProfile", "-ExecutionPolicy", "Bypass"]
 
 {{ if eq .chezmoi.os "windows" -}}
 [cd]
-    command = "pwsh"
+    command = "pwsh.exe"
     args = ["-NoLogo", "-NoExit", "-Command", "& {Set-Location $env:HOMEPATH/.local/share/chezmoi}"]
 {{- end }}
 
 {{ if eq .chezmoi.os "darwin" -}}
 [diff]
-command = "/usr/local/bin/ksdiff"
+    command = "/usr/local/bin/ksdiff"
 
 [merge]
-command = "/usr/local/bin/ksdiff"
+    command = "/usr/local/bin/ksdiff"
 {{- end }}
 
 {{ if eq .chezmoi.os "windows" -}}
 [diff]
-command = "C:/Program Files/Beyond Compare 4/BCompare.exe"
+    command = "C:/Program Files/Beyond Compare 4/BCompare.exe"
 
 [merge]
-command = "C:/Program Files/Beyond Compare 4/BCompare.exe"
+    command = "C:/Program Files/Beyond Compare 4/BCompare.exe"
 {{- end }}
 
 [edit]
-command = "codei"
+    command = "code-insiders"
 
 [git]
-autoCommit = true
+    autoCommit = true
 
 [data]
-editor = "codei"
+    editor = "code-insiders "
 
 [data.user]
-email = {{ $email | quote }}
-name = {{ $name | quote }}
-username = {{ $username | quote }}
+    email = {{ $email | quote }}
+    name = {{ $name | quote }}
+    username = {{ $username | quote }}

@@ -1,5 +1,3 @@
-Write-Output "Hello from $(Split-Path -Path ([System.Environment]::GetCommandLineArgs()[0]) -Leaf)"
-
 $apps = @(
     "AgileBits.1Password", 
     "AgileBits.1Password.CLI",
@@ -15,7 +13,6 @@ $apps = @(
     "Proxyman.Proxyman",
     "Microsoft.VisualStudioCode.Insiders",
     "Microsoft.VisualStudio.2022.Community",
-    "Git.Git",
     "gerardog.gsudo",
     "tailscale.tailscale", 
     "IVPN.IVPN", 
@@ -58,12 +55,12 @@ scoop checkup
 
 scoop bucket add main
 scoop bucket add extras
+scoop bucket add java
 
 $scoopApps = @(
     "main/dark",
     "main/innounp",
     "main/aws",
-    "main/aws-iam-authenticator",
     "main/direnv",
     "main/eza",
     "main/pandoc",
@@ -76,7 +73,10 @@ $scoopApps = @(
     "main/ripgrep",
     "main/exiftool",
     "extras/mpv",
-    "main/btop"
+    "main/btop",
+    "java/temurin11-jdk",
+    "java/temurin17-jdk",
+    "java/temurin21-jdk"
 )
 
 $scoopApps | ForEach-Object {
