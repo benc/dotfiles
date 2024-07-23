@@ -1,3 +1,5 @@
+Write-Output "Hello from $(Split-Path -Path ([System.Environment]::GetCommandLineArgs()[0]) -Leaf)"
+
 $apps = @(
     "AgileBits.1Password", 
     "AgileBits.1Password.CLI",
@@ -12,7 +14,7 @@ $apps = @(
     "Docker.DockerDesktop",
     "Proxyman.Proxyman",
     "Microsoft.VisualStudioCode.Insiders",
-    "Microsoft.VisualStudio.2022.Community"
+    "Microsoft.VisualStudio.2022.Community",
     "Git.Git",
     "gerardog.gsudo",
     "tailscale.tailscale", 
@@ -24,16 +26,6 @@ $apps = @(
     "Mozilla.Thunderbird", 
     "Alacritty.Alacritty",
     "Anaconda.Miniconda3",
-    "JohnMacFarlane.Pandoc",
-    "Amazon.AWSCLI",
-    "junegunn.fzf",
-    "ajeetdsouza.zoxide",
-    "ducaale.xh",
-    "BurntSushi.ripgrep.MSVC",
-    "OliverBetz.ExifTool",
-    "sharkdp.bat",
-    "astral-sh.uv",
-    "Derailed.k9s",
     "topgrade-rs.topgrade",
     "prefix-dev.pixi",
     "KaiKramer.KeyStoreExplorer",
@@ -63,10 +55,33 @@ winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--nore
 gsudo config CacheMode Auto
 
 scoop checkup
+
 scoop bucket add main
 scoop bucket add extras
-scoop install main/dark main/innounp # scoop checkup fixes
-scoop install main/aws-iam-authenticator main/direnv main/eza extras/mpv main/btop
+
+$scoopApps = @(
+    "main/dark",
+    "main/innounp",
+    "main/aws",
+    "main/aws-iam-authenticator",
+    "main/direnv",
+    "main/eza",
+    "main/pandoc",
+    "main/k9s",
+    "main/uv",
+    "main/bat",
+    "main/xh",
+    "main/fzf",
+    "main/zoxide",
+    "main/ripgrep",
+    "main/exiftool",
+    "extras/mpv",
+    "main/btop"
+)
+
+$scoopApps | ForEach-Object {
+    scoop install $_
+}
 
 gsudo {
     & {{ .chezmoi.sourceDir }}/scripts/powershell/install.ps1
@@ -160,6 +175,10 @@ gsudo {
 
     # support long paths
     Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
+
+    # disable old powershell
+    dism.exe /Online /Disable-Feature /FeatureName:"MicrosoftWindowsPowerShellv2" /NoRestart
+    dism.exe /Online /Disable-Feature /FeatureName:"MicrosoftWindowsPowerShellv2Root" /NoRestart
 }
 
-refreshenv
+Update-SessionEnvironment

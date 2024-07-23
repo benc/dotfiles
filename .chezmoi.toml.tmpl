@@ -8,14 +8,14 @@
 {{- $_ := set $data "user" (default (dict) (get $data "user")) -}}
 {{- $_ := set $data "username" (default (dict) (get $data "username")) -}}
 
-{{ if eq .chezmoi.os "windows" -}}
 [interpreters.ps1]
-command = "pwsh"
-args = ["-NoLogo"]
+    command = "pwsh"
+    args = ["-NoLogo"]
 
+{{ if eq .chezmoi.os "windows" -}}
 [cd]
-command = "pwsh"
-args = ["-NoLogo", "-NoExit", "-Command", "& {Set-Location $env:HOMEPATH/.local/share/chezmoi}"]
+    command = "pwsh"
+    args = ["-NoLogo", "-NoExit", "-Command", "& {Set-Location $env:HOMEPATH/.local/share/chezmoi}"]
 {{- end }}
 
 {{ if eq .chezmoi.os "darwin" -}}

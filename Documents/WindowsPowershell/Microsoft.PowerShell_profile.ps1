@@ -1,9 +1,9 @@
-$configPath = Join-Path $env:USERPROFILE "\.config\powershell\profile.d"
+# $configPath = Join-Path $env:USERPROFILE "\.config\powershell\profile.d"
 
-if (Test-Path $configPath) {
-    $configFiles = Get-ChildItem -Path $configPath -Filter "*.ps1" -File
+# if (Test-Path $configPath) {
+#     $configFiles = Get-ChildItem -Path $configPath -Filter "*.ps1" -File
 
-    foreach ($file in $configFiles) {
-        . $file.FullName
-    }
-}
+#     foreach ($file in $configFiles) {
+#         . $file.FullName
+#     }
+# }
