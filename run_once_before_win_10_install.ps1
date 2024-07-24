@@ -1,13 +1,12 @@
 $apps = @(
     "AgileBits.1Password", 
     "AgileBits.1Password.CLI",
+    "BelgianGovernment.eIDViewer",
     "ScooterSoftware.BeyondCompare4",
     "Microsoft.WindowsTerminal",
     "Microsoft.PowerShell",
     "JetBrains.Toolbox",
     "SaaSGroup.Tower", 
-    "WinSCP.WinSCP",
-    "Giorgiotani.Peazip", 
     "Intel.IntelDriverAndSupportAssistant", 
     "Docker.DockerDesktop",
     "Proxyman.Proxyman",
@@ -17,12 +16,7 @@ $apps = @(
     "gerardog.gsudo",
     "tailscale.tailscale", 
     "IVPN.IVPN", 
-    "Logitech.LogiTune", 
-    "RandyRants.SharpKeys",
-    "Flow-Launcher.Flow-Launcher", 
-    "Mozilla.Firefox", 
-    "Mozilla.Thunderbird", 
-    "Alacritty.Alacritty",
+    "Logitech.LogiTune",
     "Anaconda.Miniconda3",
     "prefix-dev.pixi",
     "KaiKramer.KeyStoreExplorer",
@@ -47,6 +41,8 @@ $apps | ForEach-Object {
     }
 }
 
+Add-AppxPackage -AppInstallerFile https://cdn.files.community/files/stable/Files.Package.appinstaller
+
 # https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2022&preserve-view=true
 winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--norestart --passive --wait --downloadThenInstall --includeRecommended --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Component.VC.CMake.Project --add Microsoft.VisualStudio.Workload.MSBuildTools --add Microsoft.VisualStudio.Workload.NativeDesktop--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22000"
 
@@ -58,6 +54,7 @@ scoop bucket add main
 scoop bucket add extras
 scoop bucket add java
 scoop bucket add sysinternals
+scoop bucket add nonportable
 
 $scoopApps = @(
     "main/dark",
@@ -75,6 +72,14 @@ $scoopApps = @(
     "main/ripgrep",
     "main/exiftool",
     "extras/mpv",
+    "extras/alacritty",
+    "extras/everything",
+    "extras/flow-launcher",
+    "extras/sharpkeys",
+    "extras/peazip",
+    "extras/winscp",
+    "extras/picpick",
+    "extras/thunderbird",
     "main/btop",
     "main/starship",
     "main/topgrade",
