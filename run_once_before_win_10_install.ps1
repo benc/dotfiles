@@ -85,6 +85,7 @@ $scoopApps = @(
     "extras/thunderbird",
     "extras/wireshark",
     "extras/sd-card-formatter",
+    "extras/localsend",
     "main/btop",
     "main/starship",
     "main/topgrade",
