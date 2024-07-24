@@ -152,12 +152,15 @@ EOF
 echo "💡 Installing AI tools..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 cask "lm-studio"
+brew "ollama"
 EOF
 
 echo "💡 Installing powershell..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 cask "powershell"
 EOF
+
+brew services restart ollama
 
 pwsh {{ .chezmoi.sourceDir }}/scripts/powershell/install.ps1
 {{ end -}}

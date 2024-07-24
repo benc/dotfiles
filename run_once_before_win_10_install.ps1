@@ -24,6 +24,7 @@ $apps = @(
     "Anaconda.Miniconda3",
     "prefix-dev.pixi",
     "KaiKramer.KeyStoreExplorer",
+    "Ollama.Ollama",
     "LMStudio.LMStudio"
 )
 
