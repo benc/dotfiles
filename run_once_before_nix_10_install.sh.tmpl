@@ -122,8 +122,6 @@ EOF
 
 {{ if eq .chezmoi.os "darwin" -}}
 echo "💡 Installing utilities..."
-brew tap localsend/localsend
-
 brew bundle --no-lock --file=/dev/stdin <<EOF
 cask "1password/tap/1password-cli"
 cask "tailscale"
@@ -133,7 +131,8 @@ cask "wireshark"
 cask "warp"
 cask "zed"
 cask "sdformatter"
-brew "localsend"
+tap "localsend/localsend"
+cask "localsend"
 brew "exiftool"
 brew "lilypond"
 brew "ly"
