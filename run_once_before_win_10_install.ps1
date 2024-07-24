@@ -183,5 +183,3 @@ gsudo {
     dism.exe /Online /Disable-Feature /FeatureName:"MicrosoftWindowsPowerShellv2" /NoRestart
     dism.exe /Online /Disable-Feature /FeatureName:"MicrosoftWindowsPowerShellv2Root" /NoRestart
 }
-
-Update-SessionEnvironment
