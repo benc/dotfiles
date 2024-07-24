@@ -10,8 +10,6 @@ $apps = @(
     "Intel.IntelDriverAndSupportAssistant", 
     "Docker.DockerDesktop",
     "Proxyman.Proxyman",
-    "Microsoft.VisualStudioCode.Insiders",
-    "Microsoft.VisualStudioCode.Insiders.CLI",
     "Microsoft.VisualStudio.2022.Community",
     "gerardog.gsudo",
     "tailscale.tailscale", 
@@ -54,7 +52,7 @@ scoop bucket add main
 scoop bucket add extras
 scoop bucket add java
 scoop bucket add sysinternals
-scoop bucket add nonportable
+scoop bucket add versions
 
 $scoopApps = @(
     "main/dark",
@@ -91,6 +89,7 @@ $scoopApps = @(
     "main/starship",
     "main/topgrade",
     "sysinternals/sysinternals-suite",
+    "versions/vscode-insiders",
     "java/temurin11-jdk",
     "java/temurin17-jdk",
     "java/temurin21-jdk"
