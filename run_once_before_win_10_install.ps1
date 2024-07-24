@@ -74,6 +74,7 @@ $scoopApps = @(
     "main/jq",
     "main/maven",
     "main/gradle",
+    "main/neovim",
     "extras/mpv",
     "extras/alacritty",
     "extras/everything",
