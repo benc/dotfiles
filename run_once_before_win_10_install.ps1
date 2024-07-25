@@ -73,6 +73,7 @@ $scoopApps = @(
     "main/maven",
     "main/gradle",
     "main/neovim",
+    "main/clink",
     "extras/mpv",
     "extras/alacritty",
     "extras/everything",
@@ -94,6 +95,8 @@ $scoopApps = @(
     "java/temurin17-jdk",
     "java/temurin21-jdk"
 )
+
+clink autorun install
 
 $scoopApps | ForEach-Object {
     scoop install $_
