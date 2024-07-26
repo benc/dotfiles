@@ -130,11 +130,19 @@ gsudo {
     Restart-Service sshd
     Get-Service ssh-agent
 
-    # allow wsl2 ssh port forwarding
-    $Port = 2222
-    New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Outbound -LocalPort $Port -Action Allow -Protocol TCP
-    New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Inbound -LocalPort $Port -Action Allow -Protocol TCP
+    # firewall
+    $ports = @{
+        2222 = 'WSL2 SSHD'
+        11434 = 'Ollama'
+    }
+    
+    foreach ($port in $ports.Keys) {
+        $displayName = $ports[$port]
+        New-NetFireWallRule -DisplayName $displayName -Direction Outbound -LocalPort $port -Action Allow -Protocol TCP
+        New-NetFireWallRule -DisplayName $displayName -Direction Inbound -LocalPort $port -Action Allow -Protocol TCP
+    }
 
+    # ssh wsl port forwarding    
     $wsl_ip = (wsl hostname -I).trim()
     Write-Host "WSL Machine IP: ""$wsl_ip"""
     netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=$Port
