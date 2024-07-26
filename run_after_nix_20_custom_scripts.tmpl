@@ -1,0 +1,6 @@
+#!/bin/bash
+{{ if eq .chezmoi.os "darwin" -}}
+{{ .chezmoi.sourceDir }}/scripts/comfyui/install-update-macos.sh
+{{ end -}}
+{{ .chezmoi.sourceDir }}/scripts/fabric/fabric-refresh.sh
+{{ .chezmoi.sourceDir }}/scripts/ollama/ollama-refresh.sh

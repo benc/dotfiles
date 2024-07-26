@@ -1,0 +1,4 @@
+{{ if eq .chezmoi.os "windows" -}}
+& {{ .chezmoi.sourceDir }}/scripts/comfyui/comfyui-refresh.ps1
+{{ end -}}
+& {{ .chezmoi.sourceDir }}/scripts/ollama/ollama-refresh.ps1
