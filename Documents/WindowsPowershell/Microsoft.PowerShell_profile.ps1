@@ -1,9 +1,2 @@
-# $configPath = Join-Path $env:USERPROFILE "\.config\powershell\profile.d"
-
-# if (Test-Path $configPath) {
-#     $configFiles = Get-ChildItem -Path $configPath -Filter "*.ps1" -File
-
-#     foreach ($file in $configFiles) {
-#         . $file.FullName
-#     }
-# }
+# this loads WindowsPowershell profile
+# keep this clean, because we do not use it, only some automation scripts will
