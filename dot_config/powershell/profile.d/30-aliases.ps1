@@ -13,7 +13,9 @@ function nuke_modules {
     npm prune
 }
 
-Remove-Alias -Name ls
+if (Get-Alias -Name ls -ErrorAction SilentlyContinue) {
+    Remove-Alias -Name ls
+}
 function ls { eza --icons=always --group-directories-first --git $args }
 function mpvr { mpv --script-opts=360plugin-enabled=yes --panscan=1 --geometry=600x600 --volume=100 $args }
 
@@ -21,6 +23,8 @@ New-Alias -Name codei -Value code-insiders
 Set-Alias which Get-Command
 function top { btop }
 
-Remove-Alias -Name cat
+if (Get-Alias -Name cat -ErrorAction SilentlyContinue) {
+    Remove-Alias -Name cat
+}
 function cat_replacement {bat --theme TwoDark --style=plain --paging never  $args}
 Set-Alias -Name cat -Value cat_replacement -Description "Replace cat with bat"
