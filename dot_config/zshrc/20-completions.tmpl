@@ -66,3 +66,7 @@ if (( ${+commands[helm]} )); then
   # shellcheck source=/opt/homebrew/bin/helm
   source <(helm completion zsh)
 fi
+
+if (( ${+commands[pixi]} )); then
+  eval "$(pixi completion --shell zsh)"
+fi

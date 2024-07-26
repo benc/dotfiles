@@ -22,6 +22,4 @@ if (( ${+commands[sheldon]} )); then
   eval "$(sheldon source)"
 fi
 
-if (( ${+commands[pixi]} )); then
-  eval "$(pixi completion --shell zsh)"
-fi
+if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then . "$HOME/.config/fabric/fabric-bootstrap.inc"; fi

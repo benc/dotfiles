@@ -21,3 +21,5 @@ fi
 if type pixi &>/dev/null; then
     eval "$(pixi completion --shell bash)"
 fi
+
+if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then . "$HOME/.config/fabric/fabric-bootstrap.inc"; fi
