@@ -28,12 +28,14 @@ $apps | ForEach-Object {
     winget list --exact --id $_ | Out-Null
     if ($LASTEXITCODE -eq 0) {
         Write-Output "$app from $vendor is already installed"
-    } else {
+    }
+    else {
         Write-Output "Installing $app from $vendor"
         winget install --exact --id $_ --accept-source-agreements --accept-package-agreements --disable-interactivity
         if ($LASTEXITCODE -eq 0) {
             Write-Output "$app from $vendor installed successfully."
-        } else {
+        }
+        else {
             Write-Output "Failed to install $app from $vendor."
         }
     }
@@ -103,7 +105,7 @@ $scoopApps | ForEach-Object {
 }
 
 gsudo {
-    & {{ .chezmoi.sourceDir }}/scripts/powershell/install.ps1
+    & { { .chezmoi.sourceDir } }/scripts/powershell/install.ps1
     
     Write-Host "`nSet execution policy"
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -130,19 +132,10 @@ gsudo {
     Restart-Service sshd
     Get-Service ssh-agent
 
-    # firewall
-    $ports = @{
-        2222 = 'WSL2 SSHD'
-        11434 = 'Ollama'
-    }
-    
-    foreach ($port in $ports.Keys) {
-        $displayName = $ports[$port]
-        New-NetFireWallRule -DisplayName $displayName -Direction Outbound -LocalPort $port -Action Allow -Protocol TCP
-        New-NetFireWallRule -DisplayName $displayName -Direction Inbound -LocalPort $port -Action Allow -Protocol TCP
-    }
-
     # ssh wsl port forwarding    
+    New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Outbound -LocalPort $Port -Action Allow -Protocol TCP
+    New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Inbound -LocalPort $Port -Action Allow -Protocol TCP
+
     $wsl_ip = (wsl hostname -I).trim()
     Write-Host "WSL Machine IP: ""$wsl_ip"""
     netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=$Port
@@ -208,4 +201,12 @@ gsudo {
 
     # allow ollama to run on all interfaces
     setx OLLAMA_HOST "0.0.0.0" /M
+    
+    New-NetFirewallRule -DisplayName "Ollama" -Group "User Applications" `
+        -Program "$env:USERPROFILE\AppData\Local\Programs\Ollama\ollama.exe" `
+        -Enabled True -Action Allow -Direction Outbound -PolicyStore "$env:COMPUTERNAME"
+
+    New-NetFirewallRule -DisplayName "Ollama" -Group "User Applications" `
+        -Program "$env:USERPROFILE\AppData\Local\Programs\Ollama\ollama app.exe" `
+        -Enabled True -Action Allow -Direction Outbound -PolicyStore "$env:COMPUTERNAME"
 }
