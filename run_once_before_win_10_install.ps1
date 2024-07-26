@@ -132,7 +132,6 @@ gsudo {
 
     # allow wsl2 ssh port forwarding
     $Port = 2222
-
     New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Outbound -LocalPort $Port -Action Allow -Protocol TCP
     New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Inbound -LocalPort $Port -Action Allow -Protocol TCP
 
@@ -198,4 +197,7 @@ gsudo {
     # disable old powershell
     dism.exe /Online /Disable-Feature /FeatureName:"MicrosoftWindowsPowerShellv2" /NoRestart
     dism.exe /Online /Disable-Feature /FeatureName:"MicrosoftWindowsPowerShellv2Root" /NoRestart
+
+    # allow ollama to run on all interfaces
+    setx OLLAMA_HOST "0.0.0.0" /M
 }
