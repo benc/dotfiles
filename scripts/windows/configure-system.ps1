@@ -1,113 +1,4 @@
-$apps = @(
-    "AgileBits.1Password", 
-    "AgileBits.1Password.CLI",
-    "BelgianGovernment.eIDViewer",
-    "ScooterSoftware.BeyondCompare4",
-    "Microsoft.WindowsTerminal",
-    "Microsoft.PowerShell",
-    "JetBrains.Toolbox",
-    "SaaSGroup.Tower", 
-    "Intel.IntelDriverAndSupportAssistant", 
-    "Docker.DockerDesktop",
-    "Proxyman.Proxyman",
-    "Microsoft.VisualStudio.2022.Community",
-    "gerardog.gsudo",
-    "tailscale.tailscale", 
-    "IVPN.IVPN", 
-    "Logitech.LogiTune",
-    "Anaconda.Miniconda3",
-    "prefix-dev.pixi",
-    "KaiKramer.KeyStoreExplorer",
-    "Ollama.Ollama",
-    "LMStudio.LMStudio"
-)
-
-$apps | ForEach-Object {
-    $vendor, $app = $_.Split(".")
-
-    winget list --exact --id $_ | Out-Null
-    if ($LASTEXITCODE -eq 0) {
-        Write-Output "$app from $vendor is already installed"
-    }
-    else {
-        Write-Output "Installing $app from $vendor"
-        winget install --exact --id $_ --accept-source-agreements --accept-package-agreements --disable-interactivity
-        if ($LASTEXITCODE -eq 0) {
-            Write-Output "$app from $vendor installed successfully."
-        }
-        else {
-            Write-Output "Failed to install $app from $vendor."
-        }
-    }
-}
-
-Add-AppxPackage -AppInstallerFile https://cdn.files.community/files/stable/Files.Package.appinstaller
-
-# https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2022&preserve-view=true
-winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--norestart --passive --wait --downloadThenInstall --includeRecommended --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Component.VC.CMake.Project --add Microsoft.VisualStudio.Workload.MSBuildTools --add Microsoft.VisualStudio.Workload.NativeDesktop--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22000"
-
-gsudo config CacheMode Auto
-
-scoop checkup
-
-scoop bucket add main
-scoop bucket add extras
-scoop bucket add java
-scoop bucket add sysinternals
-scoop bucket add versions
-
-$scoopApps = @(
-    "main/dark",
-    "main/innounp",
-    "main/aws",
-    "main/direnv",
-    "main/eza",
-    "main/pandoc",
-    "main/k9s",
-    "main/uv",
-    "main/bat",
-    "main/xh",
-    "main/fzf",
-    "main/zoxide",
-    "main/ripgrep",
-    "main/exiftool",
-    "main/jq",
-    "main/maven",
-    "main/gradle",
-    "main/neovim",
-    "main/clink",
-    "extras/mpv",
-    "extras/alacritty",
-    "extras/everything",
-    "extras/flow-launcher",
-    "extras/sharpkeys",
-    "extras/peazip",
-    "extras/winscp",
-    "extras/picpick",
-    "extras/thunderbird",
-    "extras/wireshark",
-    "extras/sd-card-formatter",
-    "extras/localsend",
-    "extras/xpipe",
-    "main/btop",
-    "main/starship",
-    "main/topgrade",
-    "sysinternals/sysinternals-suite",
-    "versions/vscode-insiders",
-    "java/temurin11-jdk",
-    "java/temurin17-jdk",
-    "java/temurin21-jdk"
-)
-
-clink autorun install
-
-$scoopApps | ForEach-Object {
-    scoop install $_
-}
-
 gsudo {
-    & { { .chezmoi.sourceDir } }/scripts/powershell/install.ps1
-    
     Write-Host "`nSet execution policy"
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
@@ -128,14 +19,10 @@ gsudo {
         -replace 'Match Group administrators', '#Match Group administrators' `
         -replace 'AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys', '#AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys') | Set-Content -Path C:\ProgramData\ssh\sshd_config
 
-    Set-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Program Files\PowerShell\7\pwsh.exe" -Verbose
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Users\Ben\scoop\shims\pwsh.exe" -Verbose
 
     Restart-Service sshd
     Get-Service ssh-agent
-
-    # ssh wsl port forwarding    
-    New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Outbound -LocalPort $Port -Action Allow -Protocol TCP
-    New-NetFireWallRule -DisplayName 'WSL2 SSHD' -Direction Inbound -LocalPort $Port -Action Allow -Protocol TCP
 
     $wsl_ip = (wsl hostname -I).trim()
     Write-Host "WSL Machine IP: ""$wsl_ip"""
@@ -179,6 +66,30 @@ gsudo {
     catch [Microsoft.PowerShell.Commands.MemberExistsException] {
     }
 
+    # allow ollama to run on all interfaces
+    setx OLLAMA_HOST "0.0.0.0" /M
+    
+    # firewall
+    $ports = @{
+        2222 = 'WSL2 SSHD'
+        11434 = 'Ollama'
+    }
+    
+    foreach ($port in $ports.Keys) {
+        $displayName = $ports[$port]
+    
+        $outboundRuleExists = Get-NetFirewallRule -DisplayName $displayName -Direction Outbound -LocalPort $port -ErrorAction SilentlyContinue
+        $inboundRuleExists = Get-NetFirewallRule -DisplayName $displayName -Direction Inbound -LocalPort $port -ErrorAction SilentlyContinue
+    
+        if (-not $outboundRuleExists) {
+            New-NetFireWallRule -DisplayName $displayName -Direction Outbound -LocalPort $port -Action Allow -Protocol TCP
+        }
+    
+        if (-not $inboundRuleExists) {
+            New-NetFireWallRule -DisplayName $displayName -Direction Inbound -LocalPort $port -Action Allow -Protocol TCP
+        }
+    }
+
     # hyperv
     DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
 
@@ -199,15 +110,4 @@ gsudo {
     # disable old powershell
     dism.exe /Online /Disable-Feature /FeatureName:"MicrosoftWindowsPowerShellv2" /NoRestart
     dism.exe /Online /Disable-Feature /FeatureName:"MicrosoftWindowsPowerShellv2Root" /NoRestart
-
-    # allow ollama to run on all interfaces
-    setx OLLAMA_HOST "0.0.0.0" /M
-    
-    New-NetFirewallRule -DisplayName "Ollama" -Group "User Applications" `
-        -Program "$env:USERPROFILE\AppData\Local\Programs\Ollama\ollama.exe" `
-        -Enabled True -Action Allow -Direction Outbound -PolicyStore "$env:COMPUTERNAME"
-
-    New-NetFirewallRule -DisplayName "Ollama" -Group "User Applications" `
-        -Program "$env:USERPROFILE\AppData\Local\Programs\Ollama\ollama app.exe" `
-        -Enabled True -Action Allow -Direction Outbound -PolicyStore "$env:COMPUTERNAME"
 }

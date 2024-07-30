@@ -8,31 +8,39 @@ If you're on a workstation, install 1Password and the CLI. Make sure they're cou
 
 ## Windows 11
 
-First, make sure you have [winget-cli](https://github.com/microsoft/winget-cli) installed.
+Open Microsoft Store. Open the library, and make sure everything is up-to-date.
 
-Prerequisites:
+Install [UnigetUI](https://www.marticliment.com/unigetui/). Don't install chocolatey, we'll use scoop instead.
 
-    winget install --id Microsoft.VisualStudioCode
-    winget install --id Microsoft.Powershell
-    winget install --id Microsoft.WindowsTerminal
-    Set-ExecutionPolicy RemoteSigned -scope CurrentUser
-    Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+Open UnigetUI and install all updates that are found.
 
-Prerequisites, run in an *elevated* powershell prompt:
+Using UnigetUI, open the settings pane and install [scoop](https://scoop.sh).
 
-    # gsudo
-    winget install --exact gerardog.gsudo --interactive
+Open a terminal and run the following commands:
 
-    # git
-    winget install --exact Git.Git --interactive
+    scoop bucket add versions
+    scoop install main/7zip main/git main/pwsh main/scoop-search main/chezmoi main/1password-cli main/gsudo versions/vscode-insiders
+    winget install AgileBits.1Password
 
-Make sure 1Password exposes the SSH agent, and that the CLI is coupled.
+Open 1Password, and log in. Open settings, and navigate to the "developer" section. Make sure 1Password exposes the SSH agent, and that the CLI is coupled. Verify:
 
-Run in a *regular* powershell prompt:
+    # this should list your 1password account
+    op account list
 
-    (irm -useb https://get.chezmoi.io/ps1) | powershell -c -
-    .\bin\chezmoi.exe init https://github.com/benc/dotfiles.git
-    .\bin\chezmoi.exe apply
+    # verify that 1password can be used to log in:
+    op signin
+
+Get dotfiles repo:
+
+    chezmoi init https://github.com/benc/dotfiles.git
+
+Verify that everything is working:
+
+    chezmoi doctor
+
+Apply dotfiles, and profit:
+
+    chezmoi apply --init
 
 # Usage
 

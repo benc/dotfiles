@@ -26,6 +26,11 @@ if (Get-Command zoxide -errorAction SilentlyContinue) {
   Invoke-Expression (& { (zoxide init powershell | Out-String) })
 }
 
+# Scoop
+if (Get-Command scoop -errorAction SilentlyContinue) {
+  Invoke-Expression (&scoop-search --hook)
+}
+
 # Starship
 if (Get-Command starship -errorAction SilentlyContinue) {
   Invoke-Expression (&starship init powershell)

@@ -21,7 +21,7 @@ thickness = 0.2
   blinking = "Always"
 
 [shell]
-program = "C:/Program Files/PowerShell/7/pwsh.exe"
+program = "C:/Users/Ben/scoop/shims/pwsh.exe"
 # program = "wsl"
 
 [scrolling]
