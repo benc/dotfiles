@@ -1,10 +1,4 @@
 gsudo {
-    Write-Host "`nSet execution policy"
-    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-    Write-Host "`nEnable Windows Developer Mode"
-    Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock -Name AllowDevelopmentWithoutDevLicense -Value 1 -Verbose
-
     # ssh
     Add-WindowsCapability -Online -Name OpenSSH.Server
     Get-Service -Name sshd | Set-Service -StartupType Automatic

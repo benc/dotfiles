@@ -47,6 +47,13 @@ gsudo config CacheMode Auto
 
 scoop checkup
 
+# prerequisites for sudo to run smoothly
+# - install sudo, innounp (innosetup unpacker), dark (wix unpacker), gsudo
+scoop install main/sudo main/innounp main/dark main/gsudo
+# - 
+sudo Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
+sudo Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock -Name AllowDevelopmentWithoutDevLicense -Value 1 -Verbose
+
 scoop bucket add main
 scoop bucket add extras
 scoop bucket add java
@@ -60,9 +67,6 @@ $scoopApps = @(
     "main/pwsh",
     "main/chezmoi",
     "main/1password-cli",
-    "main/gsudo",
-    "main/dark",
-    "main/innounp",
     "main/aws",
     "main/direnv",
     "main/eza",
