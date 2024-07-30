@@ -1,6 +1,5 @@
 # List of desired Ollama models
 $desiredModels = @(
-    "mistral-large:latest",
     "mistral-nemo:latest",
     "mistral:latest",
     "nomic-embed-text:latest"

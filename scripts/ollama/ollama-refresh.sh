@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-desired_models=("mistral-large:latest" "mistral-nemo:latest" "mistral:latest" "nomic-embed-text:latest")
+desired_models=("mistral-nemo:latest" "mistral:latest" "nomic-embed-text:latest")
 
 pull_model() {
   local model=$1
