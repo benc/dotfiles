@@ -28,7 +28,7 @@ $apps | ForEach-Object {
     }
     else {
         Write-Output "Installing $app from $vendor"
-        winget install --exact --id $_ --accept-source-agreements --accept-package-agreements --disable-interactivity
+        winget install --exact --id $_ --accept-source-agreements --accept-package-agreements --disable-interactivity --architecture $env:PROCESSOR_ARCHITECTURE
         if ($LASTEXITCODE -eq 0) {
             Write-Output "$app from $vendor installed successfully."
         }
