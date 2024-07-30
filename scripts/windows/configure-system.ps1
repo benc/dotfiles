@@ -1,7 +1,7 @@
 gsudo {
     # ssh
-    Add-WindowsCapability -Online -Name OpenSSH.Server
-    Get-Service -Name sshd | Set-Service -StartupType Automatic
+    Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+    Set-Service -StartupType Automatic -Name sshd
 
     $configFilePath = "$Env:ProgramData\ssh\sshd_config"
 
@@ -85,7 +85,7 @@ gsudo {
     }
 
     # hyperv
-    DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V /all
+    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V" -NoRestart
 
     # set keyboard to en-us, with nl-be as language
     $CurrentList = Get-WinUserLanguageList
@@ -102,6 +102,6 @@ gsudo {
     Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
 
     # disable old powershell
-    dism.exe /Online /Disable-Feature /FeatureName:"MicrosoftWindowsPowerShellv2" /NoRestart
-    dism.exe /Online /Disable-Feature /FeatureName:"MicrosoftWindowsPowerShellv2Root" /NoRestart
+    Disable-WindowsOptionalFeature -Online -FeatureName "MicrosoftWindowsPowerShellv2" -NoRestart
+    Disable-WindowsOptionalFeature -Online -FeatureName "MicrosoftWindowsPowerShellv2Root" -NoRestart
 }
