@@ -10,7 +10,9 @@ If you're on a workstation, install 1Password and the CLI. Make sure they're cou
 
 Open Microsoft Store. Open the library, and make sure everything is up-to-date.
 
-Install [UnigetUI](https://www.marticliment.com/unigetui/). Don't install chocolatey, we'll use scoop instead.
+Install [UnigetUI](https://www.marticliment.com/unigetui/):
+
+    winget install UniGetUI --source winget
 
 Open UnigetUI and install all updates that are found.
 

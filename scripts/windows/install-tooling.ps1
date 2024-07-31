@@ -1,4 +1,17 @@
+Write-Output "Setting ExecutionPolicy to RemoteSigned for the current user..."
+$ExecutionPolicy = Get-ExecutionPolicy -Scope CurrentUser
+if ($ExecutionPolicy -eq "RemoteSigned") {
+    Write-Verbose "Execution policy is already set to RemoteSigned for the current user, skipping..." -Verbose
+}
+else {
+    Write-Verbose "Setting execution policy to RemoteSigned for the current user..." -Verbose
+    Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+}
+
+Write-Output "Installing tooling - winget..."
+
 $apps = @(
+    "SomePythonThings.WingetUIStore",
     "AgileBits.1Password",
     "BelgianGovernment.eIDViewer",
     "ScooterSoftware.BeyondCompare4",
@@ -45,13 +58,15 @@ winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--nore
 
 gsudo config CacheMode Auto
 
+Write-Output "Installing tooling - scoop..."
 scoop checkup
 
 # prerequisites for sudo to run smoothly
 # - install sudo, innounp (innosetup unpacker), dark (wix unpacker), gsudo
 scoop install main/sudo main/innounp main/dark main/gsudo
-# - 
+# - enable long paths
 sudo Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
+# - enable development mode
 sudo Set-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock -Name AllowDevelopmentWithoutDevLicense -Value 1 -Verbose
 
 scoop bucket add main
@@ -85,10 +100,15 @@ $scoopApps = @(
     "main/neovim",
     "main/clink",
     "main/scoop-search",
+    "main/btop",
+    "main/starship",
+    "main/topgrade",
     "extras/mpv",
     "extras/alacritty",
     "extras/everything",
     "extras/flow-launcher",
+    "extras/googlechrome",
+    "extras/calibre",
     "extras/sharpkeys",
     "extras/peazip",
     "extras/winscp",
@@ -98,15 +118,13 @@ $scoopApps = @(
     "extras/sd-card-formatter",
     "extras/localsend",
     "extras/xpipe",
-    "main/btop",
-    "main/starship",
-    "main/topgrade",
     "sysinternals/sysinternals-suite",
     "versions/vscode-insiders",
     "java/temurin11-jdk",
     "java/temurin17-jdk",
     "java/temurin21-jdk",
     "games/steam"
+    "games/epic-games-launcher"
 )
 
 clink autorun install
@@ -114,5 +132,3 @@ clink autorun install
 $scoopApps | ForEach-Object {
     scoop install $_
 }
-
-sudo scoop install games/epic-games-launcher
