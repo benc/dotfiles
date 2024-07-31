@@ -120,6 +120,7 @@ $scoopApps = @(
     "extras/xpipe",
     "sysinternals/sysinternals-suite",
     "versions/vscode-insiders",
+    "versions/zed-nightly",
     "java/temurin11-jdk",
     "java/temurin17-jdk",
     "java/temurin21-jdk",
