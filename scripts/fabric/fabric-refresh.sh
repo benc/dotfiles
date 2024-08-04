@@ -10,7 +10,7 @@ if [ "$ARCH" != "arm64" ]; then
 fi
 
 FABRIC_DIR=$HOME/Applications/Fabric
-DEFAULT_MODEL=mistral-large:latest
+DEFAULT_MODEL=mistral-nemo:latest
 
 ollama pull "$DEFAULT_MODEL"
 
