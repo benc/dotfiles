@@ -1,264 +1,69 @@
 #!/bin/bash
+export INSTALLATION_TYPE
+INSTALLATION_TYPE=workstation
+
+{{ if eq .chezmoi.os "darwin" }}
+  echo "You are using macOS. 🍎"
+  {{ .chezmoi.sourceDir }}/scripts/unix/macos/bootstrap-macos.sh
+{{ else if eq .chezmoi.os "linux" }}
+  {{ if eq .chezmoi.osRelease.id "alpine" }}
+    echo "You are using Alpine Linux. 🏔️"
+    echo "TODO add bootstrap script for Alpine Linux"
+    exit 1
+  {{ else if eq .chezmoi.osRelease.id "arch" }}
+    echo "You are using Arch Linux. 🎗️"
+    echo "TODO add bootstrap script for Arch Linux"
+    exit 1
+  {{ else if eq .chezmoi.osRelease.id "debian" }}
+    echo "You are using Debian GNU/Linux. 🌀"
+    {{ .chezmoi.sourceDir }}/scripts/unix/debian/bootstrap-debian.sh
+  {{ else if eq .chezmoi.osRelease.id "ubuntu" }}
+    echo "You are using Ubuntu. 🎯"
+    {{ .chezmoi.sourceDir }}/scripts/unix/debian/bootstrap-debian.sh
+  {{ else if eq .chezmoi.osRelease.id "fedora" }}
+    echo "You are using Fedora. 🎩"
+    echo "TODO add bootstrap script for Fedora"
+    exit 1
+  {{ else if eq .chezmoi.osRelease.id "centos" }}
+    echo "You are using CentOS. 💠"
+    echo "TODO add bootstrap script for CentOS"
+    exit 1
+  {{ else if eq .chezmoi.osRelease.id "mint" }}
+    echo "You are using mint. 🌿"
+    {{ .chezmoi.sourceDir }}/scripts/unix/debian/bootstrap-debian.sh
+    exit 1
+  {{ else if eq .chezmoi.osRelease.id "opensuse" }}
+    echo "You are using openSUSE. 🦎"
+    echo "TODO add bootstrap script for openSUSE"
+    exit 1
+  {{ else }}
+    echo "You are using a Linux distribution that is not supported by this script. 🐧"
+    exit 1
+  {{ end }}
+
+  {{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+    INSTALLATION_TYPE=wsl
+    echo "You are running this Linux environment on Windows Subsystem for Linux 2. 🪟🐧"
+    {{ if eq .chezmoi.osRelease.id "debian" }}
+      {{ .chezmoi.sourceDir }}/scripts/unix/debian/bootstrap-debian-wsl.sh
+    {{ else if eq .chezmoi.osRelease.id "ubuntu" }}
+      {{ .chezmoi.sourceDir }}/scripts/unix/debian/bootstrap-debian-wsl.sh
+    {{ end -}}
+  {{ else if eq (env "REMOTE_CONTAINERS") "true" }}
+    INSTALLATION_TYPE=devcontainer
+    echo "You are running this Linux environment with devcontainer. 🐳"
+  {{ end }}
+{{ end }}
 
 {{ if eq .chezmoi.os "linux" -}}
-echo "💡 Updating apt..."
-sudo apt update
-
-echo "💡 Installing generic tooling (shell, utilities, ...)"
-sudo apt install -y git keychain
-
-{{   if eq .chezmoi.osRelease.id "ubuntu" }}
-sudo echo "LC_ALL=nl_BE.UTF-8" >> /etc/environment
-sudo echo "nl_BE.UTF-8 UTF-8" >> /etc/locale.gen
-sudo echo "LANG=en_US.UTF-8" > /etc/locale.conf
-sudo locale-gen en_US.UTF-8
-sudo locale-gen nl_BE.UTF-8
-{{   end }}
-
-{{   if eq .chezmoi.osRelease.id "debian" }}
-sudo apt-get install -y locales locales-all
-sudo sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
-sudo sed -i -e 's/# nl_BE.UTF-8 UTF-8/nl_BE.UTF-8 UTF-8/' /etc/locale.gen
-sudo locale-gen
-{{   end }}
-
-echo "💡 Installing sdkman dependencies..."
-sudo apt install -y unzip zip curl
-
-echo "💡 Installing pyenv dependencies..."
-sudo apt install -y build-essential libssl-dev zlib1g-dev \
-libbz2-dev libreadline-dev libsqlite3-dev curl llvm \
-libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-
-echo "💡 Installing ruby-build dependencies..."
-sudo apt install -y libyaml-dev
-
-echo "💡 Installing n-install dependencies..."
-sudo apt install -y make
-
-echo "💡 Installing 1Password CLI..."
-curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --batch --yes --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" | sudo tee /etc/apt/sources.list.d/1password.list
-sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
-curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
-sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
-curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --batch --yes --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
-sudo apt update && sudo apt install 1password-cli
-
-{{ if (contains .chezmoi.kernel.osrelease "-WSL2") -}}
-echo "💡 Enabling OpenSSH on WSL..."
-
-sudo apt remove -y --purge openssh-server
-sudo apt install -y openssh-server
-sudo sed -i 's/#Port 22/Port 2222/g' /etc/ssh/sshd_config
-sudo sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 0.0.0.0/g' /etc/ssh/sshd_config
-sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
-sudo grep -qxF 'AllowUsers benc' /etc/ssh/sshd_config || echo 'AllowUsers benc' | sudo tee -a /etc/ssh/sshd_config
-sudo service ssh --full-restart
-
-sudo grep -qxF '%sudo ALL=NOPASSWD: /etc/init.d/ssh' /etc/sudoers || echo '%sudo ALL=NOPASSWD: /etc/init.d/ssh' | sudo EDITOR='tee -a' visudo
-
-sudo touch /etc/wsl.conf
-sudo grep -qxF '[boot]' /etc/wsl.conf || echo '[boot]' | sudo tee -a /etc/wsl.conf
-sudo grep -qxF 'command = service ssh start' /etc/wsl.conf || echo 'command = service ssh start' | sudo tee -a /etc/wsl.conf
-
-# you can access the SSH server through proxyjump
-
-echo "💡 Enabling piping of 1password SSH agent to WSL..."
-sudo apt install -y socat
-{{ end -}}
-
-echo "💡 Setting default shell to ZSH..."
-sudo chsh -s /usr/bin/zsh $(whoami)
+  {{ if eq .chezmoi.osRelease.id "debian" }}
+    {{ .chezmoi.sourceDir }}/scripts/unix/debian/install-debian-tooling.sh
+  {{ else if eq .chezmoi.osRelease.id "ubuntu" }}
+    {{ .chezmoi.sourceDir }}/scripts/unix/debian/install-debian-tooling.sh
+  {{ end -}}
 {{ end -}}
 
 {{ if eq .chezmoi.os "darwin" -}}
-if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
-    echo "💡 Installing homebrew..."
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
+  {{ .chezmoi.sourceDir }}/scripts/unix/macos/install-macos-tooling.sh
+  {{ .chezmoi.sourceDir }}/scripts/unix/macos/configure-macos.sh
 {{ end -}}
-
-{{ if eq .chezmoi.os "linux" -}}
-if [ ! -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
-    echo "💡 Installing homebrew..."
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-{{ end -}}
-
-echo "💡 Installing generic tooling (shell, utilities, ...)"
-brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "zsh"
-brew "eza"
-brew "bat"
-brew "fzf"
-brew "btop"
-brew "jq"
-brew "ripgrep"
-brew "xh"
-brew "navi"
-brew "starship"
-brew "zoxide"
-brew "sheldon"
-brew "watch"
-brew "git"
-brew "pandoc"
-brew "procs"
-brew "dust"
-brew "duf"
-brew "prettyping"
-brew "uv"
-brew "pixi"
-brew "pipx"
-brew "direnv"
-brew "topgrade"
-brew "neovim"
-{{ if eq .chezmoi.os "darwin" -}}
-brew "terminal-notifier"
-brew "m-cli"
-brew "mas"
-{{ end -}}
-EOF
-
-{{ if eq .chezmoi.os "darwin" -}}
-echo "💡 Installing utilities..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-cask "1password/tap/1password-cli"
-cask "tailscale"
-cask "core-tunnel"
-cask "bluetility"
-cask "wireshark"
-cask "warp"
-cask "zed"
-cask "sdformatter"
-tap "localsend/localsend"
-cask "localsend"
-cask "xpipe-io/tap/xpipe"
-cask "sf-symbols"
-cask "raycast"
-cask "utm"
-cask "crystalfetch"
-brew "exiftool"
-brew "lilypond"
-brew "ly"
-cask "keystore-explorer"
-EOF
-
-echo "💡 Installing developer tools..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "coreutils"
-brew "git"
-brew "graphviz"
-brew "devcontainer"
-brew "wrk"
-brew "hyperfine"
-brew "dive"
-brew "ctop"
-brew "lnav"
-EOF
-
-echo "💡 Installing AI tools..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-cask "lm-studio"
-brew "ollama"
-EOF
-
-echo "💡 Installing powershell..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-cask "powershell"
-EOF
-
-brew services restart ollama
-
-pwsh {{ .chezmoi.sourceDir }}/scripts/powershell/install.ps1
-{{ end -}}
-
-echo "💡 Installing kubernetes tooling..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "k9s"
-brew "kubernetes-cli"
-brew "helm"
-EOF
-
-echo "💡 Installing data stuff..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "libpq"
-brew "cypher-shell"
-EOF
-
-echo "💡 Installing AWS tooling..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "awscli"
-brew "aws-iam-authenticator"
-EOF
-
-{{ if eq .chezmoi.os "darwin" -}}
-echo "💡 Setting a couple of macos defaults..."
-
-# Increase sound quality for Bluetooth headphones/headsets
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40 >> /dev/null
-
-# Set language and text formats
-defaults write NSGlobalDomain AppleLanguages -array "nl" "en" >> /dev/null
-defaults write NSGlobalDomain AppleLocale -string "nl_BE@currency=EUR" >> /dev/null
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters" >> /dev/null
-defaults write NSGlobalDomain AppleMetricUnits -bool true >> /dev/null
-
-# Always use exapnded print dialog
-defaults write -g PMPrintingExpandedStateForPrint -bool TRUE >> /dev/null
-
-# Enable SSH
-sudo systemsetup -setremotelogin on
-
-# Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null >> /dev/null
-
-# Hibernate mode 3: Copy RAM to disk so the system state can still be restored in case of a power failure.
-sudo pmset -a hibernatemode 3 >> /dev/null
-
-# Enable powernap
-sudo pmset -a powernap 1 >> /dev/null
-
-# Disable lowpowermode
-sudo pmset -a lowpowermode 0 >> /dev/null
-
-# Save screenshots to the ~/Pictures/Screenshots folder
-mkdir -p "${HOME}/Pictures/Screenshots"
-defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots" >> /dev/null
-
-# Avoid creating .DS_Store files on network or USB volumes
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true >> /dev/null
-defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true >> /dev/null
-
-# Reduce menu bar spacing
-defaults -currentHost write -globalDomain NSStatusItemSpacing -int 10 >> /dev/null
-defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 10 >> /dev/null
-
-# Enable touch id for sudo
-sudo {{ .chezmoi.sourceDir }}/scripts/sudo_touch_id/enable_sudo_touch_id.sh >> /dev/null
-{{ end -}}
-
-echo "💡 Setting up asdf..."
-rm -rf "${HOME}/.n"
-rm -rf "${HOME}/.pyenv"
-rm -rf "${HOME}/.rbenv"
-rm -rf "${HOME}/.sdkman"
-
-if [ ! -d $HOME/.asdf ]; then
-    echo "💡 Installing asdf..."
-    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-    . "$HOME/.asdf/asdf.sh"
-    asdf update
-fi
-
-. "$HOME/.asdf/asdf.sh"
-
-asdf plugin add nodejs
-asdf plugin add ruby
-asdf plugin add java
-asdf plugin add maven
-asdf plugin add gradle
-asdf plugin add python
-asdf plugin add golang
-asdf plugin add rust

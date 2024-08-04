@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"; pwd)"
-
 ARCH=$(uname -m)
 if [ "$ARCH" != "arm64" ]; then
   echo "This script is intended for ARM Macs only, skipping..."

@@ -1,4 +1,9 @@
 #!/bin/bash
+echo "💡 Upgrade all the things..."
+# chezmoi
+chezmoi upgrade
+
+# portainer
 if command -v docker >/dev/null 2>&1; then
     echo "💡 Updating portainer agent..."
     # Docker commands
@@ -9,14 +14,6 @@ if command -v docker >/dev/null 2>&1; then
 else
     echo "⚠️ Docker is not installed or not found in the path. Please install Docker."
 fi
-op_account_size="$(op account list --format=json | jq -r '. | length')"
 
-if [[ "${op_account_size}" == "0" ]]; then
-    echo "⚠️ 1password is not configured, run this command to set it up:"
-    echo
-    echo "   op account add --address $SUBDOMAIN.1password.com --email $LOGIN"
-    echo
-    exit 1
-fi
-
-eval $(op signin)
+# topgrade
+topgrade || true

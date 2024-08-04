@@ -4,7 +4,13 @@
 
 If you're on a workstation, install 1Password and the CLI. Make sure they're coupled together.
 
+Using curl (macos):
+
     sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply benc
+
+Using wget (debian/ubuntu):
+
+    sh -c "$(wget -qO - get.chezmoi.io)" -- init --apply benc
 
 ## Windows 11
 
@@ -56,6 +62,10 @@ Apply dotfiles, and profit:
 
     # update system with the latest dotfiles
     chezmoi update --init
+
+    # force run_once scripts
+    chezmoi state delete-bucket --bucket=scriptState; chezmoi apply --init
+    chezmoi state delete-bucket --bucket=scriptState; chezmoi update --init
 
 ## Troubleshooting
 
