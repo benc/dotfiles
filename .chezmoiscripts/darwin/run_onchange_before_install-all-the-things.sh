@@ -1,7 +1,10 @@
 #!/bin/bash
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"; pwd)"
+if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
+    echo "🍺 Installing Homebrew..."
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
-echo "💡 Installing minimal tooling"
+echo "🔧 Installing minimal tooling"
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "zsh"
 brew "eza"
@@ -30,10 +33,7 @@ brew "mas"
 EOF
 
 if [ "$INSTALLATION_TYPE" = "workstation" ]; then
-    echo "💡 Setting default shell to ZSH..."
-    sudo chsh -s $(brew --prefix)/bin/zsh $(whoami)
-
-    echo "💡 Installing workstation tooling"
+    echo "🔧 Installing workstation tooling"
     brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "pixi"
 brew "pipx"
@@ -80,11 +80,31 @@ EOF
 
     brew services restart ollama
 
-    pushd "$BASEDIR" || exit
-    echo "💡 Setting up Powershell..."
-    pwsh ../../powershell/install.ps1
+    echo "🔧 Setting default shell to ZSH..."
+    sudo chsh -s $(brew --prefix)/bin/zsh $(whoami)
 
-    echo "💡 Setting up ASDF..."
-    ./setup-asdf.sh
-    popd || exit
+    # TODO fix pwsh setup
+    # pushd "$BASEDIR" || exit
+    # echo "💡 Setting up Powershell..."
+    # pwsh ../../powershell/install.ps1
+    # popd || exit
+
+    echo "🔧 Installing ASDF..."
+    if [ ! -d $HOME/.asdf ]; then
+        echo "💡 Installing asdf..."
+        git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
+        . "$HOME/.asdf/asdf.sh"
+        asdf update
+    fi
+
+    . "$HOME/.asdf/asdf.sh"
+
+    asdf plugin add nodejs
+    asdf plugin add ruby
+    asdf plugin add java
+    asdf plugin add maven
+    asdf plugin add gradle
+    asdf plugin add python
+    asdf plugin add golang
+    asdf plugin add rust
 fi

@@ -1,6 +1,4 @@
-Write-Output ""
-Write-Output "Configuring OpenSSH Server..."
-Write-Output ""
+Write-Output "🔧 Configuring OpenSSH Server..."
 
 gsudo {
     Write-Output "Add OpenSSH Server Windows capability..."

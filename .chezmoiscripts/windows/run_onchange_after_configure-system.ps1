@@ -1,6 +1,4 @@
-Write-Output ""
-Write-Output "Configuring system..."
-Write-Output ""
+Write-Output "🔧 Configuring system..."
 
 gsudo {
     Write-Output "Disable old powershell..."

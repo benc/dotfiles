@@ -1,26 +1,5 @@
 #!/bin/bash
-rm -rf "${HOME}/.n"
-rm -rf "${HOME}/.pyenv"
-rm -rf "${HOME}/.rbenv"
-rm -rf "${HOME}/.sdkman"
-
-if [ ! -d $HOME/.asdf ]; then
-    echo "💡 Installing asdf..."
-    git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-    . "$HOME/.asdf/asdf.sh"
-    asdf update
-fi
-
-. "$HOME/.asdf/asdf.sh"
-
-asdf plugin add nodejs
-asdf plugin add ruby
-asdf plugin add java
-asdf plugin add maven
-asdf plugin add gradle
-asdf plugin add python
-asdf plugin add golang
-asdf plugin add rust
+echo "🔧 Configure ASDF..."
 
 pushd "$HOME" || exit
 asdf install

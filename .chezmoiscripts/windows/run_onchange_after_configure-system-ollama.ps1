@@ -1,6 +1,4 @@
-Write-Output ""
-Write-Output "Configuring Ollama..."
-Write-Output ""
+Write-Output "🔧 Configuring Ollama..."
 
 gsudo {
     Write-Output "Allow Ollama to run on all interfaces..."

@@ -1,6 +1,4 @@
 #!/bin/bash
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"; pwd)"
-
 echo "💡 Installing minimal tooling"
 curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get
 sudo apt-get -y install \

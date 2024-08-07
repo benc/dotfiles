@@ -1,6 +1,4 @@
-Write-Output ""
-Write-Output "Configuring WSL2..."
-Write-Output ""
+Write-Output "🔧 Configuring WSL2..."
 
 gsudo {
     $username = [Environment]::UserName

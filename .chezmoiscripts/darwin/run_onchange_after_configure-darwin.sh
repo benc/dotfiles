@@ -1,7 +1,5 @@
 #!/bin/bash
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")"; pwd)"
-
-echo "💡 Setting a couple of macos defaults..."
+echo "🔧 Setting a couple of macos defaults..."
 
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40 >> /dev/null
@@ -41,8 +39,3 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true >> /dev
 # Reduce menu bar spacing
 defaults -currentHost write -globalDomain NSStatusItemSpacing -int 10 >> /dev/null
 defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 10 >> /dev/null
-
-# Enable touch id for sudo\
-pushd $BASEDIR || exit
-sudo ./configure-sudo-touch_id.sh >> /dev/null
-popd || exit

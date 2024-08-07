@@ -1,6 +1,4 @@
-Write-Output ""
-Write-Output "Configuring Docker Desktop..."
-Write-Output ""
+Write-Output "🔧 Configuring Docker Desktop..."
 
 gsudo {
     $username = [Environment]::UserName

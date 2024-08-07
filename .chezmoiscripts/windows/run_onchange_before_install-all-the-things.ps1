@@ -1,14 +1,4 @@
-Write-Output "Setting ExecutionPolicy to RemoteSigned for the current user..."
-$ExecutionPolicy = Get-ExecutionPolicy -Scope CurrentUser
-if ($ExecutionPolicy -eq "RemoteSigned") {
-    Write-Verbose "Execution policy is already set to RemoteSigned for the current user, skipping..." -Verbose
-}
-else {
-    Write-Verbose "Setting execution policy to RemoteSigned for the current user..." -Verbose
-    Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-}
-
-Write-Output "Installing tooling - winget..."
+Write-Output "🔧 Installing tooling - winget..."
 
 $apps = @(
     "SomePythonThings.WingetUIStore",
@@ -51,14 +41,16 @@ $apps | ForEach-Object {
     }
 }
 
+Write-Output "🔧 Installing tooling - Files..."
 Add-AppxPackage -AppInstallerFile https://cdn.files.community/files/stable/Files.Package.appinstaller
 
+Write-Output "🔧 Installing tooling - Visual Studio 2022 components..."
 # https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2022&preserve-view=true
 winget install Microsoft.VisualStudio.2022.BuildTools --force --override "--norestart --passive --wait --downloadThenInstall --includeRecommended --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Component.VC.CMake.Project --add Microsoft.VisualStudio.Workload.MSBuildTools --add Microsoft.VisualStudio.Workload.NativeDesktop--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.22000"
 
 gsudo config CacheMode Auto
 
-Write-Output "Installing tooling - scoop..."
+Write-Output "🔧 Installing tooling - scoop..."
 scoop checkup
 
 # prerequisites for sudo to run smoothly

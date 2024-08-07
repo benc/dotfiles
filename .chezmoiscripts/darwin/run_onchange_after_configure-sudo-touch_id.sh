@@ -1,23 +1,11 @@
 #!/bin/bash
-
 # See https://raw.githubusercontent.com/rtrouton/rtrouton_scripts/main/rtrouton_scripts/enable_and_disable_touch_id_for_sudo/enable_touch_id_auth_for_sudo.sh
+if [ "$EUID" -ne 0 ]; then
+  echo "🔒 This script must be run as root. Re-running with sudo..."
+  exec sudo "$0" "$@"
+fi
 
-# This script is designed to enable Touch ID authentication for sudo on macOS Sonoma 
-# 14.x and later. It does this by copying the following file, which is a template file
-# which contains the correct command:
-#
-# /etc/pam.d/sudo_local.template
-#
-# To the following location:
-#
-# /etc/pam.d/sudo_local
-#
-# If there is already a /etc/pam.d/sudo_local file, the existing file is backed up
-# and named similarly to what is shown below:
-#
-# /etc/pam.d/sudo_local_1696683022.bak
-
-# Set exit status
+echo "🔒 Enable Touch ID authentication for sudo on macOS Sonoma # 14.x and later."
 
 exitCode=0
 
@@ -41,7 +29,7 @@ if [[ "$os_version_check" -ge 14 ]]; then
    #
    # /etc/pam.d/sudo_local_1696683022.bak
 
-     /bin/mv "$touch_id_auth_file" "$touch_id_auth_file"_$(date "+%s").bak
+   /bin/mv "$touch_id_auth_file" "$touch_id_auth_file"_$(date "+%s").bak
 
   fi
 
