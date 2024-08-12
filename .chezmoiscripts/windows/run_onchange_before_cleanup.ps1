@@ -15,7 +15,7 @@ gsudo {
         "Microsoft.OutlookForWindows",
         "Microsoft.Paint",
         "Microsoft.People",
-        "Microsoft.Todos",
+        "Microsoft.Todos_8wekyb3d8bbwe",
         "Microsoft.ScreenSketch",
         "Microsoft.SkypeApp",
         "Microsoft.StorePurchaseApp",
