@@ -1,5 +1,5 @@
 Write-Output "🔧 Pulling ollama models..."
 
-ollama pull "mistral-nemo:latest"
-ollama pull "mistral:latest"
-ollama pull "nomic-embed-text:latest"
+# ollama pull "mistral-nemo:latest"
+# ollama pull "mistral:latest"
+# ollama pull "nomic-embed-text:latest"
