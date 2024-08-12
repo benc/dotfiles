@@ -1,0 +1,24 @@
+# cleanup old shell configurations
+.config/shrc/40-jprofiler
+.config/bashrc/21-starship
+.config/bashrc/24-grc
+.config/zshrc/11-zoxide
+.config/zshrc/21-starship
+.config/zshrc/22-navi
+.config/zshrc/23-zoxide
+.config/zshrc/24-grc
+.config/zshrc/30-sheldon
+.config/zshrc/30-zplug
+.config/zshrc/31-mpv
+.config/zshrc/40-k8s
+.config/zshrc/41-sbt
+.config/zshrc/42-docker-desktop
+.config/zshrc/43-libpq
+.config/zshrc/43-libqp
+.config/powershell/profile.d/01-wsl-1password.ps1
+.config/powershell/profile.d/21-starship.ps1
+.config/powershell/profile.d/22-fzf.ps1
+.config/powershell/profile.d/23-zoxide.ps1
+.config/powershell/profile.d/24-chocolatey.ps1
+.config/powershell/profile.d/25-get-childitems.ps1
+.config/powershell/profile.d/26-asdf.ps1
