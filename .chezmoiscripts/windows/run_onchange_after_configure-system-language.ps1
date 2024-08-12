@@ -1,10 +1,6 @@
 Write-Output "🔧 Configuring system..."
 
 gsudo {
-    Write-Output "Disable old powershell..."
-    Disable-WindowsOptionalFeature -Online -FeatureName "MicrosoftWindowsPowerShellv2" -NoRestart
-    Disable-WindowsOptionalFeature -Online -FeatureName "MicrosoftWindowsPowerShellv2Root" -NoRestart
-
     Write-Output "Set keyboard to en-us, with nl-be as language..."
     $CurrentList = Get-WinUserLanguageList
     $CurrentList.Clear()

@@ -110,6 +110,7 @@ $scoopApps = @(
     "extras/sd-card-formatter",
     "extras/localsend",
     "extras/xpipe",
+    "extras/paint.net",
     "sysinternals/sysinternals-suite",
     "versions/vscode-insiders",
     "versions/zed-nightly",
