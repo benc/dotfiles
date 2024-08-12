@@ -17,7 +17,6 @@ $apps = @(
     "Logitech.LogiTune",
     "Anaconda.Miniconda3",
     "prefix-dev.pixi",
-    "KaiKramer.KeyStoreExplorer",
     "Ollama.Ollama",
     "LMStudio.LMStudio"
 )
@@ -111,6 +110,7 @@ $scoopApps = @(
     "extras/localsend",
     "extras/xpipe",
     "extras/paint.net",
+    "extras/keystore-explorer",
     "sysinternals/sysinternals-suite",
     "versions/vscode-insiders",
     "versions/zed-nightly",
