@@ -3,29 +3,39 @@
 #
 # See the documentation for more https://github.com/rossmacarthur/sheldon#readme
 
+shell = "zsh"
+
+# Default apply defer
+apply = ["defer"]
+
 [templates]
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
+apply = ["source"]
 
-# Sourced
+[plugins.conda-zsh-completion]
+github = "esc/conda-zsh-completion"
+apply = ["source"]
+
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
-apply = [ "defer" ]
-
-[plugins.base16]
-github = "chriskempson/base16-shell"
-apply = [ "defer" ]
+apply = ["source"]
 
 [plugins.zsh-autocomplete]
 github = "marlonrichert/zsh-autocomplete"
-apply = [ "defer" ]
+apply = ["source"]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
-apply = ["defer"]
+use = ["{{ name }}.zsh"]
+
+[plugins.base16]
+github = "chriskempson/base16-shell"
 
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
-apply = ["defer"]
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
