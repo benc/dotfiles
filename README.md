@@ -1,12 +1,19 @@
 # Install
 
-## Macos/linux/wsl
+## Macos
 
 If you're on a workstation, install 1Password and the CLI. Make sure they're coupled together.
 
 Using curl (macos):
 
     sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply benc
+
+## Linux/wsl
+
+Intall git & curl:
+    
+    # Debian/Ubuntu/...
+    sudo apt-get install -y git curl
 
 Using wget (debian/ubuntu):
 

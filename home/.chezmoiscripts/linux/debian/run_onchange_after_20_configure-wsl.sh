@@ -1,7 +1,6 @@
 #!/bin/bash
 if [ "$INSTALLATION_TYPE" != "wsl" ]; then
-  echo "🚫 This script is only intended to run on WSL."
-  exit 1
+  exit 0
 fi
 
 echo "🔧 Enabling OpenSSH on WSL..."
