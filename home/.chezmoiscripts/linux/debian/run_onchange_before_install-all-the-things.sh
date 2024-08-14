@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# {{ template "installation-type.sh" . }}
-true || source ../../../.chezmoitemplates/installation-type
+if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
+    . ${CHEZMOI_SOURCE_DIR}/../scripts/installation-type.sh
+else
+    echo "☢️  No installation type set, did you run this script directly? Assuming 'workstation' installation."
+    INSTALLATION_TYPE=workstation
+fi
 
 echo "💡 Installing minimal tooling"
 curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get

@@ -4,8 +4,12 @@ if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# {{ template "installation-type.sh" . }}
-true || source ../../.chezmoitemplates/installation-type.sh
+if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
+    . ${CHEZMOI_SOURCE_DIR}/../scripts/installation-type.sh
+else
+    echo "☢️  No installation type set, did you run this script directly? Assuming 'workstation' installation."
+    INSTALLATION_TYPE=workstation
+fi
 
 echo "🔧 Installing minimal tooling"
 brew bundle --no-lock --file=/dev/stdin <<EOF
