@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# {{ template "installation-type" . }}
+true || source ../../../.chezmoitemplates/installation-type
+
 echo "💡 Installing minimal tooling"
 curl -sL https://raw.githubusercontent.com/wimpysworld/deb-get/main/deb-get | sudo -E bash -s install deb-get
 sudo apt-get -y install \
