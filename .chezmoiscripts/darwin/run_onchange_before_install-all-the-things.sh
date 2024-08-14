@@ -4,6 +4,11 @@ if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+export INSTALLATION_TYPE
+INSTALLATION_TYPE=workstation
+
+echo "You are using macOS 🍎, configuring it as '$INSTALLATION_TYPE'."
+
 echo "🔧 Installing minimal tooling"
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "zsh"
