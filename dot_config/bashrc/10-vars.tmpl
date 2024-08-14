@@ -1,1 +1,5 @@
 HISTCONTROL="ignorespace${HISTCONTROL:+:$HISTCONTROL}"
+
+{{ if eq .chezmoi.os "darwin" -}}
+export BASH_SILENCE_DEPRECATION_WARNING=1
+{{- end }}
