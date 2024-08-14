@@ -4,8 +4,8 @@ if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# {{ template "installation-type" . }}
-true || source ../../.chezmoitemplates/installation-type
+# {{ template "installation-type.sh" . }}
+true || source ../../.chezmoitemplates/installation-type.sh
 
 echo "🔧 Installing minimal tooling"
 brew bundle --no-lock --file=/dev/stdin <<EOF
