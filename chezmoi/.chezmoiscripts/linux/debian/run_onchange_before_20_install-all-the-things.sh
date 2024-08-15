@@ -9,7 +9,7 @@ fi
 export NIXPKGS_ALLOW_UNFREE=1
 
 if ! type nix &>/dev/null; then
-    echo "💡 Installing nix..."
+    echo "❄️ Installing nix..."
     sudo apt-get -y install xz-utils
     curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
