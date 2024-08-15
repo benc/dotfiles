@@ -1,23 +1,28 @@
 # Install
 
-## Macos
+DISCLAIMER: These are my dotfiles for bootstrapping a new system. They are tailored to my needs, and may not work for you. Use at your own risk.
 
-If you're on a workstation, install 1Password and the CLI. Make sure they're coupled together.
+For reference, my main machine is a Macbook Pro M3 max. I also have other little servers running macos and Linux. I have a Windows 11 homelab for AI research purposes, with a WSL setup there. I also use this repo for bootstrapping my own devcontainers.
 
-Using curl (macos):
+The bulk is managed through chezmoi, with an interest in nix. I use 1Password for secrets management.
 
-    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply benc
+## Macos/linux
 
-## Linux/wsl
+If you're on a workstation, install 1Password and the CLI. Open 1Password, and log in. Open settings, and navigate to the "developer" section. Make sure 1Password exposes the SSH agent, and that the CLI is coupled. Verify:
 
-Intall git & curl:
-    
-    # Debian/Ubuntu/...
-    sudo apt-get install -y git curl
+    # this should list your 1password account
+    op account list
 
-Using wget (debian/ubuntu):
+    # verify that 1password can be used to log in:
+    op signin
 
-    sh -c "$(wget -qO - get.chezmoi.io)" -- init --apply benc
+Using curl:
+
+    sh -c "$(curl -fsLS https://raw.githubusercontent.com/benc/dotfiles/main/scripts/bootstrap_dotfiles.sh)"
+
+Using wget:
+
+    sh -c "$(wget -qO- https://raw.githubusercontent.com/benc/dotfiles/main/scripts/bootstrap_dotfiles.sh)"
 
 ## Windows 11
 
