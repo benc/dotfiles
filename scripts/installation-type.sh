@@ -1,9 +1,11 @@
 #!/bin/bash
 export INSTALLATION_TYPE
 export MACHINE_TYPE
+export IS_WSL
 
 INSTALLATION_TYPE=workstation
 MACHINE_TYPE=unknown
+IS_WSL=false
 MACHINE_TYPE_STRING=unknown
 
 set_machine_type_string() {
@@ -54,7 +56,7 @@ case "$OS" in
     fi
 
     if echo "$KERNEL_RELEASE" | grep -qi "microsoft"; then
-      INSTALLATION_TYPE=wsl
+      IS_WSL=true
       echo "Windows Subsystem for Linux 2 detected. 🪟🐧"
     fi
     ;;
@@ -67,10 +69,8 @@ esac
 set_machine_type_string
 
 if [ "$REMOTE_CONTAINERS" = "true" ]; then
-  INSTALLATION_TYPE=devcontainer
+  INSTALLATION_TYPE=minimal
   echo "devcontainer detected. 🐳"
-else
-  INSTALLATION_TYPE=workstation
 fi
 
 echo "You are using $MACHINE_TYPE_STRING, configuring it as '$INSTALLATION_TYPE'."
