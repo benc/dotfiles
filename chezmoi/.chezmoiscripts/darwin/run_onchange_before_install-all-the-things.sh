@@ -72,6 +72,10 @@ brew "cypher-shell"
 brew "awscli"
 brew "aws-iam-authenticator"
 brew "docker-credential-helper-ecr"
+cask "apparency"
+cask "qlvideo"
+cask "provisionql"
+cask "quicklookapk"
 cask "powershell"
 cask "lm-studio"
 cask "1password/tap/1password-cli"
@@ -90,12 +94,24 @@ cask "sf-symbols"
 cask "raycast"
 cask "utm"
 cask "crystalfetch"
+mas "JSONPeep", id: 1458969831
+mas "OK JSON", id: 1576121509
+mas "Pure Paste", id: 1611378436
+mas "Refined GitHub", id: 1519867270
+mas "Peek", id: 1554235898
 EOF
 
     brew services restart ollama
 
-    echo "🔧 Setting default shell to ZSH..."
-    sudo chsh -s $(brew --prefix)/bin/zsh $(whoami)
+    echo "🔧 Checking current default shell..."
+    current_shell=$(dscl . -read /Users/$(whoami) UserShell | awk '{print $2}')
+
+    if [ "$current_shell" != "$(brew --prefix)/bin/zsh" ]; then
+        echo "🔧 Setting default shell to ZSH..."
+        sudo chsh -s $(brew --prefix)/bin/zsh $(whoami)
+    else
+        echo "🔧 Default shell is already ZSH."
+    fi
 
     # TODO fix pwsh setup
     # pushd "$BASEDIR" || exit
