@@ -47,7 +47,7 @@ EOF
 
 if [ "$INSTALLATION_TYPE" = "workstation" ]; then
     echo "🔧 Installing workstation tooling"
-    brew bundle --no-lock --file=/dev/stdin <<EOF
+    brew bundle --force --no-lock --file=/dev/stdin <<EOF
 brew "pixi"
 brew "pipx"
 brew "uv"
@@ -76,30 +76,113 @@ cask "apparency"
 cask "qlvideo"
 cask "provisionql"
 cask "quicklookapk"
-cask "powershell"
-cask "lm-studio"
-cask "diffusionbee"
 cask "1password/tap/1password-cli"
-cask "tailscale"
-cask "keystore-explorer"
-cask "zed"
+cask "softraid"
+cask "logitune"
+cask "jordanbaird-ice"
+cask "warp"
+cask "microsoft-remote-desktop"
 cask "sdformatter"
+cask "powershell"
 tap "localsend/localsend"
 cask "localsend"
 cask "xpipe-io/tap/xpipe"
+cask "raycast"
+cask "sf-symbols"
+cask "crystalfetch"
+cask "carbon-copy-cloner"
+cask "arq"
+cask "calibre"
+cask "betterdisplay"
+cask "rectangle-pro"
+cask "power-manager"
+cask "syncthing"
+cask "keyboard-maestro"
+cask "appcleaner"
+cask "ivpn"
+cask "little-snitch"
+cask "tailscale"
+cask "transmit"
+cask "imazing"
+cask "iina"
+cask "launchcontrol"
+cask "whatsapp"
+cask "telegram"
+cask "messenger"
+cask "discord"
+cask "daisydisk"
+cask "jetbrains-toolbox"
+cask "jprofiler"
+cask "jd-gui"
+cask "beyond-compare"
+cask "kaleidoscope"
+cask "tower"
+cask "postico"
+cask "orbstack"
+cask "utm"
 cask "core-tunnel"
 cask "bluetility"
 cask "wireshark"
-cask "warp"
-cask "sf-symbols"
-cask "raycast"
-cask "utm"
-cask "crystalfetch"
+cask "keystore-explorer"
+cask "zed"
+cask "bbedit"
+cask "visual-studio-code@insiders"
+cask "choosy"
+cask "google-chrome"
+cask "firefox"
+cask "brave-browser"
+cask "microsoft-edge"
+cask "lm-studio"
+cask "diffusionbee"
+cask "replacicon"
+cask "swiftbar"
+cask "fantastical"
+cask "omnifocus"
+cask "omnigraffle"
+cask "omnioutliner"
+cask "microsoft-office"
+cask "microsoft-teams"
+cask "zoom"
+cask "tradingview"
+cask "devonthink"
+cask "setapp"
+cask "spamsieve"
+cask "soundsource"
+cask "airfoil"
+cask "plex-media-server"
+cask "fujitsu-scansnap-home"
+cask "tageditor"
+cask "ableton-live-suite@11"
+cask "melodics"
+cask "insta360-studio"
 mas "JSONPeep", id: 1458969831
 mas "OK JSON", id: 1576121509
 mas "Pure Paste", id: 1611378436
 mas "Refined GitHub", id: 1519867270
 mas "Peek", id: 1554235898
+mas "Aiko", id: 1672085276
+mas "1Focus", id: 969210610
+mas "Mindnode", id: 1289197285
+mas "BaseCamp", id: 411052274
+mas "NepTunes", id: 1006739057
+mas "Actions", id: 1586435171
+mas "Ivory", id: 6444602274
+mas "Amphetamine", id: 937984704
+mas "1Password for Safari", id: 1569813296
+mas "MusicBox", id: 1614730313
+mas "Logic Pro", id: 634148309
+mas "Xcode", id: 497799835
+mas "GarageBand", id: 682658836
+mas "Reeder", id: 1529448980
+mas "Shortery", id: 1594183810
+mas "Formatter", id: 1190228172
+mas "Speediness", id: 1596706466
+mas "One Thing", id: 1604176982
+mas "Infuse", id: 1136220934
+mas "Prompt", id: 1594420480
+mas "Remote Desktop", id: 409907375
+mas "Side Mirror", id: 944860108
+mas "com.kagimacOS.Kagi-Search", id: 1622835804
 EOF
 
     brew services restart ollama
