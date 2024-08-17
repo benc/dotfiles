@@ -12,13 +12,16 @@ $apps = @(
     "Docker.DockerDesktop",
     "Proxyman.Proxyman",
     "Microsoft.VisualStudio.2022.Community",
-    "tailscale.tailscale", 
-    "IVPN.IVPN", 
+    "IVPN.IVPN",
     "Logitech.LogiTune",
     "Anaconda.Miniconda3",
     "prefix-dev.pixi",
     "Ollama.Ollama",
-    "LMStudio.LMStudio"
+    "LMStudio.LMStudio",
+    "TradingView.TradingViewDesktop",
+    "DigiDNA.iMazing",
+    "Melodics.Melodics",
+    "HaystackSoftwareLLC.Arq7"
 )
 
 $apps | ForEach-Object {
@@ -94,11 +97,15 @@ $scoopApps = @(
     "main/btop",
     "main/starship",
     "main/topgrade",
+    "main/syncthing",
+    "extras/git-credential-manager",
     "extras/mpv",
     "extras/alacritty",
     "extras/everything",
     "extras/flow-launcher",
     "extras/googlechrome",
+    "extras/firefox",
+    "extras/brave",
     "extras/calibre",
     "extras/sharpkeys",
     "extras/peazip",
@@ -111,6 +118,13 @@ $scoopApps = @(
     "extras/xpipe",
     "extras/paint.net",
     "extras/keystore-explorer",
+    "extras/telegram",
+    "extras/whatsapp",
+    "extras/zoom",
+    "extras/discord",
+    "extras/jd-gui",
+    "extras/syncthingtray",
+    "extras/tailscale",
     "sysinternals/sysinternals-suite",
     "versions/vscode-insiders",
     "versions/zed-nightly",
@@ -118,7 +132,6 @@ $scoopApps = @(
     "java/temurin17-jdk",
     "java/temurin21-jdk",
     "games/steam"
-    "games/epic-games-launcher"
 )
 
 clink autorun install
