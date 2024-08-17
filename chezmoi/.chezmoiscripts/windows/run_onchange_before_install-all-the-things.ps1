@@ -137,6 +137,7 @@ $scoopApps = @(
     "extras/discord",
     "extras/jd-gui",
     "extras/syncthingtray",
+    "extras/musescore",
     "sysinternals/sysinternals-suite",
     "versions/vscode-insiders",
     "versions/zed-nightly",
