@@ -22,3 +22,4 @@
 .config/powershell/profile.d/24-chocolatey.ps1
 .config/powershell/profile.d/25-get-childitems.ps1
 .config/powershell/profile.d/26-asdf.ps1
+.config/wsl/agent-bridge.sh

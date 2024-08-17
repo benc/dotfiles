@@ -4,7 +4,6 @@ $apps = @(
     "SomePythonThings.WingetUIStore",
     "AgileBits.1Password",
     "BelgianGovernment.eIDViewer",
-    "ScooterSoftware.BeyondCompare4",
     "Microsoft.WindowsTerminal",
     "JetBrains.Toolbox",
     "SaaSGroup.Tower", 
@@ -12,7 +11,10 @@ $apps = @(
     "Docker.DockerDesktop",
     "Proxyman.Proxyman",
     "Microsoft.VisualStudio.2022.Community",
-    "IVPN.IVPN",
+    "tailscale.tailscale", # scoop version does not install correctly
+    "IVPN.IVPN", # keep winget version, more stable
+    "WhatsApp.WhatsApp",
+    "Facebook.Messenger",
     "Logitech.LogiTune",
     "Anaconda.Miniconda3",
     "prefix-dev.pixi",
@@ -24,6 +26,14 @@ $apps = @(
     "HaystackSoftwareLLC.Arq7"
 )
 
+$osIsARM = $env:PROCESSOR_ARCHITECTURE -match '^arm.*'
+$osIs64Bit = [System.Environment]::Is64BitOperatingSystem
+$osArch = $(
+  if ($osIsARM) { 'arm' } else { 'x' }
+) + $(
+  if ($osIs64Bit) { '64' } elseif (-Not $osIsARM) { '86' }
+)
+
 $apps | ForEach-Object {
     $vendor, $app = $_.Split(".")
 
@@ -33,7 +43,11 @@ $apps | ForEach-Object {
     }
     else {
         Write-Output "Installing $app from $vendor"
-        winget install --exact --id $_ --accept-source-agreements --accept-package-agreements --disable-interactivity --architecture $env:PROCESSOR_ARCHITECTURE
+        if ($osIsARM) {
+            winget install --exact --id $_ --accept-source-agreements --accept-package-agreements --disable-interactivity --architecture $osArch
+        } else {
+            winget install --exact --id $_ --accept-source-agreements --accept-package-agreements --disable-interactivity
+        }
         if ($LASTEXITCODE -eq 0) {
             Write-Output "$app from $vendor installed successfully."
         }
@@ -119,12 +133,10 @@ $scoopApps = @(
     "extras/paint.net",
     "extras/keystore-explorer",
     "extras/telegram",
-    "extras/whatsapp",
     "extras/zoom",
     "extras/discord",
     "extras/jd-gui",
     "extras/syncthingtray",
-    "extras/tailscale",
     "sysinternals/sysinternals-suite",
     "versions/vscode-insiders",
     "versions/zed-nightly",
