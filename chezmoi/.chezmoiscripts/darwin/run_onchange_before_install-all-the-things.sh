@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
     echo "🍺 Installing Homebrew..."
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 if ! type nix &>/dev/null; then
@@ -15,6 +15,10 @@ if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
 else
     echo "☢️  No installation type set, did you run this script directly? Assuming 'workstation' installation."
     INSTALLATION_TYPE=workstation
+fi
+
+if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
+    . ${CHEZMOI_SOURCE_DIR}/../scripts/source-tooling.sh
 fi
 
 echo "🔧 Installing minimal tooling"

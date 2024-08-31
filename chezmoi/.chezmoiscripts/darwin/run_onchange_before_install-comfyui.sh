@@ -20,7 +20,9 @@ if [ -d "$COMFYUI_DIR" ]; then # already installed
   exit 0
 fi
 
-. "$HOME/.asdf/asdf.sh"
+if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
+    . ${CHEZMOI_SOURCE_DIR}/../scripts/source-tooling.sh
+fi
 
 # comfy install is broken... https://github.com/Comfy-Org/comfy-cli/issues/98
 echo "💡 Cloning comfyui..."
