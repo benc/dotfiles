@@ -77,11 +77,19 @@ if ! command -v git >/dev/null 2>&1; then
     log_task "Debian based system detected, installing git..."
     sudo apt update --yes
     sudo apt install --yes --no-install-recommends git
-  elif [[ "$(uname -s)" == "Darwin" ]]; then
-    log_task "MacOS detected, installing Xcode Command Line Tools..."
-    xcode-select --install
   else
     error "Git cannot be installed, aborting..."
+  fi
+elif [ "$(uname -s)" = "Darwin" ]; then
+  log_task "MacOS detected."
+  if [ ! "$(xcode-select --print-path)" ]; then
+    log_task "Command Line Tools for Xcode not found. Installing from softwareupdate…"
+    # This temporary file prompts the 'softwareupdate' utility to list the Command Line Tools
+    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
+    PROD=$(softwareupdate -l | grep "\*.*Command Line" | tail -n 1 | sed 's/^[^C]* //')
+    softwareupdate -i "$PROD" --verbose;
+  else
+    log_task "Command Line Tools for Xcode have been installed."
   fi
 fi
 
