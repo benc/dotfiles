@@ -16,3 +16,6 @@ brew remove ly || true
 
 # install separately
 brew remove microsoft-office || true
+
+# not used
+brew remove postico || true
