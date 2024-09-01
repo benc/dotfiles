@@ -13,3 +13,6 @@ fi
 # replaced by musescore
 brew remove lilypond || true
 brew remove ly || true
+
+# install separately
+brew remove microsoft-office || true
