@@ -9,6 +9,11 @@
 {{- $_ := set $data "username" (default (dict) (get $data "username")) -}}
 
 # 💡
+#
+#
+
+sourceDir = "{{ .chezmoi.workingTree }}"
+verbose = true
 
 [interpreters.ps1]
     command = "pwsh.exe"
