@@ -19,3 +19,5 @@ brew remove microsoft-office || true
 
 # not used
 brew remove postico || true
+brew remove xpipe-io/tap/xpipe || true
+brew untap xpipe-io/tap || true
