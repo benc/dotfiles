@@ -39,3 +39,27 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true >> /dev
 # Reduce menu bar spacing
 defaults -currentHost write -globalDomain NSStatusItemSpacing -int 10 >> /dev/null
 defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 10 >> /dev/null
+
+# Amnesia
+screenCaptureApps=(
+  "/Applications/Setapp/CleanShot X.app/Contents/MacOS/CleanShot X Setapp"
+  "/Applications/Microsoft Teams.app/Contents/MacOS/MSTeams"
+  "/Applications/Microsoft Teams classic.app/Contents/MacOS/Teams"
+  "/Applications/zoom.us.app/Contents/MacOS/zoom.us"
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  "/Applications/Ice.app/Contents/MacOS/Ice"
+  "/Applications/Side Mirror.app/Contents/MacOS/Side Mirror"
+)
+
+approvalsFile="$HOME/Library/Group Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist"
+
+# if [[ ! -f $approvalsFile ]]; then
+#     plutil -create xml1 "$approvalsFile"
+# fi
+
+# if this fails, you prolly dont have full disk access for your terminal app enabled
+for app in "${screenCaptureApps[@]}"; do
+  defaults write "$approvalsFile" "$app" -date "3024-09-17 14:59:37 +0000"
+done
+
+# defaults read ~/Library/Group\ Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist
