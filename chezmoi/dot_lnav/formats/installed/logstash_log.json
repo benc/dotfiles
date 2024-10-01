@@ -1,0 +1,61 @@
+{
+    "logstash_log" : {
+        "title" : "Logstash Log Format",
+        "description" : "Logstash Log Format",
+        "json": true,
+        "timestamp-field": "@timestamp",
+        "level-field" : "level",
+        "body-field" : "message",
+        "module-field": "logger_name",
+        "level" : {
+            "error" : "ERROR",
+            "warning" : "WARN",
+            "info" : "INFO",
+            "debug" : "DEBUG",
+            "trace" : "TRACE"
+        },
+        "value" : {
+            "id" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "sequence" : {
+                "kind" : "integer"
+            },
+            "@timestamp": { 
+                "kind": "string"
+            },
+            "@version" : {
+                "kind" : "string"
+            },
+            "message" : {
+                "kind" : "string"
+            },
+            "logger_name" : {
+                "kind" : "string"
+            },
+            "thread_name" : {
+                "kind" : "string"
+            },
+            "level" : {
+                "kind" : "string"
+            },
+            "stack_hash" : {
+                "kind" : "string"
+            }
+        },
+        "line-format": [
+            {
+              "field": "@timestamp"
+            },
+            "\t",
+            {
+              "field": "level"
+            },
+            "\t",
+            {
+              "field": "message"
+            }
+          ]
+    }
+}
