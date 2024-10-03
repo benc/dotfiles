@@ -193,6 +193,7 @@ mas "Remote Desktop", id: 409907375
 mas "Windows App", id: 1295203466
 mas "Side Mirror", id: 944860108
 mas "com.kagimacOS.Kagi-Search", id: 1622835804
+mas "StopTheMadness Pro", id: 6471380298
 EOF
 
     brew services restart ollama
