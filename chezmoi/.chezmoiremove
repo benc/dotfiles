@@ -23,3 +23,5 @@
 .config/powershell/profile.d/25-get-childitems.ps1
 .config/powershell/profile.d/26-asdf.ps1
 .config/wsl/agent-bridge.sh
+.config/k9s/log_jq.yml
+.config/k9s/plugins.yaml
