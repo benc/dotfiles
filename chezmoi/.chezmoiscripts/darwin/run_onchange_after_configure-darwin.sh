@@ -45,6 +45,7 @@ defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 10 >
 screenCaptureApps=(
   "/Applications/Setapp/CleanShot X.app/Contents/MacOS/CleanShot X Setapp"
   "/Applications/Setapp/QuickLens.app/Contents/MacOS/QuickLens"
+  "/Applications/Setapp/Sip.app/Contents/MacOS/Sip"
   "/Applications/Microsoft Teams.app/Contents/MacOS/MSTeams"
   "/Applications/Microsoft Teams classic.app/Contents/MacOS/Teams"
   "/Applications/zoom.us.app/Contents/MacOS/zoom.us"
