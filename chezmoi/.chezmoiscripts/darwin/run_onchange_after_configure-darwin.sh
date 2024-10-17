@@ -41,8 +41,10 @@ defaults -currentHost write -globalDomain NSStatusItemSpacing -int 10 >> /dev/nu
 defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 10 >> /dev/null
 
 # Amnesia
+# defaults read ~/Library/Group\ Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist
 screenCaptureApps=(
   "/Applications/Setapp/CleanShot X.app/Contents/MacOS/CleanShot X Setapp"
+  "/Applications/Setapp/QuickLens.app/Contents/MacOS/QuickLens"
   "/Applications/Microsoft Teams.app/Contents/MacOS/MSTeams"
   "/Applications/Microsoft Teams classic.app/Contents/MacOS/Teams"
   "/Applications/zoom.us.app/Contents/MacOS/zoom.us"
@@ -61,5 +63,3 @@ approvalsFile="$HOME/Library/Group Containers/group.com.apple.replayd/ScreenCapt
 for app in "${screenCaptureApps[@]}"; do
   defaults write "$approvalsFile" "$app" -date "3024-09-17 14:59:37 +0000"
 done
-
-# defaults read ~/Library/Group\ Containers/group.com.apple.replayd/ScreenCaptureApprovals.plist
