@@ -17,7 +17,11 @@ brew remove ly || true
 # install separately
 brew remove microsoft-office || true
 
+# superceded by windows app
+brew remove microsoft-remote-desktop || true
+
 # not used
 brew remove postico || true
 brew remove xpipe-io/tap/xpipe || true
 brew untap xpipe-io/tap || true
+brew remove arq || true
