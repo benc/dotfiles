@@ -89,6 +89,7 @@ cask "adobe-acrobat-reader"
 cask "zoom"
 cask "tradingview"
 cask "google-earth-pro"
+cask "insta360-studio"
 mas "Amphetamine", id: 937984704
 mas "GarageBand", id: 682658836
 mas "1Password for Safari", id: 1569813296
@@ -171,7 +172,7 @@ cask "tageditor"
 cask "ableton-live-suite@11"
 cask "melodics"
 cask "musescore"
-cask "insta360-studio"
+cask "windows-app"
 mas "JSONPeep", id: 1458969831
 mas "OK JSON", id: 1576121509
 mas "Pure Paste", id: 1611378436
@@ -195,7 +196,6 @@ mas "One Thing", id: 1604176982
 mas "Infuse", id: 1136220934
 mas "Prompt", id: 1594420480
 mas "Remote Desktop", id: 409907375
-mas "Windows App", id: 1295203466
 mas "Side Mirror", id: 944860108
 mas "com.kagimacOS.Kagi-Search", id: 1622835804
 mas "StopTheMadness Pro", id: 6471380298
