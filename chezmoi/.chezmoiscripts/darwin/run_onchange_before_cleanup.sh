@@ -19,7 +19,7 @@ brew remove microsoft-office || true
 
 # superceded by windows app
 brew remove microsoft-remote-desktop || true
-sudo mas uninstall 1295203466 # windows app - install it through brew
+sudo mas uninstall 1295203466 || true # windows app - install it through brew
 
 # not used
 brew remove postico || true
