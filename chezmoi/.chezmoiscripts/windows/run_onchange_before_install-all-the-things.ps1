@@ -23,8 +23,7 @@ $apps = @(
     "DigiDNA.iMazing",
     "Melodics.Melodics",
     "Anysphere.Cursor",
-    "Adobe.Acrobat.Reader.64-bit",
-    "HaystackSoftwareLLC.Arq7"
+    "Adobe.Acrobat.Reader.64-bit"
 )
 
 $osIsARM = $env:PROCESSOR_ARCHITECTURE -match '^arm.*'
