@@ -24,6 +24,7 @@ $apps = @(
     "DigiDNA.iMazing",
     "Melodics.Melodics",
     "Anysphere.Cursor",
+    "Adobe.Acrobat.Reader.64-bit",
     "HaystackSoftwareLLC.Arq7"
 )
 
@@ -113,6 +114,7 @@ $scoopApps = @(
     "main/starship",
     "main/topgrade",
     "main/syncthing",
+    "main/hadolint",
     "extras/git-credential-manager",
     "extras/mpv",
     "extras/alacritty",
@@ -135,6 +137,7 @@ $scoopApps = @(
     "extras/keystore-explorer",
     "extras/telegram",
     "extras/zoom",
+    "extras/signal",
     "extras/discord",
     "extras/jd-gui",
     "extras/syncthingtray",
