@@ -6,8 +6,8 @@ $apps = @(
     "BelgianGovernment.eIDViewer",
     "Microsoft.WindowsTerminal",
     "JetBrains.Toolbox",
-    "SaaSGroup.Tower", 
-    "Intel.IntelDriverAndSupportAssistant", 
+    "SaaSGroup.Tower",
+    "Intel.IntelDriverAndSupportAssistant",
     "Docker.DockerDesktop",
     "Proxyman.Proxyman",
     "Microsoft.VisualStudio.2022.Community",
@@ -59,6 +59,9 @@ $apps | ForEach-Object {
 
 Write-Output "🔧 Installing tooling - Files..."
 Add-AppxPackage -AppInstallerFile https://cdn.files.community/files/stable/Files.Package.appinstaller
+
+Write-Output "🔧 Installing tooling - Fantastical..."
+Add-AppxPackage -AppInstallerFile https://cdn.flexibits.com/fantastical-windows/Fantastical.App_x64.appinstaller
 
 Write-Output "🔧 Installing tooling - Visual Studio 2022 components..."
 # https://learn.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2022&preserve-view=true
