@@ -12,7 +12,6 @@ $apps = @(
     "Proxyman.Proxyman",
     "Microsoft.VisualStudio.2022.Community",
     "tailscale.tailscale", # scoop version does not install correctly
-    "IVPN.IVPN", # keep winget version, more stable
     "WhatsApp.WhatsApp",
     "Facebook.Messenger",
     "Logitech.LogiTune",
