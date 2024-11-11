@@ -122,6 +122,7 @@ brew "cypher-shell"
 brew "awscli"
 brew "aws-iam-authenticator"
 brew "docker-credential-helper-ecr"
+brew "scc" # code counter with complexity calculations and cocomo estimates
 cask "warp"
 cask "provisionql"
 cask "quicklookapk"

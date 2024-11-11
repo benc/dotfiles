@@ -116,6 +116,7 @@ $scoopApps = @(
     "main/topgrade",
     "main/syncthing",
     "main/hadolint",
+    "main/scc", # code counter with complexity calculations and cocomo estimates
     "extras/git-credential-manager",
     "extras/mpv",
     "extras/alacritty",
