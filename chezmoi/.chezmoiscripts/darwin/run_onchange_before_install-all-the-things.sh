@@ -187,7 +187,6 @@ mas "Mindnode", id: 1289197285
 mas "BaseCamp", id: 411052274
 mas "NepTunes", id: 1006739057
 mas "Actions", id: 1586435171
-mas "Ivory", id: 6444602274
 mas "MusicBox", id: 1614730313
 mas "Logic Pro", id: 634148309
 mas "Xcode", id: 497799835
