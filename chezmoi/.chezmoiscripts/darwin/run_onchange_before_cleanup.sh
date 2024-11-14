@@ -22,6 +22,9 @@ brew remove microsoft-remote-desktop || true
 sudo mas uninstall 1295203466 || true # windows app - install it through brew
 sudo mas uninstall 6444602274 || true # ivory
 
+# replaced by tailscale mullvad
+brew remove ivpn || true
+
 # not used
 brew remove postico || true
 brew remove xpipe-io/tap/xpipe || true
