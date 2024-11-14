@@ -1,5 +1,6 @@
 Write-Output "🔧 Installing tooling - winget..."
 
+ # tailscale scoop version does not install correctly
 $apps = @(
     "SomePythonThings.WingetUIStore",
     "AgileBits.1Password",
@@ -11,7 +12,7 @@ $apps = @(
     "Docker.DockerDesktop",
     "Proxyman.Proxyman",
     "Microsoft.VisualStudio.2022.Community",
-    "tailscale.tailscale", # scoop version does not install correctly
+    "tailscale.tailscale",
     "WhatsApp.WhatsApp",
     "Facebook.Messenger",
     "Logitech.LogiTune",
@@ -23,6 +24,7 @@ $apps = @(
     "DigiDNA.iMazing",
     "Melodics.Melodics",
     "Anysphere.Cursor",
+    "MintplexLabs.AnythingLLM",
     "Adobe.Acrobat.Reader.64-bit"
 )
 
