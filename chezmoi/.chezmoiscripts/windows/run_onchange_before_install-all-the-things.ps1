@@ -25,6 +25,7 @@ $apps = @(
     "Melodics.Melodics",
     "Anysphere.Cursor",
     "EPOS.EposConnect",
+    "Garmin.BaseCamp",
     "MintplexLabs.AnythingLLM",
     "Adobe.Acrobat.Reader.64-bit"
 )
