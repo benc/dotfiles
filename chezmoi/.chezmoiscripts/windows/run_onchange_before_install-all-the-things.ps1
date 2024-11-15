@@ -24,6 +24,7 @@ $apps = @(
     "DigiDNA.iMazing",
     "Melodics.Melodics",
     "Anysphere.Cursor",
+    "EPOS.EposConnect",
     "MintplexLabs.AnythingLLM",
     "Adobe.Acrobat.Reader.64-bit"
 )
