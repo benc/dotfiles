@@ -10,6 +10,7 @@
 
 [core]
   editor = {{ .editor }}
+  pager = delta
 
   {{ if eq .chezmoi.os "windows" }}
   autocrlf = false
@@ -24,6 +25,12 @@
   eol = lf
   filemode = false
   {{ end }}
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  line-numbers = true
 
 [help]
   autocorrect = 1
