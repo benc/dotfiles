@@ -18,6 +18,8 @@ if (Get-Alias -Name ls -ErrorAction SilentlyContinue) {
 }
 function ls { eza --icons=always --group-directories-first --git $args }
 function mpvr { mpv --script-opts=360plugin-enabled=yes --panscan=1 --geometry=600x600 --volume=100 $args }
+function find { fd $args }
+function grep { rg $args }
 
 New-Alias -Name codei -Value code-insiders
 Set-Alias which Get-Command
