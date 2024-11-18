@@ -25,18 +25,16 @@ verbose = true
     args = ["-NoLogo", "-NoExit", "-Command", "& {Set-Location $env:HOMEPATH/.local/share/chezmoi}"]
 {{- end }}
 
-{{ if eq .chezmoi.os "darwin" -}}
 [diff]
-    command = "/usr/local/bin/ksdiff"
+    command = "delta"
+    args = ["--paging=never"]
 
+{{ if eq .chezmoi.os "darwin" -}}
 [merge]
     command = "/usr/local/bin/ksdiff"
 {{- end }}
 
 {{ if eq .chezmoi.os "windows" -}}
-[diff]
-    command = "C:/Program Files/Beyond Compare 5/BCompare.exe"
-
 [merge]
     command = "C:/Program Files/Beyond Compare 5/BCompare.exe"
 {{- end }}
