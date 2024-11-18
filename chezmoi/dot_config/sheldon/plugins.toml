@@ -39,3 +39,7 @@ github = "zdharma-continuum/fast-syntax-highlighting"
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
+
+[plugins.fzf-tab]
+github = "Aloxaf/fzf-tab"
+apply = ["source"]
