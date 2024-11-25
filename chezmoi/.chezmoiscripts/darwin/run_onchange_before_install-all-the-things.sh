@@ -13,8 +13,7 @@ fi
 if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
     . ${CHEZMOI_SOURCE_DIR}/../scripts/installation-type.sh
 else
-    echo "☢️  No installation type set, did you run this script directly? Assuming 'workstation' installation."
-    INSTALLATION_TYPE=workstation
+    echo "☢️  No installation type set, did you run this script directly? Set INSTALLATION_TYPE using an env var if needed."
 fi
 
 if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then

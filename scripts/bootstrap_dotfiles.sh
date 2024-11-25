@@ -66,6 +66,22 @@ git_clean() {
   unset path remote branch git
 }
 
+read_env() {
+  env_file="${HOME}/.env"
+  if [ -f "$env_file" ]; then
+    log_task "Reading environment variables from '$env_file'"
+    set -a
+    # shellcheck source=${HOME}/.env
+    . "$env_file"
+    set +a
+  else
+    log_manual_action "No .env file found in home directory. Please touch one before continuing. Add 'INSTALLATION_TYPE' if necessary."
+    exit
+  fi
+}
+
+read_env
+
 DOTFILES_REPO_HOST=${DOTFILES_REPO_HOST:-"https://github.com"}
 DOTFILES_USER=${DOTFILES_USER:-"benc"}
 DOTFILES_REPO="${DOTFILES_REPO_HOST}/${DOTFILES_USER}/dotfiles"
