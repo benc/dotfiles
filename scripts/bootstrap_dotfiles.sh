@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 set -eu
 
 log_color() {
@@ -75,8 +75,21 @@ read_env() {
     . "$env_file"
     set +a
   else
-    log_manual_action "No .env file found in home directory. Please touch one before continuing. Add 'INSTALLATION_TYPE' if necessary."
-    exit
+    echo "Choose the type of installation you want for this machine"
+    select INSTALLATION_TYPE in minimal regular server workstation
+    do
+        if [[ -n "$INSTALLATION_TYPE" ]]; then
+            break
+        else
+            echo "Invalid selection. Please try again."
+        fi
+    done
+    echo "INSTALLATION_TYPE=$INSTALLATION_TYPE" > "$env_file"
+    log_task "Created .env file with INSTALLATION_TYPE=$INSTALLATION_TYPE"
+    set -a
+    # shellcheck source=${HOME}/.env
+    . "$env_file"
+    set +a
   fi
 }
 
