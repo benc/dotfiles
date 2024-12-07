@@ -82,6 +82,5 @@ jkill() {
 
 select_file() {
   given_file="$1"
-  #fd --type file --follow --hidden --exclude .git | fzf --query="$given_file"
-  fzf --query="$given_file"
+  fd --type file --follow --hidden --exclude .git | fzf --query="$given_file"
 }
