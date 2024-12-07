@@ -4,12 +4,6 @@ if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-if ! type nix &>/dev/null; then
-    echo "❄️ Installing nix..."
-    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
-    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-fi
-
 if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
     . ${CHEZMOI_SOURCE_DIR}/../scripts/installation-type.sh
 else
@@ -103,6 +97,13 @@ mas "1Password for Safari", id: 1569813296
 EOF
 
 if [ "$INSTALLATION_TYPE" = "workstation" ]; then
+    # install nix only on workstation for now...
+    if ! type nix &>/dev/null; then
+        echo "❄️ Installing nix..."
+        curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
+        . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+    fi
+
     echo "🔧 Installing all workstation tooling"
     brew bundle --force --no-lock --file=/dev/stdin <<EOF
 brew "pixi"
