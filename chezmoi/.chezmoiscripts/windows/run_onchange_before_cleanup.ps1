@@ -1,7 +1,8 @@
 Write-Output "🔧 Cleaning up unwanted winget packages..."
 $wingetToRemove = @(
     "IVPN.IVPN",
-    "HaystackSoftwareLLC.Arq7"
+    "HaystackSoftwareLLC.Arq7",
+    "Anysphere.Cursor"
 )
 
 foreach ($package in $wingetToRemove) {

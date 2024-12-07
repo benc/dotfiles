@@ -30,3 +30,4 @@ brew remove postico || true
 brew remove xpipe-io/tap/xpipe || true
 brew untap xpipe-io/tap || true
 brew remove arq || true
+brew remove cursor || true

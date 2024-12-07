@@ -23,7 +23,6 @@ $apps = @(
     "TradingView.TradingViewDesktop",
     "DigiDNA.iMazing",
     "Melodics.Melodics",
-    "Anysphere.Cursor",
     "EPOS.EposConnect",
     "Garmin.BaseCamp",
     "MintplexLabs.AnythingLLM",
