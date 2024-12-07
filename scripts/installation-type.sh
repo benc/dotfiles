@@ -4,7 +4,7 @@ export MACHINE_TYPE
 export IS_WSL
 
 if [ -f "$HOME/.env" ]; then
-  log_task "Reading environment variables from '$HOME/.env'"
+  echo "Reading environment variables from '$HOME/.env'"
   set -a
   . "$HOME/.env"
   set +a
