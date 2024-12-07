@@ -16,85 +16,176 @@ fi
 
 echo "🔧 Installing prerequisites"
 brew bundle --no-lock --file=/dev/stdin <<EOF
-brew "zsh"
-brew "eza"
-brew "bat"
-brew "fzf"
-brew "fd"
-brew "btop"
-brew "jq"
-brew "ripgrep"
-brew "delta"
-brew "lazygit"
-brew "xh"
-brew "navi"
-brew "starship"
-brew "zoxide"
-brew "sheldon"
-brew "watch"
-brew "git"
-brew "procs"
-brew "dust"
-brew "duf"
-brew "prettyping"
-brew "topgrade"
-brew "neovim"
-brew "coreutils"
-brew "terminal-notifier"
-brew "m-cli"
-brew "mas"
+# shell and basic cli tooling
+brew "zsh" # shell
+brew "eza" # ls replacement
+brew "bat" # cat replacement
+brew "fzf" # fuzzy finder
+brew "fd" # find replacement
+brew "btop" # top replacement
+brew "jq" # json processor
+brew "ripgrep" # grep replacement
+brew "delta" # diff viewer
+brew "lazygit" # git ui
+brew "xh" # curl replacement
+brew "navi" # cheatsheet
+brew "starship" # prompt
+brew "zoxide" # cd replacement
+brew "sheldon" # plugin manager
+brew "watch" # watch command
+brew "git" # version control
+brew "procs" # ps replacement
+brew "dust" # du replacement
+brew "duf" # df replacement
+brew "prettyping" # ping replacement
+brew "topgrade" # update everything
+brew "neovim" # text editor
+brew "coreutils" # gnu coreutils
+brew "terminal-notifier" # notifications
+brew "m-cli" # macos cli
+brew "mas" # mac app store cli
+
+# quicklook plugins
+cask "apparency" # quicklook for apps https://www.mothersruin.com/software/Apparency/
+cask "qlvideo" # quicklook for video files
+
+# drivers
+cask "softraid" # owc softraid https://www.softraid.com/
+cask "logitune" # yet another logitech tool
+cask "soundsource" # system audio manager
+
+# system tooling
+cask "jordanbaird-ice" # macos menubar manager
+cask "raycast" # spotlight replacement
+cask "latest" # latest version of apps
+cask "alacritty" # terminal
+cask "connectmenow" # mount network shares
+cask "carbon-copy-cloner" # backup tool
+cask "sdformatter" # sd card formatter
+cask "betterdisplay" # display manager
+cask "rectangle-pro" # window manager
+cask "appcleaner" # app uninstaller
+cask "daisydisk" # disk space analyzer
+cask "prefs-editor" # macos prefs editor
+cask "visual-studio-code" # code editor
+cask "setapp" # app subscription
+mas "Amphetamine", id: 937984704 # keep mac awake
+
+# productivity
+cask "google-chrome" # browser
+cask "adobe-acrobat-reader" # pdf reader
+
+# network tooling
+cask "tailscale" # vpn
+cask "spamsieve" # spam filter
+mas "Speediness", id: 1596706466 # check internet speed https://sindresorhus.com/speediness
 EOF
 
-echo "🔧 Installing productivity tooling and utilities"
-brew bundle --no-lock --file=/dev/stdin <<EOF
-cask "apparency"
-cask "qlvideo"
-cask "1password/tap/1password-cli"
-cask "softraid"
-cask "logitune"
-cask "jordanbaird-ice"
-cask "raycast"
-cask "latest"
-cask "alacritty"
-cask "connectmenow"
-cask "carbon-copy-cloner"
-cask "sdformatter"
-cask "calibre"
-cask "betterdisplay"
-cask "rectangle-pro"
-cask "appcleaner"
-cask "iina"
+if [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
+    echo "🔧 Installing regular tooling"
+    brew bundle --no-lock --file=/dev/stdin <<EOF
+# messaging
 cask "whatsapp"
 cask "telegram"
 cask "messenger"
 cask "discord"
 cask "signal"
-cask "daisydisk"
-cask "tailscale"
-cask "prefs-editor"
-cask "visual-studio-code@insiders"
-cask "google-chrome"
-cask "firefox"
-cask "brave-browser"
-cask "microsoft-edge"
-cask "microsoft-word"
-cask "microsoft-excel"
-cask "microsoft-powerpoint"
-cask "microsoft-teams"
-cask "fantastical"
-cask "adobe-acrobat-reader"
-cask "zoom"
-cask "tradingview"
-cask "google-earth-pro"
-cask "insta360-studio"
-cask "soundsource"
-cask "spamsieve"
-cask "devonthink"
-cask "setapp"
-mas "Amphetamine", id: 937984704
-mas "GarageBand", id: 682658836
-mas "1Password for Safari", id: 1569813296
+
+# productivity
+cask "microsoft-word" # ms office
+cask "microsoft-excel" # ms office
+cask "microsoft-powerpoint" # ms office
+cask "fantastical" # macos calendar replacement
+cask "microsoft-teams" # video conferencing
+cask "zoom" # video conferencing
+cask "omnifocus" # task manager
+cask "omnigraffle" # diagram tool
+cask "omnioutliner" # outliner tool
+cask "devonthink" # document manager
+mas "Peek", id: 1554235898 # quick look extension https://www.bigzlabs.com/peek.html
+mas "Mindnode", id: 1289197285 # mind mapping
+mas "Reeder", id: 1529448980 # rss reader
+mas "Side Mirror", id: 944860108 # presentation tool https://sidemirrorapp.com
+mas "StopTheMadness Pro", id: 6471380298 # sanitize safari https://underpassapp.com/StopTheMadness/
+
+# 1password
+cask "1password" # 1password
+cask "1password/tap/1password-cli" # 1password cli
+mas "1Password for Safari", id: 1569813296 # 1password safari extension
+
+# automation
+mas "Actions", id: 1586435171 # additional actions for the shortcut app https://sindresorhus.com/actions
+mas "Shortery", id: 1594183810 # automate shortcuts https://www.numberfive.co/detail_shortery.html
+
+# finance
+cask "tradingview" # stock trading
+
+# media
+cask "calibre" # ebook manager
+cask "iina" # video player
+mas "Infuse", id: 1136220934 # video player
+cask "insta360-studio" # 360 camera
+cask "airfoil" # apple airplay audio streamer
+cask "melodics" # music learning
+cask "musescore" # music notation
+mas "GarageBand", id: 682658836 # music creation
 EOF
+fi
+
+if [ "$INSTALLATION_TYPE" = "server" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
+    echo "🔧 Installing server tooling"
+    brew bundle --no-lock --file=/dev/stdin <<EOF
+# data tooling
+brew "libpq" # postgresql client tooling
+brew "cypher-shell" # neo4j client tooling
+
+# log analysis
+brew "lnav" # log viewer
+
+# aws tooling
+brew "awscli" # aws tooling
+brew "aws-iam-authenticator" # aws k8s auth
+brew "docker-credential-helper-ecr" # docker ecr auth
+
+# k8s tooling
+brew "k9s" # k8s ui
+brew "kubernetes-cli" # k8s cli
+brew "helm" # k8s package manager
+
+# docker tooling
+brew "dive" # docker container image explorer
+brew "ctop" # container top
+cask "orbstack" # docker desktop replacement
+
+# virtualization
+cask "utm" # virtualization
+
+# media
+cask "plex-media-server" # media server
+brew "exiftool" # image metadata tool
+
+# productivity
+cask "fujitsu-scansnap-home" # scanner manager
+
+# ai
+brew "ollama" # serve genai models
+
+# network tooling
+tap "localsend/localsend" # local file sharing
+cask "localsend" # local file sharing
+cask "syncthing" # file sync
+cask "core-tunnel" # ssh tunnel
+cask "wireshark" # network analyzer
+cask "transmit" # ftp client
+cask "windows-app" # remote desktop
+
+# utilities
+cask "power-manager" # power management
+cask "little-snitch" # network monitor
+cask "imazing" # ios device manager
+cask "launchcontrol" # launchd manager
+EOF
+fi
 
 if [ "$INSTALLATION_TYPE" = "workstation" ]; then
     # install nix only on workstation for now...
@@ -104,105 +195,93 @@ if [ "$INSTALLATION_TYPE" = "workstation" ]; then
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
     fi
 
-    echo "🔧 Installing all workstation tooling"
+    echo "🔧 Installing workstation tooling"
     brew bundle --force --no-lock --file=/dev/stdin <<EOF
-brew "pixi"
-brew "pipx"
-brew "uv"
-brew "direnv"
-brew "exiftool"
-brew "pandoc"
-brew "graphviz"
-brew "devcontainer"
-brew "wrk"
-brew "hyperfine"
-brew "dive"
-brew "ctop"
-brew "lnav"
-brew "ollama"
-brew "k9s"
-brew "kubernetes-cli"
-brew "helm"
-brew "libpq"
-brew "hadolint"
-brew "cypher-shell"
-brew "awscli"
-brew "aws-iam-authenticator"
-brew "docker-credential-helper-ecr"
+# development tooling
 brew "scc" # code counter with complexity calculations and cocomo estimates
-cask "warp"
-cask "provisionql"
-cask "quicklookapk"
-cask "powershell"
-tap "localsend/localsend"
-cask "localsend"
-cask "sf-symbols"
-cask "crystalfetch"
-cask "power-manager"
-cask "syncthing"
-cask "keyboard-maestro"
-cask "little-snitch"
-cask "transmit"
-cask "imazing"
-cask "launchcontrol"
-cask "jetbrains-toolbox"
-cask "jprofiler"
-cask "jd-gui"
-cask "beyond-compare"
-cask "kaleidoscope"
-cask "tower"
-cask "orbstack"
-cask "utm"
-cask "core-tunnel"
-cask "bluetility"
-cask "caldigit-docking-utility"
-cask "wireshark"
-cask "keystore-explorer"
-cask "zed"
-cask "bbedit"
-cask "choosy"
-cask "karabiner-elements"
-cask "keycastr"
-cask "lm-studio"
-cask "diffusionbee"
-cask "replacicon"
-cask "swiftbar"
-cask "omnifocus"
-cask "omnigraffle"
-cask "omnioutliner"
-cask "airfoil"
-cask "plex-media-server"
-cask "fujitsu-scansnap-home"
-cask "tageditor"
-cask "ableton-live-suite@11"
-cask "melodics"
-cask "musescore"
-cask "windows-app"
-mas "JSONPeep", id: 1458969831
-mas "OK JSON", id: 1576121509
-mas "Pure Paste", id: 1611378436
-mas "Refined GitHub", id: 1519867270
-mas "Peek", id: 1554235898
-mas "Aiko", id: 1672085276
-mas "1Focus", id: 969210610
-mas "Mindnode", id: 1289197285
-mas "BaseCamp", id: 411052274
-mas "NepTunes", id: 1006739057
-mas "Actions", id: 1586435171
-mas "MusicBox", id: 1614730313
-mas "Logic Pro", id: 634148309
-mas "Xcode", id: 497799835
-mas "Reeder", id: 1529448980
-mas "Shortery", id: 1594183810
-mas "Formatter", id: 1190228172
-mas "Speediness", id: 1596706466
-mas "One Thing", id: 1604176982
-mas "Infuse", id: 1136220934
-mas "Prompt", id: 1594420480
-mas "Remote Desktop", id: 409907375
-mas "Side Mirror", id: 944860108
-mas "com.kagimacOS.Kagi-Search", id: 1622835804
-mas "StopTheMadness Pro", id: 6471380298
+brew "hyperfine" # cli benchmarking
+
+# python development
+brew "pixi" # package manager
+brew "pipx" # python package manager
+brew "uv" # python package manager
+brew "direnv" # env manager 
+
+# java development
+cask "jprofiler" # java profiler
+cask "jd-gui" # java decompiler
+cask "keystore-explorer" # java keystore manager
+
+# mobile development
+cask "provisionql" # quicklook for ipa & provision
+cask "quicklookapk" # quicklook for apk
+
+# media
+brew "pandoc" # document converter
+brew "graphviz" # graph tool
+cask "sf-symbols" # symbol tool
+
+# development tooling (ide, diff, ...)
+brew "devcontainer" # dockerize dev env
+brew "hadolint" # dockerfile linter
+cask "jetbrains-toolbox" # jetbrains ide manager
+cask "zed" # code editor
+cask "visual-studio-code@insiders" # code editor
+cask "bbedit" # code editor
+cask "beyond-compare" # file comparison
+cask "kaleidoscope" # file comparison
+cask "tower" # git client
+mas "JSONPeep", id: 1458969831 # json viewer
+mas "OK JSON", id: 1576121509 # json viewer
+mas "Xcode", id: 497799835 # apple development tool
+mas "Formatter", id: 1190228172 # json for xcode https://roundwallsoftware.com/formatter/
+
+# web development
+brew "wrk" # http benchmarking
+cask "choosy" # browser chooser
+cask "firefox" # browser
+cask "brave-browser" # browser
+cask "microsoft-edge" # browser
+
+# cli
+cask "powershell" # shell
+cask "warp" # terminal
+
+# devops
+cask "crystalfetch" # create windows 11 iso images
+
+# bluetooth development
+cask "bluetility" # bluetooth low energy browser
+
+# ai
+cask "lm-studio" # ai tool
+cask "diffusionbee" # image generator
+mas "Aiko", id: 1672085276 # on device transcription https://sindresorhus.com/aiko
+
+# maps
+mas "BaseCamp", id: 411052274 # garmin mapping tool
+cask "google-earth-pro" # google mapping tool
+
+# utilties
+cask "keyboard-maestro" # keyboard automation
+cask "caldigit-docking-utility" # caldigit dock manager
+cask "karabiner-elements" # keyboard remapper
+cask "keycastr" # keypress visualizer
+cask "replacicon" # icon replacer
+cask "swiftbar" # menubar app
+mas "Pure Paste", id: 1611378436 # paste text as plain text by default https://sindresorhus.com/pure-paste
+mas "Refined GitHub", id: 1519867270 # github ui improvements
+mas "1Focus", id: 969210610 # focus app
+mas "One Thing", id: 1604176982 # put a single task in menu bar https://sindresorhus.com/one-thing
+mas "Prompt", id: 1594420480 # shell/ssh client
+mas "com.kagimacOS.Kagi-Search", id: 1622835804 # search tool https://kagi-search.com
+
+# media
+cask "tageditor" # music tag editor
+cask "ableton-live-suite@11" # music creation
+mas "NepTunes", id: 1006739057 # itunes controller
+mas "MusicBox", id: 1614730313 # save music for later
+mas "Logic Pro", id: 634148309 # music creation
 EOF
 
     brew services restart ollama
