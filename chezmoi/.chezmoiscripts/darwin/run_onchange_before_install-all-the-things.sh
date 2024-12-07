@@ -242,4 +242,5 @@ EOF
     asdf plugin add python
     asdf plugin add golang
     asdf plugin add rust
+    asdf plugin add sbt
 fi
