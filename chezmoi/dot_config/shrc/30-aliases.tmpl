@@ -17,26 +17,55 @@ fkill() {
   fi
 }
 
+find-videos-by-codec() {
+  local mode=$1
+  local operator
+
+  if [ "$mode" = "ios" ]; then
+    operator=""
+  elif [ "$mode" = "non-ios" ]; then
+    operator="!"
+  else
+    echo "Usage: find-videos-by-codec [ios|non-ios]" >&2
+    return 1
+  fi
+
+  fd -t f -e mp4 -e mkv -e avi -e mov -x sh -c \
+    "codec=\$(ffprobe -v quiet -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 \"{}\"); \
+    if $operator echo \"\$codec\" | rg -i \"h264|avc\" >/dev/null; then echo \"\$codec - {}\" ; fi" | sort
+}
+
+find-non-ios-encoded-videos() { find-videos-by-codec non-ios; }
+find-ios-encoded-videos() { find-videos-by-codec ios; }
+
 encode-ios-video() {
   nice -n 19 ffmpeg -i "$1" \
     -vf "fps=30,scale=w=-2:h='min(1920,ih)':sws_flags=spline+accurate_rnd:in_range=tv:out_range=tv" \
-    -c:v libx264 \
-    -profile:v baseline \
-    -level:v 4.2 \
-    -colorspace bt709 \
-    -color_trc bt709 \
-    -color_primaries bt709 \
-    -color_range tv \
-    -crf 17 \
-    -preset slow \
-    -tune film \
-    -x264-params mvrange=511 \
+    -c:v hevc_videotoolbox \
+    -profile:v main \
+    -alpha_quality 0.9 \
+    -tag:v hvc1 \
+    -b:v 8M \
+    -allow_sw 0 \
     -pix_fmt yuv420p \
     -ac 2 \
     -c:a aac \
-    -b:a 160k \
+    -b:a 192k \
     -movflags +faststart \
     "${1%.*}.ios.mp4"
+}
+
+batch-encode-ios-videos() {
+  find-non-ios-encoded-videos | while IFS= read -r line; do
+    filename="${line#* - }"  # Remove "codec - " prefix
+    echo "Converting: $filename"
+    encode-ios-video "$filename"
+    if [ $? -eq 0 ]; then
+      echo "Successfully converted: $filename"
+    else
+      echo "Failed to convert: $filename"
+    fi
+  done
 }
 
 tag-video-with-h265() {
@@ -45,10 +74,6 @@ tag-video-with-h265() {
     -tag:v hvc1 \
     -c:a copy \
     "${1%.*}.h265.mp4"
-}
-
-find-non-ios-encoded-videos() {
-  fd -t f -e mp4 -e mkv -e avi -e mov -x sh -c 'codec=$(ffprobe -v quiet -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 "{}"); if ! echo "$codec" | rg -i "h264|avc" >/dev/null; then echo "$codec - {}" ; fi'
 }
 
 jkill() {
