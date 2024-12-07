@@ -6,7 +6,6 @@ alias grep="rg"
 alias find="fd"
 alias codei="code-insiders"
 alias nuke_modules="rm -rf node_modules; npm install; npm prune"
-alias jkill="function _jkill(){ jps -l | grep \$1 | awk '{print \$1}' | xargs kill -9 ; }; _jkill"
 alias mpvr="mpv --script-opts=360plugin-enabled=yes --panscan=1 --geometry=600x600 --volume=100"
 alias docker-recompose="docker compose stop && docker compose rm --force && docker compose pull && docker compose build --no-cache --pull && docker compose up --remove-orphans --force-recreate -d"
 
@@ -18,12 +17,46 @@ fkill() {
   fi
 }
 
+encode-ios-video() {
+  nice -n 19 ffmpeg -i "$1" \
+    -vf "fps=30,scale=w=-2:h='min(1920,ih)':sws_flags=spline+accurate_rnd:in_range=tv:out_range=tv" \
+    -c:v libx264 \
+    -profile:v baseline \
+    -level:v 4.2 \
+    -colorspace bt709 \
+    -color_trc bt709 \
+    -color_primaries bt709 \
+    -color_range tv \
+    -crf 17 \
+    -preset slow \
+    -tune film \
+    -x264-params mvrange=511 \
+    -pix_fmt yuv420p \
+    -ac 2 \
+    -c:a aac \
+    -b:a 160k \
+    -movflags +faststart \
+    "${1%.*}.ios.mp4"
+}
+
+tag-video-with-h265() {
+  ffmpeg -i "$1" \
+    -c:v copy \
+    -tag:v hvc1 \
+    -c:a copy \
+    "${1%.*}.h265.mp4"
+}
+
+find-non-ios-encoded-videos() {
+  fd -t f -e mp4 -e mkv -e avi -e mov -x sh -c 'codec=$(ffprobe -v quiet -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 "{}"); if ! echo "$codec" | rg -i "h264|avc" >/dev/null; then echo "$codec - {}" ; fi'
+}
+
+jkill() {
+  jps -l | grep "$1" | awk '{print $1}' | xargs kill -9
+}
+
 select_file() {
   given_file="$1"
   #fd --type file --follow --hidden --exclude .git | fzf --query="$given_file"
   fzf --query="$given_file"
-}
-
-encode() {
-  nice -n 19 ffmpeg -i "$1" -vf "fps=30,scale=w=-2:h='min(1920,ih)':sws_flags=spline+accurate_rnd:in_range=tv:out_range=tv" -c:v libx264 -profile:v baseline -level:v 4.2 -colorspace bt709 -color_trc bt709 -color_primaries bt709 -color_range tv -crf 17 -preset slow -tune film -x264-params mvrange=511 -pix_fmt yuv420p -ac 2 -c:a aac -b:a 160k -movflags +faststart "${1%.*}-encoded.${1##*.}"
 }
