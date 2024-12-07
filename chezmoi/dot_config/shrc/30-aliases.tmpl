@@ -32,7 +32,7 @@ find-videos-by-codec() {
 
   fd -t f -e mp4 -e mkv -e avi -e mov -x sh -c \
     "codec=\$(ffprobe -v quiet -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 \"{}\"); \
-    if $operator echo \"\$codec\" | rg -i \"h264|avc\" >/dev/null; then echo \"\$codec - {}\" ; fi" | sort
+    if $operator echo \"\$codec\" | rg -i \"h264|avc|hevc\" >/dev/null; then echo \"\$codec - {}\" ; fi" | sort
 }
 
 find-non-ios-encoded-videos() { find-videos-by-codec non-ios; }
