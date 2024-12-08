@@ -191,6 +191,14 @@ cask "little-snitch" # network monitor
 cask "imazing" # ios device manager
 cask "launchcontrol" # launchd manager
 EOF
+
+    echo "🔧 Installing ASDF..."
+    if [ ! -d $HOME/.asdf ]; then
+        echo "💡 Installing asdf..."
+        git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
+        . "$HOME/.asdf/asdf.sh"
+        asdf update
+    fi
 fi
 
 if [ "$INSTALLATION_TYPE" = "workstation" ]; then
@@ -307,24 +315,4 @@ EOF
     # echo "💡 Setting up Powershell..."
     # pwsh ../../powershell/install.ps1
     # popd || exit
-
-    echo "🔧 Installing ASDF..."
-    if [ ! -d $HOME/.asdf ]; then
-        echo "💡 Installing asdf..."
-        git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-        . "$HOME/.asdf/asdf.sh"
-        asdf update
-    fi
-
-    . "$HOME/.asdf/asdf.sh"
-
-    asdf plugin add nodejs
-    asdf plugin add ruby
-    asdf plugin add java
-    asdf plugin add maven
-    asdf plugin add gradle
-    asdf plugin add python
-    asdf plugin add golang
-    asdf plugin add rust
-    asdf plugin add sbt
 fi

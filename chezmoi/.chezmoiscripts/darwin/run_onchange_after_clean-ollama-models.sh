@@ -1,2 +1,4 @@
 #!/bin/bash
-echo "🔧 Cleanup ollama models..."
+if type ollama &>/dev/null; then
+    echo "🔧 Cleanup ollama models..."
+fi
