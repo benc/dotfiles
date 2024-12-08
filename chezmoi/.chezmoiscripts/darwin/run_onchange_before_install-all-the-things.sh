@@ -82,6 +82,8 @@ cask "spamsieve" # spam filter
 mas "Speediness", id: 1596706466 # check internet speed https://sindresorhus.com/speediness
 EOF
 
+sudo chmod 755 "$(brew --prefix)/share"
+
 if [ "$APPLY_SECRETS" = "true" ] || [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
     echo "🔧 Installing 1Password"
     brew bundle --no-lock --file=/dev/stdin <<EOF
