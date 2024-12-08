@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# read $HOME/.env if it exists
+if [ -f "$HOME/.env" ]; then
+  set -a
+  . "$HOME/.env"
+  set +a
+fi
+
 # Homebrew
 if [ -f "/usr/local/bin/brew" ]; then
   export PATH="/usr/local/bin:/usr/local/sbin:$PATH"

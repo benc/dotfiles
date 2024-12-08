@@ -82,6 +82,16 @@ cask "spamsieve" # spam filter
 mas "Speediness", id: 1596706466 # check internet speed https://sindresorhus.com/speediness
 EOF
 
+if [ "$APPLY_SECRETS" = "true" ] || [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
+    echo "🔧 Installing 1Password"
+    brew bundle --no-lock --file=/dev/stdin <<EOF
+# 1password
+cask "1password" # 1password
+cask "1password/tap/1password-cli" # 1password cli
+mas "1Password for Safari", id: 1569813296 # 1password safari extension
+EOF
+fi
+
 if [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
     echo "🔧 Installing regular tooling"
     brew bundle --no-lock --file=/dev/stdin <<EOF
@@ -108,11 +118,6 @@ mas "Mindnode", id: 1289197285 # mind mapping
 mas "Reeder", id: 1529448980 # rss reader
 mas "Side Mirror", id: 944860108 # presentation tool https://sidemirrorapp.com
 mas "StopTheMadness Pro", id: 6471380298 # sanitize safari https://underpassapp.com/StopTheMadness/
-
-# 1password
-cask "1password" # 1password
-cask "1password/tap/1password-cli" # 1password cli
-mas "1Password for Safari", id: 1569813296 # 1password safari extension
 
 # automation
 mas "Actions", id: 1586435171 # additional actions for the shortcut app https://sindresorhus.com/actions

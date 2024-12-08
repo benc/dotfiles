@@ -2,11 +2,8 @@
 {{- $name := "Ben Cochez" -}}
 {{- $email := "ben@kyber.be" -}}
 {{- $username := "benc" -}}
-
-{{- $data := . }}
-{{- $_ := set $data "host" (default (dict) (get $data "host")) -}}
-{{- $_ := set $data "user" (default (dict) (get $data "user")) -}}
-{{- $_ := set $data "username" (default (dict) (get $data "username")) -}}
+{{- $installationType := env "INSTALLATION_TYPE" -}}
+{{- $applySecrets := env "APPLY_SECRETS" -}}
 
 # 💡
 #
@@ -52,3 +49,7 @@ verbose = true
     email = {{ $email | quote }}
     name = {{ $name | quote }}
     username = {{ $username | quote }}
+
+[data.machine]
+    applySecrets = {{ $applySecrets | quote }}
+    installationType = {{ $installationType | quote }}

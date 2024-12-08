@@ -1,5 +1,6 @@
 #!/bin/bash
 export INSTALLATION_TYPE
+export APPLY_SECRETS
 export MACHINE_TYPE
 export IS_WSL
 
@@ -13,6 +14,7 @@ else
 fi
 
 INSTALLATION_TYPE=${INSTALLATION_TYPE:-"minimal"}
+APPLY_SECRETS=${APPLY_SECRETS:-"false"}
 MACHINE_TYPE=unknown
 IS_WSL=false
 MACHINE_TYPE_STRING=unknown

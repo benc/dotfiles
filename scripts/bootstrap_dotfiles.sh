@@ -85,7 +85,20 @@ read_env() {
         fi
     done
     echo "INSTALLATION_TYPE=$INSTALLATION_TYPE" > "$env_file"
-    log_task "Created .env file with INSTALLATION_TYPE=$INSTALLATION_TYPE"
+
+    echo "Do you want secrets to be applied to this machine"
+    select APPLY_SECRETS in true false
+    do
+        if [[ -n "$APPLY_SECRETS" ]]; then
+            break
+        else
+            echo "Invalid selection. Please try again."
+        fi
+    done
+    echo "APPLY_SECRETS=$APPLY_SECRETS" > "$env_file"
+
+    log_task "Created .env file with INSTALLATION_TYPE=$INSTALLATION_TYPE and APPLY_SECRETS=$APPLY_SECRETS"
+    
     set -a
     # shellcheck source=${HOME}/.env
     . "$env_file"
