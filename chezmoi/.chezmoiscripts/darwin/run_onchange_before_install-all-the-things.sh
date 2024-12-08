@@ -44,6 +44,7 @@ brew "coreutils" # gnu coreutils
 brew "terminal-notifier" # notifications
 brew "m-cli" # macos cli
 brew "mas" # mac app store cli
+brew "mpv" # video player
 
 # quicklook plugins
 cask "apparency" # quicklook for apps https://www.mothersruin.com/software/Apparency/
