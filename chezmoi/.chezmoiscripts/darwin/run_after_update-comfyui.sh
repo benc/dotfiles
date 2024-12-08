@@ -1,4 +1,8 @@
 #!/bin/bash
+if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
+    . ${CHEZMOI_SOURCE_DIR}/../scripts/source-tooling.sh
+fi
+
 if [ "$INSTALLATION_TYPE" = "server" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
   ARCH=$(uname -m)
   if [ "$ARCH" != "arm64" ]; then

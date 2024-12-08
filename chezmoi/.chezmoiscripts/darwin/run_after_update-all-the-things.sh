@@ -1,4 +1,8 @@
 #!/bin/bash
+if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
+    . ${CHEZMOI_SOURCE_DIR}/../scripts/source-tooling.sh
+fi
+
 echo "💡 Upgrade all the things..."
 # chezmoi
 chezmoi upgrade

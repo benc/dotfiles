@@ -6,6 +6,10 @@
 #
 #   curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
 #   sh Miniconda3-latest-MacOSX-arm64.sh
+if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
+    . ${CHEZMOI_SOURCE_DIR}/../scripts/source-tooling.sh
+fi
+
 ARCH=$(uname -m)
 if [ "$ARCH" != "arm64" ]; then
   echo "This script is intended for ARM Macs only, skipping..."
