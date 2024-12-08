@@ -28,8 +28,10 @@ fi
 {{ end }}
 
 # ASDF
-. "$HOME/.asdf/asdf.sh"
-export PATH="$HOME/.asdf/shims:$PATH"
+if [ -d $HOME/.asdf ]; then
+  . "$HOME/.asdf/asdf.sh"
+  export PATH="$HOME/.asdf/shims:$PATH"
+fi
 
 # NodeJS
 export PATH="./node_modules/.bin:$PATH"
