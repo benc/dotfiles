@@ -15,7 +15,7 @@
 # sudo_command = "sudo"
 
 # Disable specific steps - same options as the command line flag
-disable = ["chezmoi", "containers", "pnpm", "yarn", "mas", "pixi", "gitrepos"]
+disable = ["chezmoi", "containers", "pnpm", "yarn", "mas", "pixi", "git_repos"]
 
 # Ignore failures for these steps
 # ignore_failures = ["powershell"]
