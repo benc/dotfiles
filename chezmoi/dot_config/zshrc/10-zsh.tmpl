@@ -1,6 +1,10 @@
 setopt AUTOCD # ..
 
 ### compedit
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit 
 
