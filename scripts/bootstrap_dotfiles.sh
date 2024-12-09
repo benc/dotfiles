@@ -84,7 +84,7 @@ read_env() {
             echo "Invalid selection. Please try again."
         fi
     done
-    echo "INSTALLATION_TYPE=$INSTALLATION_TYPE" > "$env_file"
+    printf "INSTALLATION_TYPE=%s\n" "$INSTALLATION_TYPE" >> "$env_file"
 
     echo "Do you want secrets to be applied to this machine"
     select APPLY_SECRETS in true false
@@ -95,7 +95,7 @@ read_env() {
             echo "Invalid selection. Please try again."
         fi
     done
-    echo "APPLY_SECRETS=$APPLY_SECRETS" > "$env_file"
+    printf "APPLY_SECRETS=%s\n" "$APPLY_SECRETS" >> "$env_file"
 
     log_task "Created .env file with INSTALLATION_TYPE=$INSTALLATION_TYPE and APPLY_SECRETS=$APPLY_SECRETS"
     
