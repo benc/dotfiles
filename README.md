@@ -8,8 +8,6 @@ The bulk is managed through chezmoi, with an interest in nix. I use 1Password fo
 
 ## Macos/linux
 
-Before running this script, you'll need to grant Terminal (or the shell you're using) the Full Disk Access permission. Open System Preferences, navigate to Security & Privacy, and grant Terminal (or the shell you're using) Full Disk Access.
-
 This script installs some tooling from the Mac App Store, so make sure you're logged in there.
 
 Using curl:
@@ -20,15 +18,7 @@ Using wget:
 
     sh -c "$(wget -qO- https://raw.githubusercontent.com/benc/dotfiles/main/scripts/bootstrap_dotfiles.sh)"
 
-If you're using secrets, the script will install 1Password.
-
-Open 1Password, and log in. Open settings, and navigate to the "developer" section. Make sure 1Password exposes the SSH agent, and that the CLI is coupled. Verify:
-
-    # this should list your 1password account
-    op account list
-
-    # verify that 1password can be used to log in:
-    op signin
+If you're using secrets, the script will install 1Password. It cannot do the whole setup, some manual action is needed. It will prompt you to navigate to the "developer" section. Make sure 1Password exposes the SSH agent, and that the CLI is coupled.
 
 ## Windows 11
 

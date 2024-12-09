@@ -14,7 +14,7 @@ if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
     . ${CHEZMOI_SOURCE_DIR}/../scripts/source-tooling.sh
 fi
 
-echo "🔧 Installing prerequisites"
+echo "🔧 Installing prerequisites.."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 # shell and basic cli tooling
 brew "zsh" # shell
@@ -26,7 +26,6 @@ brew "btop" # top replacement
 brew "jq" # json processor
 brew "ripgrep" # grep replacement
 brew "delta" # diff viewer
-brew "lazygit" # git ui
 brew "xh" # curl replacement
 brew "navi" # cheatsheet
 brew "starship" # prompt
@@ -38,12 +37,37 @@ brew "procs" # ps replacement
 brew "dust" # du replacement
 brew "duf" # df replacement
 brew "prettyping" # ping replacement
-brew "topgrade" # update everything
-brew "neovim" # text editor
 brew "coreutils" # gnu coreutils
-brew "terminal-notifier" # notifications
 brew "m-cli" # macos cli
 brew "mas" # mac app store cli
+EOF
+
+if [ "$APPLY_SECRETS" = "true" ] || [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
+    echo "🔧 Installing 1Password"
+    brew bundle --no-lock --file=/dev/stdin <<EOF
+# 1password
+cask "1password" # 1password
+cask "1password/tap/1password-cli" # 1password cli
+mas "1Password for Safari", id: 1569813296 # 1password safari extension
+EOF
+    # TODO check if op ... is configured correcly, if not, exit script and ask user to configure, then run bootstrap again
+    op_account_size="$(op account list --format=json | jq -r '. | length')"
+
+    if [[ "${op_account_size}" == "0" ]]; then
+    echo "⚠️ 1password is not configured correctly. Launch 1Password, sign in and couple it to the CLI. Then run this bootstrap script again."
+        echo
+        echo "   op account add --address $SUBDOMAIN.1password.com --email $LOGIN"
+        echo
+        exit 1
+    fi
+fi
+
+echo "🔧 Installing the essentials..."
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "lazygit" # git ui
+brew "topgrade" # update everything
+brew "neovim" # text editor
+brew "terminal-notifier" # notifications - TODO switch to ntfy
 brew "mpv" # video player
 
 # quicklook plugins
@@ -82,20 +106,21 @@ cask "spamsieve" # spam filter
 mas "Speediness", id: 1596706466 # check internet speed https://sindresorhus.com/speediness
 EOF
 
+# fix zsh compinit insecure directories warning
 sudo chmod 755 "$(brew --prefix)/share"
 
-if [ "$APPLY_SECRETS" = "true" ] || [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
-    echo "🔧 Installing 1Password"
-    brew bundle --no-lock --file=/dev/stdin <<EOF
-# 1password
-cask "1password" # 1password
-cask "1password/tap/1password-cli" # 1password cli
-mas "1Password for Safari", id: 1569813296 # 1password safari extension
-EOF
+echo "🔧 Checking current default shell..."
+current_shell=$(dscl . -read /Users/$(whoami) UserShell | awk '{print $2}')
+
+if [ "$current_shell" != "$(brew --prefix)/bin/zsh" ]; then
+    echo "🔧 Setting default shell to ZSH..."
+    sudo chsh -s $(brew --prefix)/bin/zsh $(whoami)
+else
+    echo "🔧 Default shell is already ZSH."
 fi
 
 if [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
-    echo "🔧 Installing regular tooling"
+    echo "🔧 Installing regular tooling..."
     brew bundle --no-lock --file=/dev/stdin <<EOF
 # messaging
 cask "whatsapp"
@@ -141,7 +166,7 @@ EOF
 fi
 
 if [ "$INSTALLATION_TYPE" = "server" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
-    echo "🔧 Installing server tooling"
+    echo "🔧 Installing server tooling..."
     brew bundle --no-lock --file=/dev/stdin <<EOF
 # data tooling
 brew "libpq" # postgresql client tooling
@@ -194,6 +219,8 @@ cask "imazing" # ios device manager
 cask "launchcontrol" # launchd manager
 EOF
 
+    brew services restart ollama
+
     echo "🔧 Installing ASDF..."
     if [ ! -d $HOME/.asdf ]; then
         echo "💡 Installing asdf..."
@@ -211,7 +238,7 @@ if [ "$INSTALLATION_TYPE" = "workstation" ]; then
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
     fi
 
-    echo "🔧 Installing workstation tooling"
+    echo "🔧 Installing workstation tooling..."
     brew bundle --force --no-lock --file=/dev/stdin <<EOF
 # development tooling
 brew "scc" # code counter with complexity calculations and cocomo estimates
@@ -299,18 +326,6 @@ mas "NepTunes", id: 1006739057 # itunes controller
 mas "MusicBox", id: 1614730313 # save music for later
 mas "Logic Pro", id: 634148309 # music creation
 EOF
-
-    brew services restart ollama
-
-    echo "🔧 Checking current default shell..."
-    current_shell=$(dscl . -read /Users/$(whoami) UserShell | awk '{print $2}')
-
-    if [ "$current_shell" != "$(brew --prefix)/bin/zsh" ]; then
-        echo "🔧 Setting default shell to ZSH..."
-        sudo chsh -s $(brew --prefix)/bin/zsh $(whoami)
-    else
-        echo "🔧 Default shell is already ZSH."
-    fi
 
     # TODO fix pwsh setup
     # pushd "$BASEDIR" || exit

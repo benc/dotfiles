@@ -106,6 +106,19 @@ read_env() {
   fi
 }
 
+darwin_check_full_disk_access() {
+  if [ "$(uname -s)" = "Darwin" ]; then
+    if ! plutil -lint /Library/Preferences/com.apple.TimeMachine.plist >/dev/null ; then
+      log_error "This script requires your terminal app to have Full Disk Access. Add this terminal to the Full Disk Access list in System Preferences > Security & Privacy, quit the app, and re-run this script."
+      open 'x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles'
+      exit 1
+    else
+      log_task "Your terminal has Full Disk Access"
+    fi
+  fi
+}
+
+darwin_check_full_disk_access
 read_env
 
 DOTFILES_REPO_HOST=${DOTFILES_REPO_HOST:-"https://github.com"}
