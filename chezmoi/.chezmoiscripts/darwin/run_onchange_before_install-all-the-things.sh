@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "Asking for sudo rights in order to install tooling..."
+sudo -v
+
 if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
     echo "🍺 Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
