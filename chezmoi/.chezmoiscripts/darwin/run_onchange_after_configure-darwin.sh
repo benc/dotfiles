@@ -42,6 +42,17 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true >> /dev/null
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
 sudo systemsetup -settimezone "Europe/Brussels" 2>/dev/null 1>&2
 
+# Delete the configured layouts
+defaults delete com.apple.HIToolbox AppleEnabledInputSources
+
+# Add NL (qwerty) and BE (azerty) 
+defaults write com.apple.HIToolbox AppleEnabledInputSources -array \
+  '{InputSourceKind = "Keyboard Layout";"KeyboardLayout ID" = 26;"KeyboardLayout Name" = "Dutch";}' \
+  '{InputSourceKind = "Keyboard Layout";"KeyboardLayout ID" = 6;"KeyboardLayout Name" = "Belgian";}'
+
+# Default to NL (qwerty)
+defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID "com.apple.keylayout.Dutch"
+
 # Always use exapnded print dialog
 defaults write -g PMPrintingExpandedStateForPrint -bool TRUE >> /dev/null
 
