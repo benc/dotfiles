@@ -79,6 +79,8 @@ cask "softraid" # owc softraid https://www.softraid.com/
 cask "logitune" # yet another logitech tool
 cask "soundsource" # system audio manager
 cask "steermouse" # a better mouse driver
+cask "lihaoyun6/tap/airbattery" # see battery status - smaller, free version of airbuddy
+cask "aldente" # battery management
 
 # system tooling
 cask "jordanbaird-ice" # macos menubar manager
@@ -205,8 +207,7 @@ cask "fujitsu-scansnap-home" # scanner manager
 brew "ollama" # serve genai models
 
 # network tooling
-tap "localsend/localsend" # local file sharing
-cask "localsend" # local file sharing
+cask "localsend/localsend/localsend" # local file sharing
 cask "syncthing" # file sync
 cask "core-tunnel" # ssh tunnel
 cask "wireshark" # network analyzer
