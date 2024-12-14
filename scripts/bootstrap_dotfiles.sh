@@ -106,7 +106,7 @@ read_env() {
   fi
 }
 
-darwin_checks() {
+darwin_check_full_disk_access() {
   if [ "$(uname -s)" = "Darwin" ]; then
     if ! plutil -lint /Library/Preferences/com.apple.TimeMachine.plist >/dev/null ; then
       log_error "This script requires your terminal app to have Full Disk Access. Add this terminal to the Full Disk Access list in System Preferences > Security & Privacy, quit the app, and re-run this script."
@@ -115,18 +115,10 @@ darwin_checks() {
     else
       log_task "Your terminal has Full Disk Access"
     fi
-
-    # Add NL (qwerty) and BE (azerty) keyboard layouts
-    defaults write com.apple.HIToolbox AppleEnabledInputSources -array \
-      '{InputSourceKind = "Keyboard Layout";"KeyboardLayout ID" = 26;"KeyboardLayout Name" = "Dutch";}' \
-      '{InputSourceKind = "Keyboard Layout";"KeyboardLayout ID" = 6;"KeyboardLayout Name" = "Belgian";}'
-
-    # Default to NL (qwerty)
-    defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID "com.apple.keylayout.Dutch"
   fi
 }
 
-darwin_checks
+darwin_check_full_disk_access
 read_env
 
 DOTFILES_REPO_HOST=${DOTFILES_REPO_HOST:-"https://github.com"}
