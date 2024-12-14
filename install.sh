@@ -25,4 +25,5 @@ script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
 set -- init --source="${script_dir}" --verbose=false --apply "$@"
 
 echo "Running 'chezmoi $*'"
-exec "${chezmoi}" "$@"
+
+PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/opt/linuxbrew/bin:/opt/linuxbrew/sbin:$PATH" exec "${chezmoi}" "$@"
