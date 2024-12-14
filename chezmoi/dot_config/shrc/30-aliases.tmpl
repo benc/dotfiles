@@ -17,7 +17,7 @@ fkill() {
   fi
 }
 
-find-videos-by-codec() {
+list-videos-by-codec() {
   local mode=$1
   local operator
 
@@ -26,7 +26,7 @@ find-videos-by-codec() {
   elif [ "$mode" = "non-ios" ]; then
     operator="!"
   else
-    echo "Usage: find-videos-by-codec [ios|non-ios]" >&2
+    echo "Usage: list-videos-by-codec [ios|non-ios]" >&2
     return 1
   fi
 
@@ -35,8 +35,8 @@ find-videos-by-codec() {
     if $operator echo \"\$codec\" | rg -i \"h264|avc|hevc\" >/dev/null; then echo \"\$codec - {}\" ; fi" | sort
 }
 
-find-non-ios-encoded-videos() { find-videos-by-codec non-ios; }
-find-ios-encoded-videos() { find-videos-by-codec ios; }
+list-non-ios-encoded-videos() { list-videos-by-codec non-ios; }
+list-ios-encoded-videos() { list-videos-by-codec ios; }
 
 encode-ios-video() {
   nice -n 19 ffmpeg -i "$1" \
@@ -55,8 +55,18 @@ encode-ios-video() {
     "${1%.*}.ios.mp4"
 }
 
+compress-video() {
+  nice -n 19 ffmpeg -i "$1" \
+    -vf fftdnoiz=sigma=3 \
+    -pix_fmt yuv420p \
+    -c:v libx264 \
+    -level 4.0 \
+    -preset veryslow \
+    "${1%.*}.compressed.mp4"
+}
+
 batch-encode-ios-videos() {
-  find-non-ios-encoded-videos | while IFS= read -r line; do
+  list-non-ios-encoded-videos | while IFS= read -r line; do
     filename="${line#* - }"  # Remove "codec - " prefix
     echo "Converting: $filename"
     encode-ios-video "$filename"
