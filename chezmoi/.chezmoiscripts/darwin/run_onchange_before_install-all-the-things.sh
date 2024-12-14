@@ -78,6 +78,7 @@ cask "qlvideo" # quicklook for video files
 cask "softraid" # owc softraid https://www.softraid.com/
 cask "logitune" # yet another logitech tool
 cask "soundsource" # system audio manager
+cask "steermouse" # a better mouse driver
 
 # system tooling
 cask "jordanbaird-ice" # macos menubar manager
@@ -211,10 +212,10 @@ cask "core-tunnel" # ssh tunnel
 cask "wireshark" # network analyzer
 cask "transmit" # ftp client
 cask "windows-app" # remote desktop
+cask "little-snitch" # network monitor
 
 # utilities
 cask "power-manager" # power management
-cask "little-snitch" # network monitor
 cask "imazing" # ios device manager
 cask "launchcontrol" # launchd manager
 EOF
