@@ -24,6 +24,7 @@ brew "fzf" # fuzzy finder
 brew "fd" # find replacement
 brew "btop" # top replacement
 brew "jq" # json processor
+brew "yq" # yaml processor
 brew "ripgrep" # grep replacement
 brew "delta" # diff viewer
 brew "xh" # curl replacement
@@ -38,8 +39,9 @@ brew "dust" # du replacement
 brew "duf" # df replacement
 brew "prettyping" # ping replacement
 brew "coreutils" # gnu coreutils
-brew "m-cli" # macos cli
+brew "m-cli" # swiss army knife for macos
 brew "mas" # mac app store cli
+brew "tag" # manipulate and query tags on macos files
 EOF
 
 if [ "$APPLY_SECRETS" = "true" ] || [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
@@ -68,6 +70,7 @@ brew "lazygit" # git ui
 brew "topgrade" # update everything
 brew "neovim" # text editor
 brew "terminal-notifier" # notifications - TODO switch to ntfy
+brew "ntfy"
 brew "mpv" # video player
 
 # quicklook plugins
@@ -81,10 +84,12 @@ cask "soundsource" # system audio manager
 cask "steermouse" # a better mouse driver
 cask "lihaoyun6/tap/airbattery" # see battery status - smaller, free version of airbuddy
 cask "aldente" # battery management
+cask "via" # qmk manager
 
 # system tooling
 cask "jordanbaird-ice" # macos menubar manager
 cask "raycast" # spotlight replacement
+cask "contexts" # switch between apps
 cask "latest" # latest version of apps
 cask "alacritty" # terminal
 cask "connectmenow" # mount network shares
@@ -145,6 +150,7 @@ cask "omnioutliner" # outliner tool
 cask "devonthink" # document manager
 mas "Peek", id: 1554235898 # quick look extension https://www.bigzlabs.com/peek.html
 mas "Mindnode", id: 1289197285 # mind mapping
+mas "Mindnode Next", id: 6446116532 # mind mapping
 mas "Reeder", id: 1529448980 # rss reader
 mas "Side Mirror", id: 944860108 # presentation tool https://sidemirrorapp.com
 mas "StopTheMadness Pro", id: 6471380298 # sanitize safari https://underpassapp.com/StopTheMadness/
@@ -155,6 +161,7 @@ mas "Shortery", id: 1594183810 # automate shortcuts https://www.numberfive.co/de
 
 # finance
 cask "tradingview" # stock trading
+mas "Keepa - Price Tracker", id: 1533805339 # amazon price tracker
 
 # media
 cask "calibre" # ebook manager
@@ -173,7 +180,9 @@ if [ "$INSTALLATION_TYPE" = "server" ] || [ "$INSTALLATION_TYPE" = "workstation"
     brew bundle --no-lock --file=/dev/stdin <<EOF
 # data tooling
 brew "libpq" # postgresql client tooling
+brew "pgcli" # better psql
 brew "cypher-shell" # neo4j client tooling
+brew "xo/xo/usql" # universal sql client
 
 # log analysis
 brew "lnav" # log viewer
@@ -214,6 +223,7 @@ cask "wireshark" # network analyzer
 cask "transmit" # ftp client
 cask "windows-app" # remote desktop
 cask "little-snitch" # network monitor
+brew "ngrok" # reverse proxy, secure introspectable tunnels to localhost
 
 # utilities
 cask "power-manager" # power management
@@ -276,10 +286,15 @@ cask "bbedit" # code editor
 cask "beyond-compare" # file comparison
 cask "kaleidoscope" # file comparison
 cask "tower" # git client
+brew "gh" # github cli
+brew "glab" # gitlab cli
 mas "JSONPeep", id: 1458969831 # json viewer
 mas "OK JSON", id: 1576121509 # json viewer
 mas "Xcode", id: 497799835 # apple development tool
 mas "Formatter", id: 1190228172 # json for xcode https://roundwallsoftware.com/formatter/
+
+# home automation
+mas "MQTT Explorer", id: 1455214828
 
 # web development
 brew "wrk" # http benchmarking
