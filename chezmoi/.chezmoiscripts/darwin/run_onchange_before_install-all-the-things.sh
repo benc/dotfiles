@@ -194,11 +194,15 @@ brew "lnav" # log viewer
 brew "awscli" # aws tooling
 brew "aws-iam-authenticator" # aws k8s auth
 brew "docker-credential-helper-ecr" # docker ecr auth
+tap "aws/tap" # aws tap
+brew "eks-node-viewer" # eks node viewer
 
 # k8s tooling
-brew "k9s" # k8s ui
+brew "derailed/k9s/k9s" # k8s ui
 brew "kubernetes-cli" # k8s cli
 brew "helm" # k8s package manager
+brew "stern" # k8s log viewer
+brew "kubectx" # k8s context manager
 
 # docker tooling
 brew "dive" # docker container image explorer
@@ -226,7 +230,7 @@ cask "wireshark" # network analyzer
 cask "transmit" # ftp client
 cask "windows-app" # remote desktop
 cask "little-snitch" # network monitor
-brew "ngrok" # reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok" # reverse proxy, secure introspectable tunnels to localhost
 
 # utilities
 cask "power-manager" # power management
