@@ -27,7 +27,9 @@ brew "fzf" # fuzzy finder
 brew "fd" # find replacement
 brew "btop" # top replacement
 brew "jq" # json processor
-brew "yq" # yaml processor
+brew "yq" # yaml, json and xml processor
+brew "xq" # xml & html processor
+brew "fx" # json viewer
 brew "ripgrep" # grep replacement
 brew "delta" # diff viewer
 brew "xh" # curl replacement
@@ -175,6 +177,7 @@ cask "airfoil" # apple airplay audio streamer
 cask "melodics" # music learning
 cask "musescore" # music notation
 mas "GarageBand", id: 682658836 # music creation
+mas "Cascable", id: 974193500 # camera control https://cascable.se
 EOF
 fi
 
