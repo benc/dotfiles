@@ -103,9 +103,8 @@ disable = ["chezmoi", "containers", "pnpm", "yarn", "mas", "pixi", "git_repos"]
 
 
 [brew]
-# greedy_cask = true
-# autoremove = true
-
+greedy_cask = true
+autoremove = true
 
 [linux]
 # Arch Package Manager to use.
