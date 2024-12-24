@@ -85,6 +85,7 @@ cask "qlvideo" # quicklook for video files
 # drivers
 cask "softraid" # owc softraid https://www.softraid.com/
 cask "logitune" # yet another logitech tool
+cask "logitech-g-hub" # yet another logitech tool
 cask "soundsource" # system audio manager
 cask "steermouse" # a better mouse driver
 cask "lihaoyun6/tap/airbattery" # see battery status - smaller, free version of airbuddy
