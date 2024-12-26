@@ -91,6 +91,7 @@ cask "steermouse" # a better mouse driver
 cask "lihaoyun6/tap/airbattery" # see battery status - smaller, free version of airbuddy
 cask "aldente" # battery management
 cask "via" # qmk manager
+cask "karabiner-elements" # keyboard remapper
 
 # system tooling
 cask "jordanbaird-ice" # macos menubar manager
@@ -268,6 +269,22 @@ if [ "$INSTALLATION_TYPE" = "workstation" ]; then
 # development tooling
 brew "scc" # code counter with complexity calculations and cocomo estimates
 brew "hyperfine" # cli benchmarking
+brew "devcontainer" # dockerize dev env
+brew "hadolint" # dockerfile linter
+brew "gh" # github cli
+brew "glab" # gitlab cli
+cask "jetbrains-toolbox" # jetbrains ide manager
+cask "zed" # code editor
+cask "visual-studio-code@insiders" # code editor
+cask "bbedit" # code editor
+cask "beyond-compare" # file comparison
+cask "kaleidoscope" # file comparison
+cask "tower" # git client
+cask "kindavim" # vim keybindings for macos
+mas "JSONPeep", id: 1458969831 # json viewer
+mas "OK JSON", id: 1576121509 # json viewer
+mas "Xcode", id: 497799835 # apple development tool
+mas "Formatter", id: 1190228172 # json for xcode https://roundwallsoftware.com/formatter/
 
 # python development
 brew "pixi" # package manager
@@ -288,23 +305,6 @@ cask "quicklookapk" # quicklook for apk
 brew "pandoc" # document converter
 brew "graphviz" # graph tool
 cask "sf-symbols" # symbol tool
-
-# development tooling (ide, diff, ...)
-brew "devcontainer" # dockerize dev env
-brew "hadolint" # dockerfile linter
-cask "jetbrains-toolbox" # jetbrains ide manager
-cask "zed" # code editor
-cask "visual-studio-code@insiders" # code editor
-cask "bbedit" # code editor
-cask "beyond-compare" # file comparison
-cask "kaleidoscope" # file comparison
-cask "tower" # git client
-brew "gh" # github cli
-brew "glab" # gitlab cli
-mas "JSONPeep", id: 1458969831 # json viewer
-mas "OK JSON", id: 1576121509 # json viewer
-mas "Xcode", id: 497799835 # apple development tool
-mas "Formatter", id: 1190228172 # json for xcode https://roundwallsoftware.com/formatter/
 
 # home automation
 mas "MQTT Explorer", id: 1455214828
@@ -338,7 +338,6 @@ cask "google-earth-pro" # google mapping tool
 # utilties
 cask "keyboard-maestro" # keyboard automation
 cask "caldigit-docking-utility" # caldigit dock manager
-cask "karabiner-elements" # keyboard remapper
 cask "keycastr" # keypress visualizer
 cask "replacicon" # icon replacer
 cask "swiftbar" # menubar app

@@ -221,26 +221,9 @@ defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false >> /dev/n
 killall Safari
 
 # >>> Specific settings for workstation/server <<<
-if [ "$INSTALLATION_TYPE" = "server" ]; then
-  permament_dock_item() {
-    defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>$1</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-  }
-
-  # clear persistent dock items
-  defaults write com.apple.dock persistent-apps -array
-
-  # add common applications to dock
-  permament_dock_item "/Applications/Prompt.app"
-  permament_dock_item "/Applications/Safari.app"
-  permament_dock_item "/Applications/Orbstack.app"
-  permament_dock_item "/Applications/Visual Studio Code - Insiders.app"
-  permament_dock_item "/Applications/Tower.app"
-  permament_dock_item "/Applications/Kaleidoscope.app"
-fi
-
 if [ "$INSTALLATION_TYPE" = "server" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
   # Require password immediately after sleep or screen saver begins
-  defaults write com.apple.screensaver askForPasswordDelay -int 0 >> /dev/null
+  # defaults write com.apple.screensaver askForPasswordDelay -int 0 >> /dev/null
 
   # Dark mode
   defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark" >> /dev/null
