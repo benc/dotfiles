@@ -203,7 +203,8 @@ tap "aws/tap" # aws tap
 brew "eks-node-viewer" # eks node viewer
 
 # k8s tooling
-brew "derailed/k9s/k9s" # k8s ui
+tap "derailed/k9s" # k9s tap
+brew "k9s" # k8s ui
 brew "kubernetes-cli" # k8s cli
 brew "helm" # k8s package manager
 brew "stern" # k8s log viewer
