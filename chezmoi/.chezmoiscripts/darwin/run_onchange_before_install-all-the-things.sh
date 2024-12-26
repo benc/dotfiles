@@ -189,7 +189,8 @@ if [ "$INSTALLATION_TYPE" = "server" ] || [ "$INSTALLATION_TYPE" = "workstation"
 brew "libpq" # postgresql client tooling
 brew "pgcli" # better psql
 brew "cypher-shell" # neo4j client tooling
-brew "xo/xo/usql" # universal sql client
+tap "xo/xo" # usql tap
+brew "usql" # universal sql client
 
 # log analysis
 brew "lnav" # log viewer
