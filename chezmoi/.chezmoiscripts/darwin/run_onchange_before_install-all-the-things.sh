@@ -273,6 +273,7 @@ brew "devcontainer" # dockerize dev env
 brew "hadolint" # dockerfile linter
 brew "gh" # github cli
 brew "glab" # gitlab cli
+brew "jj" # jujutsu — a version control system
 cask "jetbrains-toolbox" # jetbrains ide manager
 cask "zed" # code editor
 cask "visual-studio-code@insiders" # code editor
