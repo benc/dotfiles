@@ -32,3 +32,4 @@ brew untap xpipe-io/tap || true
 brew remove arq || true
 brew remove cursor || true
 brew remove "anythingllm" || true
+brew remove difftastic || true
