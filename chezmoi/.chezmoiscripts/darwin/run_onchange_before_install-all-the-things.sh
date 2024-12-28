@@ -32,6 +32,8 @@ brew "xq" # xml & html processor
 brew "fx" # json viewer
 brew "ripgrep" # grep replacement
 brew "delta" # diff viewer
+brew "difftastic" # diff viewer
+brew "diff-so-fancy" # diff viewer
 brew "xh" # curl replacement
 brew "navi" # cheatsheet
 brew "starship" # prompt

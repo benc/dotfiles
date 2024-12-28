@@ -23,8 +23,10 @@ verbose = true
 {{- end }}
 
 [diff]
-    command = "delta"
-    args = ["--paging=never"]
+    command = "difft"
+    args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+    pager = "diff-so-fancy"
+    exclude = ["scripts","externals"]
 
 {{ if eq .chezmoi.os "darwin" -}}
 [merge]

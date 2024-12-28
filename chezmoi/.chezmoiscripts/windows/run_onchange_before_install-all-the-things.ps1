@@ -120,6 +120,8 @@ $scoopApps = @(
     "main/hadolint",
     "main/scc", # code counter with complexity calculations and cocomo estimates
     "main/delta",
+    "main/difftastic",
+    "main/diff-so-fancy",
     "main/fd",
     "extras/lazygit",
     "extras/git-credential-manager",
