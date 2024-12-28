@@ -22,22 +22,6 @@ verbose = true
     args = ["-NoLogo", "-NoExit", "-Command", "& {Set-Location $env:HOMEPATH/.local/share/chezmoi}"]
 {{- end }}
 
-[diff]
-    command = "difft"
-    args = ["{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
-    pager = "diff-so-fancy"
-    exclude = ["scripts","externals"]
-
-{{ if eq .chezmoi.os "darwin" -}}
-[merge]
-    command = "/usr/local/bin/ksdiff"
-{{- end }}
-
-{{ if eq .chezmoi.os "windows" -}}
-[merge]
-    command = "C:/Program Files/Beyond Compare 5/BCompare.exe"
-{{- end }}
-
 [edit]
     command = "codei"
 
