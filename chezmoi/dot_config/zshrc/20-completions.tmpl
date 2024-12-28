@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 {{ if eq .chezmoi.os "darwin" -}}
 if (( ${+commands[brew]} )); then
   fpath+="$(brew --prefix)/share/zsh/site-functions"

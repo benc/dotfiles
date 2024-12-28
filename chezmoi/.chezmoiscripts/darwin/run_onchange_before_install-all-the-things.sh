@@ -99,6 +99,7 @@ cask "raycast" # spotlight replacement
 cask "contexts" # switch between apps
 cask "latest" # latest version of apps
 cask "alacritty" # terminal
+cask "ghostty" # terminal
 cask "connectmenow" # mount network shares
 cask "carbon-copy-cloner" # backup tool
 cask "sdformatter" # sd card formatter

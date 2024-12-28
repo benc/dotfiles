@@ -1,0 +1,9 @@
+font-family = MonoLisa Nerd Font
+font-style = Light Regular
+font-style-bold = Bold
+font-style-italic = Regular Italic
+font-style-bold-italic = Bold Italic
+font-size = 13
+cursor-style = block
+theme = catppuccin-frappe
+background-opacity = 0.9
