@@ -85,6 +85,7 @@ cask "qlvideo" # quicklook for video files
 
 # drivers
 cask "softraid" # owc softraid https://www.softraid.com/
+cask "drivedx" # drive health monitor https://binaryfruit.com/drivedx
 cask "logitune" # yet another logitech tool
 cask "logitech-g-hub" # yet another logitech tool
 cask "soundsource" # system audio manager
