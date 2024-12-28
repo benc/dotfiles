@@ -104,8 +104,8 @@ defaults write com.apple.dock "show-recents" -bool "false" >> /dev/null
 # 11: Launchpad
 # 12: Notification Center
 
-# top right screen corner → Start screen saver + lock screen if screen saver is set
-defaults write com.apple.dock wvous-tr-corner -int 5 >> /dev/null
+# top right screen corner → put display to sleep + lock screen if screen saver is set
+defaults write com.apple.dock wvous-tr-corner -int 10 >> /dev/null
 defaults write com.apple.dock wvous-tr-modifier -int 0 >> /dev/null
 
 killall Dock
