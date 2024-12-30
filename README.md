@@ -12,11 +12,11 @@ This script installs some tooling from the Mac App Store, so make sure you're lo
 
 Using curl:
 
-    sh -c "$(curl -fsLS https://raw.githubusercontent.com/benc/dotfiles/main/scripts/bootstrap_dotfiles.sh)"
+    bash -c "$(curl -fsLS https://raw.githubusercontent.com/benc/dotfiles/main/scripts/bootstrap_dotfiles.sh)"
 
 Using wget:
 
-    sh -c "$(wget -qO- https://raw.githubusercontent.com/benc/dotfiles/main/scripts/bootstrap_dotfiles.sh)"
+    bash -c "$(wget -qO- https://raw.githubusercontent.com/benc/dotfiles/main/scripts/bootstrap_dotfiles.sh)"
 
 If you're using secrets, the script will install 1Password. It cannot do the whole setup, some manual action is needed. It will prompt you to navigate to the "developer" section. Make sure 1Password exposes the SSH agent, and that the CLI is coupled.
 

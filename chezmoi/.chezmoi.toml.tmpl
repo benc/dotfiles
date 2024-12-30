@@ -1,7 +1,7 @@
 # 💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n"
-{{- $name := "Ben Cochez" -}}
-{{- $email := "ben@kyber.be" -}}
-{{- $username := "benc" -}}
+{{- $name := env "FULL_NAME" -}}
+{{- $email := env "EMAIL" -}}
+{{- $username := env "USER" -}}
 {{- $installationType := env "INSTALLATION_TYPE" -}}
 {{- $applySecrets := env "APPLY_SECRETS" -}}
 

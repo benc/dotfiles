@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -eu
 
 log_color() {
@@ -72,7 +72,7 @@ read_env() {
     log_task "Reading environment variables from '$env_file'"
     set -a
     # shellcheck source=${HOME}/.env
-    . "$env_file"
+    source "$env_file"
     set +a
   else
     echo "Choose the type of installation you want for this machine"
@@ -84,7 +84,7 @@ read_env() {
             echo "Invalid selection. Please try again."
         fi
     done
-    printf "INSTALLATION_TYPE=%s\n" "$INSTALLATION_TYPE" >> "$env_file"
+    printf "INSTALLATION_TYPE=\"%s\\n" "$INSTALLATION_TYPE" >> "$env_file"
 
     echo "Do you want secrets to be applied to this machine"
     select APPLY_SECRETS in true false
@@ -97,11 +97,31 @@ read_env() {
     done
     printf "APPLY_SECRETS=%s\n" "$APPLY_SECRETS" >> "$env_file"
 
+    # if [ "$(uname -s)" = "Darwin" ]; then
+    #   FULL_NAME="$(dscl . -read /Users/"$USER" RealName | tail -1 | xargs)"
+    #   printf "FULL_NAME=%s\n" "$FULL_NAME" >> "$env_file"
+    # else
+    echo "Enter your full name:"
+    read -r FULL_NAME
+    printf "FULL_NAME=\"%s\"\n" "$FULL_NAME" >> "$env_file"
+    # fi
+
+    echo "Enter your email address:"
+    read -r EMAIL
+    printf "EMAIL=\"%s\\n" "$EMAIL" >> "$env_file"
+
+    echo 
+
+    chmod 600 "$env_file"
+
     log_task "Created .env file with INSTALLATION_TYPE=$INSTALLATION_TYPE and APPLY_SECRETS=$APPLY_SECRETS"
     
     set -a
+
+    # source .env that can contain spaces
+    # export "$(grep -v '^#' .env | xargs)"
     # shellcheck source=${HOME}/.env
-    . "$env_file"
+    source "$env_file"
     set +a
   fi
 }
