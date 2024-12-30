@@ -1,9 +1,9 @@
 font-family = MonoLisa Nerd Font
-font-style = Light Regular
-font-style-bold = Bold
-font-style-italic = Regular Italic
-font-style-bold-italic = Bold Italic
 font-size = 13
+font-thicken = true
 cursor-style = block
 theme = catppuccin-frappe
 background-opacity = 0.9
+
+shell-integration-features = sudo,no-title
+window-save-state = always
