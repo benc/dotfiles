@@ -100,7 +100,6 @@ cask "jordanbaird-ice" # macos menubar manager
 cask "raycast" # spotlight replacement
 cask "contexts" # switch between apps
 cask "latest" # latest version of apps
-cask "alacritty" # terminal
 cask "ghostty" # terminal
 cask "connectmenow" # mount network shares
 cask "carbon-copy-cloner" # backup tool
@@ -323,6 +322,7 @@ cask "microsoft-edge" # browser
 # cli
 cask "powershell" # shell
 cask "warp" # terminal
+cask "alacritty" # terminal
 
 # devops
 cask "crystalfetch" # create windows 11 iso images
