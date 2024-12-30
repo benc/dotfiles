@@ -99,7 +99,7 @@ read_env() {
 
     log_task "Created .env file with INSTALLATION_TYPE=$INSTALLATION_TYPE and APPLY_SECRETS=$APPLY_SECRETS"
     
-    chmod +600 "$env_file"
+    chmod 600 "$env_file"
     
     set -a
     # shellcheck source=${HOME}/.env
