@@ -90,7 +90,9 @@ cask "logitune" # yet another logitech tool
 cask "logitech-g-hub" # yet another logitech tool
 cask "soundsource" # system audio manager
 cask "steermouse" # a better mouse driver
-cask "lihaoyun6/tap/airbattery" # see battery status - smaller, free version of airbuddy
+tap "lihaoyun6/tap" # tap for airbattery
+cask "airbattery" # see battery status - smaller, free version of airbuddy
+cask "coconutbattery" # battery health monitor
 cask "aldente" # battery management
 cask "via" # qmk manager
 cask "karabiner-elements" # keyboard remapper
@@ -150,6 +152,7 @@ cask "signal"
 cask "microsoft-word" # ms office
 cask "microsoft-excel" # ms office
 cask "microsoft-powerpoint" # ms office
+cask "microsoft-outlook" # ms office
 cask "fantastical" # macos calendar replacement
 cask "microsoft-teams" # video conferencing
 cask "zoom" # video conferencing
