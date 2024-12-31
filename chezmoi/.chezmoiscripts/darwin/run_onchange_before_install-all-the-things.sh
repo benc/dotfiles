@@ -154,6 +154,7 @@ cask "microsoft-excel" # ms office
 cask "microsoft-powerpoint" # ms office
 cask "microsoft-outlook" # ms office
 cask "fantastical" # macos calendar replacement
+cask "obsidian" # note taking
 cask "microsoft-teams" # video conferencing
 cask "zoom" # video conferencing
 cask "omnifocus" # task manager
@@ -166,6 +167,7 @@ mas "Mindnode Next", id: 6446116532 # mind mapping
 mas "Reeder", id: 1529448980 # rss reader
 mas "Side Mirror", id: 944860108 # presentation tool https://sidemirrorapp.com
 mas "StopTheMadness Pro", id: 6471380298 # sanitize safari https://underpassapp.com/StopTheMadness/
+mas "Obsidian Web Clipper", id: 6471380298 # obsidian web clipper https://obsidian.md
 
 # automation
 mas "Actions", id: 1586435171 # additional actions for the shortcut app https://sindresorhus.com/actions
