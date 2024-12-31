@@ -183,6 +183,7 @@ cask "iina" # video player
 mas "Infuse", id: 1136220934 # video player
 cask "insta360-studio" # 360 camera
 cask "airfoil" # apple airplay audio streamer
+cask "audio-hijack" # audio recorder 
 cask "melodics" # music learning
 cask "musescore" # music notation
 mas "GarageBand", id: 682658836 # music creation
