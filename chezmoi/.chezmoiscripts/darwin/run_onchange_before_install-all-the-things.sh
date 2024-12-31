@@ -168,6 +168,7 @@ mas "Reeder", id: 1529448980 # rss reader
 mas "Side Mirror", id: 944860108 # presentation tool https://sidemirrorapp.com
 mas "StopTheMadness Pro", id: 6471380298 # sanitize safari https://underpassapp.com/StopTheMadness/
 mas "Obsidian Web Clipper", id: 6471380298 # obsidian web clipper https://obsidian.md
+mas "Parcel", id: 639968404 # package tracker
 
 # automation
 mas "Actions", id: 1586435171 # additional actions for the shortcut app https://sindresorhus.com/actions
