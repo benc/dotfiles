@@ -48,7 +48,7 @@
             "key_code": "equal_sign",
             "modifiers": {
               "mandatory": [
-                "left_shift"
+                "shift"
               ]
             }
           },
@@ -57,26 +57,6 @@
               "key_code": "slash",
               "modifiers": [
                 "left_shift"
-              ],
-              "repeat": true
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "from": {
-            "key_code": "equal_sign",
-            "modifiers": {
-              "mandatory": [
-                "right_shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "slash",
-              "modifiers": [
-                "right_shift"
               ],
               "repeat": true
             }
@@ -100,24 +80,7 @@
             "key_code": "slash",
             "modifiers": {
               "mandatory": [
-                "left_shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "6",
-              "repeat": true
-            }
-          ],
-          "type": "basic"
-        },
-        {
-          "from": {
-            "key_code": "slash",
-            "modifiers": {
-              "mandatory": [
-                "right_shift"
+                "shift"
               ]
             }
           },
