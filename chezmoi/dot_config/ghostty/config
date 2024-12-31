@@ -1,5 +1,6 @@
-font-family = MonoLisa Nerd Font
-font-size = 13
+# font-family = MonoLisa Nerd Font
+font-family = TX02 Nerd Font Mono
+font-size = 14
 font-thicken = true
 cursor-style = block
 theme = catppuccin-frappe
