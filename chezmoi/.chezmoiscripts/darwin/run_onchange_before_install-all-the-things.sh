@@ -188,6 +188,7 @@ cask "melodics" # music learning
 cask "musescore" # music notation
 mas "GarageBand", id: 682658836 # music creation
 mas "Cascable", id: 974193500 # camera control https://cascable.se
+mas "Pixelmator Pro", id: 1289583905 # image editor
 EOF
 fi
 
