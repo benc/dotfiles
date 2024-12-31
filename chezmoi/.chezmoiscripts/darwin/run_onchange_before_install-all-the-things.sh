@@ -183,7 +183,7 @@ cask "iina" # video player
 mas "Infuse", id: 1136220934 # video player
 cask "insta360-studio" # 360 camera
 cask "airfoil" # apple airplay audio streamer
-cask "audio-hijack" # audio recorder 
+cask "audio-hijack" # audio recorder
 cask "melodics" # music learning
 cask "musescore" # music notation
 mas "GarageBand", id: 682658836 # music creation
@@ -301,7 +301,7 @@ mas "Formatter", id: 1190228172 # json for xcode https://roundwallsoftware.com/f
 brew "pixi" # package manager
 brew "pipx" # python package manager
 brew "uv" # python package manager
-brew "direnv" # env manager 
+brew "direnv" # env manager
 
 # java development
 cask "jprofiler" # java profiler
