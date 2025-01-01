@@ -49,7 +49,7 @@ brew "coreutils" # gnu coreutils
 brew "m-cli" # swiss army knife for macos
 brew "mas" # mac app store cli
 brew "tag" # manipulate and query tags on macos files
-brew "font-hack-nerd-font" # standalone nerd font
+cask "font-hack-nerd-font" # standalone nerd font
 EOF
 
 if [ "$APPLY_SECRETS" = "true" ] || [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
