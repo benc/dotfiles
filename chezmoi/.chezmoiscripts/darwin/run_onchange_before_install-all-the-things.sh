@@ -114,6 +114,7 @@ cask "appcleaner" # app uninstaller
 cask "daisydisk" # disk space analyzer
 cask "prefs-editor" # macos prefs editor
 cask "visual-studio-code" # code editor
+cask "pacifist" # multi-tool for working with macos package files
 cask "setapp" # app subscription
 mas "Amphetamine", id: 937984704 # keep mac awake
 
