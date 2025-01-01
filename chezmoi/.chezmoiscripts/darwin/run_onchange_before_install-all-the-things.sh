@@ -48,6 +48,7 @@ brew "coreutils" # gnu coreutils
 brew "m-cli" # swiss army knife for macos
 brew "mas" # mac app store cli
 brew "tag" # manipulate and query tags on macos files
+brew "iperf3" # network benchmarking
 EOF
 
 if [ "$APPLY_SECRETS" = "true" ] || [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
