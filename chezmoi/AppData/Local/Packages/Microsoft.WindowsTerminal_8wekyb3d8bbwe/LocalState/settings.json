@@ -32,7 +32,7 @@
     "profiles": {
         "defaults": {
             "font": {
-                "face": "MonoLisa Nerd Font"
+                "face": "TX-02"
             }
         },
         "list": [

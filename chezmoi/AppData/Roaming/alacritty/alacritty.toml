@@ -2,8 +2,7 @@
 size = 10
 
   [font.normal]
-  family = "MonoLisa Nerd Font"
-  style = "Light Regular"
+  family = "TX-02"
 
 [window]
 opacity = 0.95
@@ -20,9 +19,10 @@ thickness = 0.2
   shape = "Underline"
   blinking = "Always"
 
-[shell]
-program = "C:/Users/Ben/scoop/shims/pwsh.exe"
-# program = "wsl"
+[terminal]
+  [terminal.shell]
+  program = "C:/Users/Ben/scoop/shims/pwsh.exe"
+  # program = "wsl"
 
 [scrolling]
 history = 100000

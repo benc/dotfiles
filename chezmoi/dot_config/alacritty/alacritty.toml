@@ -2,8 +2,7 @@
 size = 14
 
   [font.normal]
-  family = "MonoLisa Nerd Font"
-  style = "Light Regular"
+  family = "TX-02"
 
 [window]
 opacity = 0.95
