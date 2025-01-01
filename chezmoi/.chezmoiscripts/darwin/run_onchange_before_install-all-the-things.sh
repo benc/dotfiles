@@ -282,6 +282,10 @@ if [ "$INSTALLATION_TYPE" = "workstation" ]; then
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
     fi
 
+    echo "🔧 Installing xcode..."
+    mas install 497799835 # xcode
+    sudo xcodebuild -license accept
+
     echo "🔧 Installing workstation tooling..."
     brew bundle --force --no-lock --file=/dev/stdin <<EOF
 # development tooling
@@ -299,7 +303,6 @@ cask "bbedit" # code editor
 cask "kindavim" # vim keybindings for macos
 mas "JSONPeep", id: 1458969831 # json viewer
 mas "OK JSON", id: 1576121509 # json viewer
-mas "Xcode", id: 497799835 # apple development tool
 mas "Formatter", id: 1190228172 # json for xcode https://roundwallsoftware.com/formatter/
 
 # python development
