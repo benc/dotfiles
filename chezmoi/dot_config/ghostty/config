@@ -1,10 +1,58 @@
-# font-family = MonoLisa Nerd Font
-font-family = TX02 Nerd Font Mono
+font-family = TX02
+# font-family = MonoLisa Light Regular
+
+# https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points 
+# as of v3.3.0
+
+# seti-ui
+font-codepoint-map = U+e5fa-U+e6b1=Hack Nerd Font Mono Regular
+
+# devicons
+font-codepoint-map = U+e700-U+e8ef=Hack Nerd Font Mono Regular
+
+# font awesome
+font-codepoint-map = U+ed00-U+f2ff=Hack Nerd Font Mono Regular
+
+# font awesome extension
+font-codepoint-map = U+e200-U+e2a9=Hack Nerd Font Mono Regular
+
+# material design icons
+font-codepoint-map = U+f0001-U+f1af0=Hack Nerd Font Mono Regular
+
+# weather
+font-codepoint-map = U+e300-U+e3e3=Hack Nerd Font Mono Regular
+
+# octicons
+font-codepoint-map = U+f400-U+f533,U+2665,U+26a1=Hack Nerd Font Mono Regular
+
+# powerline & powerline-extras
+font-codepoint-map = U+e0b0-U+e0b3,U+e0b4-U+e0c8,U+e0cc-U+e0d4,U+e0ca=Hack Nerd Font Mono Regular
+
+# iec power symbols
+font-codepoint-map = U+23fb-U+23fe,U+2b58=Hack Nerd Font Mono Regular
+
+# font logos
+font-codepoint-map = U+f300-U+f381=Hack Nerd Font Mono Regular
+
+# pomicons
+font-codepoint-map = U+e000-U+e00a=Hack Nerd Font Mono Regular
+
+# codicons
+font-codepoint-map = U+ea60-U+ec1e=Hack Nerd Font Mono Regular
+
 font-size = 14
-font-thicken = true
+bold-is-bright = true
+
 cursor-style = block
-theme = catppuccin-frappe
+cursor-style-blink = true
+theme = catppuccin-mocha
+
 background-opacity = 0.9
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
 
 shell-integration-features = sudo,no-title
-window-save-state = always
+clipboard-read = allow
+
+quit-after-last-window-closed = true
