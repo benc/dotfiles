@@ -1,5 +1,7 @@
 Write-Output "🔧 Installing tooling - winget..."
 
+# assuming 'workstation' for windows machines, so we'll be installing everything
+
  # tailscale scoop version does not install correctly
 $apps = @(
     "SomePythonThings.WingetUIStore",
@@ -90,73 +92,94 @@ scoop bucket add versions
 scoop bucket add games
 
 $scoopApps = @(
-    "main/7zip",
-    "main/git",
-    "main/pwsh",
-    "main/chezmoi",
-    "main/1password-cli",
-    "main/aws",
-    "main/direnv",
-    "main/eza",
-    "main/pandoc",
-    "main/k9s",
-    "main/uv",
-    "main/bat",
-    "main/xh",
-    "main/fzf",
-    "main/zoxide",
-    "main/ripgrep",
-    "main/exiftool",
-    "main/jq",
-    "main/maven",
-    "main/gradle",
-    "main/neovim",
-    "main/clink",
-    "main/scoop-search",
-    "main/btop",
-    "main/starship",
-    "main/topgrade",
-    "main/syncthing",
-    "main/hadolint",
+    "main/pwsh", # shell
+    "main/eza", # ls replacement
+    "main/bat", # cat replacement
+    "main/fzf", # fuzzy finder
+    "main/fd", # find replacement
+    "main/btop", # top replacement
+    "main/jq", # json processor
+    "main/yq", # yaml, json and xml processor
+    "main/fx", # json viewer
+    "main/ripgrep", # grep replacement
+    "main/delta", # diff viewer
+    "main/diff-so-fancy", # diff viewer
+    "main/xh", # curl replacement
+    "main/starship", # prompt
+    "main/zoxide", # cd replacement
+    "main/git", # version control
+    "extras/git-credential-manager", # secure git credential storage
+    "main/procs", # ps replacement
+    "main/dust", # du replacement
+    "main/duf", # df replacement
+    "main/chezmoi", # dotfiles manager
+    "main/iperf3", # network speed test
+    "main/1password-cli", # password manager
+    "extras/lazygit", # git ui
+    "main/topgrade", # update all the things
+    "main/neovim", # text editor
+    "main/ntfy", # notifications
+    "extras/mpv", # media player
+    "extras/telegram", # messaging
+    "extras/signal", # messaging
+    "extras/discord", # messaging
+    "extras/zoom", # video conferencing
+    "main/clink", # powerful bash-style command line editing for cmd.exe
+    "main/clink-completions", # completions for clink
+    "main/scoop-search", # search for apps in scoop
+    "main/syncthing", # file sync
+    "extras/syncthingtray", # syncthing tray
+    "extras/alacritty", # terminal
+    "extras/everything", # fast file search
+    "extras/flow-launcher", # app launcher
+    "extras/calibre", # ebook manager  
+    "extras/peazip", # archiver
+    "main/7zip", # archiver
+    "extras/winscp", # sftp client
+    "extras/picpick", # screen capture
+    "extras/thunderbird", # email client
+    "extras/paint.net", # image editor
+    "extras/musescore", # music notation
+    "games/steam" # steam
+    "extras/sharpkeys", # remap keys
+    "main/usql", # universal sql client
+    "main/aws", # aws cli
+    "main/aws-iam-authenticator", # aws k8s auth
+    "main/aws-ecs", # aws ecs tooling
+    "main/k9s", # k8s ui
+    "main/kubectl", # k8s cli
+    "main/helm", # k8s package manager
+    "main/stern", # k8s log viewer
+    "main/kubectx", # k8s context manager
+    "main/dive", # docker container image explorer
+    "main/ctop", # container top
+    "main/exiftool", # image metadata tool
     "main/scc", # code counter with complexity calculations and cocomo estimates
-    "main/delta",
-    "main/diff-so-fancy",
-    "main/fd",
-    "extras/lazygit",
-    "extras/git-credential-manager",
-    "extras/mpv",
-    "extras/alacritty",
-    "extras/everything",
-    "extras/flow-launcher",
-    "extras/googlechrome",
-    "extras/firefox",
-    "extras/brave",
-    "extras/calibre",
-    "extras/sharpkeys",
-    "extras/peazip",
-    "extras/winscp",
-    "extras/picpick",
-    "extras/thunderbird",
-    "extras/wireshark",
-    "extras/sd-card-formatter",
-    "extras/localsend",
-    "extras/xpipe",
-    "extras/paint.net",
-    "extras/keystore-explorer",
-    "extras/telegram",
-    "extras/zoom",
-    "extras/signal",
-    "extras/discord",
-    "extras/jd-gui",
-    "extras/syncthingtray",
-    "extras/musescore",
-    "sysinternals/sysinternals-suite",
-    "versions/vscode-insiders",
-    "versions/zed-nightly",
-    "java/temurin11-jdk",
-    "java/temurin17-jdk",
-    "java/temurin21-jdk",
-    "games/steam"
+    "main/hyperfine", # cli benchmarking tool
+    "main/hadolint", # dockerfile linter
+    "main/gh", # github cli
+    "main/glab", # gitlab cli
+    "main/jj", # jujutsu — git compatible dvcs that is both simple and powerful
+    "main/uv", # python package manager
+    "main/direnv", # env manager
+    "extras/jd-gui", # java decompiler
+    "extras/keystore-explorer", # java keystore manager
+    "java/temurin11-jdk", # java
+    "java/temurin17-jdk", # java
+    "java/temurin21-jdk", # java
+    "main/maven", # build tool
+    "main/gradle", # build tool
+    "main/pandoc", # document converter
+    "main/graphviz", # graph tool
+    "extras/googlechrome", # browser
+    "extras/firefox", # browser
+    "extras/brave", # browser
+    "extras/wireshark", # network protocol analyzer
+    "extras/sd-card-formatter", # sd card formatter
+    "extras/localsend", # file transfer
+    "sysinternals/sysinternals-suite", # sysinternals suite
+    "versions/vscode-insiders", # code editor
+    "versions/zed-nightly" # code editor
 )
 
 clink autorun install

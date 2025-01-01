@@ -44,11 +44,11 @@ brew "procs" # ps replacement
 brew "dust" # du replacement
 brew "duf" # df replacement
 brew "prettyping" # ping replacement
+brew "iperf3" # network speed test
 brew "coreutils" # gnu coreutils
 brew "m-cli" # swiss army knife for macos
 brew "mas" # mac app store cli
 brew "tag" # manipulate and query tags on macos files
-brew "iperf3" # network benchmarking
 brew "font-hack-nerd-font" # standalone nerd font
 EOF
 
@@ -75,11 +75,11 @@ fi
 echo "🔧 Installing the essentials..."
 brew bundle --no-lock --file=/dev/stdin <<EOF
 brew "lazygit" # git ui
-brew "topgrade" # update everything
+brew "topgrade" # update all the things
 brew "neovim" # text editor
 brew "terminal-notifier" # notifications - TODO switch to ntfy
-brew "ntfy"
-brew "mpv" # video player
+brew "ntfy" # notifications
+brew "mpv" # media player
 
 # quicklook plugins
 cask "apparency" # quicklook for apps https://www.mothersruin.com/software/Apparency/
@@ -291,7 +291,7 @@ brew "devcontainer" # dockerize dev env
 brew "hadolint" # dockerfile linter
 brew "gh" # github cli
 brew "glab" # gitlab cli
-brew "jj" # jujutsu — a version control system
+brew "jj" # jujutsu — git compatible dvcs that is both simple and powerful
 cask "jetbrains-toolbox" # jetbrains ide manager
 cask "zed" # code editor
 cask "visual-studio-code@insiders" # code editor
