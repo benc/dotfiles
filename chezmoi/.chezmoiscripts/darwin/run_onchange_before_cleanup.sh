@@ -9,3 +9,7 @@ if ! command -v brew &> /dev/null; then
   echo "brew not found, nothing to clean..."
   exit 0
 fi
+
+# replaced by ghostty
+brew remove warp || true
+brew remove alacritty || true

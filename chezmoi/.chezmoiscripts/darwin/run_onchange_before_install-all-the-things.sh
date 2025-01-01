@@ -337,8 +337,6 @@ cask "microsoft-edge" # browser
 
 # cli
 cask "powershell" # shell
-cask "warp" # terminal
-cask "alacritty" # terminal
 
 # devops
 cask "crystalfetch" # create windows 11 iso images
