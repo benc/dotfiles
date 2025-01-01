@@ -318,7 +318,6 @@ cask "keystore-explorer" # java keystore manager
 
 # mobile development
 cask "provisionql" # quicklook for ipa & provision
-cask "quicklookapk" # quicklook for apk
 
 # media
 brew "pandoc" # document converter
@@ -345,7 +344,6 @@ cask "crystalfetch" # create windows 11 iso images
 cask "bluetility" # bluetooth low energy browser
 
 # ai
-cask "lm-studio" # ai tool
 cask "diffusionbee" # image generator
 mas "Aiko", id: 1672085276 # on device transcription https://sindresorhus.com/aiko
 

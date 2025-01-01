@@ -13,3 +13,9 @@ fi
 # replaced by ghostty
 brew remove warp || true
 brew remove alacritty || true
+
+# deprecated
+brew remove quicklookapk || true 
+
+# use bolt ai
+brew remove lm-studio || true
