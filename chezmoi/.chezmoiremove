@@ -25,3 +25,4 @@
 .config/wsl/agent-bridge.sh
 .config/k9s/log_jq.yml
 .config/k9s/plugins.yaml
+.hyper.js
