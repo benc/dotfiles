@@ -90,6 +90,7 @@ scoop bucket add java
 scoop bucket add sysinternals
 scoop bucket add versions
 scoop bucket add games
+scoop bucket add nerd-fonts
 
 $scoopApps = @(
     "main/pwsh", # shell
@@ -180,7 +181,8 @@ $scoopApps = @(
     "extras/localsend", # file transfer
     "sysinternals/sysinternals-suite", # sysinternals suite
     "versions/vscode-insiders", # code editor
-    "versions/zed-nightly" # code editor
+    "versions/zed-nightly", # code editor
+    "nerd-fonts/Hack-NF" # nerd font
 )
 
 clink autorun install
