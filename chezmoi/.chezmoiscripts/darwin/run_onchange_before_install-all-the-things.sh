@@ -242,6 +242,11 @@ cask "fujitsu-scansnap-home" # scanner manager
 # ai
 brew "ollama" # serve genai models
 
+# development tooling
+cask "beyond-compare" # file comparison
+cask "kaleidoscope" # file comparison
+cask "tower" # git client
+
 # network tooling
 cask "localsend/localsend/localsend" # local file sharing
 cask "syncthing" # file sync
@@ -291,9 +296,6 @@ cask "jetbrains-toolbox" # jetbrains ide manager
 cask "zed" # code editor
 cask "visual-studio-code@insiders" # code editor
 cask "bbedit" # code editor
-cask "beyond-compare" # file comparison
-cask "kaleidoscope" # file comparison
-cask "tower" # git client
 cask "kindavim" # vim keybindings for macos
 mas "JSONPeep", id: 1458969831 # json viewer
 mas "OK JSON", id: 1576121509 # json viewer
