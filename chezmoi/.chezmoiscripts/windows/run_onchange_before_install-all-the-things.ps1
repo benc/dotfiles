@@ -103,6 +103,7 @@ $scoopApps = @(
     "main/fx", # json viewer
     "main/ripgrep", # grep replacement
     "main/delta", # diff viewer
+    "main/perl", # scripting
     "main/diff-so-fancy", # diff viewer
     "main/xh", # curl replacement
     "main/starship", # prompt
