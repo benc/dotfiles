@@ -3,10 +3,8 @@ if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
     . ${CHEZMOI_SOURCE_DIR}/../scripts/source-tooling.sh
 fi
 
-if [ -d $HOME/.asdf ]; then
+if [ -r "$(brew --prefix asdf)" ]; then
   echo "🔧 Configure ASDF..."
-
-  . "$HOME/.asdf/asdf.sh"
 
   asdf plugin add nodejs
   asdf plugin add ruby

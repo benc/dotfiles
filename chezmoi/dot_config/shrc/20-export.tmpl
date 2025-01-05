@@ -23,10 +23,30 @@ if service docker status 2>&1 | grep -q "is not running"; then
 fi
 {{ end }}
 
-# ASDF
-if [ -d $HOME/.asdf ]; then
-  . "$HOME/.asdf/asdf.sh"
+# asdf
+if [ -r "$(brew --prefix asdf)" ]; then
+  . "$(brew --prefix asdf)/libexec/asdf.sh"
   export PATH="$HOME/.asdf/shims:$PATH"
+fi
+
+# vivid
+if [ -r "$(brew --prefix vivid)" ]; then
+  export LS_COLORS="$(vivid generate catppuccin-mocha)"
+fi
+
+# fzf
+if [ -r "$(brew --prefix fzf)" ]; then
+  export FZF_DEFAULT_OPTS=" \
+    --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+    --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+    --color=selected-bg:#45475a \
+    --multi"
+fi
+
+# bat
+if [ -r "$(brew --prefix bat)" ]; then
+  export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 fi
 
 # NodeJS

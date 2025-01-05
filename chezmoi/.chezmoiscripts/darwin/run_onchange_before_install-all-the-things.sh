@@ -1,7 +1,4 @@
 #!/bin/bash
-echo "Asking for sudo rights in order to install tooling..."
-sudo -v
-
 if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
     echo "🍺 Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -17,12 +14,42 @@ if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
     . ${CHEZMOI_SOURCE_DIR}/../scripts/source-tooling.sh
 fi
 
+if [[ "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" && ! $(/usr/bin/pgrep oahd) ]]; then
+    echo "🔧 Installing Rosetta.."
+    /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+fi
+
+if [ -d "/Applications/Xcode.app" ]; then
+    echo "Full Xcode is installed"
+
+    if /usr/bin/xcodebuild -license status &> /dev/null; then
+        echo "Xcode license has already been accepted."
+    else
+        echo "You have not agreed to the Xcode license. Accepting the Xcode license..."
+        sudo xcodebuild -license accept
+        if [ $? -ne 0 ]; then
+            echo "Failed to accept the Xcode license. Please run 'sudo xcodebuild -license' manually and accept the terms."
+            exit 1
+        fi
+    fi
+elif [ -d "/Library/Developer/CommandLineTools" ]; then
+    echo "Only Command Line Tools are installed"
+    echo "Consider installing full Xcode if you need additional development features"
+else
+    echo "Neither Xcode nor Command Line Tools are installed"
+    echo "Installing Command Line Tools..."
+    xcode-select --install
+    exit 1
+fi
+
 echo "🔧 Installing prerequisites.."
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
 # shell and basic cli tooling
 brew "zsh" # shell
 brew "eza" # ls replacement
+brew "vivid" # colorizer
 brew "bat" # cat replacement
+brew "bat-extras" # more bat
 brew "fzf" # fuzzy finder
 brew "fd" # find replacement
 brew "btop" # top replacement
@@ -36,6 +63,7 @@ brew "diff-so-fancy" # diff viewer
 brew "xh" # curl replacement
 brew "navi" # cheatsheet
 brew "starship" # prompt
+brew "atuin" # fancy history
 brew "zoxide" # cd replacement
 brew "sheldon" # plugin manager
 brew "watch" # watch command
@@ -45,16 +73,21 @@ brew "dust" # du replacement
 brew "duf" # df replacement
 brew "prettyping" # ping replacement
 brew "iperf3" # network speed test
+brew "doggo" # dig replacement
 brew "coreutils" # gnu coreutils
 brew "m-cli" # swiss army knife for macos
 brew "mas" # mac app store cli
 brew "tag" # manipulate and query tags on macos files
+brew "topgrade" # update all the things
+brew "neovim" # text editor
+brew "neofetch" # system info
+cask "ghostty" # terminal
 cask "font-hack-nerd-font" # standalone nerd font
 EOF
 
 if [ "$APPLY_SECRETS" = "true" ] || [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
     echo "🔧 Installing 1Password"
-    brew bundle --no-lock --file=/dev/stdin <<EOF
+    brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
 # 1password
 cask "1password" # 1password
 cask "1password/tap/1password-cli" # 1password cli
@@ -64,7 +97,7 @@ EOF
     op_account_size="$(op account list --format=json | jq -r '. | length')"
 
     if [[ "${op_account_size}" == "0" ]]; then
-    echo "⚠️ 1password is not configured correctly. Launch 1Password, sign in and couple it to the CLI. Then run this bootstrap script again."
+    echo "⚠️ 1password is not configured correctly. Launch 1Password, sign in and couple it to the CLI. Then run this script again, or $HOME/.dotfiles/scripts/apply_dotfiles.sh (which is a bit faster)"
         echo
         echo "   op account add --address $SUBDOMAIN.1password.com --email $LOGIN"
         echo
@@ -73,10 +106,8 @@ EOF
 fi
 
 echo "🔧 Installing the essentials..."
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
 brew "lazygit" # git ui
-brew "topgrade" # update all the things
-brew "neovim" # text editor
 brew "terminal-notifier" # notifications - TODO switch to ntfy
 brew "ntfy" # notifications
 brew "mpv" # media player
@@ -104,7 +135,6 @@ cask "jordanbaird-ice" # macos menubar manager
 cask "raycast" # spotlight replacement
 cask "contexts" # switch between apps
 cask "latest" # latest version of apps
-cask "ghostty" # terminal
 cask "connectmenow" # mount network shares
 cask "carbon-copy-cloner" # backup tool
 cask "sdformatter" # sd card formatter
@@ -143,7 +173,7 @@ fi
 
 if [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
     echo "🔧 Installing regular tooling..."
-    brew bundle --no-lock --file=/dev/stdin <<EOF
+    brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
 # messaging
 cask "whatsapp"
 cask "telegram"
@@ -191,6 +221,7 @@ cask "audio-hijack" # audio recorder
 cask "melodics" # music learning
 cask "musescore" # music notation
 mas "GarageBand", id: 682658836 # music creation
+cask "powerphotos" # photos manager
 mas "Cascable", id: 974193500 # camera control https://cascable.se
 mas "Pixelmator Pro", id: 1289583905 # image editor
 mas "Motif", id: 1404636482 # photos extension
@@ -199,7 +230,9 @@ fi
 
 if [ "$INSTALLATION_TYPE" = "server" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
     echo "🔧 Installing server tooling..."
-    brew bundle --no-lock --file=/dev/stdin <<EOF
+    brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
+brew "asdf" # version manager 
+
 # data tooling
 brew "libpq" # postgresql client tooling
 brew "pgcli" # better psql
@@ -249,12 +282,14 @@ cask "kaleidoscope" # file comparison
 cask "tower" # git client
 
 # network tooling
+brew "posting" # tui rest client
 cask "localsend/localsend/localsend" # local file sharing
 cask "syncthing" # file sync
 cask "core-tunnel" # ssh tunnel
 cask "wireshark" # network analyzer
 cask "transmit" # ftp client
-cask "windows-app" # remote desktop
+cask "windows-app" # remote desktop (win)
+mas "Remote Desktop", id:409907375 # remote desktop (mac)
 cask "little-snitch" # network monitor
 cask "ngrok" # reverse proxy, secure introspectable tunnels to localhost
 
@@ -265,14 +300,6 @@ cask "launchcontrol" # launchd manager
 EOF
 
     brew services restart ollama
-
-    echo "🔧 Installing ASDF..."
-    if [ ! -d $HOME/.asdf ]; then
-        echo "💡 Installing asdf..."
-        git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf
-        . "$HOME/.asdf/asdf.sh"
-        asdf update
-    fi
 fi
 
 if [ "$INSTALLATION_TYPE" = "workstation" ]; then
@@ -285,10 +312,9 @@ if [ "$INSTALLATION_TYPE" = "workstation" ]; then
 
     echo "🔧 Installing xcode..."
     mas install 497799835 # xcode
-    sudo xcodebuild -license accept
 
     echo "🔧 Installing workstation tooling..."
-    brew bundle --force --no-lock --file=/dev/stdin <<EOF
+    brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
 # development tooling
 brew "scc" # code counter with complexity calculations and cocomo estimates
 brew "hyperfine" # cli benchmarking

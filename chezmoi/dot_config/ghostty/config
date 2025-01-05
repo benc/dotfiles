@@ -1,5 +1,15 @@
-font-family = TX02
-# font-family = MonoLisa Light Regular
+font-family = TX-02
+font-size = 14
+font-style = SemiLight
+font-style-italic = SemiLight Oblique
+font-style-bold = Bold
+font-style-bold-italic = Bold Oblique
+
+# font-family = MonoLisa
+# font-style = Light
+# font-style-italic = Light Italic
+# font-style-bold = Black
+# font-style-bold-italic = Black Italic
 
 # https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points 
 # as of v3.3.0
@@ -40,19 +50,20 @@ font-codepoint-map = U+e000-U+e00a=Hack Nerd Font Mono Regular
 # codicons
 font-codepoint-map = U+ea60-U+ec1e=Hack Nerd Font Mono Regular
 
-font-size = 14
-bold-is-bright = true
-
 cursor-style = block
 cursor-style-blink = true
 theme = catppuccin-mocha
 
-background-opacity = 0.9
-window-padding-x = 4
-window-padding-y = 4
+background-opacity = 0.80
+background-blur-radius = 20
+adjust-cell-height = 10%
+window-padding-x = 10
+window-padding-y = 10
 window-padding-balance = true
 
 shell-integration-features = sudo,no-title
 clipboard-read = allow
 
 quit-after-last-window-closed = true
+confirm-close-surface = false
+window-save-state = always

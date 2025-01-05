@@ -1,9 +1,9 @@
-nodejs 20.15.0
-ruby 3.3.3
-java temurin-17.0.11+9
+nodejs 22.12.0
+ruby 3.4.1
+java temurin-17.0.13+11
 python miniconda3-3.12-24.5.0-0
-golang 1.22.4
-maven 3.9.8
-gradle 8.8
+golang 1.23.4
+maven 3.9.9
+gradle 8.12
 rust stable
-sbt 1.10.6
+sbt 1.10.7

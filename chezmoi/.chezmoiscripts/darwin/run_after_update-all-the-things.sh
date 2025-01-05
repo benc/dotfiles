@@ -3,8 +3,9 @@ if [[ -n "${CHEZMOI_SOURCE_DIR}" ]]; then
     . ${CHEZMOI_SOURCE_DIR}/../scripts/source-tooling.sh
 fi
 
+bat cache --build
+
 echo "💡 Upgrade all the things..."
-# chezmoi
 chezmoi upgrade
 
 if [ "$INSTALLATION_TYPE" = "server" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
@@ -21,5 +22,4 @@ if [ "$INSTALLATION_TYPE" = "server" ] || [ "$INSTALLATION_TYPE" = "workstation"
     fi
 fi
 
-# topgrade
 topgrade || true

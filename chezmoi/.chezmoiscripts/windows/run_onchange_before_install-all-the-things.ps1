@@ -120,6 +120,7 @@ $scoopApps = @(
     "extras/lazygit", # git ui
     "main/topgrade", # update all the things
     "main/neovim", # text editor
+    "main/neofetch", # system info
     "main/ntfy", # notifications
     "extras/mpv", # media player
     "extras/telegram", # messaging
