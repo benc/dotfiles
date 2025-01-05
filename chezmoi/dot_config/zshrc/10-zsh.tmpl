@@ -3,6 +3,7 @@ if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
 fi
 
 setopt AUTOCD # ..
+setopt interactive_comments # needed for zsh-autocomplete
 
 ### compedit
 autoload -U +X compinit && compinit
