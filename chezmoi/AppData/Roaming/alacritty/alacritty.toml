@@ -2,7 +2,7 @@
 size = 10
 
   [font.normal]
-  family = "TX-02"
+  family = "Berkeley Mono Variable"
 
 [window]
 opacity = 0.95

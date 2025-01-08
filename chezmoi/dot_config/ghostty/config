@@ -1,9 +1,17 @@
-font-family = TX-02
+# run `ghostty +show-config --default --docs` to see options
+font-family = Berkeley Mono Variable
 font-size = 14
-font-style = SemiLight
-font-style-italic = SemiLight Oblique
-font-style-bold = Bold
-font-style-bold-italic = Bold Oblique
+font-variation = wght=375
+font-variation-italic = slnt=11
+font-variation-bold = wght=700
+font-variation-bold-italic = slnt=11
+
+# font-family = Berkeley Mono
+# font-size = 14
+# font-style = Retina
+# font-style-italic = Retina Oblique
+# font-style-bold = Bold
+# font-style-bold-italic = Bold Oblique
 
 # font-family = MonoLisa
 # font-style = Light

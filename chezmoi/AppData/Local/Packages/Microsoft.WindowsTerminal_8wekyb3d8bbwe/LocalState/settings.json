@@ -32,7 +32,7 @@
     "profiles": {
         "defaults": {
             "font": {
-                "face": "TX-02"
+                "face": "Berkeley Mono Variable"
             }
         },
         "list": [
