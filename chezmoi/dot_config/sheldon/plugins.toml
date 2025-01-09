@@ -5,27 +5,25 @@
 
 shell = "zsh"
 
-# Default apply defer
+# defer setup: apply by default
 apply = ["defer"]
-
-[templates]
-defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 apply = ["source"]
 
+[templates]
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+
+# plugins
 [plugins.conda-zsh-completion]
 github = "esc/conda-zsh-completion"
-apply = ["source"]
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
-apply = ["source"]
 
 [plugins.zsh-autocomplete]
 github = "marlonrichert/zsh-autocomplete"
-apply = ["source"]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
@@ -39,7 +37,3 @@ github = "zdharma-continuum/fast-syntax-highlighting"
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
-
-[plugins.fzf-tab]
-github = "Aloxaf/fzf-tab"
-apply = ["source"]
