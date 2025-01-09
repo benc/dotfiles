@@ -92,6 +92,7 @@ scoop bucket add versions
 scoop bucket add games
 scoop bucket add nerd-fonts
 
+# todo: siv
 $scoopApps = @(
     "main/pwsh", # shell
     "main/eza", # ls replacement
@@ -181,6 +182,9 @@ $scoopApps = @(
     "extras/sd-card-formatter", # sd card formatter
     "extras/localsend", # file transfer
     "sysinternals/sysinternals-suite", # sysinternals suite
+    "extras/hwinfo", # system information
+    "extras/cpu-z", # system information
+    "extras/hwmonitor", # system information
     "versions/vscode-insiders", # code editor
     "versions/zed-nightly", # code editor
     "nerd-fonts/Hack-NF" # nerd font
