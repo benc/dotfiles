@@ -1,5 +1,9 @@
+import = [
+  "./catppuccin-mocha.toml"
+]
+
 [font]
-size = 10
+size = 11.5
 
   [font.normal]
   family = "Berkeley Mono Variable"
@@ -8,8 +12,8 @@ size = 10
 opacity = 0.95
 
   [window.padding]
-  x = 8
-  y = 8
+  x = 10
+  y = 10
 
 [cursor]
 unfocused_hollow = false
