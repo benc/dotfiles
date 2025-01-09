@@ -247,6 +247,7 @@ brew "lnav" # log viewer
 brew "awscli" # aws tooling
 brew "aws-iam-authenticator" # aws k8s auth
 brew "docker-credential-helper-ecr" # docker ecr auth
+cask "session-manager-plugin" # aws ssm plugin
 tap "aws/tap" # aws tap
 brew "eks-node-viewer" # eks node viewer
 
