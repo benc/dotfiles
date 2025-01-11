@@ -10,6 +10,7 @@ size = 11.5
 
 [window]
 opacity = 0.95
+dynamic_title = true
 
   [window.padding]
   x = 10
