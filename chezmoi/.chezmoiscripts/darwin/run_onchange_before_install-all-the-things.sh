@@ -146,6 +146,7 @@ cask "prefs-editor" # macos prefs editor
 cask "visual-studio-code" # code editor
 cask "pacifist" # multi-tool for working with macos package files
 cask "setapp" # app subscription
+cask "ulbow" # log viewer
 mas "Amphetamine", id: 937984704 # keep mac awake
 
 # productivity
