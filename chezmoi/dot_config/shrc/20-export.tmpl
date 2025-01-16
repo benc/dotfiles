@@ -95,5 +95,10 @@ if [ -d "/Applications/Carbon Copy Cloner.app" ]; then
   export PATH=/Applications/Carbon\ Copy\ Cloner.app/Contents/MacOS/:$PATH
 fi
 
-# SBT
-export SBT_CREDENTIALS=~/.ivy2/.credentials
+if [ -d "${HOME}/Library/Application Support/JetBrains/Toolbox/" ]; then
+  export PATH=${HOME}/Library/Application\ Support/JetBrains/Toolbox/scripts:$PATH
+fi
+
+if [ -d "${HOME}/.ivy2/.credentials" ]; then
+  export SBT_CREDENTIALS=${HOME}/.ivy2/.credentials
+fi

@@ -63,7 +63,6 @@ brew "diff-so-fancy" # diff viewer
 brew "xh" # curl replacement
 brew "navi" # cheatsheet
 brew "starship" # prompt
-brew "atuin" # fancy history
 brew "zoxide" # cd replacement
 brew "sheldon" # plugin manager
 brew "watch" # watch command

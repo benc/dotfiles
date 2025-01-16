@@ -8,12 +8,6 @@ if type zoxide &>/dev/null; then
   eval "$(zoxide init bash)"
 fi
 
-# if type starship &>/dev/null; then
-#   eval "$(starship init bash)"
-# fi
-
-if type pixi &>/dev/null; then
-  eval "$(pixi completion --shell bash)"
+if [ -d "${HOME}/.orbstack" ]; then
+  source ${HOME}/.orbstack/shell/init.bash 2>/dev/null || :
 fi
-
-if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then . "$HOME/.config/fabric/fabric-bootstrap.inc"; fi

@@ -19,3 +19,6 @@ brew remove quicklookapk || true
 
 # use bolt ai
 brew remove lm-studio || true
+
+# not used
+brew remove atuin || true

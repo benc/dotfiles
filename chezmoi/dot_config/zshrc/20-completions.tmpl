@@ -39,23 +39,11 @@ if (( ${+commands[chezmoi]} )); then
 fi
 
 if (( ${+commands[op]} )); then
-    eval "$(op completion zsh)"
+  eval "$(op completion zsh)"
 fi
 
 if (( ${+commands[aws]} )); then
-    complete -C '/usr/local/bin/aws_completer' aws
-fi
-
-if (( ${+commands[minikube]} )); then
-  eval "$(minikube completion zsh)"
-
-  # echo "💡 Setting up minikube for use with docker..."
-  # eval $(minikube docker-env)
-  # alias mku="minikube start --driver=vmware --disk-size=100g --container-runtime=docker --memory=8184 --cpus=4; minikube addons enable metrics-server; minikube addons enable ingress"
-fi
-
-if (( ${+commands[kompose]} )); then
-  eval "$(kompose completion zsh)"
+  complete -C "$(brew --prefix)/bin/aws_completer" aws
 fi
 
 if (( ${+commands[kubectl]} )); then
