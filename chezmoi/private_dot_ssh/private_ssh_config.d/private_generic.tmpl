@@ -1,7 +1,3 @@
-{{ if eq .chezmoi.os "darwin" -}}
-Include ~/.orbstack/ssh/config
-{{ end -}}
-
 Host *
   {{ if eq .chezmoi.os "darwin" -}}
   # Allow storing passphrases in the macOS keychain.
@@ -15,8 +11,11 @@ Host *
   ServerAliveInterval 300
 
   {{ if eq .chezmoi.os "darwin" -}}
-  # Use 1Password ssh agent
+  # Add 1Password ssh agent
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+  
+  # Add Secretive ssh agent
+	IdentityAgent "~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
   {{ end -}}
   {{ if eq .chezmoi.os "linux" -}}
   # Use 1Password ssh agent
@@ -27,3 +26,22 @@ Host localhost
   # Disable strict host key checking for tunnels
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
+
+{{ if eq .chezmoi.os "darwin" -}}
+Host orb
+  Hostname 127.0.0.1
+  Port 32222
+  # SSH user syntax:
+  #   <container>@orb to connect to <container> as the default user (matching your macOS user)
+  #   <user>@<container>@orb to connect to <container> as <user>
+  # Examples:
+  #   ubuntu@orb: container "ubuntu", user matching your macOS user
+  #   root@fedora@orb: container "fedora", user "root"
+  User default
+  # replace or symlink ~/.orbstack/ssh/id_ed25519 file to change the key
+  IdentityFile ~/.orbstack/ssh/id_ed25519
+  # only use this key
+  IdentitiesOnly yes
+  ProxyCommand '/Applications/OrbStack.app/Contents/Frameworks/OrbStack Helper.app/Contents/MacOS/OrbStack Helper' ssh-proxy-fdpass 501
+  ProxyUseFdpass yes
+{{ end }}
