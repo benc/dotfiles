@@ -1,0 +1,26 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+" keeps few lines visible when scrolling
+set scrolloff=5
+
+" highlights the search string while typing
+set incsearch
+
+" shows both the line number and the relative line number in the gutter
+set number relativenumber
+
+" no arrow keys
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
