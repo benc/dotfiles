@@ -6,6 +6,7 @@ fi
 if type ollama &>/dev/null; then
     echo "🔧 Pulling ollama models..."
 
+    ollama pull "deepseek-r1:latest"
     ollama pull "llama3.3:latest"
     ollama pull "qwq:latest"
     ollama pull "qwen2.5-coder:latest"
