@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+adv360disk=$(df | grep ADV360PRO | cut -d" " -f1)
+sudo umount /Volumes/ADV360PRO
+sudo mkdir /Volumes/ADV360PRO
+sleep 2
+sudo mount -v -o noasync -t msdos "$adv360disk" /Volumes/ADV360PRO
