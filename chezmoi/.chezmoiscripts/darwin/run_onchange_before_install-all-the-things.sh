@@ -128,6 +128,7 @@ cask "coconutbattery" # battery health monitor
 cask "aldente" # battery management
 cask "via" # qmk manager
 cask "karabiner-elements" # keyboard remapper
+cask "wifiman" # unifi wifi manager
 
 # system tooling
 cask "jordanbaird-ice" # macos menubar manager
