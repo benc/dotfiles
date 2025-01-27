@@ -6,9 +6,11 @@ fi
 if type ollama &>/dev/null; then
     echo "🔧 Pulling ollama models..."
 
-    ollama pull "deepseek-r1:latest"
+    ollama rm "qwen2.5-coder:latest"
+    
+    ollama pull "deepseek-r1:32b"
     ollama pull "llama3.3:latest"
     ollama pull "qwq:latest"
-    ollama pull "qwen2.5-coder:latest"
+    ollama pull "qwen2.5-coder:32b"
     ollama pull "nomic-embed-text:latest"
 fi
