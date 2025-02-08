@@ -22,3 +22,7 @@ brew remove lm-studio || true
 
 # not used
 brew remove atuin || true
+
+# use librewolf
+brew remove firefox || true
+brew remove brave-browser || true

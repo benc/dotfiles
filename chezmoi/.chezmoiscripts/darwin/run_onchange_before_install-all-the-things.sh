@@ -82,6 +82,7 @@ brew "neovim" # text editor
 brew "neofetch" # system info
 cask "ghostty" # terminal
 cask "font-hack-nerd-font" # standalone nerd font
+cask "font-readex-pro" 
 EOF
 
 if [ "$APPLY_SECRETS" = "true" ] || [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
@@ -199,6 +200,7 @@ mas "Peek", id: 1554235898 # quick look extension https://www.bigzlabs.com/peek.
 mas "Mindnode", id: 1289197285 # mind mapping
 mas "Mindnode Next", id: 6446116532 # mind mapping
 mas "Reeder", id: 1529448980 # rss reader
+mas "News Explorer", id: 1032670789 # news reader
 mas "Side Mirror", id: 944860108 # presentation tool https://sidemirrorapp.com
 mas "StopTheMadness Pro", id: 6471380298 # sanitize safari https://underpassapp.com/StopTheMadness/
 mas "Obsidian Web Clipper", id: 6471380298 # obsidian web clipper https://obsidian.md
@@ -277,6 +279,7 @@ cask "fujitsu-scansnap-home" # scanner manager
 
 # ai
 brew "ollama" # serve genai models
+brew "mlx" # apple silicon array framework
 
 # development tooling
 cask "beyond-compare" # file comparison
@@ -316,6 +319,7 @@ if [ "$INSTALLATION_TYPE" = "workstation" ]; then
     mas install 497799835 # xcode
 
     echo "🔧 Installing workstation tooling..."
+    brew install librewolf --no-quarantine
     brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
 # development tooling
 brew "scc" # code counter with complexity calculations and cocomo estimates
@@ -359,9 +363,8 @@ mas "MQTT Explorer", id: 1455214828
 # web development
 brew "wrk" # http benchmarking
 cask "choosy" # browser chooser
-cask "firefox" # browser
-cask "brave-browser" # browser
 cask "microsoft-edge" # browser
+cask "tor-browser" # browser
 
 # cli
 cask "powershell" # shell
