@@ -25,8 +25,8 @@ fi
 
 # asdf
 if [ -r "$(brew --prefix asdf)" ]; then
-  . "$(brew --prefix asdf)/libexec/asdf.sh"
-  export PATH="$HOME/.asdf/shims:$PATH"
+  export ASDF_DATA_DIR="$HOME/.asdf"
+  export PATH="$ASDF_DATA_DIR/shims:$PATH"
 fi
 
 # vivid

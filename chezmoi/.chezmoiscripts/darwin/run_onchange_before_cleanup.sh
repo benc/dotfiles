@@ -26,3 +26,6 @@ brew remove atuin || true
 # use librewolf
 brew remove firefox || true
 brew remove brave-browser || true
+
+# basecamp to homebrew
+sudo mas uninstall 411052274 || true # garmin mapping tool

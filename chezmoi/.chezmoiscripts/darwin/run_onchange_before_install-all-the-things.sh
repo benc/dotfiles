@@ -380,8 +380,8 @@ cask "diffusionbee" # image generator
 mas "Aiko", id: 1672085276 # on device transcription https://sindresorhus.com/aiko
 
 # maps
-mas "BaseCamp", id: 411052274 # garmin mapping tool
 cask "google-earth-pro" # google mapping tool
+cask "garmin-basecamp" # garmin maps
 
 # utilties
 cask "keyboard-maestro" # keyboard automation
