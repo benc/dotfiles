@@ -137,6 +137,7 @@ $scoopApps = @(
     "extras/everything", # fast file search
     "extras/flow-launcher", # app launcher
     "extras/calibre", # ebook manager  
+    "extras/librewolf", # browser
     "extras/peazip", # archiver
     "main/7zip", # archiver
     "extras/winscp", # sftp client
