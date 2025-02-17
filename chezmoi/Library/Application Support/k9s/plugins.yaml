@@ -2,36 +2,41 @@
 # https://k9scli.io/topics/plugins/
 # https://github.com/derailed/k9s/tree/master/plugins
 plugins:
+  lnav:
+    shortCut: Ctrl-J
+    confirm: false
+    description: "Logs <lnav>"
+    scopes:
+      - pods
+    command: bash
+    background: false
+    args:
+      - "-i"
+      - "-c"
+      - "kubectl logs -f $NAME -n $NAMESPACE --context $CONTEXT | lnav"
   jqlogs:
-    shortCut: Ctrl-J
-    confirm: false
-    description: "Logs (jq)"
+    shortCut: Ctrl-L
+    description: "Logs <jq>"
     scopes:
-      - pod
-    command: sh
+      - po
+    command: bash
+    args:
+      - "-i"
+      - "-c"
+      - "kubectl logs -f $NAME -n $NAMESPACE --context $CONTEXT | jq -Rr '. as $line | try (fromjson | [.\"@timestamp\", .level, .message, .logger_name] | @tsv ) catch $line'"
+  stern:
+    shortCut: Ctrl-Y
+    confirm: false
+    description: "Logs <Stern>"
+    scopes:
+      - pods
+    command: stern
     background: false
     args:
-      - -c
-      - "kubectl logs -f pod/$POD -c $NAME -n $NAMESPACE --context $CONTEXT | jq -SR '. as $line | try (fromjson) catch $line'"
-  jqlogsd:
-    shortCut: Ctrl-J
-    confirm: false
-    description: "Logs (jq)"
-    scopes:
-      - deployment
-    command: sh
-    background: false
-    args:
-      - -c
-      - "kubectl logs -f deployment/$NAME -n $NAMESPACE --context $CONTEXT | jq -SR '. as $line | try (fromjson) catch $line'"
-  jqlogss:
-    shortCut: Ctrl-J
-    confirm: false
-    description: "Logs (jq)"
-    scopes:
-      - service
-    command: sh
-    background: false
-    args:
-      - -c
-      - "kubectl logs -f service/$NAME -n $NAMESPACE --context $CONTEXT | jq -SR '. as $line | try (fromjson) catch $line'"
+      - --tail
+      - 50
+      - $FILTER
+      - -n
+      - $NAMESPACE
+      - --context
+      - $CONTEXT
