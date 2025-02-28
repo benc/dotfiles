@@ -175,6 +175,7 @@ fi
 
 if [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
     echo "🔧 Installing regular tooling..."
+    brew install librewolf --no-quarantine
     brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
 # messaging
 cask "whatsapp"
@@ -196,6 +197,7 @@ cask "omnifocus" # task manager
 cask "omnigraffle" # diagram tool
 cask "omnioutliner" # outliner tool
 cask "devonthink" # document manager
+cask "firefox" # browser
 mas "Peek", id: 1554235898 # quick look extension https://www.bigzlabs.com/peek.html
 mas "Mindnode", id: 1289197285 # mind mapping
 mas "Mindnode Next", id: 6446116532 # mind mapping
@@ -319,7 +321,6 @@ if [ "$INSTALLATION_TYPE" = "workstation" ]; then
     mas install 497799835 # xcode
 
     echo "🔧 Installing workstation tooling..."
-    brew install librewolf --no-quarantine
     brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
 # development tooling
 brew "scc" # code counter with complexity calculations and cocomo estimates
