@@ -23,12 +23,6 @@ if service docker status 2>&1 | grep -q "is not running"; then
 fi
 {{ end }}
 
-# asdf
-if [ -r "$(brew --prefix asdf)" ]; then
-  export ASDF_DATA_DIR="$HOME/.asdf"
-  export PATH="$ASDF_DATA_DIR/shims:$PATH"
-fi
-
 # vivid
 if [ -r "$(brew --prefix vivid)" ]; then
   export LS_COLORS="$(vivid generate catppuccin-mocha)"

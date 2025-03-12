@@ -11,12 +11,12 @@ if [ -f "/opt/linuxbrew/bin/brew" ]; then
   export PATH="/opt/linuxbrew/bin:/opt/linuxbrew/sbin:$PATH"
 fi
 
-if command -v brew &> /dev/null; then
-  eval "$(brew shellenv)"
+if [ -f "/opt/linuxbrew/bin/mise" ]; then
+  eval "$(mise activate zsh)"
 fi
 
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-  source "$HOME/.asdf/asdf.sh"
+if command -v brew &> /dev/null; then
+  eval "$(brew shellenv)"
 fi
 
 export PATH="${HOME}/.local/bin:$PATH"

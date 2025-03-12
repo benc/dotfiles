@@ -18,7 +18,7 @@ sudo_command = "sudo"
 disable = ["chezmoi", "containers", "pnpm", "yarn", "mas", "pixi", "git_repos"]
 
 # Ignore failures for these steps
-ignore_failures = ["brew_cask", "asdf", "nix"]
+ignore_failures = ["brew_cask", "nix"]
 
 # List of remote machines with Topgrade installed on them
 # remote_topgrades = ["toothless", "pi", "parnas"]

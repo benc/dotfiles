@@ -6,8 +6,8 @@ if (( ${+commands[brew]} )); then
 fi
 {{ end -}}
 
-if (( ${+commands[asdf]} )); then
-  fpath=(${HOME}/.asdf/completions $fpath)
+if (( ${+commands[mise]} )); then
+  eval "$(mise completion zsh)"
 fi
 
 if (( ${+commands[pipenv]} )); then

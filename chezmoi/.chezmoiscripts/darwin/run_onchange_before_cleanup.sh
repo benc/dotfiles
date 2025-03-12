@@ -24,8 +24,11 @@ brew remove lm-studio || true
 brew remove atuin || true
 
 # use librewolf
-brew remove firefox || true
 brew remove brave-browser || true
 
 # basecamp to homebrew
 sudo mas uninstall 411052274 || true # garmin mapping tool
+
+# use mise
+brew remove asdf
+rm -rf ~/.asdf

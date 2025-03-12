@@ -16,6 +16,10 @@ if (( ${+commands[sheldon]} )); then
   eval "$(sheldon source)"
 fi
 
+if (( ${+commands[mise]} )); then
+  eval "$(mise activate zsh)"
+fi
+
 if [ -d "${HOME}/.orbstack" ]; then
   source ${HOME}/.orbstack/shell/init.zsh 2>/dev/null || :
 fi

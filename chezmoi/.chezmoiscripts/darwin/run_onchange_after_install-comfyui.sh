@@ -2,7 +2,7 @@
 #
 # This script assumes that a recent conda is installed.
 #
-# Can be done with asdf or by executing the following commands:
+# Can be done with mise or by executing the following commands:
 #
 #   curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
 #   sh Miniconda3-latest-MacOSX-arm64.sh

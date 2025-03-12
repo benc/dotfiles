@@ -5,6 +5,8 @@ fi
 
 bat cache --build
 
+mise install
+
 echo "💡 Upgrade all the things..."
 chezmoi upgrade
 

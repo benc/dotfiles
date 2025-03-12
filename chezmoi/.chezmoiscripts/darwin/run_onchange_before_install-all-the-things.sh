@@ -43,7 +43,7 @@ else
 fi
 
 echo "🔧 Installing prerequisites.."
-brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
+brew bundle --no-upgrade --force --file=/dev/stdin <<EOF
 # shell and basic cli tooling
 brew "zsh" # shell
 brew "eza" # ls replacement
@@ -87,7 +87,7 @@ EOF
 
 if [ "$APPLY_SECRETS" = "true" ] || [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
     echo "🔧 Installing 1Password"
-    brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
+    brew bundle --no-upgrade --force --file=/dev/stdin <<EOF
 # 1password
 cask "1password" # 1password
 cask "1password/tap/1password-cli" # 1password cli
@@ -106,7 +106,7 @@ EOF
 fi
 
 echo "🔧 Installing the essentials..."
-brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
+brew bundle --no-upgrade --force --file=/dev/stdin <<EOF
 brew "lazygit" # git ui
 brew "terminal-notifier" # notifications - TODO switch to ntfy
 brew "ntfy" # notifications
@@ -176,7 +176,7 @@ fi
 if [ "$INSTALLATION_TYPE" = "regular" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
     echo "🔧 Installing regular tooling..."
     brew install librewolf --no-quarantine
-    brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
+    brew bundle --no-upgrade --force --file=/dev/stdin <<EOF
 # messaging
 cask "whatsapp"
 cask "telegram"
@@ -235,8 +235,8 @@ fi
 
 if [ "$INSTALLATION_TYPE" = "server" ] || [ "$INSTALLATION_TYPE" = "workstation" ]; then
     echo "🔧 Installing server tooling..."
-    brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
-brew "asdf" # version manager 
+    brew bundle --no-upgrade --force --file=/dev/stdin <<EOF
+brew "mise" # version manager 
 
 # data tooling
 brew "libpq" # postgresql client tooling
@@ -287,6 +287,7 @@ brew "mlx" # apple silicon array framework
 cask "beyond-compare" # file comparison
 cask "kaleidoscope" # file comparison
 cask "tower" # git client
+cask "gitbutler" # git client
 
 # network tooling
 brew "posting" # tui rest client
@@ -321,7 +322,7 @@ if [ "$INSTALLATION_TYPE" = "workstation" ]; then
     mas install 497799835 # xcode
 
     echo "🔧 Installing workstation tooling..."
-    brew bundle --no-lock --no-upgrade --force --file=/dev/stdin <<EOF
+    brew bundle --no-upgrade --force --file=/dev/stdin <<EOF
 # development tooling
 brew "scc" # code counter with complexity calculations and cocomo estimates
 brew "hyperfine" # cli benchmarking
@@ -366,6 +367,7 @@ brew "wrk" # http benchmarking
 cask "choosy" # browser chooser
 cask "microsoft-edge" # browser
 cask "tor-browser" # browser
+cask "firefox" # browser
 
 # cli
 cask "powershell" # shell

@@ -28,3 +28,4 @@
 .config/alacritty/alacritty.toml
 .config/alacritty
 .hyper.js
+.tool-versions
