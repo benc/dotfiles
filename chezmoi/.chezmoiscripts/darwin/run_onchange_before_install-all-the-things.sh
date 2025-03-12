@@ -288,6 +288,7 @@ cask "beyond-compare" # file comparison
 cask "kaleidoscope" # file comparison
 cask "tower" # git client
 cask "gitbutler" # git client
+cask "bruno" # rest client
 
 # network tooling
 brew "posting" # tui rest client
